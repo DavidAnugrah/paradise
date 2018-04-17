@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="lov"  title="List Of View" width="1050px" border="normal"  mode="modal" style="border:1px;background:#3366FF;" apply="${arg.composerLov}" position="top,center" closable="true">
+
+        <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+            <grid>
+                <columns style="border:1px;background:#3366FF;">
+                    <column label="" align="right" width="10%"/>
+                    <column label="" align="left"  width="70%"/>
+                    <column label="" align="right" width="20%"/>
+                </columns>
+                <rows>
+                    <row style="border:0px;background:#3366FF;">
+                        <label value="Keyword:" style="color: white"/>
+                        <textbox id="txtFind"   width="100%" value="%"/>
+                        <button  id="btnFind" label="Search" image="/img/search.png" width="100%"/>
+                    </row>
+                </rows>
+            </grid>
+        </hbox>
+
+        <vbox align="center" width="100%">
+            
+            <grid id="gridLov" style="border:1px;background:#0099FF;color:white;">                
+                <columns id="gridColumnsHeader">  
+                </columns>
+                <rows id="rows" style="border:1px;background:#0099FF;">
+                </rows>   
+            </grid>
+            
+            <paging id="userPaging" pageSize="10"/>
+            
+            <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+                <grid>
+                    <columns style="border:1px;background:#3366FF;">
+                        <column label="" align="right"/>
+                        <column label="" align="left"/>
+                    </columns>
+                    <rows>
+                        <row style="border:0px;background:#3366FF;">	
+                            <button id="btnOk" label="Submit" orient="horizontal"/>
+                            <button id="btnClose" label="Cancel" orient="horizontal"/>
+                        </row>
+                    </rows>
+                </grid>
+            </hbox>	    
+            	    
+        </vbox>
+    </window>
+</zk>

@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_Request_production" title="Add/Edit Request Production" apply="id.my.berkah.tcash1.controller.RequestProductionCTRL" border="normal" width="1200px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="1180px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="330px" align="right"/>
+                <column label="" width="380px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Bussines Unit"  />
+                    <hbox>
+                    <textbox width="50px" id="txtbuId" visible="false"    value="${arg.buid}"   />
+                    <textbox width="70px" id="txtbucode" readonly="true"   value="${arg.bucode}"   />
+                    <textbox width="160px" id="txtbuDesc" readonly="true"   value="${arg.budescription}" />
+                    </hbox>
+                    <button  id="btnbu" width="40px"  height="25px" tabindex="1"  src="/img/search.png"  tooltiptext="Lov Item" />
+                    <label   value="Request Prod No." width="50px" />
+                    <hbox>
+                    <textbox width="50px"   id="txtrpid" readonly="true" visible="false" value="${arg.requisitionid}" />
+                    <textbox width="240px"   id="txtrpcode" readonly="true" value="${arg.requisitionnumber}"  />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Requisition Date"  />
+                    <textbox width="240px"  id="txtdate" readonly="true" value="${arg.requisitiondate}"  />
+                    <label value=""/>
+                    <label   value="Status" />
+                    <textbox width="240px"  id="txtstatus" value="${arg.requisitionstatus}"  readonly="true"/>
+                </row>
+<!--                <row>
+                    <label   value="Processed Date"/>
+                    <textbox width="240px"  id="txtprocessdate" value="${arg.processeddate}" readonly="true"  />
+                    <label value=""/>
+                    <label   value="Processed By" />
+                    <textbox width="240px"  id="txtprocessedby" value="${arg.processedby}"  readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Canceled Date"  />
+                    <textbox width="240px"  id="txtcanceleddate" value="${arg.cancelleddate}" readonly="true"  />
+                    <label value=""/>
+                    <label   value="Canceled By" />
+                    <textbox width="240px"  id="txtCanceledby" value="${arg.cancelledby}"  readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Approved Date"  />
+                    <textbox width="240px"  id="txtappeddate" value="${arg.approvedate}" readonly="true"  />
+                    <label value=""/>
+                    <label   value="Approved By" />
+                    <textbox width="240px"  id="txtappby" value="${arg.approveby}"  readonly="true"  />
+                </row>-->
+
+                <row visible="false" >
+                     <textbox id="flag" width="100px" />
+                    <hbox>
+                     <textbox id="txtreqdtlid" width="100px" />
+                    <textbox id="txtout" width="100px" value="${arg.OutReqId}" />
+                    <textbox id="txtitemid" value="${arg.OutItemId}" />
+                    <textbox id="txtitemdesc" value="${arg.OutItemDescription}" />
+                    <textbox id="txtuom" value="${arg.OutUOM}" />
+                    <textbox id="txtregionalid" value="${arg.OutRegionalId}" />
+                    <textbox id="txtregionaldesc" value="${arg.OutRegionalDesc}" />
+                    <textbox id="txtbuid1" value="${arg.OutBuId}" />
+                    <textbox id="txtbudesc1" value="${arg.OutBuDesc}" />
+                    <textbox id="txtwhid1" value="${arg.OutWhId}"/>
+                    <textbox id="txtwhdesc1" value="${arg.OutWhDesc}" />
+                    <textbox id="txtcreatdate" value="${arg.createdate}" />
+                    <textbox id="txtcreatby" value="${arg.createby}" />
+                    <textbox id="txtid"  />
+                   
+                    <textbox id="txtrpn" width="100px" />
+                    <textbox id="txtreqid" width="100px" />
+                    </hbox>
+                     <vlayout id="flist" hflex="1" sclass="fileList" />
+                </row>
+            </rows>
+        </grid>
+   
+        <div width="100%">
+        <listbox id="listbox" height="300px" multiple="true" checkmark="true"   sizedByContent="true" emptyMessage="No items match your search"  tooltiptext="Double Click to View Detail" >
+            <frozen columns= "9"/>
+            <listhead sizable="true">
+                <listheader label="Requisition id"          width="50px"  visible="false" />
+                <listheader label="Requisition Detail id"   width="150px" visible="false" />
+                <listheader label="Requisition Line"        width="100px" visible="false" />
+                <listheader label="Need Date"               width="140px" visible="true" sort="auto"/>
+                <listheader label="Position"                width="50px"  visible="false" />
+                <listheader label="Item Id"                 width="100px" visible="false" sort="auto" />
+                <listheader label="Item Code"               width="100px" visible="true"  sort="auto" />
+                <listheader label="Item Name"               width="200px" visible="true"  sort="auto" />
+                <listheader label="Regional id"             width="150px" visible="false" sort="auto" />
+                <listheader label="Regional Code"           width="150px" visible="false" sort="auto" />
+                <listheader label="Regional Description"    width="150px" visible="false"  sort="auto" />
+                <listheader label="Receiving BU Id"                   width="100px" visible="false" sort="auto" />
+                <listheader label="Receiving BU Code"                 width="120px" visible="true"  sort="auto" />
+                <listheader label="Receiving BU Description"          width="200px" visible="true"  sort="auto" />
+                <listheader label="Receiving Wh Id"            width="100px" visible="false" sort="auto" />
+                <listheader label="Receiving Wh"               width="100px" visible="false"  sort="auto" />
+                <listheader label="Receiving Wh"   width="150px" visible="false" sort="auto" />
+                <listheader label="Receiving Wh Code"          width="200px" visible="true" sort="auto" />
+                <listheader label="Receiving Wh Desc"   width="200px" visible="true"  sort="auto" />
+                <listheader label="Order Unit"              width="80px" visible="false"  sort="auto" />
+                <listheader label="Order Quantity"          width="100px" visible="true"  sort="auto" />
+                <listheader label="Purchase Order Qty"      width="100px" visible="false"  sort="auto" />
+            </listhead>
+            
+            <template name="model">
+                <listitem>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+           <grid id="grid1" oddRowSclass="non-odd" width="1180px">
+              <columns>
+               <column label="" width="120px" align="right" />
+               <column label="" width="170px" align="center"/>
+               <column label="" width="120px" align="right" />
+                <column label="" width="170px" align="center"/>
+                <column label="" width="100px" align="right"/>
+                <column label="" width="170px" align="left"/>
+                <column label="" width="120px" align="right"/>
+                <column label="" width="210px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                   <label   value="Created Date" width="50px" />
+                   <textbox width="240px"  id="txtcreateddate" value="${arg.createdate}" readonly="true"  />
+                   <label   value="Submitted Date" width="50px" />
+                   <textbox width="240px"  id="txtprocessdate" value="${arg.processeddate}" readonly="true"  />
+                    <label   value="Approved Date"  />
+                   <textbox width="240px"  id="txtappeddate" value="${arg.approvedate}" readonly="true"  />
+                   <label   value="Canceled Date"  />
+                   <textbox width="240px"  id="txtcanceleddate" value="${arg.cancelleddate}" readonly="true"  />
+                </row>
+                <row>
+                   <label   value="Created By" />
+                   <textbox width="240px"  id="txtcreatedby" value="${arg.createby}"  readonly="true"  />
+                   <label   value="Submitted By" />
+                   <textbox width="240px"  id="txtprocessedby" value="${arg.processedby}"  readonly="true"  />
+                     <label   value="Approved By" />
+                   <textbox width="240px"  id="txtappby" value="${arg.approveby}"  readonly="true"  />
+                   <label   value="Canceled By" />
+                   <textbox width="240px"  id="txtCanceledby" value="${arg.cancelledby}"  readonly="true"  />
+                </row>
+            </rows>
+        </grid>
+         
+             <grid>
+           <columns>
+               <column label=""  width="1180px" align="center" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                    <hbox>
+                     <button id="newrecord" tabindex="6"  label="New"      height="30px"    image="/img/New24.png"   tooltiptext="New Record"/>   
+                    <button id="save"    tabindex="7"    label="Save"     height="30px"    image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="btnbrowse"   tabindex="2" label="Browse"  height="30px" upload="true,maxsize=-1," mold="default" visible="false" image="/img/Next24.png"     tooltiptext="Browse"/>
+                    <!--<button id="btnupload"    label="Upload File"   image="/img/First24.png"     tooltiptext="Browse"/>-->
+                    <button id="btnadd"   tabindex="3"  label="Add Line" height="30px"  image="/img/Plus24.png" tooltiptext="Add"/>   
+                     <button id="btndelete" tabindex="5" label="Delete Line"   height="30px"   image="/img/DeleteSelection24.png" tooltiptext="Delete List" />
+                    <button id="btnrefresh" tabindex="4" visible="false" height="30px"  label="refresh"    image="/img/Refresh24.png" tooltiptext="Refresh" />
+                    <button id="submit"    tabindex="8"  label="Submit"   height="30px"   image="/img/Action24.png"  tooltiptext="Submit"/>
+                    <button id="approve"  tabindex="9"   label="Approve"  height="30px"   image="/img/1449847706_OK.png"  tooltiptext="Approve"/>
+                    <button id="cancel"   tabindex="10"   label="Cancel" height="30px"    image="/img/Cancel24.png"  tooltiptext="Cancel"/>
+                    <button id="close"  tabindex="11"     label="Close"    height="30px"    image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>   
+                </row>  
+            </rows>
+            </grid>
+        </window>
+        
+ </zk>

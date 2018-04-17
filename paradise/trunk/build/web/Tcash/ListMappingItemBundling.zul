@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_mapping_item" title="List Mapping Item Bundling" apply="id.my.berkah.tcash1.controller.ListMappingItem" border="normal"  width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" mold="default" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" mold="default" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" mold="default" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" mold="default" image="/img/Find24.png" tooltiptext="Find" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="420px" mold="paging" sizedByContent="true" pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="Item  id"            visible="false" />
+                <listheader label="Item Bundling Code"           visible="true" />
+                <listheader label="Item Bundling Desc"         visible="true" />
+                <listheader label="UOM"                 visible="true" />
+                <listheader label="Created Date"        visible="false" />
+                <listheader label="Created By"          visible="false" />
+                <listheader label="Termintated Date"    visible="false" />
+                <listheader label="Termintated By"      visible="false" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+    
+    </window>
+    
+</zk>

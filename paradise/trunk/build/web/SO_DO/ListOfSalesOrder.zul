@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Of_Sales_Order" title="List Of Sales Order" apply="id.my.berkah.sodo.controller.ListOfSalesOrderCtrl" border="normal" width="1130px"  ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="l_payment"   width="25px" height="25px" src="/img/dollar24.png"  tooltiptext="Payment"/>
+<!--            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />-->
+            <toolbarbutton id="allocateProductForDeliv" width="25px" height="25px" tooltiptext="Allocate Product For Delivery" />
+            <toolbarbutton id="viewStockAllocation" width="25px" height="25px" tooltiptext="View Stock Allocation" />
+            <toolbarbutton id="viewDO" width="25px" height="25px" tooltiptext="View Delivery Order" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <listbox id="listbox" height="400px"  >
+            <listhead sizable="true">
+                
+                <listheader label="BU ID"   width="250px" visible="false"/>
+                <listheader label="BU Code"   width="100px" visible="false"/>
+                <listheader label="BU Name"             width="250px"  visible="true"/>
+                <listheader label="Company Id"             width="100px"  visible="false"/>
+                <listheader label="Company Name"       width="100px" visible="false"/>
+                <listheader label="Company Desc"            width="300px" visible="true"/>
+                <listheader label="BU ID Dealer"        width="100px" visible="true"/>
+                <listheader label="Dealer Id"        width="100px" visible="false"/>
+                <listheader label="Dealer Code"      width="90px" visible="false"/>
+                <listheader label="Dealer Desc"      width="300px" visible="true"/>
+                <listheader label="SO ID"     width="80px" visible="false"  />
+                <listheader label="SO No" width="250px" visible="true"/>
+                <listheader label="Line No"          width="80px"  visible="true"/>
+                <listheader label="Term Id"      width="100px" visible="false"/>
+                <listheader label="Term Name"      width="170px" visible="true"/>
+                <listheader label="Item Id"          width="80px"  visible="false"/>
+                <listheader label="Item Desc"          width="250px"  visible="true"/>
+                <listheader label="Group Id"      width="100px" visible="false"/>
+                <listheader label="Group Desc"      width="210px" visible="true"/>
+                <listheader label="SO Status"   width="100px" visible="true"/>
+                <listheader label="UOM"   width="100px" visible="true"/>
+                <listheader label="Stock Available"   width="100px" visible="true"/>
+                <listheader label="Paid"   width="100px" visible="true"/>
+                <listheader label="Allocated"   width="100px" visible="true"/>
+                <listheader label="On Plan"   width="100px" visible="true"/>
+                <listheader label="Delivered"   width="100px" visible="true"/>
+                <listheader label="Total Delivered"   width="100px" visible="true"/>
+                <listheader label="OutStanding"   width="100px" visible="true"/>
+                <listheader label="rejected"   width="100px" visible="true"/>
+                <listheader label="Back Order"      width="110px" visible="true"/>
+                <listheader label="Create Date"      width="100px" visible="true"/>
+                <listheader label="Create By" width="110px" visible="true"/>
+                <listheader label="Approve Date"          width="150px"  visible="true"/>
+                <listheader label="Approve By"          width="110px"  visible="true"/>
+                <listheader label="Payment Date"          width="110px"  visible="true"/>
+                <listheader label="Payment By"          width="110px"  visible="true"/>
+                <listheader label="Order QTY"          width="150px"  visible="true"/>
+                <listheader label="No PO Ref"          width="210px"  visible="true"/>
+                <listheader label="Line PO Ref"          width="210px"  visible="true"/>
+                <listheader label="Needed Date"          width="110px"  visible="true"/>
+                <listheader label="Book"          width="210px"  visible="true"/>
+                <listheader label="Price"          width="210px"  visible="true"/>
+                <listheader label="PCT Disc"          width="210px"  visible="true"/>
+                <listheader label="AMT Disc"          width="210px"  visible="true"/>
+                <listheader label="Tax"          width="80px"  visible="true"/>
+                <listheader label="Remark"          width="210px"  visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                    <listcell label="${each.buId}" />
+                    <listcell label="${each.buCode}" />
+                    <listcell label="${each.buName}"  />
+                    <listcell label="${each.companyId}"/>
+                    <listcell label="${each.companyCode}"  />
+                    <listcell label="${each.companyDesc}"  />
+                    <listcell label="${each.buIdDealer}"  />
+                    <listcell label="${each.dealerId}"  />
+                    <listcell label="${each.dealerCode}"  />
+                    <listcell label="${each.dealerDesc}"  />
+                    <listcell label="${each.soId}"/>
+                    <listcell label="${each.soNo}" />
+                    <listcell label="${each.lineNo}"  />
+                    <listcell label="${each.termId}"  />
+                    <listcell label="${each.termName}"  />
+                    <listcell label="${each.itemId}"  />
+                    <listcell label="${each.itemDesc}"  />
+                    <listcell label="${each.groupId}"  />
+                    <listcell label="${each.groupDesc}"  />
+                    <listcell label="${each.soStatus}"  />
+                    <listcell label="${each.uom}"  />
+                    <listcell label="${each.available}"  />
+                    <listcell label="${each.paid}"  />
+                    <listcell label="${each.allocated}"  />
+                    <listcell label="${each.onPlan}"  />
+                    <listcell label="${each.delivered}"  />
+                    <listcell label="${each.ttlDelivered}"  />
+                    <listcell label="${each.outStanding}"  />
+                    <listcell label="${each.rejected}"  />
+                    <listcell label="${each.backOrder}"  />
+                    <listcell label="${each.createDate}"  />
+                    <listcell label="${each.createBy}"  />
+                    <listcell label="${each.approveDate}"  />
+                    <listcell label="${each.approveBy}"  />
+                    <listcell label="${each.paymentDate}"  />
+                    <listcell label="${each.paymentUser}"  />
+                    <listcell label="${each.orderQty}"  />
+                    <listcell label="${each.noPoRef}"  />
+                    <listcell label="${each.linePoRef}"  />
+                    <listcell label="${each.neededDate}"  />
+                    <listcell label="${each.book}"  />
+                    <listcell label="${each.price}"  />
+                    <listcell label="${each.pctDisc}"  />
+                    <listcell label="${each.amtDisc}"  />
+                    <listcell label="${each.tax}"  />
+                    <listcell label="${each.remark}"  />
+                </listitem>
+            </template>
+        </listbox>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black" />
+        </div>
+        
+        <window id="find_List_Of_Sales_Order" title="Find Parameter" apply="id.my.berkah.sodo.controller.FindListOfSalesOrder" width="430px" border="normal"  ctrlKeys="#down#up" visible="false" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+            <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <grid>
+            <columns>
+                <column label="" width="130px" align="right" />
+                <column label="" width="280px" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="Bussines Unit" />
+                    <hlayout>
+                    <textbox width="200px" id="txtBuDesc" readonly="true"/>
+                    <button  id="btnBu" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    </hlayout>
+                </row>
+                <row visible="false">
+                    <label/>
+                    <textbox width="200px" id="txtBuCode"/>
+                </row>
+                <row>
+                    <label value="Need By Date" />
+                    <hbox>
+                    <datebox width="95px" id="txtDateFrom" readonly="true"/>
+                    <label value="To" />
+                    <datebox width="95px" id="txtDateTo" readonly="true"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label value="Customer" />
+                    <hlayout>
+                    <textbox width="200px" id="txtCustomer" readonly="true"/>
+                    <button  id="btnCustomer" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    </hlayout>
+                </row>
+                <row visible="false">
+                    <label/>
+                    <textbox width="150px" id="txtCustomerId"/>
+                </row>
+                <row>
+                    <label value="Customer Site"/>
+                    <hlayout>
+                    <textbox width="200px" id="txtCustomerSite" readonly="true"/>
+                    <button  id="btnCustomerSite" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    </hlayout>
+                </row>
+                <row visible="false">
+                    <label/>
+                    <textbox width="200px" id="txtCustomerSiteId"/>
+                </row>
+                <row>
+                    <label value="SO Number"/>
+                    <hlayout>
+                    <textbox width="200px" id="txtSoNumber" readonly="true"/>
+                    <button  id="btnSO" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    </hlayout>
+                </row>
+                <row>
+                    <label value="Item Group"/>
+                    <hlayout>
+                    <textbox width="200px" id="txtItemGroup" readonly="true"/>
+                    <button  id="btnItemGroup" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    </hlayout>
+                </row>
+                <row visible="false">
+                    <label/>
+                    <textbox width="200px" id="txtGroupId"/>
+                </row>
+                <row>
+                    <label value="Item"/>
+                    <hlayout>
+                    <textbox width="200px" id="txtItem" readonly="true"/>
+                    <button  id="btnItem" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    </hlayout>
+                </row>
+                <row visible="false">
+                    <label/>
+                    <textbox width="200px" id="txtItemId"/>
+                </row>
+                <row>
+                        <hbox>
+                            <label value="OutStanding"/>
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbOutStandingY" value="Y"/>
+                            <checkbox id="cbOutStandingN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label="" width="195px" align="right" />
+                <column label="" width="195px" />
+            </columns>
+            <rows>
+                <row>
+                    <button id="findTransaction" label="Find" image="/img/Find24.png"/>
+                    <button id="close" label="Close" image="/img/End24.png"/>
+                </row>
+            </rows>
+        </grid>
+        </div>
+        
+    </window>
+    </window>
+</zk>

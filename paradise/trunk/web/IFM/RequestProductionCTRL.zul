@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_Request_production" title="Add/Edit Request Production" apply="id.my.berkah.ifmnew.controller.RP.RequesProductionCTRL" border="normal" width="1010px"   ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="999px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="380px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Bussines Unit"  />
+                    <hbox>
+                    <textbox width="50px" id="txtbuId" visible="false"    style="background-color:#FFFACD" />
+                    <textbox width="70px" id="txtbucode" readonly="true"     style="background-color:#FFFACD" />
+                    <textbox width="160px" id="txtbuDesc" readonly="true"   />
+                    </hbox>
+                    <button  id="btnbu" width="40px"   height="25px"  src="/img/search.png"  tooltiptext="Lov Item" />
+                    <label   value="Request Production Number" width="50px" />
+                    <hbox>
+                    <textbox width="50px"   id="txtrpid" readonly="true" visible="false" value="${arg.header.requisition_id}" />
+                    <textbox width="240px"   id="txtrpcode" readonly="true"   />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Create Date"  />
+                    <textbox width="240px"  id="txtdate" readonly="true"   />
+                    <label value=""/>
+                    <label   value="Status" />
+                    <textbox width="240px"  id="txtstatus" readonly="true"/>
+                </row>
+<!--                <row>
+                    <label   value="Processed Date"/>
+                    <textbox width="240px"  id="txtprocessdate" value="${arg.processeddate}" readonly="true"  />
+                    <label value=""/>
+                    <label   value="Processed By" />
+                    <textbox width="240px"  id="txtprocessedby" value="${arg.processedby}"  readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Canceled Date"  />
+                    <textbox width="240px"  id="txtcanceleddate" value="${arg.cancelleddate}" readonly="true"  />
+                    <label value=""/>
+                    <label   value="Canceled By" />
+                    <textbox width="240px"  id="txtCanceledby" value="${arg.cancelledby}"  readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Approved Date"  />
+                    <textbox width="240px"  id="txtappeddate" value="${arg.approvedate}" readonly="true"  />
+                    <label value=""/>
+                    <label   value="Approved By" />
+                    <textbox width="240px"  id="txtappby" value="${arg.approveby}"  readonly="true"  />
+                </row>-->
+
+                <row visible="false" >
+                    <textbox id="txtreqid" width="100px"  />
+                    <hbox>
+                    <textbox id="flag" width="100px" />
+                    <textbox id="txtreqdtlid" width="100px" />
+                    <textbox id="txtout" width="100px" value="${arg.OutReqId}" />
+                    <textbox id="txtitemid" value="${arg.OutItemId}" />
+                    <textbox id="txtitemdesc" value="${arg.OutItemDescription}" />
+                    <textbox id="txtuom" value="${arg.OutUOM}" />
+                    <textbox id="txtregionalid" value="${arg.OutRegionalId}" />
+                    <textbox id="txtregionaldesc" value="${arg.OutRegionalDesc}" />
+                    <textbox id="txtbuid1" value="${arg.OutBuId}" />
+                    <textbox id="txtbudesc1" value="${arg.OutBuDesc}" />
+                    <textbox id="txtwhid1" value="${arg.OutWhId}"/>
+                    <textbox id="txtwhdesc1" value="${arg.OutWhDesc}" />
+                    <textbox id="txtid"  />
+                    <textbox id="txtrpn" width="100px" />
+                    
+                    </hbox>
+                     <vlayout id="flist" hflex="1" sclass="fileList" />
+                </row>
+            </rows>
+        </grid>
+   
+        <div width="100%">
+        <listbox id="listbox" height="300px" multiple="false" checkmark="true"   sizedByContent="true" emptyMessage="No items match your search"  ctrlKeys="#del" tooltiptext="Double Click to View Detail" >
+            <frozen columns= "13"/>
+            <listhead sizable="true">
+                <listheader label="Row id"                  visible="false" />
+                <listheader label="Requisition id"          visible="false" />
+                <listheader label="Requisition Detail id"   visible="false" />
+                <listheader label="Requisition Line"        visible="false" />
+                <listheader label="Position"                visible="false" />
+                <listheader label="Item Id"                 visible="false" sort="auto" />
+                <listheader label="Item Code"               visible="true"  sort="auto" />
+                <listheader label="Item Name"               visible="true"  sort="auto" />
+                <listheader label="Requested Date"          visible="false"  sort="auto" />
+                <listheader label="Required Date"           visible="true"  sort="auto" />
+                 <listheader label="Order Unit"             visible="false"  sort="auto" />
+                <listheader label="Order Quantity"          visible="true"  sort="auto" />
+                 <listheader label="Purchase Order Qty"     visible="false"  sort="auto" />
+                 <listheader label="po_price_unit"          visible="false"  sort="auto" />
+                <listheader label="Bu Id"                   visible="false" sort="auto" />
+                <listheader label="Bu Code"                 visible="true"  sort="auto" />
+                <listheader label="Bu Description"          visible="true"  sort="auto" />
+                <listheader label="Warehouse Id"            visible="false" sort="auto" />
+                <listheader label="Warehouse"               visible="true"  sort="auto" />
+                <listheader label="Warehouse Description"   visible="true" sort="auto" />
+                <listheader label="Requisition Number"      visible="false"  sort="auto" />
+                <listheader label="Status"                  visible="false" sort="auto" />
+                <listheader label="Referency Type"          visible="false" sort="auto" />
+                <listheader label="Referency id"            visible="false" sort="auto" />
+                <listheader label="Referency no"            visible="false" sort="auto" />
+                <listheader label="Referency line"          visible="false" sort="auto" />
+               <listheader label="Regional id"              visible="false" sort="auto" />
+                <listheader label="Regional Code"           visible="true" sort="auto" />
+                <listheader label="Regional Description"    visible="true"  sort="auto" />
+                <listheader label="divide_by_hlr"           visible="false"  sort="auto" />
+                <listheader label="nbr_avai_qty"            visible="false"  sort="auto" />
+               
+            </listhead>
+            
+            <template name="model">
+                <listitem>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+           <grid id="grid1" oddRowSclass="non-odd" width="990px">
+              <columns>
+               <column label="" width="120px" align="right" />
+                <column label="" width="170px" align="center"/>
+                <column label="" width="100px" align="right"/>
+                <column label="" width="170px" align="left"/>
+                <column label="" width="120px" align="right"/>
+                <column label="" width="190px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                   <label   value="Created Date" width="50px" />
+                   <textbox width="240px"  id="txtprocessdate"  readonly="true"  />
+                   <label   value="Canceled Date"  />
+                   <textbox width="240px"  id="txtcanceleddate"  readonly="true"  />
+                   <label   value="Approved Date"  />
+                   <textbox width="240px"  id="txtappeddate"  readonly="true"  />
+                </row>
+                <row>
+                   <label   value="Created By" />
+                   <textbox width="240px"  id="txtprocessedby"  readonly="true"  />
+                   <label   value="Canceled By" />
+                   <textbox width="240px"  id="txtCanceledby"  readonly="true"  />
+                   <label   value="Approved By" />
+                   <textbox width="240px"  id="txtappby"  readonly="true"  />
+                </row>
+            </rows>
+        </grid>
+         
+             <grid>
+           <columns>
+               <column label=""  width="990px" align="center" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord"    label="New"    height="30px"   width="80px"   image="/img/New24.png"   tooltiptext="New Record"/>   
+                    <button id="btnbrowse"  upload="true,maxsize=1024,multiple=true"   visible="false"   height="30px"  label="Browse"   image="/img/Next24.png"     tooltiptext="Browse"/>
+                    <button id="btnadd"     label="Add Detail" height="30px" image="/img/Plus24.png" tooltiptext="Add"/>   
+                    <button id="btnrefresh" label="refresh"  height="30px" visible="false"   image="/img/Refresh24.png" tooltiptext="Refresh" />
+                    <button id="btndelete"  label="Delete"   height="30px"  width="80px" image="/img/DeleteSelection24.png" tooltiptext="Delete List" />
+                    <button id="save"         label="Save"    height="30px"  width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="submit"       label="Submit"  height="30px"  width="90px"   image="/img/Action24.png"  tooltiptext="Submit"/>
+                    <button id="approve"      label="Approve" height="30px"  width="100px"  image="/img/1449847706_OK.png"  tooltiptext="Approve"/>
+                    <button id="cancel"       label="Cancel"  height="30px"  width="90px"   image="/img/Cancel24.png"  tooltiptext="Cancel"/>
+                    <button id="close"        label="Close"   height="30px"  width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>   
+                </row>  
+            </rows>
+            </grid>
+        </window>
+        
+ </zk>

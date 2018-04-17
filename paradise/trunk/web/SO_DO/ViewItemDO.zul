@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_view_item_Do" apply="id.my.berkah.sodo.controller.ViewItemDOCtrl" title="Item Unit Detail" border="normal" width="840px" ctrlKeys="#down#up"  closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+  <div width="810px">
+            <groupbox width="821px" sclass="main z-demo-config">
+                <caption label="Item Unit Detail" />			
+                <separator height="9px"></separator>            
+                 <grid>                
+            <columns>
+                <column label="" width="100px"/>
+                <column label="" width="250px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Warehouse" width="10px" />
+                    <textbox width="250px" tabindex="4" id="txtWareHouse" readonly="true" value="${arg.warehouse}"/>
+                    <hlayout>
+                        <textbox width="10px" id="txtallocid" visible="false" value="${arg.allocid}"/>
+                        <textbox width="10px" id="txtlotid" visible="false" value="${arg.lotid}"/>
+                    </hlayout>
+                </row>
+                <row> 
+                <label   value="Item" width="50px" />
+                <textbox width="250px" tabindex="5" id="txtItem" readonly="true" value="${arg.itemdesc} "/>
+           
+                <hlayout>
+                    <label   value="Lot" width="10px" />
+                  <textbox width="280px" tabindex="5" id="txtStatuss" readonly="true" value="${arg.lot}" />
+                </hlayout>
+                </row>
+                       
+                  </rows>
+                 </grid>
+                </groupbox>
+                </div>
+               <div>
+                  <listbox id="listbox" height="200px">
+                <listhead sizable="true">
+                    <listheader label="Blok From"  width="250px"   sort="auto(line)"/>
+                    <listheader label="Blok To"    width="250px"  visible="true"  />
+                    <listheader label="Qty" width="150px" visible="true"/>
+                    <listheader label="Location"  width="150px"  visible="true"/>
+                  </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="${each.blockfrom}"/>
+                        <listcell label="${each.blockto}"/>
+                        <listcell label="${each.qty}"/>
+                        <listcell label="${each.location}"/>
+                       
+                    </listitem>
+                </template>
+            </listbox>
+             <grid id="grid_total" oddRowSclass="non-odd" width="819px">
+            <columns>
+                <column label="" width="510px" align="right" />
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Total" width="100px"/>
+                        <intbox id="total" width="130px" />
+                    </row>
+                </rows>
+                </grid >
+               <grid id="grid_button" oddRowSclass="non-odd" width="819px">
+            <columns>
+                <column label="" width="510px" align="right" />
+                </columns>
+          
+              <rows>
+                <row height="35px">
+                    <button id="close"      tabindex="10" label="Close"      width="150px"   height="30px" />
+            </row>
+            </rows>
+                
+                </grid>
+               </div>
+   </window>
+</zk>

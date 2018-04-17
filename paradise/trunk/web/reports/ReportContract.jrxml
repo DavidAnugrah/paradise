@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ReportContract" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d0f8b236-dde2-46d8-a146-7b301806a14c">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="Contract" class="java.lang.String"/>
+	<parameter name="DateFrom" class="java.util.Date"/>
+	<parameter name="DateTO" class="java.util.Date"/>
+	<parameter name="WorkorderNo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT contract_date,
+        contract,
+        doc_reff,
+        qty_wo,
+        purchase_order,
+        qty_receive_contract,
+        qty_outstanding_contract
+        FROM   table (pkg_hrn_test.PcListOutStanding
+        (
+        '',
+        '',
+        '',
+        ''))]]>
+	</queryString>
+	<field name="CONTRACT_DATE" class="java.lang.String"/>
+	<field name="CONTRACT" class="java.lang.String"/>
+	<field name="DOC_REFF" class="java.lang.String"/>
+	<field name="QTY_WO" class="java.math.BigDecimal"/>
+	<field name="PURCHASE_ORDER" class="java.lang.String"/>
+	<field name="QTY_RECEIVE_CONTRACT" class="java.math.BigDecimal"/>
+	<field name="QTY_OUTSTANDING_CONTRACT" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="57" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="5616d4fc-a34e-4fa1-8474-2873f7807183" key="staticText" x="180" y="0" width="202" height="20"/>
+				<textElement markup="styled">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Report Contract Outstanding]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="12eab44c-8a54-412b-98c2-7f38ce1cea35" key="line" x="180" y="25" width="202" height="1"/>
+			</line>
+			<image>
+				<reportElement uuid="1696b317-d3a0-483c-98af-e2567539236d" x="0" y="0" width="180" height="46"/>
+				<imageExpression><![CDATA["/apps/apache-tomcat-7.0.53/webapps/paradise/img/Logo7.jpg"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="5e574b80-11a8-4284-9cc0-68e9822135ba" key="line" x="0" y="56" width="555" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="142" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="8bee0dcc-66f1-4610-90aa-d0dccc7c08d7" key="textField" x="382" y="0" width="173" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CONTRACT_DATE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="14e9c707-5389-4c0b-ad59-65d945669ec4" key="staticText" x="282" y="3" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Contract Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b7f9ddfe-3bea-4728-b30e-68ecaa626839" key="staticText" x="0" y="3" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Contract No ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="273ecc10-dd09-461f-bdc5-ca0465dddf94" key="textField" x="100" y="3" width="154" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{CONTRACT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ab0b5ded-7076-4c68-88d9-e74b82287646" key="staticText" x="0" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Document Reff]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="f5f8d2ec-564d-4311-8ce0-96cae444b324" key="textField" x="100" y="41" width="154" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{DOC_REFF}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="01a0bbfa-cc21-4d73-a5ce-6a38bad7fbfa" key="staticText" x="282" y="41" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Purchase Order]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="80d54543-6f6d-4dfb-90e4-a40f3fd47450" key="textField" x="382" y="41" width="173" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{PURCHASE_ORDER}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ef5b392e-8a8d-4cfd-b955-6485aaa56104" key="staticText" x="0" y="82" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Qty Workorder]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="8ede397a-41a1-4b2e-8b4b-3fd11017f75c" key="textField" x="100" y="82" width="154" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{QTY_WO}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="895a39c6-506e-42b9-9b90-f1fc153b2061" key="staticText" x="282" y="82" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Qty Receive]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="917b30fd-faa3-442a-9100-3aba3537354d" key="textField" x="382" y="82" width="173" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{QTY_RECEIVE_CONTRACT}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b4c7465e-5935-4a08-babc-2794bc7614d7" key="staticText" x="0" y="117" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Qty Outstanding]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="94102297-e773-42fd-a8bf-82ff4f91c238" key="textField" x="100" y="117" width="197" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{QTY_OUTSTANDING_CONTRACT}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

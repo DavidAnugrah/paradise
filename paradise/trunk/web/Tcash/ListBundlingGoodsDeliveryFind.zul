@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+   <window id="win_list_GD_find" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListBundlingGoodsDeliveryFind" position="center"  border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="130px" align="right" />
+                    <column label="" width="290px" />
+                </columns>
+                <rows>
+                  
+                     <row >
+                        <label   value="Bundling No" width="50px" />
+                        <textbox id="txtbundlingNo"  width="200px" mold="rounded" />
+                    </row>
+                    <row>
+                        <label   value="Goods Delivery  No" width="50px" />
+                        <hbox>
+                        <textbox id="txtGdid"  width="0px" mold="rounded" visible="false"/>
+                        <textbox id="txtGdNo"  width="200px" mold="rounded"/>
+                        </hbox>
+                        
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" mold="rounded" format="dd-MM-yyyy"/>
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" mold="rounded" format="dd-MM-yyyy" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Status" />
+                        <combobox id="cmbStatus" width="200px" mold="rounded" readonly="true"/>
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="415px" align="center" />
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                        <button id="goFind" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" mold="trendy" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+</zk>

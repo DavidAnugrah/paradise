@@ -1,0 +1,111 @@
+<zk>
+<window id="win_list_resource_imsi_x" title="List of Resource IMSI- [Flexi]" width="99%" height="520px" border="normal" apply="id.my.berkah.rps.controller.ListResourceIMSIXController" ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+    <attribute name="onLater">
+        Clients.clearBusy(); //remove the busy message
+    </attribute>
+    <div>
+        <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+           <toolbarbutton id="newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+           <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+           <toolbarbutton id="cancel"    width="25px" height="25px" src="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+           <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+           <toolbarbutton id="find"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+           <toolbarbutton id="print"     width="25px" height="25px" src="/img/Print24.png"   tooltiptext="Print History Perso"/>
+        </toolbar>
+    </div>        
+    <div>
+        <listbox id="listbox" height="368px" width="100%">
+            <listhead sizable="true">
+                <listheader label="ID"                  width="100px"/>
+                <listheader label="FLEXI"               width="120px"/>
+                <listheader label="MSISDN"              width="120px"/>
+                <listheader label="IMSI"                width="120px"/>
+                <listheader label="ICCID"               width="150px"/>
+                <listheader label="AKI"                 width="150px" visible="false"/>
+                <listheader label="PIN1"                width="80px"/>
+                <listheader label="PIN2"                width="80px"/>
+                <listheader label="PUK1"                width="80px"/>
+                <listheader label="PUK2"                width="80px"/>
+                <listheader label="PERIOD"              width="150px"/>
+                <listheader label="Book Date"           width="200px"/>
+
+                <listheader label="STATUS"              width="10px" visible="false"/>
+                <listheader label="STATUS"              width="100px"  visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.resourceId}"/>
+                    <listcell label="${each.msisdnx}"/>
+                    <listcell label="${each.msisdn}"/>
+                    <listcell label="${each.imsi}"/>
+                    <listcell label="${each.iccid}"/>
+                    <listcell label="${each.aki}"/>
+                    <listcell label="${each.pin1}"/>
+                    <listcell label="${each.pin2}"/>
+                    <listcell label="${each.puk1}"/>
+                    <listcell label="${each.puk2}"/>
+                    <listcell label="${each.createdPeriod}"/>
+                    <listcell label="${each.bookDate}"/>
+
+                    <listcell label="${each.status}"/>
+                    <listcell label="${each.statusName}"/>
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <div>
+        <paging id="userPaging" width="100%" />
+    </div>
+    <div height="5px">
+    </div>
+    <div height="30px">
+        <button  id="btnSubmit"  label="Submit" width="120px" height="30px" src="/img/Save24.png"  tooltiptext="Submit"/>        
+    </div>
+    <window id="win_list_resource_find_x" title="Find Parameter" border="normal" mode="modal" apply="id.my.berkah.rps.controller.ListResourceIMSIXController"  width="500px">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd">
+                <columns>
+                    <column label="" width="100px" align="right" />
+                    <column label="" width="340px" />
+                    <column label="" width="35px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="STATUS" width="50px" />
+                        <hbox>
+                            <textbox id="status"   tabindex="1" width="100px" />
+                            <button  id="btnLovStatusFind" tabindex="2" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Business Units"/>
+                        </hbox> 	
+                    </row>
+                    <row>
+                        <label  value="FLEXI" width="50px" />
+                        <textbox id="msisdnx" tabindex="4" />
+                    </row>
+                    <row>
+                        <label  value="IMSI" width="50px" />
+                        <hbox>  
+                            <textbox id="fromImsi" tabindex="4" />
+                            <textbox id="toImsi"   tabindex="5" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label  value="ICCID" width="50px" />
+                        <hbox>  
+                            <textbox id="fromIccid" tabindex="4" />
+                            <textbox id="toIccid"   tabindex="5" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label/>
+                        <hbox>
+                            <button id="goFind"  tabindex="14" label="Find"  image="/img/search.png" />
+                            <button id="doClose" tabindex="15" label="Close" image="/img/End16.png" />
+                    	</hbox>
+                    </row>
+                </rows>
+            </grid>	     
+    </window>    
+    </window>
+</zk>

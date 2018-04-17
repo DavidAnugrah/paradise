@@ -1,0 +1,14 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="win_kwitansi" ?>
+<?page title="Print Kwitansi" contentType="text/html;charset=UTF-8"?>
+<zk>
+    <window id="win_kwitansi" title="Print Kwitansi" border="normal" mode="modal" apply="id.my.berkah.pos.controller.RunReportKwitansiController" width="700px" height="600px" closable="true">
+        <toolbar id="tb" sclass="vista" height="35px" align="start" orient="horizontal" left="2">
+           <toolbarbutton id="l_print"  width="25px" height="25px" src="/img/Print24.png"   tooltiptext="Print Kwitansi"/>
+           <toolbarbutton id="l_save"   width="25px" height="25px" src="/img/Save24.png"    tooltiptext="Save to File"/>
+        </toolbar>
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <jasperreport id="report" height="600px" width="680px"/>
+    </window>
+</zk>

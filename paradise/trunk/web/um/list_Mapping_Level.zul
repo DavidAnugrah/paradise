@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">  
+    <window id="winMainMappingLTR" height="500px" border="normal" apply="id.my.berkah.um.controller.MappingCTRL" visible="true">
+        <div>
+            <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+                <toolbarbutton id="btnNew" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+                <toolbarbutton id="btnShowWinExpiredLTR"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Expired Date"/>
+                <!--           <toolbarbutton id="cancel"    width="25px" height="25px" src="/img/Cancel24.png"  tooltiptext="Cancel Record"/>-->
+                <toolbarbutton id="btnRequery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+                <toolbarbutton id="btnFind"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+                <!--<toolbarbutton id="print"     width="25px" height="25px" src="/img/Print24.png"   tooltiptext="Print History Perso"/>-->
+                <!--<toolbarbutton id="btnExit"      width="25px" height="25px" src="/img/Logout24.png"   tooltiptext="Close Form"/>-->
+            </toolbar>
+        </div>  
+
+        <div>    
+            <listbox id="listMappingLTR" height="440px" mold="paging" width="100%" pageSize="10">
+                <listhead sizable="true">           
+                    <listheader label="Level"                width="80px"  sort="auto(levelId)"    visible="true"/>
+                    <listheader label="Responsibility Id"    width="150px"  sort="auto(responsibilityId)"     visible="false"/>
+                    <listheader label="Responsibility Name"    width="300px"  sort="auto(responsibilityName)"     visible="true"/>
+                    <!--                <listheader label="Responsibility Description"    width="200px"  sort="auto(responsibilityDesc)"     visible="true"/>-->
+                    <listheader label="Created Date"    width="200px"       visible="true"/>
+                    <listheader label="Created By"    width="200px"  sort="auto(createdBy)"     visible="true"/>
+                    <listheader label="Modified Date"    width="150px"       visible="false"/>
+                    <listheader label="Modified By"    width="150px"  sort="auto(modifiedBy)"     visible="false"/>
+                    <listheader label="Expired Date"    width="200px"       visible="true"/>
+                    <listheader label="Expired By"    width="200px"  sort="auto(expiredBy)"     visible="true"/>  
+                    <listheader label="Ltr Hdr Id"    width="100px"  sort="auto(expiredBy)"     visible="false"/>                   
+                    <listheader label="Ltr Dtl Id"    width="100px"  sort="auto(expiredBy)"     visible="false"/>      
+                </listhead>
+                <template name="model">
+                    <listitem>                           
+                        <listcell label="${each.levelId}" visible="true"/>
+                        <listcell label="${each.responsibilityId}"/>
+                        <listcell label="${each.responsibilityName}"/>                  
+                        <listcell label="${each.createdDate}"/>
+                        <listcell label="${each.createdBy}"/>
+                        <listcell label="${each.modifiedDate}"/>
+                        <listcell label="${each.modifiedBy}"/>
+                        <listcell label="${each.expiredDate}"/>
+                        <listcell label="${each.expiredBy}"/>   
+                        <listcell label="${each.ltrhdrId}"/>                  
+                        <listcell label="${each.ltrdtlId}"/>   
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="levelPaging" width="100%" style="color: black"/>
+        </div>
+
+        <window id="winExpiredMapping" title="Expired date" border="normal"   width="400px" apply="id.my.berkah.um.controller.MappingCTRL" visible="false">
+            <grid id="grid_expired" oddRowSclass="non-odd" width="400px">
+                <columns>
+                    <column label="" width="100px" align="left" />
+                    <column label="" />            
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Level" />
+                        <textbox id="txtExpLevel" width="80px" value="" readonly="true"/>
+                    </row>
+                    <row>
+                        <label   value="Responsibility" />
+                        <textbox id="txtRspName" width="250px" value="" readonly="true"/>
+                    </row>  
+                    <row>
+                        <label   value="Expired Date" />
+                        <datebox id="dbDateExp"/>                        
+                    </row>
+                </rows>
+            </grid>	     
+
+            <grid align="right">
+                <columns>
+                    <column align="right" label="" />
+                    <column align="left" label="" />
+                </columns>
+                <rows>
+                    <row>
+                        <button id="btnSaveExpLTR"  tabindex="18" label="Expired"  image="/img/Save.png" width="100px" height="30px"/>
+                        <button id="btnCloseExpLTR" tabindex="19" label="Close" image="/img/Close.png" width="100px" height="30px"/>                         
+                    </row>
+                </rows>               
+            </grid>
+        </window>
+        <window id="winFindMapping" title="Find Mapping" border="normal"   width="450px" apply="id.my.berkah.um.controller.MappingCTRL" visible="false">
+            <grid id="grid_mapping" oddRowSclass="non-odd" width="450px">
+                <columns>
+                    <column label="" width="100px" align="left" />
+                    <column label="" />            
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Level" />
+                        <intbox id="txtFindLevel" width="80px" />
+                    </row>
+                    <row>
+                        
+                        <label   value="Responsibility" />
+                        <hbox>
+                            <textbox id="txtFindRspName" height="22px" width="250px" value="" />
+                            <button id="btnRspLov" height="27px" label="..." />
+                        </hbox>
+                    </row>  
+
+                </rows>
+            </grid>	     
+
+            <grid align="right">
+                <columns>
+                    <column align="right" label="" />
+                    <column align="left" label="" />
+                </columns>
+                <rows>
+                    <row>
+                        <button id="btnFindLTR"  tabindex="18" label="Find"  image="/img/search.png" width="100px" height="30px"/>
+                        <button id="btnCloseLTR" tabindex="19" label="Close" image="/img/Close.png" width="100px" height="30px"/>                         
+                    </row>
+                </rows>               
+            </grid>
+        </window>    
+        <window id="winAddMapping" title="Mapping Level to Responsibility" border="normal" width="437px" apply="id.my.berkah.um.controller.MappingCTRL" visible="false">
+            <grid id="grid_find" oddRowSclass="non-odd" width="500px">
+                <columns>
+                    <column label="" width="120px" align="left" />
+                    <column label="" width="317px" />            
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Level" width="50px" />
+                        <combobox id="ComboLevel" style="background: #FFFFFF;" readonly="true" width="100px" >
+                            <comboitem label=""/>
+                        </combobox>
+                    </row>
+                    <row>
+                        <label   value="Responsiblity" width="50px" />
+                        <hbox align="centre">
+                            <textbox id="rspId" width="200px" height="18px" visible="false"/> 
+                            <textbox id="rspName" width="200px" height="18px" readonly="true"/> 
+                            <button id="btnLovResponsibility" image="/img/search.png"/>
+                        </hbox>
+                    </row>    
+
+                </rows>
+            </grid>	     
+            <listbox id="listLTR" height="368px" checkmark="false" multiple="true" mold="paging" pageSize="10">
+                <listhead sizable="true">
+
+                    <listheader label="No"   width="50px"  sort="auto(no)"    visible="true"/>               
+                    <listheader label="Responsibilty Desc"    sort="auto(responsibilityName)"     visible="true"/>               
+                    <listheader label="Responsibilty Id"    width="200px"  sort="auto(responsibilityId)"     visible="false"/>               
+                </listhead>
+                <template name="model">
+                    <listitem>                    
+                        <listcell label="${each.no}"/>                    
+                        <listcell label="${each.responsibilityName}"/>             
+                        <listcell label="${each.responsibilityId}"/>
+                    </listitem>
+                </template>
+            </listbox>
+            <grid align="right">
+                <columns>
+                    <column align="right" label="" />
+                    <column align="left" label="" />
+                </columns>
+                <rows>
+                    <row>
+                        <button id="btnSaveLTR"  tabindex="18" label="Save"  image="/img/Save24.png" width="100px" height="30px"/>
+                        <button id="btnClose" tabindex="19" label="Close" image="/img/Logout24.png" width="100px" height="30px"/>                         
+                    </row>
+                </rows>               
+            </grid>
+        </window>
+    </window>
+</zk>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Good_Delivery" title="List Goods Delivery Bundling" apply="id.my.berkah.tcash1.controller.ListDeliveryGoodsBundling" border="normal" width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+                <textbox id="txtbundlingId" visible="false" />
+                <textbox id="txtbundlingNo" visible="false" />
+                <textbox id="txtGdID" visible="false" />
+                <textbox id="txtGdNo" visible="false" />
+                <textbox id="txtbuid" visible="false" />
+                <textbox id="txtbucode" visible="false" />
+                <textbox id="txtbudes" visible="false" />
+                <textbox id="txtid" visible="false" />
+                <textbox id="txtreqnum" visible="false" />
+                <textbox id="txtdatefrom" visible="false" />
+                <textbox id="txtdatetto" visible="false" />
+                <textbox id="txtprocesste" visible="false" />
+                <textbox id="txtprocessby" visible="false" />
+                <textbox id="txtcanceleddte" visible="false" />
+                <textbox id="txtcanceledby" visible="false" />
+                <textbox id="txtapproveby" visible="false" />
+                <textbox id="txtapprovedate" visible="false" />
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="410px" mold="paging" sizedByContent="true" pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="suppdeliveryid " width="50px"  visible="false" />
+                    <listheader label="Delivery No."        hflex="min"    width="200px" visible="true"/>
+                    <listheader label="Bundling ID."           width="200px" visible="false" />      
+                    <listheader label="Bundling No."           width="200px" visible="true" />      
+                    <listheader label="poid"    width="100px"  visible="false" />
+                    <listheader label="supplierid"   width="100px"  visible="false" />
+                    <listheader label="Supplier Code"                    width="90px"  visible="true" />
+                    <listheader label="Supplier Desc"                    width="150px"  visible="true" />
+                    <listheader label="Delivery Date"       width="100px" visible="false"  />
+                    <listheader label="Supplier Site id"    width="100px" visible="false"  />
+                    <listheader label="Supplier Site"             width="100px" visible="true"  />
+                    <listheader label="Supplier Site Name"          width="300px" visible="true" />               
+                    <listheader label="buid"        width="150px" visible="false" /> 
+                    <listheader label="BU Code"           width="110px" visible="true" />               
+                    <listheader label="BU Description"         width="200px" visible="true" />                  
+                    <listheader label="Warehouse Code"           width="110px" visible="true" />               
+                    <listheader label="Warehouse Description"           width="250px" visible="true" />               
+                    <listheader label="Warehouse Id"           width="50px" visible="false" />   
+                    <listheader label="Forwarding Agent"           width="150px" visible="false" />               
+                    <listheader label="Agent Name"            visible="true" /> 
+                    <listheader label="Estimate Arrive From"           width="170px" visible="true" />               
+                    <listheader label="Estimate Arrive To"           width="170px" visible="true"  />               
+                    <listheader label="LineRemark"           width="200px" visible="false" />                          
+                    <listheader label="Remark"           width="100px" visible="true" />               
+                    <listheader label="Created Date"           width="150px" visible="true" />               
+                    <listheader label="Created By"           width="100px" visible="false" />               
+                    <listheader label="Created By Name"           width="150px" visible="true" />               
+                    <listheader label="Modified Date"           width="150px" visible="false" />               
+                    <listheader label="Modified By"           width="100px" visible="false" />               
+                    <listheader label="Modified By Name"           width="150px" visible="false" />               
+                    <listheader label="Submitted Date"           width="150px" visible="true" />               
+                    <listheader label="Submitted By"           width="150px" visible="true" />               
+                    <listheader label="Approved Date"           width="150px" visible="true" />               
+                    <listheader label="Approved By"           width="100px" visible="false" />               
+                    <listheader label="Approved By Name"           width="150px" visible="true" />               
+                    <listheader label="Canceled Date"           width="150px" visible="true" />               
+                    <listheader label="Canceled By"           width="100px" visible="false" />               
+                    <listheader label="Canceled By Name"           width="150px" visible="true" />               
+                    <listheader label="Status id"           width="50px" visible="false" />               
+                    <listheader label="Status"           width="100px" visible="true" />       
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+    </window>
+</zk>

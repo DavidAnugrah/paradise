@@ -1,0 +1,28 @@
+<?page title="Download files for Perso processes"?>
+<window id="wind_download" title="Daftar file-file yang harus diunduh" width="320px" border="normal" apply="id.my.berkah.rps.controller.DownloadController" style="border:1px;background:#3366FF;">
+    <vlayout>
+        <listbox id="listbox" rows="10">
+            <listhead>
+                <listheader label="No"        width="50px"  sort="auto(no)" />
+		<listheader label="File Name" width="170px" sort="auto(fileName)" />
+                <listheader width="60px"/>
+            </listhead>
+	    <template name="model">
+	         <listitem>
+                    <listcell label="${each.no}"/>
+                    <listcell label="${each.fileName}"/>
+                    <listcell>
+                        <button image="/img/Save24.png">
+			<custom-attributes file_location="${each.fileLocation}"/>
+			<attribute name="onClick">
+			{
+                            org.zkoss.zul.Filedownload.save(componentScope.get("file_location"), null);
+			}
+			</attribute>
+			</button>
+                    </listcell>
+	        </listitem>
+	     </template>
+	  </listbox>
+    </vlayout>
+</window>

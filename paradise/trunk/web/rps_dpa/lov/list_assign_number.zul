@@ -1,0 +1,51 @@
+<zk>
+<window id="win_list_assignNumber"  title="List of View Assign Number" width="450px" border="normal" apply="${arg.controller}" style="border:1px;background:#3366FF;">
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+    	<grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right" width="15%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">
+                    <label value="Keyword:" style="color: white"/>
+                    <textbox id="keywordBox"   width="100%" value="%"/>
+                    <button  id="searchButton" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="listbox" mold="paging" pageSize="10" style="border:1px;background:#0099FF;color:white;">
+	<listhead style="border:0px;background:#0099FF;color:white;">
+            <listheader label="Assign Id" width="0px" style="color: white"/>
+            <listheader label="Assign Number" width="230px" sort="auto(assignnumber)" style="color: white"/>
+            <listheader label="Assign Date" width="200px" sort="auto(assigndate)" style="color: white"/>
+            <listheader label="Packet name" width="2px" sort="auto(packet)" style="color: white" visible="false" />
+            
+	</listhead>
+        <template name="model" style="border:1px;background:#0099FF;">
+            <listitem>
+		<listcell label="${each.assignid}"/>
+		<listcell label="${each.assignnumber}"/>
+		<listcell label="${each.assigndate}"/>
+		
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+        <grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">	
+                    <button id="submit" label="Submit" orient="horizontal"/>
+                    <button id="close"  label="Cancel" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+ </zk>

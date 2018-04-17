@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_pairing" title="List Pairing S/N "  border="normal" apply="id.my.berkah.tcash1.controller.ListPairingSn"  width="1100px" height="100%" closable="true" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="400px"  tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="No"     width="50px"  visible="true" sort="auto"/>
+                <listheader label="id"     width="20px"  visible="false" sort="auto"/>
+                <listheader label="Pairing Bundling Number"     width="250px"  visible="true" sort="auto"/>
+                <listheader label="Pairing Bunding Date"    width="150px"  visible="true" sort="auto"/>
+                <listheader label="Work Order"   width="250px"  visible="true" sort="auto" />
+                <listheader label="Item Finish Goods"                    width="50px"  visible="false" sort="auto" />
+                <listheader label="Quantity"       width="100px" visible="true" sort="auto" />
+                <listheader label="Status"   width="200px" visible="true" sort="auto" />
+                <listheader label="Create Date"           width="200px" visible="true" sort="auto" />
+                <listheader label="Create By"           width="200px" visible="true" sort="auto" />
+                <listheader label="Submited By"           width="150px" visible="true" sort="auto"/>               
+                <listheader label="Submited Date"         width="150px" visible="true" sort="auto"/>                  
+                <listheader label="Approved By"           width="150px" visible="true" sort="auto"/>               
+                <listheader label="Approved Date"         width="150px" visible="true" sort="auto"/>               
+                <listheader label="Cancel By"           width="150px" visible="true" sort="auto"/>               
+                <listheader label="Cancel Date"         width="150px" visible="true" sort="auto"/>               
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+    
+    </window>
+    
+    
+</zk>

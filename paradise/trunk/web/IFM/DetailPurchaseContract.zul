@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_detail_pc" title="Detail Purchase Contract" border="normal"  apply="id.my.berkah.ifm.controller.DetailPurchaseContractCTRL" closable="true" width="840px" height="350x" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+       <div>
+        <grid id="grid" oddRowSclass="non-odd" width="820px" height="150px">
+            <columns>
+                <column label="" width="110px" align="right" />
+                <column label="" width="250px" />
+                <column label="" width="60px" />
+                <column label="" width="100px" align="right" />
+                <column label="" width="280px"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="Item"/>
+                    <hbox>
+                    <textbox width="50px" id="txtitemid" value="${arg.itemid}" readonly="true" visible="false" style="background-color:#FFFACD"/> 
+                    <textbox width="50px" id="txtitemcode" tabindex="1" readonly="true" value="${arg.item}" style="background-color:#FFFACD"/> 
+                    <textbox width="160px" id="txtitemdesc" tabindex="2" readonly="true" value="${arg.itemdesc}" style="background-color:#FFFACD"/> 
+                    </hbox>
+                    <button id="btnitem"  src="/img/search.png" mold="trendy" />
+                     <label  value="Purchase Unit" width="50px"/>
+                      <textbox width="250px" tabindex="5"  readonly="true" id="txtpurchaseunit" value="${arg.purchaseunit}"  />  
+                </row>
+                <row>
+                    <label value="Price "/>
+                    <hbox>
+                    <intbox width="200px" tabindex="4" format="#,##0" id="txtpurchasepriceunit"  value="${arg.price}"  style="background-color:#FFFACD"/>  
+                    </hbox>
+                    <label value=""/>
+                   <label value="Discount(%)"/>
+                   <intbox width="200px"  id="txtdiscountpecentage"  tabindex="6"  value="${arg.discpercentage}" readonly="false"  focus="true" /> 
+                </row>
+                <row>
+                    <label value="Min Qty" />
+                    <hbox>
+                     <intbox width="200px" id="txtminqty" format="#,##0" value="${arg.minimumquantity}" constraint="no negative: forbid negative"/> 
+                    </hbox>
+                    <label value="" />
+                    <label value="Discount Amount"/>
+                   <intbox  width="250px"  id="txtdiscountamount"  tabindex="7"  value="${arg.discamount}" readonly="false"  focus="true" /> 
+                </row>
+                <row>
+                   <label value="Max qty"/>
+                   <intbox width="200px"  id="txtmaxqty" format="#,##0" readonly="false"   value="${arg.maximumquantity}" constraint="no negative: forbid negative"/> 
+                   <label value="" />
+                   <label value="Amount" visible="false"/>
+                   <textbox  width="250px"  id="txtamunt"  value="${arg.amount}" visible="false" tabindex="9"  readonly="false"  focus="true"/> 
+               <label value=""/>
+                </row>
+                <row visible="false">
+                   <hbox>
+                   <textbox width="20px" id="txtcontractdtlid" value="${arg.contractdtlid}"  />   
+                   <textbox width="20px" id="txtcontractid" value="${arg.contractid}"/>   
+                   <textbox width="20px" id="txtpositionnumber" value="${arg.positionnumber}"  />   
+                   <textbox width="20px" id="txtflag" />   
+                   <textbox width="20px" id="txtrderqty" />   
+                   <textbox width="20px" id="txtout" />   
+              
+                   </hbox>
+                </row>
+            </rows>  
+        </grid>              
+       </div> 
+            <grid id="grid_find" oddRowSclass="non-odd" width="820px">
+                <columns>
+                    <column label="" width="820px" align="center" />
+                 
+                </columns>
+                <rows>
+                    <row >
+                        <hbox>
+                        <button id="save" tabindex="10" label="Save" mold="trendy"  width="115px"   src="/img/Save24.png"  tooltiptext="Save"/>
+                        <button id="close"   tabindex="11" label="Close"   mold="trendy"  width="115px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	 
+    </window>
+</zk>

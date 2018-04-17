@@ -1,0 +1,558 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report_resrv_dpa" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" whenResourceMissingType="Empty" uuid="2510dd38-d31e-46fa-a4a4-a483018061a4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="203"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="resservation_no" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select  reserve_no,
+                    to_char(reserve_date,'dd-mm-rrrr') reserve_date,
+                    client_name,
+                    d.packet_code,
+                    d.packet_name,
+                    a.msisdn,
+                    d.packet_value,
+                    case when b.status = 1 then 'DRAFT'
+                         when b.status = 2 then 'SUCCESS'
+                         when b.status = 3 then 'FAILED'
+                         when b.status = 4 then 'CANCEL'
+                         else '-'
+                    end  status,
+                    b.perso_number,
+                    case when a.status = 1 then 'DRAFT'
+                         when a.status = 0 then 'CANCEL'
+                         when a.status = 2 then 'CREATE RESERVE NO'
+                         when a.status = 3 then 'PAYMENT'
+                         when a.status = 4 then 'PERSO'
+                         when a.status = 5 then 'POS'
+                         end payment_status,
+                    a.payment_code,
+                    case when e.sales_status =0 then 'CANCEL'
+                         when e.sales_status =1 then 'IN TRANSACTION'
+                         when e.sales_status =2 then 'PAYMENT IN PROGRESS'
+                         when e.sales_status =3 then 'PAID'
+                         else '-'
+                    end  pos_status,
+                    case when f.attribute4 = 3 then 'DELIVERED' else 'NOT DELIVERED' end delivery_status,
+                    a.first_name,
+                    a.last_name,
+                    address,
+                    to_char(birth_date,'dd-mm-rrrr') birth_date,
+                    birth_place,
+                    payment_value,
+                    type_id,
+                    sales_no pos_number,
+                    number_id,
+                    delivered_address,
+                    deliver_type,
+                    a.trc_id,
+                    i.cust_group_code,
+                    i.description cust_grup_desc
+            from tcdpa001t a, tcrps105t_dpa b, tcdpa002t c, dpa_ref_packet d, tcsls100t_hrn e, tcdpa005t f, dpa_resource g,dpa_hdr_assign_packet h,tcstp051t i
+            where   a.perso_id = b.perso_id(+)
+            and     a.client_id = c.client_id
+            and     a.trc_id   = f.trc_id(+)
+            and     a.packet_id = d.packet_id(+)
+            and     a.pos_id    = e.sales_id(+)
+            and     a.msisdn = g.msisdn(+)
+            and     g.assign_id = h.assign_id(+)
+            and     h.cust_group_id = i.cust_group_id(+)
+           and reserve_no ='MYGRAPARI-20160815-0446']]>
+	</queryString>
+	<field name="RESERVE_NO" class="java.lang.String"/>
+	<field name="RESERVE_DATE" class="java.lang.String"/>
+	<field name="CLIENT_NAME" class="java.lang.String"/>
+	<field name="PACKET_CODE" class="java.lang.String"/>
+	<field name="PACKET_NAME" class="java.lang.String"/>
+	<field name="MSISDN" class="java.lang.String"/>
+	<field name="PACKET_VALUE" class="java.math.BigDecimal"/>
+	<field name="STATUS" class="java.lang.String"/>
+	<field name="PERSO_NUMBER" class="java.lang.String"/>
+	<field name="PAYMENT_STATUS" class="java.lang.String"/>
+	<field name="PAYMENT_CODE" class="java.lang.String"/>
+	<field name="POS_STATUS" class="java.lang.String"/>
+	<field name="DELIVERY_STATUS" class="java.lang.String"/>
+	<field name="FIRST_NAME" class="java.lang.String"/>
+	<field name="LAST_NAME" class="java.lang.String"/>
+	<field name="ADDRESS" class="java.lang.String"/>
+	<field name="BIRTH_DATE" class="java.lang.String"/>
+	<field name="BIRTH_PLACE" class="java.lang.String"/>
+	<field name="PAYMENT_VALUE" class="java.math.BigDecimal"/>
+	<field name="TYPE_ID" class="java.lang.String"/>
+	<field name="POS_NUMBER" class="java.lang.String"/>
+	<field name="NUMBER_ID" class="java.lang.String"/>
+	<field name="DELIVERED_ADDRESS" class="java.lang.String"/>
+	<field name="DELIVER_TYPE" class="java.lang.String"/>
+	<field name="TRC_ID" class="java.math.BigDecimal"/>
+	<field name="CUST_GROUP_CODE" class="java.lang.String"/>
+	<field name="CUST_GRUP_DESC" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="52" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="81f49d4a-78b5-46bc-9cb2-be6c40d166e8" key="staticText" x="227" y="1" width="108" height="31"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORT]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d282765b-4b60-4253-9034-62705b40338e" key="line" x="195" y="31" width="156" height="1"/>
+			</line>
+			<staticText>
+				<reportElement uuid="ba43b625-5f1e-4584-bf75-e83db1ee929e" key="staticText" x="233" y="32" width="114" height="20"/>
+				<textElement>
+					<font isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Reservation DPA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="4" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="7" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="449" splitType="Prevent">
+			<staticText>
+				<reportElement uuid="207ed18d-fd69-4708-9f04-3413fb0df7be" key="staticText" x="13" y="8" width="95" height="20"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Reservation No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aeab7c38-9c15-4722-bb60-310205cc4ed1" key="staticText" x="13" y="42" width="95" height="20"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Merchant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="d978f049-9947-42e4-8abd-186f0b77a5a8" key="staticText" x="297" y="8" width="96" height="20"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Reservation Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9db68970-1f78-49ec-9cb5-84f8d2d03f05" key="staticText" x="297" y="42" width="96" height="20"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Perso Status]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0414bc13-e10f-4d29-aa0c-4700a85e112d" key="staticText" x="13" y="79" width="95" height="20"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Nama Lengkap]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="646f1a60-3715-4873-8870-fc75bd5137f8" key="staticText" x="297" y="79" width="96" height="20"/>
+				<textElement>
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Perso Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5628c66b-f00d-4b64-a6b3-c7b999efd3ef" key="staticText" x="13" y="124" width="95" height="20"/>
+				<textElement/>
+				<text><![CDATA[Alamat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="be9c85bd-4284-4f45-9f7d-1831a76cdaa2" key="staticText" x="297" y="155" width="97" height="20"/>
+				<textElement/>
+				<text><![CDATA[MSISDN]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a1101a17-94fc-4ab7-8320-750289dedde4" key="staticText" x="297" y="124" width="97" height="20"/>
+				<textElement/>
+				<text><![CDATA[Packet Code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="507e7f1a-67c2-4dde-90c2-daa4cb713bed" key="staticText" x="13" y="223" width="95" height="20"/>
+				<textElement/>
+				<text><![CDATA[Tempat Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="924b86bb-b952-4695-b904-22b432b05bd3" key="staticText" x="13" y="260" width="95" height="20"/>
+				<textElement/>
+				<text><![CDATA[Tgl Lahir]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b96f6356-c611-4313-96a4-26380c67d044" key="staticText" x="297" y="192" width="97" height="20"/>
+				<textElement/>
+				<text><![CDATA[Kode Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="358e7457-7b62-42a4-9955-c8542edb4999" key="staticText" x="13" y="291" width="95" height="20"/>
+				<textElement/>
+				<text><![CDATA[Tanda Pengenal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ed04a9ef-602a-4ab2-80ef-eb5e0c2cd97c" key="staticText" x="297" y="223" width="97" height="20"/>
+				<textElement/>
+				<text><![CDATA[Jumlah Pembayaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7e55763b-96e5-475a-aeaf-fac3f5ed4e84" key="staticText" x="13" y="325" width="95" height="20"/>
+				<textElement/>
+				<text><![CDATA[No Pengenal]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="af0bc252-c646-4731-850f-315102895323" key="staticText" x="297" y="257" width="97" height="20"/>
+				<textElement/>
+				<text><![CDATA[POS Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="523c2a30-a26f-4e69-a079-ac34701362ed" key="staticText" x="13" y="355" width="103" height="20"/>
+				<textElement/>
+				<text><![CDATA[Alamat Pengantaran]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f1db6b90-ca3c-4e5b-a286-fe1953aef3d2" key="staticText" x="297" y="287" width="97" height="20"/>
+				<textElement/>
+				<text><![CDATA[POS Status]]></text>
+			</staticText>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="9d90fbfe-64db-44c7-85dc-4a5c9e4699e0" key="textField" x="128" y="8" width="137" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RESERVE_NO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="f333a43c-1b64-44bb-a98c-01be8f6058bf" key="textField" x="128" y="42" width="137" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CLIENT_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="07de887b-c118-4466-84d5-348671a3f056" key="textField" x="418" y="124" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PACKET_CODE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="e8e94905-da00-4322-8605-1ad84e3011d9" key="textField" x="418" y="155" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{MSISDN}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="61426f3f-d261-4f65-8f2e-7a6f186da682" key="textField" x="128" y="126" width="137" height="86"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="6a2904ae-e1ab-4ce1-a7e5-3b1838d41de1" key="textField" x="128" y="260" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{BIRTH_DATE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="39663f7f-0c9e-4606-ac7a-7f5762e2da2c" key="textField" x="418" y="257" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{POS_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="1632bf87-fba4-4342-82e5-e4904cbc7d51" key="textField" x="128" y="357" width="137" height="83"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$F{DELIVERED_ADDRESS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="33117d15-1c54-4a9b-ae80-97f1d34566ec" key="textField" x="128" y="79" width="137" height="18"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{FIRST_NAME}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="571d95c3-e840-4074-9eea-b9541641c525" key="textField" x="418" y="8" width="122" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PAYMENT_STATUS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="2185f3df-5b56-4172-8a43-a0048aa77f37" key="textField" x="418" y="42" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{STATUS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="ea5e02e9-a3de-4c0a-ab8d-c7a9a1fb7442" key="textField" x="418" y="79" width="122" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PERSO_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="50261064-bed5-4e0b-aba8-eb07ec661f4a" key="textField" x="128" y="291" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TYPE_ID}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="5ba95130-b5b5-406b-95da-205a49c97d45" key="textField" x="128" y="325" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NUMBER_ID}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="656982b3-1163-425c-995d-6aa88d546ba4" key="textField" x="418" y="287" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{POS_STATUS}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="9c9b8762-34dd-4714-93ff-c6afd6b2299a" key="textField" x="418" y="192" width="122" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PAYMENT_CODE}]]></textFieldExpression>
+			</textField>
+			<textField pattern="##0.00" isBlankWhenNull="false">
+				<reportElement uuid="fc28e227-abc5-4c8a-8661-87226bc7721f" key="textField" x="418" y="223" width="122" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PAYMENT_VALUE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="d20bc8e2-e39f-4bb5-9f67-400ad23c6804" key="textField" x="128" y="223" width="100" height="18"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{BIRTH_PLACE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="0e74e508-3673-4c71-8af6-f568bd6c8eac" key="staticText-1" x="123" y="8" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="5c812e95-a4ff-4e29-9145-6c36cfb916e8" key="staticText-2" x="123" y="42" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ce3e271d-9e8f-4800-939f-0aa038c06229" key="staticText-3" x="412" y="8" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="40107bb7-f93f-40c3-a16b-ed07a455e5ea" key="staticText-4" x="412" y="42" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="32084099-cd01-4f9c-a808-a41229c2bccf" key="staticText-5" x="412" y="79" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e0c6901e-6957-4401-87c9-0d911dda88d3" key="staticText-6" x="412" y="192" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="343647a8-de3a-4d3f-ac3f-03df5f6f73ab" key="staticText-7" x="412" y="155" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9712bded-4973-42a8-9e71-9c0585480c33" key="staticText-8" x="412" y="124" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f09bbdc9-3ff5-49f8-b7b0-00e5564742e6" key="staticText-9" x="123" y="124" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="24b8083b-2cac-4efd-8ac7-b7af7b654fb2" key="staticText-10" x="123" y="79" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b1c9782d-7a2f-4ee2-bb07-cf7b52d7c9d3" key="staticText-11" x="412" y="257" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b8ccdf8d-7d1b-4ce1-8886-178ad2b0cd2a" key="staticText-12" x="412" y="223" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="48fa3160-8575-4866-9741-736f5408fe72" key="staticText-13" x="123" y="223" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cedcd55e-f14f-4a4f-8b96-78a6bfd7a367" key="staticText-14" x="123" y="291" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3454f31b-a2ba-4f0c-be40-8c7174d60a20" key="staticText-15" x="412" y="287" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f200fea0-5ed1-4b4c-8563-71715872bd04" key="staticText-16" x="123" y="260" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f1328354-6ffb-40e2-8d2b-3ffa072e2486" key="staticText-17" x="123" y="355" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="f01b6837-296a-4dfb-876f-b5a61bf63ea3" key="staticText-18" x="123" y="325" width="6" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[: ]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="18" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="303c2aef-e65d-44a7-8234-3e9225a1ab7d" key="textField-1" x="2" y="0" width="179" height="18"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Left">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Printed Date : " + new SimpleDateFormat("dd-MMMM-yy HH:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement uuid="16041747-97a5-4bb2-ab07-8feb6a661d3c" key="textField" x="527" y="1" width="26" height="17"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement uuid="f0fdbb85-c623-4055-a933-dd8350479d25" key="textField" x="471" y="1" width="56" height="17"/>
+				<textElement textAlignment="Right">
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

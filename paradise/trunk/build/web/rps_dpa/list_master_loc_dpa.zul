@@ -1,0 +1,46 @@
+<zk>
+<window id="win_list_location" title="List Data Locations" width="100%" height="100%" border="normal" apply="id.my.berkah.rps.dpa.controller.DPAListLocationController" ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+    <attribute name="onLater">
+        Clients.clearBusy(); //remove the busy message
+    </attribute>
+    <div>
+        <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+           <toolbarbutton id="newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+           <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+           <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+           <toolbarbutton id="expiry"    width="25px" height="25px" src="/img/LockX24.png" tooltiptext="Expiry"/>
+        </toolbar>
+    </div>    
+    <div>    
+        <listbox id="listbox" height="425px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="LOCATION ID"          width="0px"    visible="false"/>
+                <listheader label="Location Code"        width="100px"  sort="auto(locationCode)"/>
+                <listheader label="Location Name"        width="250px"  sort="auto(locationDescription)"/>
+                <listheader label="Type"                 width="60px"   sort="auto(locationType)"/>
+                <listheader label="Created By"           width="120px"  visible="true"/>
+                <listheader label="Creation Date"        width="150px"  visible="true"/>
+                <listheader label="Modified By"          width="120px"  visible="true"/>
+                <listheader label="Modified Date"        width="150px"  visible="true"/>
+                <listheader label="Expired By"           width="120px"  visible="true"/>
+                <listheader label="Expired Date"         width="150px"  visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.locationId}"/>
+                    <listcell label="${each.locationCode}"/>
+                    <listcell label="${each.locationDescription}"/>
+                    <listcell label="${each.locationType}"/>
+                    <listcell label="${each.createdByName}"/>
+                    <listcell label="${each.createdDateStr}"/>
+                    <listcell label="${each.modifiedByName}"/>
+                    <listcell label="${each.modifiedDateStr}"/>
+                    <listcell label="${each.expiredByName}"/>
+                    <listcell label="${each.expiredDateStr}"/>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+        <paging id="userPagingMasaterLocation" width="100%" style="color: black" />
+    </window>
+</zk>

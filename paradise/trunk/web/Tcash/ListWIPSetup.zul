@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_wip_setup" title="List WIP Setup" apply="id.my.berkah.tcash1.controller.ListSetupWIP" border="normal" width="1100px" height="100%" closable="true" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="400px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="id" width="130px" visible="false"/>
+                    <listheader label="id" width="130px" visible="false"/>
+                    <listheader label="WIP Code" width="110px"  />
+                    <listheader label="WIP Description" width="250px" />
+                    <listheader label="Flag" visible="false" width="130px" />
+                    <listheader label="Created Date" visible="true" width="130px" />
+                    <listheader label="Created By" visible="true" width="130px" />
+                    <listheader label="Expired Date" visible="true" width="130px" />
+                    <listheader label="Expired By" visible="true" width="130px" />
+                </listhead>
+            </listbox>
+        </div>
+    </window>
+</zk>

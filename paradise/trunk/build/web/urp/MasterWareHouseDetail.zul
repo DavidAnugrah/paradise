@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_master_detail" title="Item WareHouse" border="normal" apply="id.my.berkah.urp.controller.MasterWareHouseItem" closable="false" width="980px" height="290px" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+       <div>
+        <grid id="grid" oddRowSclass="non-odd" width="960px" height="200px">
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="150px" />
+                <column label="" width="150px" />
+                <column label="" width="285px"/>
+                <!--<column label="" width="100px" />-->
+            </columns>
+            <rows>
+                <row>
+                    <label value="Item Code"/>
+                    <textbox width="200px" tabindex="1" id="txtitemcode" readonly="true" value="${arg.itemcode}" focus="true" /> 
+                    <button id="btnitem"  src="/img/search.png"/>
+                    <label   value="Item Description" width="50px"/>
+                    <textbox width="200px" tabindex="3" id="txtwhdesc" readonly="true" value="${arg.itemdescription}"/>
+                </row>
+                <row>
+                    <label   value="Effective Date" width="50px" />
+                    <datebox width="200px" tabindex="4" id="txteffectivedate1" format="dd-MM-yyyy" value="${arg.effectivedate}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Effective By" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txttxteffectiveby1"  value="${arg.effectivebyname}" readonly="true"/>
+                </row>
+              <row>
+                    <label   value="Expired By" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtexpiredby1"  value="${arg.expiredbyname}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Expired Date" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtexpireddate1"  value="${arg.expireddate}" readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Created By" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtcreatedby1"  value="${arg.createdbyname}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtcreateddate1"  value="${arg.createddate}" readonly="true"/>
+                </row>
+                <row visible="false">
+                    <label   value="Wh Id" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txttxtwhid1"  value="${arg.whid}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="id" width="50px" />
+                <textbox width="200px" tabindex="12" id="txtid1"  value="${arg.id}"  readonly="true"/>
+                </row>
+                <row visible="false">
+                    <label   value="parentid" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtparentid1"  value="${arg.parentid}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="whlocid" width="50px" />
+                    <textbox id="txtwhlocid" value="${arg.whlocid}" readonly="true" />
+                </row>
+                <row visible="true">
+                    <label   value="Location Code" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtloccode1"  value="${arg.loccode}" readonly="true" />
+                    <button id="btnloc"  src="/img/search.png"/>
+                    <label   value="Locaton Desc" width="50px" />
+                <textbox width="200px" tabindex="12" id="txtlocdesc1"  value="${arg.locdesc}"  readonly="true"/>
+                </row>
+                <row visible="false">
+                   <textbox width="20px" id="txtitemid1" readonly="true"  value="${arg.itemid}"/>   
+                </row>
+            </rows>  
+        </grid>              
+       </div> 
+            <grid id="grid_find" oddRowSclass="non-odd" width="960px">
+                <columns>
+                    <column label="" width="180px" align="right" />
+                    <column label="" width="200px" align="center"/>
+                    <column label="" width="200px" align="center"/>
+                    <column label="" width="180px" align="center"/>
+                    <!--<column label="" width="180px" align="left"/>-->
+                </columns>
+                <rows>
+                    <row height="35px">
+                        <label value=""/>
+                        <button id="save1"      tabindex="38" label="Save"      width="115px"   src="/img/Save24.png"  tooltiptext="Expire Item"/>
+                        <button id="expirewh1"  tabindex="37" label="Expire Item"    width="115px"  image="/img/Action24.png"  tooltiptext="Expire WareHouse"/>
+                        <!--<label value=""   tabindex="30"  width="115px"   image="/img/New24.png"     tooltiptext="Mapping Location to Channel (L2C)"/>-->
+                        <button id="close1"      tabindex="38" label="Close"      width="115px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                        <!--<label value=""/>-->
+                        <label value=""/>
+                    </row>
+                </rows>
+            </grid>	 
+        <!--</div>-->
+    </window>
+</zk>

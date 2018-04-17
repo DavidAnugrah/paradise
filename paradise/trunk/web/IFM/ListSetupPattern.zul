@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_list_parameter" title="List Setup Pattern"  apply="id.my.berkah.ifm.controller.ListSetupPattern" border="normal" width="970px" height="540px" ctrlKeys="#down#up"  closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+          <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+<!--            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            -->
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+<!--            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />-->
+            <textbox id="txtid" value="${arg.patternid}" visible="false"/>
+            </toolbar>
+         </div>
+
+        <div width="100%">
+        <listbox id="listbox" height="370px" sizedByContent="true" emptyMessage="No items match your search" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                
+                <listheader label="id"             visible="true" sort="auto" />
+                <listheader label="Pattern"        visible="true" sort="auto" />
+                <listheader label="itemid"         visible="true" sort="auto" />
+                <listheader label="item code"      visible="true" sort="auto" />
+                <listheader label="Item Desc"      visible="true" sort="auto" />
+                <listheader label="Seq id"         visible="true" sort="auto" />
+                <listheader label="Field Name"     visible="true" sort="auto"/>
+                <listheader label="Control by"     visible="true" sort="auto"/>
+                <listheader label="Total Digit"    visible="true"  sort="auto" />
+                <listheader label="Default"        visible="true" sort="auto" />
+                <listheader label="Created by"     visible="true" sort="auto" />
+                <listheader label="Created by desc"        visible="true" sort="auto" />
+                <listheader label="Created Date"   visible="true" sort="auto" />
+                <listheader label="Modify by"      visible="true" sort="auto" />
+                <listheader label="Modify by desc" visible="false" sort="auto" />
+                <listheader label="Modify Date"    visible="true" sort="auto" />
+                <listheader label="Expired By"     visible="true" sort="auto" />
+                <listheader label="Expired By desc" visible="true" sort="auto" />
+                <listheader label="Expired Date"   visible="true" sort="auto" />
+                <listheader label="Display Name"   visible="true" sort="auto" />
+            </listhead>
+            
+            <!--<template name="model">-->
+                <listitem>
+                </listitem>
+            <!--</template>-->
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+<!--           <grid id="grid1" oddRowSclass="non-odd" width="100%" visible="false">
+              <columns>
+               <column label="" width="180px"  align="right" />
+                <column label="" width="200px" align="center"/>
+                <column label="" width="100px" align="right"/>
+                <column label="" width="290px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                   <label   value="Created Date" width="50px" />
+                   <textbox width="150px" mold="rounded" id="txtcreatedate" value="${arg.processeddate}" readonly="true"  />
+                   <label   value="Modified Date"  />
+                   <textbox width="150px" mold="rounded" id="txtmodifieddate" value="${arg.cancelleddate}" readonly="true"  />
+                </row>
+                <row>
+                   <label   value="Created By" />
+                   <textbox width="150px" mold="rounded" id="txtcreatedby" value="${arg.processedby}"  readonly="true"  />
+                   <label   value="Modified By" />
+                   <textbox width="150px" mold="rounded" id="txtmodifiedby" value="${arg.cancelledby}"  readonly="true"  />
+                </row>
+            </rows>
+        </grid>-->
+         
+<!--             <grid width="100%"  oddRowSclass="non-odd">
+           <columns>
+               <column label=""  width="50%" align="right" />
+               <column label=""  width="50%" align="center" />
+               <column label=""  width="50%" align="center" />
+               <column label=""  width="50%" align="left" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                     <button id="btnadd"     label="New"  mold="trendy" image="/img/Plus24.png" tooltiptext="Add"/>  
+                     <hbox>
+                       <button id="btnsetup"  label="Setup Item"     mold="trendy"    image="/img/Action24.png"     tooltiptext="Browse"/>
+                       <button id="refresh"   label="Refresh"   width="110px"  mold="trendy"    image="/img/Refresh24.png"     tooltiptext="Refesh"/>  
+                     </hbox>
+                    <button id="close"      mold="trendy" label="Close"     width="110px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>  
+            </rows>
+            </grid>-->
+        </window>
+</zk>

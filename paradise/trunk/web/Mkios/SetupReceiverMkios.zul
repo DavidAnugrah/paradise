@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_setup_receive"  title="Setup Receiver Mkios Integration" height="539px" apply="id.my.berkah.mkios.controller.ListHDREmailMkiosIntCTRL" border="normal" width="1060px" ctrlKeys="#down#up"  closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div width="1030px">
+            <hlayout>
+                <groupbox width="500px"  sclass="main z-demo-config">
+                    <caption label="Mail Sender" style="color:black" />	
+                    <grid width="485px">
+                        <columns>
+                            <column label="" width="140px"  />
+                            <column label="" width="345px" />
+                        </columns>
+                        <rows>
+                            <row visible="false">
+                                <label value="Email Gateway"/>
+                                <textbox  id="txtID" width="300px" />
+                            </row>
+                            <row>
+                                <label value="Email Gateway"/>
+                                <textbox  id="txtemail" width="300px" />
+                            </row>
+                            <row>
+                                <label value="Account Sender " />
+                                <hlayout>
+                                    <textbox  id="txtaccount" width="200px"  />
+                                    <label value="is Active"/>
+                                    <checkbox id="cbactv" />
+                                    <label value="Yes" />
+                                </hlayout>
+                            </row>
+                            <row>
+                                <label value="Format Subject" />
+                                <textbox id="txtformatsub" width="200px" />
+                            </row>
+                            <row>
+                                <label value="Format Content"/>
+                                <hlayout>
+                                    <textbox id="txtcontent" width="300px" rows="2" hflex="2"/>
+                                    <button id="btncontent" image="/img/Find24.png" />
+                                </hlayout>
+                            </row>
+                            <row>
+                                <label />
+                                <button id="btnSave"  image="/img/Save24.png" tooltiptext="Save" />
+                            </row>
+                        </rows>
+                    </grid>
+                </groupbox>
+           
+                <groupbox width="525px" sclass="main z-demo-config">
+                    <caption label="SMS Sender" style="color:black" />
+                    <grid width="510px" >
+                        <columns>
+                            <column label="" width="140px"  />
+                            <column label="" width="370px" />
+                        </columns>
+                        <rows>
+                            <row>
+                                
+                                <label value="SMS Gateway"/>
+                                <hbox>
+                                    <textbox  id="txtsmsgw" width="300px" />
+                                    <textbox  id="txtidsms" width="100px" visible="false"/>
+                                </hbox>
+                                
+                            </row>
+                            <row>
+                                <label value="Is Active " />
+                                <hlayout>
+                                    <checkbox  id="cmbactive" />
+                                    <label value="Yes" />
+                                </hlayout>
+                            </row>
+                            <row>
+                                <label value="Format Sms"/>
+                                <hlayout>
+                                    <textbox id="txtfromatsms" width="298px"  height="82px" rows="4"/>
+                                    <button id="btnformatsms" image="/img/Find24.png" />
+                                </hlayout>
+                            </row>
+                            <row>
+                                <label />
+                                <button id="btnSaveSMS" image="/img/Save24.png" tooltiptext="Save" />
+                            </row>
+                        </rows>
+                    </grid>			
+                </groupbox>
+            </hlayout>
+            
+            <hlayout>
+                <groupbox width="500px"  sclass="main z-demo-config">
+                    <caption label="Mail Receiver" style="color:black" />			
+                    <!--<separator height="5px"></separator>-->
+                    <div>    
+                        <listbox id="listboxMail" height="170px">
+                            <listhead sizable="true">
+                                <listheader label="ID"  width="10px"  visible="false" sort="auto"/>
+                                <listheader label="Mail Account"  width="200px"  visible="true" />
+                                <listheader label="Mail Account Owner"   width="200px"  visible="true"/>
+                                <listheader label="Is Active" width="67px"  visible="true"/>
+                            </listhead>
+                            <template name="model">
+                                <listitem>
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                    <vlayout height="5px" width="100%" style="border:0px;">
+                    </vlayout> 
+                    <button id="btnNewDtl" label="New" image="/img/New24.png"/>
+                </groupbox>
+                <groupbox width="525px" sclass="main z-demo-config">
+                    <caption label="SMS Receiver" style="color:black"/>			
+                    <!--<separator height="8px"></separator>-->
+                    <div>    
+                        <listbox id="listboxSMS" height="170px">
+                            <listhead sizable="true">
+                                <listheader label="ID"    width="200px"  visible="false" />
+                                <listheader label="MSISDN"    width="200px"  visible="true" />
+                                <listheader label="MSISDN Owner"     width="200px"  visible="true"/>
+                                <listheader label="Is Active"     width="70px"  visible="true"/>
+                            </listhead>
+                            <template name="model">
+                                <listitem>
+                                    <listcell label=""/>
+                                    <listcell label=""/>
+                                    <listcell >
+                                        <checkbox> </checkbox>
+                                    </listcell> 
+                                </listitem>
+                            </template>
+                        </listbox>
+                    </div>
+                     <vlayout height="5px" width="100%" style="border:0px;">
+                    </vlayout> 
+                    <button id="btnNewDtlsms" label="New" image="/img/New24.png" />
+                </groupbox>
+            </hlayout>
+        </div>
+    </window>
+</zk>

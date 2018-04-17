@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_upload" title="Input File" apply="id.my.berkah.tcash1.controller.IFpairing"   style="border:1px;background:#3366FF;" onClose="self.detach();" closable="true" position="center" width="440px">
+        <grid>
+            <columns>
+                <column label="" align="right" width="80px"/>
+                <column label="" align="left" width="320px"/>
+            </columns>
+            <rows>
+                <row>	
+                    <label value="Upload File"/>
+                    <hbox>
+                    <textbox width="250px" id="txtUpload" value="${arg.blockTempFrom}" readonly="false"/>
+                    <button  id="uploadFile" upload="true,maxsize=-1," image="/img/file.png" tooltiptext="Upload File Excel"/>
+                    </hbox>
+                </row>
+                <row visible="false">	
+                    <hbox>
+                    <textbox width="250px" id="txtPoId" value="${arg.poId}" readonly="true"/>
+                    <textbox width="250px" id="txtSupId" value="${arg.supId}" readonly="true"/>
+                    <textbox width="250px" id="txtSupCode" value="${arg.supCode}" readonly="true"/>
+                    <textbox width="250px" id="txtItemId" value="${arg.itemId}" readonly="true"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label="" align="center" width="430px"/>
+            </columns>
+            <rows>
+                <row>	
+                    <button id="btnClose"  mold="trendy"    tabindex="38" label="close"      width="100px"    />
+                </row>
+            </rows>
+        </grid>
+    </window>
+</zk>	 

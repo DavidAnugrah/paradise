@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_list_find_IF" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListInputFileFind" position="center"  border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row >
+                        <label   value="Input File No" width="50px" />
+                        <hbox>
+                            <textbox id="txtifid"  visible="false" />
+                            <textbox id="txtifno"  width="200px"  readonly="true" />
+                            <button id="lovif"    src="/img/search.png"  tooltiptext="Lov Input File" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="Work Order No" width="50px" />
+                        <hbox>
+                        <textbox id="txtWoid" visible="false"  />
+                        <textbox id="txtWoNo"  width="200px"  readonly="true"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" format="dd-MM-yyyy" />
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" format="dd-MM-yyyy"  />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Status" />
+                        <hbox>
+                            <textbox id="txtstat" visible="false"/>
+                        <combobox id="cmbStatus" width="200px"  readonly="true">
+                            <comboitem label="All"/>
+                            <comboitem label="Draft"/>
+                            <comboitem label="Submitted"/>
+                            <comboitem label="Approved"/>
+                            <comboitem label="Input File Complete"/>
+                            <comboitem label="Canceled"/>
+                        </combobox>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                <rows>
+                    <row align="center">
+                        <hbox >
+                        <button id="goFind" height="35px" width="80px" tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" height="35px"  width="80px" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+</zk>

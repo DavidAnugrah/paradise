@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_dtlprod_receipt"  title="Add/Edit Production Receipt"  border="normal" width="800px" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="20%" align="right" />
+                <column label="" width="50%" />
+                <column label="" width="20%" align="right" />
+                <column label="" width="50%" />
+            </columns>
+            <rows id="rowh">
+                 <row>
+                    <label   value="Production Receipt" width="50px" />
+                    <textbox width="210px" tabindex="1" mold="rounded" id="txtprodreceipt"  readonly="true"  />
+                      <label   value="Creation Date" width="50px" />
+                    <textbox width="210px"  id="txtcreationdate" mold="rounded" readonly="true" /> 
+                </row>
+                 <row>
+                    <label   value="Production Date" width="50px" />
+                    <textbox width="210px" tabindex="2" mold="rounded" id="txtproddate"  readonly="true"  />
+                    <label   value="Created By" width="50px" />
+                    <textbox width="210px"  id="txtcreationby" readonly="true" mold="rounded"/> 
+                 </row>
+                <row>
+                    <label   value="Warehouse" width="50px" />
+                    <hbox>
+                    <textbox width="50px" visible="false" id="txtwhid"  readonly="false" />
+                    <textbox width="70px"  id="txtwhcode" mold="rounded" readonly="true" />
+                    <textbox width="130px" id="txtwhdesc"  mold="rounded" readonly="true"  />
+                    <button id="btnwh" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Warehouse"/>
+                    </hbox>
+                    <label   value="Approve Date" width="50px" />
+                    <textbox width="210px"  id="txtapprovedate" readonly="true" mold="rounded"/> 
+                </row>
+             
+                <row>
+                    <label   value="Item Finish Goods" width="50px" />
+                   <hbox>
+                    <textbox width="50px" visible="false" id="txtitemid"  readonly="false" />
+                    <textbox width="70px" style="background-color:#FFFACD"  id="txtitemcode" mold="rounded" readonly="true" />
+                    <textbox width="130px" style="background-color:#FFFACD" id="txtitemdesc" mold="rounded"  readonly="true"  />
+                    <button id="btnitem" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Warehouse"/>
+                    </hbox>
+                     <label   value="Approved by" width="50px" />
+                    <textbox width="210px"  id="txtapprovby" readonly="true" mold="rounded"/> 
+                </row>
+                <row >
+                    <label   value="Quantity Receipt" width="50px" />
+                        <intbox width="100px" id="txtqty" tabindex="3" mold="rounded" constraint="no negative: it shall not be negative" format="#,##0"  readonly="false" />
+                         <label   value="Submit Date" width="50px" />
+                    <textbox width="210px"  id="txtSubmitdate" readonly="true" mold="rounded"/> 
+                </row>
+                  <row>
+                    <label   value="Status" width="50px" />
+                    <textbox width="150px" tabindex="4" mold="rounded" id="txtstatdesc"  readonly="true"  />
+                     <label   value="Submited by" width="50px" />
+                    <textbox width="210px"  id="txtsbmtby" readonly="true" mold="rounded"/> 
+                  </row>
+                <row visible="false">
+                    <textbox width="100px" readonly="true" id="txtflag"   />
+                    <textbox width="0px" tabindex="1" id="txtstatid" mold="rounded" readonly="true" visible="false" />
+                </row>
+            </rows>
+        </grid>
+      
+        <div>
+          <listbox id="listbox" height="180px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="From S/N"                 width="300px"  sort="auto"  />
+                <listheader label="To S/N"                  width="300px"   sort="auto"  />
+                <listheader label="Quantity"                 width="100px"  sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+         <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+
+        <grid id="grid_find" oddRowSclass="non-odd" width="100%">
+            <columns>
+               <column label="" width="100%" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord"  mold="trendy"     width="100px"  label="New"       image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="btnsave"   mold="trendy"      tabindex="18" label="Save"        width="100px"     image="/img/Save24.png"     tooltiptext="Save"/>
+                    <button id="btnsubmit"   mold="trendy"    tabindex="19" label="Submit"      width="100px"   image="/img/Ok24.png"     tooltiptext="Submit"/>
+                    <button id="btnapproved" mold="trendy"  tabindex="20" label="Approved"      width="100px"       image="/img/1449847706_OK.png"       tooltiptext="Approve"/>
+                    <button id="close"  mold="trendy"         tabindex="21" label="Close"       width="100px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                  </row>
+            </rows>
+        </grid>	 
+        </window>
+</zk>

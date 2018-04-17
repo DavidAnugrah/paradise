@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_auto" title="Auto GD/GR/PI/WIP"  border="normal" apply="id.my.berkah.tcash1.controller.AutoGdGrPi" width="600px" ctrlKeys="#down#up"  closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+
+        <grid id="grid" oddRowSclass="non-odd" width="578px">
+            <columns>
+                <column label="" width="30%" align="right" />
+                <column label="" width="70%" />
+                
+            </columns>
+            <rows id="rowh">
+                <row>
+                  <label   value="Auto Number" width="50px" />
+                   <textbox width="230px" tabindex="1" mold="rounded" id="txtautonumber"  readonly="true"  />
+                </row>
+                <row>
+                  <label   value="Auto Date" width="50px" />
+                   <textbox width="230px" tabindex="1" mold="rounded" id="txtautdate"  readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Work Order Number" width="50px" />
+                    <hbox>
+                        <textbox width="30px"  mold="rounded" id="txtwoid" visible="false" readonly="true"  />
+                        <textbox width="230px" tabindex="1" mold="rounded" id="txtwo"  readonly="true"  />
+                        <button  id="btnwo" width="40px"    mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov WO"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="WIP Warehouse" width="50px" />
+                    <hbox>
+                        <textbox width="50px" visible="false" id="txtwhid"  readonly="true" />
+                        <textbox width="80px"  id="txtwhcode" mold="rounded" readonly="true" />
+                        <textbox width="145px" id="txtwhdesc"  mold="rounded" readonly="true"  />
+                        <button id="btnwh"  width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov WIP Warehouse"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+       
+        <div width="580px">
+            <groupbox width="582px" sclass="main z-demo-config" mold="3d">
+                <caption label="Auto GD/GR/PI/WIP" />			
+                <separator height="5px"></separator>
+                <grid width="565px">
+                    <columns>
+                        <column label="" width="30%" align="right" />
+                        <column label="" width="70%" />
+                    </columns>
+                    <rows>
+                        <row>
+                            <label   value="Goods Delivery Number" width="50px" />
+                            <textbox width="350px"  id="txtgdnumber" mold="rounded"  readonly="true"  />
+                        </row>
+                        <row>
+                            <label   value="Goods Receipt Number" width="50px" />
+                            <textbox width="350px"  id="txtgrnumber" mold="rounded"  readonly="true"  />
+                        </row>
+                        <row>
+                            <label   value="Production Issue Number" width="50px" />
+                            <textbox width="350px"  id="txtprodissue" mold="rounded"  readonly="true"  />
+                        </row>
+                        <row>
+                            <label   value="WIP Receipt Number" width="50px" />
+                            <textbox width="350px"  id="txtwipreceiptnumber" mold="rounded"  readonly="true"  />
+                        </row>
+                        <row visible="false">
+                            <textbox width="100px" readonly="true" id="txtflag"   />
+                             <textbox width="50px"  id="txtprodissueid" visible="true"  mold="rounded"  readonly="true"  />
+                            <textbox width="0px" tabindex="1" mold="rounded" id="txtautoid"  readonly="true"  />
+                            <textbox width="50px"  id="txtgdid" visible="false" mold="rounded"  readonly="true"  />
+                            <textbox width="30px"  id="txtgrid" visible="false" mold="rounded"  readonly="true"  />
+                            <textbox width="30px"  id="txtwipreceiptid" visible="false" mold="rounded"  readonly="true"  />
+                            <textbox width="0px" tabindex="1" id="txtstatid" mold="rounded" readonly="true" visible="false" />
+                        </row>
+                    </rows>
+                </grid>
+                <separator height="5px"></separator>
+            </groupbox>
+        </div>
+        <!--</grid>-->
+        <grid width="578px">
+            <columns>
+                <column label="" width="30%" align="right" />
+                <column label="" width="40%" />
+                <column label="" width="20%" align="right" />
+                <column label="" width="50%" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="Created Date"/>
+                    <textbox width="150px"  id="txtcreationdate" mold="rounded"  readonly="true"  />
+                    <label value="Creation By"/>
+                    <textbox width="150px"  id="txtcreationby" mold="rounded"  readonly="true"  />
+                </row>
+                
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="580px">
+            <columns>
+                <column label="" width="100%" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                <hbox>
+                    <button id="btnsubmit"   mold="trendy"    tabindex="19" label="Submit"      width="100px"   image="/img/Ok24.png"     tooltiptext="Submit"/>
+                    <button id="close"       mold="trendy"         tabindex="21" label="Close"       width="100px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

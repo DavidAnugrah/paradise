@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="winListClient"  height="100%" width="100%" border="normal" title="List Client"  apply="id.my.berkah.rps.dpa.controller.ListClientCTRL" visible="true" >            
+        <!--TOOLBAR-->            
+        <toolbar id="tbAttr" height="27px" align="start" orient="horizontal" left="2">
+            <toolbarbutton id="tbNew"       width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+            <toolbarbutton id="tbEdit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>                          
+            <toolbarbutton id="tbRefresh"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+            <toolbarbutton id="tbFind"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>           
+        </toolbar>            
+        <hbox height="2px"/>       
+        <listbox id="lstClient" mold="paging" height="420px" width="100%" pageSize="10">
+            <listhead sizable="true">           
+                <listheader label="Client Code" width="170px"  sort="auto(clientCode)" visible="true"/>         
+                <listheader label="Client Name" width="130px"  sort="auto(clientDesc)" visible="true"/> 
+                <listheader label="Created Date" width="130px"  sort="auto(createdDate)" visible="true"/> 
+                <listheader label="Created by" width="200px" sort="auto(createdBy)" visible="true"/> 
+                <listheader label="Updated Date" width="170px" visible="true" sort="auto(updatedDate)"/>       
+                <listheader label="Updated By" width="200px" visible="true" sort="auto(updatedBy)"/> 
+                <listheader label="Expired Date" width="130px" visible="true" sort="auto(expiredDate)"/> 
+                <listheader label="Expired by" width="200px" visible="true" sort="auto(expiredBy)"/> 
+                  <listheader label="Flag Perso" width="130px" visible="false" sort="auto(autoPerso)"/>  
+                <listheader label="Client Id" width="130px" visible="false"/>                                                                                                      
+                                                                                                                  
+            </listhead>                    
+            <template name="model">
+                <listitem>                                                                                                     
+                    <listcell label="${each.clientCode}" visible="true"/>  
+                    <listcell label="${each.clientDesc}" visible="true"/>  
+                    <listcell label="${each.createdDate}" visible="true"/>  
+                    <listcell label="${each.createdBy}" visible="true"/>  
+                    <listcell label="${each.updatedDate}" visible="true"/> 
+                    <listcell label="${each.updatedBy}" visible="true"/> 
+                    <listcell label="${each.expiredDate}" visible="true"/> 
+                    <listcell label="${each.expiredBy}" visible="true"/>    
+                    <listcell label="${each.autoPerso}" visible="true"/>                                                                             
+                    <listcell label="${each.clientId}" visible="false"/>                                                
+<!--                    <listcell label="${each.autoPerso}" visible="false"/>                                                -->
+                                                             
+                </listitem>
+            </template>
+        </listbox>       
+         
+        <div>
+        <paging id="userPagingMapingClient" width="100%" style="color: black" />
+        </div>
+        
+        <window id="winInputClient"  apply="id.my.berkah.rps.dpa.controller.InputClientCTRL"  height="154px" border="normal" title="Master Client"  visible="false" width="500px" >   
+            <grid>
+                <columns>
+                    <column label="" width="150px" align="right"/>
+                    <column label="" align="left"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Client Code" />
+                        <textbox id = "txtClientCode" value="" style="background-color:#FFFACD; text-transform: uppercase"/>
+                    </row>
+                    <row>
+                        <label value="Client Name" />
+                        <textbox id = "txtClientName" width="250px" style="background-color:#FFFACD; text-transform: uppercase"/>
+                    </row>
+                </rows>
+            </grid>
+            <hbox height="2px"/>
+            <grid>
+                <columns>
+                    <column label="" align="right" width="5%"/>
+                    <column label="" align="center" width="90%"/>	
+                    <column label="" align="left" width="5%"/>			
+                </columns>
+                <rows>
+                    <row>   
+                        <label value=""/>
+                        <hbox>
+                            <button id="btnNew" label="New" onClick="" image="/img/New24.png" height="32px"/>
+                            <button id="btnSave" label="Save" onClick="" image="/img/Save24.png" height="32px"/>
+                            <button id="btnClose" label="Close" onClick="" image="/img/Logout24.png" height="32px"/>
+                        </hbox>
+                        <label value=""/>
+                    </row>                     
+                </rows>
+            </grid>        
+        </window>      
+  
+        <window id="winEditClient"  apply="id.my.berkah.rps.dpa.controller.EditClientCTRL"  height="165px" border="normal" title="Master Client"  visible="false" width="500px" >   
+            <grid>
+                <columns>
+                    <column label="" width="150px" align="right"/>
+                    <column label="" align="left"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Client Code" />
+                        <hbox>
+                            <textbox id="txtExpiredUser" visible="false"/>
+                            <textbox id = "txtClientCode" value="" style="background-color:#FFFACD" readonly="true"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Client Name" />
+                        <textbox id = "txtClientName" width="250px" style="background-color:#FFFACD; text-transform: uppercase" />
+                    </row>
+                    <row>                               
+                        <textbox id = "txtClientId" visible="false" width="250px"/>
+                    </row>
+                </rows>
+            </grid>
+        
+            <grid>
+                <columns>
+                    <column label="" align="Right" width="5%"/>
+                    <column label="" align="Center" width="90%"/>
+                    <column label="" align="Left" width="5%"/>			
+                </columns>
+                <rows>
+                    <row>   
+                        <label value=""/>
+                        <hbox>
+                            <button id="btnSave" label="Save" onClick="" image="/img/Save24.png" height="32px"/>
+                            <button id="btnExpired" label="Expired" onClick="" image="/img/LockX24.png" height="32px"/>
+                            <button id="btnClose" label="Close" onClick="" image="/img/Logout24.png" height="32px"/>
+                        </hbox>
+                        <label value=""/>
+                    </row>                     
+                </rows>
+            </grid>        
+        </window>       
+  
+        <window id="winFind"  height="122px" apply="id.my.berkah.rps.dpa.controller.FindClientCTRL" border="normal" title="Master Client"  visible="false" width="400px" >   
+            <grid>
+                <columns>
+                    <column label="" width="150px" align="right"/>
+                    <column label="" align="left"/>			
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Client" />
+                        <textbox id = "txtClient" value="" width="150px"/>
+                    </row>
+                </rows>
+            </grid>
+            <hbox height="2px"/>
+            <grid>
+                <columns>
+                    <column label="" align="Right"/>	
+                    <column label="" align="Left"/>			
+                </columns>
+                <rows>
+                    <row>   
+                        <button id="btnFind" label="Find" onClick="" image="/img/Find24.png" height="32px"> </button>
+                        <button id="btnClose" label="Close" onClick="" image="/img/Logout24.png" height="32px"> </button>
+                    </row>                     
+                </rows>
+            </grid>        
+        </window>          
+    </window>   
+                
+</zk>

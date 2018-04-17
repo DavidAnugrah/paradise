@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_map_item" title="Mapping Item Bundling(Create Item BOM)" apply="id.my.berkah.tcash1.controller.MappingItemBundling" border="normal" width="700px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="680px">
+            <columns>
+                <column label="" width="210px" align="right" />
+                <column label="" width="470px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item Bundling Code"  />
+                    <hbox>
+                    <textbox width="50px" id="txtitemId" visible="false"   value="${arg.header.item_bundling_id}"  />
+                    <textbox width="150px" id="txtitemcode" readonly="true" value="${arg.header.item_code}"  />
+                    <button  id="btnitem" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov Item" />
+                    </hbox>
+                   
+                </row>
+                <row>
+                    <label   value="Item Bundling Desc"  />
+                    <textbox width="300px" id="txtitemDesc" value="${arg.header.item_description}"  readonly="true"   />
+                </row>
+                <row>
+                    <label   value="UOM"  />
+                    <textbox width="150px" id="txtUOM" value="${arg.header.uom}"  readonly="true"    />
+                </row>
+
+                <row visible="false" >
+                    <label value="" />
+                    <hbox>
+                      <textbox id="flag" width="100px" />
+                     <textbox id="txtitemid" width="100px"  value="${arg.header.item_bundling_id}"/>
+                     <textbox id="txtitembndlid" width="100px"  value="${arg.header.item_bundling_id}"/>
+                     <textbox id="txtid" width="100px"  />
+                    </hbox>
+                   
+                </row>
+            </rows>
+        </grid>
+   
+        <div width="682px">
+        <listbox id="listbox" height="300px"  sizedByContent="true" emptyMessage="No items match your search" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="Id"                      visible="false"  />
+                <listheader label="Item Id"                 visible="false"  />
+                <listheader label="Item Component Code"     width="140px" visible="true"   />
+                <listheader label="Item Component Desc"     width="300px" visible="true"  />
+                <listheader label="Default"                 visible="true" />
+                <listheader label="Created Date"            width="150px" visible="true" />
+                <listheader label="Created By"              width="150px" visible="true" />
+                <listheader label="Terminated Date"         width="150px" visible="true" />
+                <listheader label="Terminated By"           width="150px" visible="true" />
+                <listheader label="UOM"                     visible="true"  />
+                <listheader label="Composition"             visible="false"  />
+            </listhead>
+            <template name="model">
+                <listitem>
+                 
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+        
+             <grid>
+           <columns>
+               <column label=""  width="680px" align="center" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord"  height="30px" mold="trendy" label="New"        image="/img/New24.png"   tooltiptext="New Record"/>
+                    <button id="btnadd"    height="30px" label="Add Line" mold="trendy" image="/img/Plus24.png" tooltiptext="Add"/>   
+                    <button id="save"       height="30px" mold="trendy" label="Save"    visible="false"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="btndelete" label="Delete Line" mold="trendy"  height="30px"   image="/img/DeleteSelection24.png" tooltiptext="Delete Line" />
+                    <button id="btnexp"  label="Terminate" mold="trendy"    image="/img/stop24.png" tooltiptext="Terminate " />
+                    <button id="close"      height="30px" mold="trendy" label="Close"      image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>   
+                </row>  
+            </rows>
+            </grid>
+              
+         </window>
+ </zk>

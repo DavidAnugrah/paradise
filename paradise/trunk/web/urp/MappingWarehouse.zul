@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Item" title="List Item" border="normal" width="925px" apply="id.my.berkah.urp.controller.ListItemWh" height="318px" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+       <div>
+        <grid id="grid" oddRowSclass="non-odd" width="905px" height="230px">
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="90px" />
+                <column label="" width="140px" />
+                <column label="" width="300px"/>
+                <!--<column label="" width="100px" />-->
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Item Code" width="50px" />
+                    <textbox width="200px" tabindex="1" id="txtitemcode" readonly="true"  focus="true"  />
+                    <button id="btnitem" width="50px" src="/img/Find24.png"/>
+                    <label   value="Item Description" width="50px"/>
+                    <textbox width="200px" tabindex="3" id="txtitemdesc" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Location Code" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtloccode"  readonly="true" />
+                    <label   value=""/>
+                    <label   value="Location Description" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtlocdesc"  readonly="true"/>
+                </row>   
+                <row>
+                    <label   value="Effective Date" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txteffectivedate"  readonly="true" />
+                    <label   value=""/>
+                    <label   value="Effective by" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txttxteffectiveby"  readonly="true"/>
+                </row>
+              <row>
+                    <label   value="Expired Date" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtexpireddate"  readonly="true" />
+                    <label   value=""/>
+                    <label   value="Expired By" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtexpiredby"  readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtcreateddate"  readonly="true" />
+                    <label   value=""/>
+                    <label   value="Created by" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtcreatedby"  readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Modified Date" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtmodifieddate"  readonly="true" />
+                    <label   value=""/>
+                    <label   value="Modified by" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtmodifiedby"  readonly="true"/>
+                </row>
+            </rows>  
+        </grid>              
+       </div>
+            <grid id="grid_find" oddRowSclass="non-odd" width="905px">
+                <columns>
+                    <column label="" width="250px" align="right" />
+                    <column label="" width="200px" align="center"/>
+                    <column label="" width="180px" align="center"/>
+                    <column label="" width="258px" align="left"/>
+                </columns>
+                <rows>
+                    <row height="35px">
+                        <button id="expireitem"      tabindex="38" label="Expire Item"      width="115px"   image="/img/Action24.png"  tooltiptext="Expire Item"/>
+                        <button id="expirewh"  tabindex="37" label="Expire WH"    width="115px"  image="/img/Action24.png"  tooltiptext="Expire WareHouse"/>
+                        <button id="l2c"  tabindex="30" label="L2C" width="115px"   image="/img/New24.png"     tooltiptext="Mapping Location to Channel (L2C)"/>
+                        <button id="close"      tabindex="38" label="Close"      width="115px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </row>
+                </rows>
+            </grid>	 
+        <!--</div>-->
+    </window>
+</zk>

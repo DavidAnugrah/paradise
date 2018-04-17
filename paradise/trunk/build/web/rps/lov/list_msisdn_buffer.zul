@@ -1,0 +1,67 @@
+<zk>
+<window id="win_list_msisdn"  title="List of MSISDN Buffers" width="600px" border="normal" apply="id.my.berkah.rps.lov.controller.MsisdnController" closable="true" style="border:1px;background:#3366FF;">
+    <attribute name="onLater">
+        Clients.clearBusy();
+    </attribute>
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+    	<grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right" width="10%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">
+                    <label value="Keyword:" style="color: white"/>
+                    <textbox id="keywordBox"   width="100%" value="%"/>
+                    <button  id="searchButton" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <div>
+    <listbox id="listbox" height="400px" style="border:1px;background:#0099FF;color:white;">
+	<listhead style="border:0px;background:#0099FF;color:white;">
+            <listheader label="MSISDN" width="100px" sort="auto(msisdn)" style="color: white"/>
+            <listheader label="IMSI"   width="150px" sort="auto(imsi)"   style="color: white"/>
+            <listheader label="ICCID"  width="150px" sort="auto(iccid)"  style="color: white"/>
+            <listheader label="AKI"    width="0px" style="color: white" visible="false"/>
+            <listheader label="PIN1"   width="50px" style="color: white"/>
+            <listheader label="PIN2"   width="50px" style="color: white"/>
+            <listheader label="PUK1"   width="80px" style="color: white"/>
+            <listheader label="PUK2"   width="80px" style="color: white"/>
+	</listhead>
+        <template name="model" style="border:1px;background:#0099FF;">
+            <listitem>
+		<listcell label="${each.msisdn}"/>
+		<listcell label="${each.imsi}"/>
+		<listcell label="${each.iccid}"/>
+		<listcell label="${each.aki}"/>
+		<listcell label="${each.pin1}"/>
+		<listcell label="${each.pin2}"/>
+		<listcell label="${each.puk1}"/>
+		<listcell label="${each.puk2}"/>
+            </listitem>
+        </template>
+    </listbox>
+    </div>
+    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>
+
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+        <grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">	
+                    <button id="submit" label="Submit" orient="horizontal"/>
+                    <button id="close"  label="Cancel" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+ </zk>

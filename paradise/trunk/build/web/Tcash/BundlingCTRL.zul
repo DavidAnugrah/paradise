@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_bundling_CTRL"  title="Bundling" apply="id.my.berkah.tcash1.controller.BundlingCTRL"  border="normal" width="1000px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="20%" align="right" />
+                <column label="" width="35%" />
+                <column label="" width="15%" align="right" />
+                <column label="" width="40%" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Bussines Unit"  />
+                    <hbox>
+                    <textbox width="40px" id="txtbuId" visible="false"    value="${arg.buid}"   />
+                    <textbox width="60px" id="txtbucode" readonly="true"   value="${arg.bucode}"   />
+                    <textbox width="160px" id="txtbuDesc" readonly="true"   value="${arg.budescription}" />
+                     <button  id="btnbu" width="40px"  height="25px" tabindex="1"  src="/img/search.png"  tooltiptext="Lov Business Unit" />
+                    </hbox>
+                     <label   value="Bundling No." width="50px" />
+                        <textbox width="210px" tabindex="2"   id="txtbundlingno"  readonly="true"  />
+                    
+                </row>
+                <row>
+                     <label   value="Item Bundling" width="50px" />
+                    <hbox>
+                        <textbox width="40px" visible="false" id="txtitemid"  readonly="true" />
+                        <textbox width="60px" id="txtitemcode"  readonly="true" />
+                        <textbox width="160px" id="txtitemdesc"  readonly="true"  />
+                        <button id="btnitem" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov Item "/>
+                    </hbox>
+                    <label   value="Bundling Date" width="50px" />
+                        <textbox width="210px" tabindex="1"   id="txtbndlingdate"  readonly="true"  />
+                   
+                </row>
+                <row visible="true">
+                      <label   value="Supplier" width="50px" />
+                    <hbox>
+                        <textbox width="40px" visible="false" id="txtsupplierid"  readonly="true" />
+                        <textbox width="60px" id="txtsuppliercode"  readonly="true" />
+                        <textbox width="160px" id="txtsupplierdesc"  readonly="true"  />
+                        <button id="btnSupp" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov Supplier "/>
+                    </hbox>
+                     <label   value="Status" width="50px" />
+                    <textbox width="210px"  id="txtstatus"    readonly="true" /> 
+                   
+                </row>
+                
+                 <row>
+                      <label   value="WIP Warehouse" width="50px" />
+                    <hbox>
+                        <textbox width="40px" visible="false" id="txtwipid"  readonly="true" />
+                        <textbox width="60px" id="txtwipcode"  readonly="true" />
+                        <textbox width="160px" id="txtwipdesc"  readonly="true"  />
+                        <button id="btnwip" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov WIP Warehouse "/>
+                    </hbox>
+                     <label   value="Bundling Qty" width="50px" />
+                    <decimalbox width="210px" id="txtqty" format="#,##0" style="background-color:#FFFACD;text-align:right" constraint="no negative: it shall not be negative"  />
+                </row>
+                <row>
+                    <label value="Receiving WH"/>
+                     <hbox>
+                        <textbox width="40px" visible="false" id="txtwhid"  readonly="true" />
+                        <textbox width="60px" id="txtwhcode"  readonly="true" />
+                        <textbox width="160px" id="txtwhdesc"  readonly="true"  />
+                        <button id="btnwh" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov Receiving WH "/>
+                    </hbox>
+                    <label/> 
+                    <label/> 
+                </row>
+                <row >
+                    <!--<hbox>-->
+                    <textbox width="100px" tabindex="1" id="txtbdlid" value="${arg.header.bundling_id}" readonly="true" visible="false" />
+                    <textbox width="100px" tabindex="1" id="txtbdldtid" readonly="true" visible="false"  />
+                    <textbox width="0px" readonly="true" id="txtflag" visible="false"  />
+                    <textbox width="0px" readonly="true" id="item" visible="false"  />
+                    <textbox width="0px" readonly="true" id="txtsize" visible="false"  />
+                    <textbox width="0px" tabindex="1" id="txtunitwip" visible="false"    value="${arg.unit}" readonly="true"  />
+                    <textbox width="30px" tabindex="1" visible="false" id="txtoutwip"   value="${arg.InWipRcpId}" readonly="true"  />
+                    <!--</hbox>-->                
+                </row>
+            </rows>
+        </grid>
+        
+        <div width="100%">
+            <listbox id="listbox" height="250px"  sizedByContent="true" emptyMessage="No items match your search"  tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="bundlingId"                 width="100px" visible="false" />
+                    <listheader label="bundlingDtlId"                 width="100px" visible="false" />
+                    <listheader label="Item Id"                 width="100px" visible="false" />
+                    <listheader label="Item Component Code"                 width="200px" visible="true" />
+                    <listheader label="Item Component Desc"           width="680px"     visible="true" />
+                    <listheader label="Qty"                   width="100px" visible="true"/>
+                    <listheader label="Created By"                visible="false"  />
+                    <listheader label="Created Date"                visible="false"  />
+                    <listheader label="Updated By"                width="100px" visible="false"  />
+                    <listheader label="Updated Date"                width="100px" visible="false"  />
+                </listhead>
+            
+                <template name="model">
+                    <listitem>
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+<!--        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>-->
+        
+          <div class="bottom-inner">
+            <grid zclass="none" sizedByContent="true">
+                <columns>
+                    <column width="90px" align="right"/>
+                    <column width="140px"/>
+                    <column width="120px" align="right"/>
+                    <column width="140px"/>
+                    <column width="110px" align="right"/>
+                    <column width="140px"/>
+                    <column width="100px" align="right"/>
+                    <column width="140px"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Created By"/>
+                        <textbox id="txtCreatedBy" readonly="true"/>
+                        <label value="Submited By"/>
+                        <textbox id="txtReleaseBy" readonly="true"/>
+                        <label value="Approved By"/>
+                        <textbox id="txtApproveBy" readonly="true"/>
+                        <label value="Canceled By"/>
+                        <textbox id="txtCancelBy" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Created Date"/>
+                        <textbox id="txtCreatedDate" readonly="true"/>
+                        <label value="Submitted Date"/>
+                        <textbox id="txtRelaseDate" readonly="true"/>   
+                        <label value="Approved Date"/>
+                        <textbox id="txtApproveDate" readonly="true"/>
+                        <label value="Canceled Date"/>
+                        <textbox id="txtCancelDate" readonly="true"/>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+        <grid id="grid_find" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="100%" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                        <button id="newrecord"      width="100px"  label="New"    height="35px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                        <button id="btnsave"        tabindex="18" label="Save"     height="35px"   width="100px"     image="/img/Save24.png"     tooltiptext="Save"/>
+                        <button id="allocated"        tabindex="18" label="Allocated "    height="35px"   width="100px"     image="/img/Edit24.png"     tooltiptext="Edit SN"/>
+                        <button id="btnsubmit"      tabindex="19" label="Submit"    height="35px"  width="100px"   image="/img/Ok24.png"     tooltiptext="Submit"/>
+                        <button id="btnapproved"  tabindex="20" label="Approve"   height="35px"   width="110px"       image="/img/1449847706_OK.png"       tooltiptext="Approve"/>
+                        <button id="btnview"      tabindex="21" label="View Sn" height="35px" visible="false"    image="/img/Detail-24x24.png"        tooltiptext="Show"/>
+                        <button id="btnexcel"      tabindex="21" label="Export Excel" height="35px"   image="/img/AuxiliaryHeaders-24x24.png"      tooltiptext="Export to Excel"/>
+                        <button id="btncancel"      tabindex="22" label="Cancel" height="35px" visible="true"    width="100px"   image="/img/Cancel24.png"     tooltiptext="Cancel"/>
+                        <button id="close"          tabindex="23" label="Close"   height="35px"    width="100px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+        
+    </window>
+    
+    
+   
+</zk>

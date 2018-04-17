@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_dtl_receipt"  title="Add/Edit  WIP Receipt" apply="id.my.berkah.tcash1.controller.DetailWIPReceipt"  border="normal" width="800px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="20%" align="right" />
+                <column label="" width="50%" />
+                <column label="" width="20%" align="right" />
+                <column label="" width="50%" />
+            </columns>
+            <rows id="rowh">
+                 <row>
+                    <label   value=" WIP Receipt Number" width="50px" />
+                    <hbox>
+                    <textbox width="200px" tabindex="1" mold="rounded" id="txtwreceipt"  value="${arg.wiprcpno}" readonly="true"  />
+                    <button id="btnwip" width="40px" visible="false" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov WIP Receipt Number"/>
+                    </hbox>
+                      <label   value="Created By" width="50px" />
+                    <textbox width="210px"  id="txtcreationby" value="${arg.createdby}" readonly="true" mold="rounded"/> 
+                </row>
+                 <row>
+                     <label   value="WIP Receipt date" width="50px" />
+                    <textbox width="200px"  id="txtwipreceiptate" value="${arg.wiprcpdate}" mold="rounded" readonly="true" /> 
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="210px"  id="txtcreationdate" value="${arg.createdate}" readonly="true" mold="rounded"/> 
+                   
+                    
+                 </row>
+                <row>
+                    <label   value="Production Issue Number" width="50px" />
+                    <hbox>
+                    <textbox width="40px" tabindex="2" mold="rounded" id="txtprodissueid" value="${arg.prodissueid}" visible="false"  readonly="true"  />
+                    <textbox width="205px" tabindex="2" mold="rounded" id="txtprodissue" value="${arg.prodissuedesc}" readonly="true"  />
+                    <button id="btnprod" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Production Issue Number"/>
+                    </hbox>
+                     <label   value="Approve Date" width="50px" />
+                    <textbox width="210px"  id="txtapprovedate" readonly="true" value="${arg.approvedate}" mold="rounded"/> 
+                   
+                </row>
+             
+                <row>
+                     <label   value="Item Code" width="50px" />
+                     <hbox>
+                    <textbox width="50px" visible="false" id="txtitmid" value="${arg.itemid}" readonly="true" />
+                    <textbox width="50px"  id="txtitmcode" mold="rounded" value="${arg.itemcode}" readonly="true" />
+                    <textbox width="150px" id="txtitmdesc"  mold="rounded" value="${arg.itemdesc}" readonly="true"  />
+                    <button id="btnitem" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Item Code"/>
+                     </hbox>
+                      <label   value="Approved by" width="50px" />
+                    <textbox width="210px"  id="txtapprovby" readonly="true" value="${arg.approvedby}" mold="rounded"/>                 
+                       
+                </row>
+                <row >
+                    <label   value="Quantity Receipt" width="50px" />
+                        <intbox width="100px" id="txtqty" format="#,##0" value="${arg.quantity}" constraint="no negative: it shall not be negative" style="text-align:right" mold="rounded"  readonly="true" />
+                      <label   value="Submit Date" width="50px" />
+                    <textbox width="210px"  id="txtSubmitdate" readonly="true" value="${arg.submitdate}" mold="rounded"/> 
+                </row>
+                  <row>
+                    <label   value="Status" width="50px" />
+                    <textbox width="150px" tabindex="4" mold="rounded" value="${arg.statusdesc}" id="txtstatdesc"  readonly="true"  />
+                     <label   value="Submited by" width="50px" />
+                    <textbox width="210px"  id="txtsbmtby" readonly="true" value="${arg.submitedby}" mold="rounded"/> 
+                  </row>
+                <row >
+                    <!--<hbox>-->
+                    <textbox width="100px" tabindex="1" id="txtstatid" mold="rounded" value="${arg.status}" readonly="true" visible="false" />
+                    <textbox width="100px"  id="txtwipid" visible="false" mold="rounded" value="${arg.InWipRcpId}" readonly="true"  />
+                    <textbox width="0px" readonly="true" id="txtflag" visible="false"  />
+                    <textbox width="0px" tabindex="1" id="txtunitwip" visible="false" mold="rounded"  value="${arg.unit}" readonly="true"  />
+                    <textbox width="30px" tabindex="1" visible="false" id="txtoutwip" mold="rounded" value="${arg.InWipRcpId}" readonly="true"  />
+                    <!--</hbox>-->                
+                </row>
+            </rows>
+        </grid>
+      
+        <grid id="grid_find" oddRowSclass="non-odd" width="100%">
+            <columns>
+               <column label="" width="100%" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord"  mold="trendy"     width="100px"  label="New"       image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="btnsave"   mold="trendy"      tabindex="18" label="Save"        width="100px"     image="/img/Save24.png"     tooltiptext="Save"/>
+                    <button id="btnsn"   mold="trendy"      tabindex="18" label="Select S/N"        width="100px"     image="/img/Edit24.png"     tooltiptext="Save"/>
+                    <button id="btnsubmit"   mold="trendy"    tabindex="19" label="Submit"      width="100px"   image="/img/Ok24.png"     tooltiptext="Submit"/>
+                    <button id="btnapproved" mold="trendy"  tabindex="20" label="Approved"      width="100px"       image="/img/1449847706_OK.png"       tooltiptext="Approve"/>
+                    <button id="close"  mold="trendy"         tabindex="21" label="Close"       width="100px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                  </row>
+            </rows>
+        </grid>	 
+        </window>
+</zk>

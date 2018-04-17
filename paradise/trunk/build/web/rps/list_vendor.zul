@@ -1,0 +1,49 @@
+<zk>
+<window id="win_list_vendor" title="List of Vendors" width="99%" height="480px" border="normal" apply="id.my.berkah.rps.controller.ListVendorController" ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+    <attribute name="onLater">
+        Clients.clearBusy(); //remove the busy message
+    </attribute>
+    <div>
+            <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+               <toolbarbutton id="newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+               <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+               <toolbarbutton id="cancel"    width="25px" height="25px" src="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+               <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+               <toolbarbutton id="find"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+               <toolbarbutton id="print"     width="25px" height="25px" src="/img/Print24.png"   tooltiptext="Print History Perso"/>
+            </toolbar>
+    </div>
+    <div>
+        <listbox id="listbox" height="405px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="CODE"                width="75px"  sort="auto(applicationCode)"/>
+                <listheader label="DESCRIPTION"         width="250px"  sort="auto(applicationName)"/>
+                <listheader label="IS ACTIVE"           width="70px"   sort="auto(isActive)" />
+                <listheader label="CREATION DATE"       width="200px"  visible="false"/>
+                <listheader label="CREATION DATE"       width="150px"  visible="true"/>
+                <listheader label="CREATED BY"          width="150px"  visible="false"/>
+                <listheader label="CREATED BY"          width="150px"  sort="auto(createdByName)" visible="true"/>
+                <listheader label="LAST UPDATE DATE"    width="200px"  visible="false"/>
+                <listheader label="UPDATE DATE"         width="150px"  visible="true"/>
+                <listheader label="LAST UPDATED BY"     width="150px"  visible="false"/>
+                <listheader label="LAST UPDATED BY"     width="150px"  sort="auto(lastUpdatedByName)" visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.vendorCode}"/>
+                    <listcell label="${each.vendorName}"/>
+                    <listcell label="${each.isActive}"/>
+                    <listcell label="${each.creationDate}"/>
+                    <listcell label="${each.tanggalBuat}"/>
+                    <listcell label="${each.createdBy}"/>
+                    <listcell label="${each.createdByName}"/>
+                    <listcell label="${each.lastUpdateDate}"/>
+                    <listcell label="${each.tanggalUpdate}"/>
+                    <listcell label="${each.lastUpdatedBy}"/>
+                    <listcell label="${each.lastUpdatedByName}"/>
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+  </window>
+</zk>

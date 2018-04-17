@@ -1,0 +1,147 @@
+<zk>
+    <window id="win_perso_x" title="Add/Edit Data Perso - [Flexi]" border="normal" width="805px" apply="id.my.berkah.rps.controller.MyPersoXController" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+		
+     <script type="text/javascript">
+         function RunExe(param1, param2, param3)
+         {
+          try
+          {
+           var ua = navigator.userAgent.toLowerCase();
+           if (ua.indexOf("msie") != -1 || ua.indexOf(".net") != -1)
+           {
+               MyObject = new ActiveXObject("WScript.Shell");
+               var par = "C:\\Perso\\MyPerso.exe " + param1 + ' ' + param2 + ' ' + param3;
+               MyObject.Run(par);
+           }
+           else
+           {
+               alert("Browser not supported, please use Internet Explorer.");
+           }
+          }
+          catch (ex)
+          {
+             alert(ex.toString());
+          }
+         }        
+    </script>
+    
+    <borderlayout id="bdr1" style="background:#5C899B;" width="795px" height="345px">
+        <center id="center1" border="0" style="background:#CAE8F0;">
+            <borderlayout id="bdr2" style="background:#5C899B;" width="782px" height="350px">
+                <center id="center2">
+                    <grid id="grid" oddRowSclass="non-odd" width="800px">
+                        <columns>
+                            <column label="" width="100px" align="right" />
+                            <column label="" width="220px" />
+                            <column label="" width="60px" />
+                            <column label="" width="120px" align="right"/>
+                            <column label="" width="300px" />
+                        </columns>
+                        <rows id="rowh">
+                            <row id="row1">
+                                <label   value="BU Code" width="50px" />
+                                <textbox width="200px" tabindex="1" id="buCode" readonly="true"  focus="true" value="${arg.buCode}" style="background-color:#FFFACD"/>
+                                <button  id="btnbucode" tabindex="2" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Business Units"/>
+                                <label   value="BU Description" width="50px"/>
+                                <textbox width="250px" tabindex="3" id="buDescription" readonly="true" value="${arg.buDescription}"/>
+                            </row>
+                            <row>
+                                <label   value="Perso Number" width="50px" />
+                                <textbox width="200px" tabindex="4" id="persoNumber" readonly="true" value="${arg.persoNumber}"/>
+                                <label   value=""/>
+                                <label   value="Perso Date" width="50px" />
+                                <datebox width="180px" tabindex="5" id="persoDate" readonly="true" value="${arg.persoDate}" cols="12" format="dd/MM/yyyy hh:mm:ss" disabled="true"/>
+                            </row>
+                            <row>
+                                <label   value="SIM S/N" width="50px" />
+                                <textbox width="200px" tabindex="6" id="serialNo"  maxlength="16" value="${arg.serialNo}" style="background-color:#FFFACD"/>
+                                <label   value=""/>
+                                <label   value="Perso Status" width="50px" />
+                                <textbox width="200px" tabindex="7" id="statusName" readonly="true" value="${arg.statusName}"/>
+                            </row>
+                            <row>
+                                <label   value="Application" width="50px"/>
+                                <textbox width="200px" tabindex="8"  readonly="true" id="applicationName" value="${arg.applicationName}"/>
+                                <label   value=""/>
+                                <label />
+                                <label />
+                            </row>
+                            <row>
+                                <label   value="FLEXI" width="50px" />
+                                <textbox width="200px" tabindex="10" id="msisdnx"  value="${arg.msisdnx}" style="background-color:#FFFACD"/>
+                                <label   value=""/>
+                                <label   value="MSISDN" width="50px" />
+                                <hbox>
+                                    <textbox width="200px" tabindex="11" id="msisdn"  readonly="true" value="${arg.msisdn}"/>
+                                    <button  id="btnmsisdn" tabindex="12" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of MSISDN"/>
+                                </hbox>
+                            </row>
+                            <row>
+                                <label   value="IMSI" width="50px" />
+                                <textbox width="200px" tabindex="24" readonly="true" id="imsi" value="${arg.imsi}"/>
+                                <label   value=""/>
+                                <label   value="ICCID" width="50px" />
+                                <textbox width="200px" tabindex="25"  readonly="true" id="iccid" value="${arg.iccid}"/>
+                            </row>
+                            <row>
+                                <label   value="PIN 1" width="50px" />
+                                <textbox width="200px" tabindex="26" readonly="true" id="pin1" value="${arg.pin1}"/>
+                                <label   value=""/>
+                                <label   value="PUK 1" width="50px" />
+                                <textbox width="200px" tabindex="27"  readonly="true" id="puk1" value="${arg.puk1}"/>
+                            </row>
+                            <row>
+                                <label   value="PIN 2" width="50px" />
+                                <textbox width="200px" tabindex="28" readonly="true" id="pin2" value="${arg.pin2}"/>
+                                <label   value=""/>
+                                <label   value="PUK 2" width="50px" />
+                                <textbox width="200px" tabindex="29" readonly="true" id="puk2" value="${arg.puk2}"/>
+                            </row>
+                            <row>
+                                <textbox width="0px" readonly="true" id="buId"         visible="false" value="${arg.buId}"/>
+                                <textbox width="0px" readonly="true" id="status"       visible="false" value="${arg.status}"/>
+                                <textbox width="0px" readonly="true" id="persoId"      visible="false" value="${arg.persoId}"/>
+                                <textbox width="0px" readonly="true" id="productCode"  visible="false" value="${arg.productCode}"/>
+                                <textbox width="0px" readonly="true" id="dllName"      visible="false" value="${arg.dllName}"/>
+                                <textbox width="0px" readonly="true" id="resourceId"   visible="false" value="${arg.resourceId}"/>
+                            </row>
+                            <row>
+                                <textbox width="0px" readonly="true" id="version"        visible="false" value="${arg.version}"/>
+                                <textbox width="0px" readonly="true" id="profile"        visible="false" value="${arg.profile}"/>
+                                <textbox width="0px" readonly="true" id="aki"            visible="false" value="${arg.aki}"/>
+                                <textbox width="0px" readonly="true" id="createdBy"      visible="false" value="${arg.createdBy}"/>
+                                <textbox width="0px" readonly="true" id="flag"           visible="false" value="${arg.flag}"/>
+                                <textbox width="0px" readonly="true" id="toStoreStatus"  visible="false"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </center>
+            </borderlayout>
+        </center>
+        <south id="south" size="50px" border="0" style="background:#CAE8F0;">
+                <grid id="grid_find" oddRowSclass="non-odd" width="810px">
+                    <columns>
+                       <column label="" width="95px" align="center" />
+                       <column label="" width="95px" align="center"/>
+                       <column label="" width="100px" align="center"/>
+                       <column label="" width="115px" align="center"/>
+                       <column label="" width="100px" align="center"/>
+                       <column label="" width="130px" align="center"/>
+                       <column label="" width="100px" align="center"/>
+                   </columns>
+                   <rows>
+                       <row height="30px">
+                           <button id="newrecord"  tabindex="30" label="New"     width="80px" image="/img/New24.png"     tooltiptext="New Record"/>
+                           <button id="save"       tabindex="31" label="Save"    width="80px" image="/img/Save24.png"    tooltiptext="Save Record"/>
+                           <button id="perso"      tabindex="32" label="Perso"   width="85px" image="/img/Perso24x24.png" tooltiptext="Perso"/>
+                           <button id="refresh"    tabindex="33" label="Refresh" width="100px" image="/img/Refresh24.png" tooltiptext="Refresh"/>
+                           <button id="print"      tabindex="34" label="Print"   width="80px" image="/img/Print24.png"   tooltiptext="Print Record"/>
+                           <button id="cancel"     tabindex="35" label="Cancel"  width="100px" image="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+                           <button id="close"      tabindex="36" label="Close"   width="85px" image="/img/Logout24.png"  tooltiptext="Close"/>
+                       </row>
+                   </rows>
+               </grid>	                      	
+            </south>
+        </borderlayout>
+    </window>
+</zk>

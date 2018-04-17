@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Input_File" title="List Input File" apply="id.my.berkah.tcash1.controller.ListInputFile" border="normal" width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+                <textbox id="txtreqin" visible="false" />
+                <textbox id="txtbuid" visible="false" />
+                <textbox id="txtbucode" visible="false" />
+                <textbox id="txtbudes" visible="false" />
+                <textbox id="txtid" visible="false" />
+                <textbox id="txtreqnum" visible="false" />
+                <textbox id="txtreqdte" visible="false" />
+                <textbox id="txtreqstat" visible="false" />
+                <textbox id="txtprocesste" visible="false" />
+                <textbox id="txtprocessby" visible="false" />
+                <textbox id="txtcanceleddte" visible="false" />
+                <textbox id="txtcanceledby" visible="false" />
+                <textbox id="txtapproveby" visible="false" />
+                <textbox id="txtapprovedate" visible="false" />
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="460px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="if_id" width="130px"   visible="false"/>
+                    <listheader label="IF NO" width="210px"   />
+                    <listheader label="IF Date" width="130px"   />
+                    <listheader label="Filename" width="240px"   />
+                    <listheader label="po_id" width="130px"   visible="false"/>
+                    <listheader label="Work Order No." width="210px"   />
+                    <listheader label="Created Date" width="130px"   />
+                    <listheader label="Created By" width="130px"   />
+                    <listheader label="Updated Date" visible="false" width="130px"   />
+                    <listheader label="Updated By" visible="false" width="130px"   />
+                    <listheader label="Submitted Date" width="130px"   />
+                    <listheader label="Submitted By" width="130px"   />
+                    <listheader label="Approved Date" width="130px"   />
+                    <listheader label="Approved By" width="130px"   />
+                    <listheader label="Canceled Date" width="130px"   />
+                    <listheader label="Canceled By" width="130px"   />   
+                    <listheader label="Status" width="170px"   />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+<!--        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>-->
+    
+    </window>
+</zk>

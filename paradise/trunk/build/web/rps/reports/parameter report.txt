@@ -1,0 +1,15 @@
+param.put("p_so_id", new BigDecimal(6040423));
+param.put("p_created_period", new BigDecimal(201402));
+param.put("p_username", "Ikhsan Tama");
+param.put("p_date_print", new Date());
+param.put("p_stamp_duty", new BigDecimal(1));
+param.put("p_total_payment", new BigDecimal(1));
+param.put("p_total_terbilang", "Dua ratus rebu rupiah");
+
+Parameter Kwitansi
+-------------------
+p_so_id = 1011
+p_created_period = 200401
+
+--alamat warna--
+http://www.tayloredmktg.com/rgb/

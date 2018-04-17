@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_select_range_GD_bundling"  title="Select Range" width="805px" border="normal" closable="false"
+           apply="${arg.controller}"
+           style="border:1px;background:#3366FF;" onClose="self.detach();">
+        <vlayout></vlayout>
+        <!--for false-->
+        
+        <div style="border:1px;background:#ffffff;">  
+              <groupbox width="788px" >
+                  <caption label="Available Range" sclass="main z-demo-config"/>	
+            <listbox id="lboxHdr" mold="paging" pageSize="10" height="225px" >
+                <listhead sizable="true" >
+                    <listheader label="Item Detail Id" visible="false" width="100px" />
+                    <listheader label="Storage Id" visible="false" width="100px" />
+                    <listheader label="serial_key_id" visible="false" width="100px" />
+                    <listheader label="Block From" width="280px" sort="" />
+                    <listheader label="Block To" width="280px" sort="" />
+                    <listheader label="supp_delivery_id" visible="false" width="100%" sort="" />
+                    <listheader label="supp_delivery_line" visible="false" width="100%" sort="" />
+                    <listheader label="receive_id" visible="false" width="100%" sort="" />
+                    <listheader label="receive_line" visible="false" width="100%" sort="" />
+                    <listheader label="created_period" visible="false" width="100%" sort="" />
+                    <listheader label="Quantity" visible="true" align="right" width="150px" sort="" />
+                </listhead>
+                <template name="model" >
+                    <listitem>
+                        
+                    </listitem>
+                </template>
+            </listbox>
+              </groupbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+        
+          <grid id="grid" oddRowSclass="non-odd" width="788px">
+                <columns>
+                <column label="" width="210px" align="right" />
+                <column label="" width="210px" align="right"/>
+                <column label="" width="260px" hflex="true"/>
+                </columns>
+                <rows>
+                    <row>
+                       <label/>
+                       <label/>
+                       <hbox>
+                     <label value="Total "  style="margin-left:230px; color:black;"/>
+                     <label id="txtTotal" width="110px" value="0"  style="margin-left:10px; color:black;"/>       
+                       </hbox>
+                    </row>
+                </rows>
+                 
+            </grid>
+            
+            
+        <div width="100%" height="40px" style="border-bottom:0px dotted;background:#eee; margin-bottom:0px;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="250" y="4" width="160px" >
+                     <button id="selectRange" width="120px" mold="trendy" label="Select" image="/img/Next24.png" />
+                </absolutechildren>
+                <absolutechildren x="410" y="4" width="160px" >
+                     <button id="unselectRange" width="120px" mold="trendy"  label="Un-Select" image="/img/Previous24.png" />
+                </absolutechildren>
+<!--                <absolutechildren x="520" y="6" width="160px" height="30px">
+                    <label value="Total" style="margin-left:100px; color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="735" y="6" width="160px" height="30px">
+                    <label id="txtTotal" width="110px" value="0" style="color:black;"/>
+                </absolutechildren>-->
+            </absolutelayout>
+        </div>
+        
+           <div style="border:1px;background:#ffffff;">  
+                  <groupbox width="788px" >
+                  <caption label="Selected Range" sclass="main z-demo-config"/>	
+        <listbox id="listbox" mold="paging" pageSize="100" height="230px" >
+          
+            <listhead  >
+                 <listheader label="Item Detail Id" visible="false" width="100px" />
+                    <listheader label="Storage Id" visible="false" width="100px" />
+                    <listheader label="serial_key_id" visible="false" width="100px" />
+                    <listheader label="Block From" width="280px" sort="" />
+                    <listheader label="Block To" width="280px" sort="" />
+                    <listheader label="supp_delivery_id" visible="false" width="100%" sort="" />
+                    <listheader label="supp_delivery_line" visible="false" width="100%" sort="" />
+                    <listheader label="receive_id" visible="false" width="100%" sort="" />
+                    <listheader label="receive_line" visible="false" width="100%" sort="" />
+                    <listheader label="created_period" visible="false" width="100%" sort="" />
+                    <listheader label="Quantity" align="right" visible="true" width="150px" sort="" />
+            </listhead>
+            <template name="model" >
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        <div>
+            <paging id="userPagingDtl" width="100%" style="color: black"/>
+        </div>
+    </groupbox>
+           </div>
+           
+                <grid id="grids" oddRowSclass="non-odd" width="788px">
+                <columns>
+                <column label="" width="210px" align="right" />
+                <column label="" width="210px" align="right"/>
+                <column label="" width="260px" hflex="true"/>
+                </columns>
+                <rows>
+                    <row>
+                       <label/>
+                       <label/>
+                       <hbox>
+                     <label value="Total "  style="margin-left:230px; color:black;"/>
+                     <label id="txtTotalQty" width="110px" value="0"  style="margin-left:10px; color:black;"/>       
+                       </hbox>
+                    </row>
+                </rows>
+                 
+            </grid>
+        
+        <div width="100%" height="30px" style="border:1px;margin-bottom:0px;background:#d3d3d3;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="320" y="4" width="160px" >
+                    <button id="btnSubmit" tabindex="38" label="OK" width="120px" height="30px"  mold="trendy"  />
+                </absolutechildren>
+<!--                <absolutechildren x="620" y="6" width="160px" height="30px">
+                    <label value="Total" style="color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="745" y="6" width="125px;" height="30px">
+                    <label id="txtTotalQty" width="100px" value="0" style="color:black;"/>
+                </absolutechildren>-->
+            </absolutelayout>
+        </div>
+       
+    </window>
+</zk>

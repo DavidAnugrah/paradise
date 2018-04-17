@@ -1,0 +1,209 @@
+<zk xmlns:n="native">
+    <window id="win_assign_dpa" title="Add/Edit Data Assign MSISDN DPA" border="normal" width="805px" apply="id.my.berkah.rps.dpa.controller.DPAAssignController" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="780px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="220px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Assign Number" width="50px" />
+                    <textbox width="200px" tabindex="4" tabbable="true" id="assignNumber" readonly="true" value="${arg.assignNumber}"/>
+                    <label   value=""/>
+                    <label   value="Assign Date" width="50px" />
+                    <datebox width="205px" tabindex="5"  id="assignDate" readonly="true" value="${arg.assignDate}" cols="12" format="dd-MM-yyyy hh:mm:ss" disabled="true"/>
+                </row>
+                <row>
+                    <label   value="Package Code" width="50px" />
+                    <hbox>
+                        <textbox width="200px" tabbable="true" tabindex="6" id="packageCode"  readonly="true" value="${arg.packageCode}" style="background-color:#FFFACD"/>
+                    </hbox>
+                    <button  id="btnPackageName" tabindex="8" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Package Name"/>
+                    <label   value="Package Name" />
+                    <hbox>
+                        <textbox width="200px" tabbable="true" tabindex="7" id="packageName"  readonly="true" value="${arg.packageName}" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Item PP" width="50px" />
+                    <textbox width="200px" tabbable="true" tabindex="10" id="itemCode"  readonly="true" value="${arg.itemCode}" style="background-color:#FFFACD"/>
+                    <button  id="btnItem" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    <label   value="Item PP Desc." />
+                    <textbox width="200px" tabbable="true" tabindex="12" id="itemDescription" readonly="true" value="${arg.itemDescription}"/>
+                </row>
+                <row>
+                    <label   value="Item KG" width="50px" />
+                    <textbox width="200px" tabbable="true" tabindex="10" id="itemCodeKg"  readonly="true" value="${arg.itemCodeKg}" style="background-color:#FFFACD"/>
+                    <button  id="btnItemKg" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Item Kartu Ganti"/>
+                    <label   value="Item KG Desc." />
+                    <textbox width="200px" tabbable="true" tabindex="12" id="itemDescriptionKg" readonly="true" value="${arg.itemDescriptionKg}"/>
+                </row>
+                <row>
+                    <label   value="Customer Group Code" width="50px" />
+                    <hbox>
+                    <textbox width="70px" tabbable="true" tabindex="10" id="customerGroupCode"  readonly="true"         value="${arg.customerCode}" style="background-color:#FFFACD"/>
+                    <textbox width="120px" tabbable="true" tabindex="12" id="customerGroupDescription" readonly="true"  value="${arg.customerDesc}"/>
+                    </hbox>
+                    <button id="btnCus" src="/img/search.png" onClick=""/>
+     
+<!--                    <button  id="btnCust" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Customer Group"/>-->
+                    <label   value="Item Value" /> 
+                    <intbox width="200px" tabindex="7" id="packageValue"  readonly="true" value="${arg.packageValue}" />
+                </row>
+                <row>
+                <label   value="Location Code" /> 
+                <hbox>  
+                <textbox id="locationCode" tabbable="true" width="70px" value="${arg.locationCode}" readonly="true" style="background-color:#FFFACD"/>
+                <textbox id="locationDesc" tabbable="true" width="120px" value="${arg.locationDesc}" readonly="true"/>
+                </hbox>
+                <button  id="btnLocationCode" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Location"/> 
+               
+                <label   value="Status" />      
+                <textbox id="txtstatus" width="200px" tabbable="true" readonly="true" value="${arg.statusName}"/>
+                </row>
+                <row visible="false">
+                    <textbox width="20px" readonly="true" id="assignId"       visible="true" value="${arg.assignId}"/>
+                    <textbox width="20px" readonly="true" id="locationId"     visible="true" value="${arg.locationId}"/>
+                    <textbox width="20px" readonly="true" id="custId"        visible="true" value="${arg.customerId}"/>
+                    <textbox width="0px" readonly="true" id="status"         visible="false" value="${arg.status}"/>
+                    <textbox width="0px" readonly="true" id="createdBy"      visible="false" value="${arg.createdBy}"/>
+                    <textbox width="0px" readonly="true" id="flag"           visible="false" value="${arg.flag}"/>
+                    <textbox width="0px" readonly="true" id="itemId"         visible="false" value="${arg.itemId}"/>
+                    <textbox width="0px" readonly="true" id="itemKgId"       visible="false" value="${arg.itemKgId}"/>
+                    <textbox width="0px" readonly="true" id="packageId"      visible="false" value="${arg.packageId}"/>
+                    <textbox width="0px" readonly="true" id="statusName"     visible="true" value="${arg.statusName}"/>
+                </row>
+            </rows>
+        </grid>
+
+        <div width="792px">
+            <groupbox width="783px" sclass="main z-demo-config">
+                <caption label="Entry MSISDN" />			
+                <separator height="15px"></separator>
+                <vlayout spacing="15px">
+                    <groupbox mold="3d" width="100%">
+                        <caption image="/img/directories.png" label="Upload File" />
+                        <hlayout spacing="30px">
+                            <vlayout>
+                                <label value="File Name" />
+                                <hlayout>
+                                    <textbox id="fileName"  tabbable="true"   tabindex="13"  width="500px"  value="${arg.fileName}"  readonly="true"/>
+                                    <button  id="uploadFile"   tabindex="14" disabled="${arg.uploadFile}"  upload="true,maxsize=-1," image="/img/file.png" tooltiptext="Upload File Excel"/>
+                                </hlayout>
+                            </vlayout>
+                        </hlayout>
+                    </groupbox>
+
+                    <groupbox id="gb" mold="3d" width="100%" >
+                        <caption image="/img/schedule.png" label="Entry Manual" />
+                        <hlayout spacing="10px">
+                            <vlayout>
+                                <label   value="Block From"/>
+                                <textbox width="200px" tabindex="16" id="blockFrom" placeholder="Masukkan MSISDN"/>
+                            </vlayout>
+                            <vlayout>
+                                <label   value="Qty" />
+                                <longbox width="80px" tabindex="17" id="qty"/>
+                            </vlayout>
+                            <vlayout>
+                                <label   value="Block To"/>
+                                <hlayout>
+                                    <textbox width="200px" tabindex="18" id="blockTo" readonly="true" tabbable="true"  />
+                                    <button  id="btnSubmit" label="Submit" tabindex="19" width="100px" height="23px" tooltiptext="Submit"/>
+                                </hlayout>
+                            </vlayout>
+                    </hlayout>
+                </groupbox>				
+            </vlayout>
+        </groupbox>
+    </div>
+    <div height="12px">
+        
+    </div>                 
+    <div>    
+        <listbox id="listbox" height="200px">
+            <listhead sizable="true">
+                <listheader label="Line No"              width="75px"   sort="auto(lineNo)"/>
+                <listheader label="Block From"           width="150px"  visible="true"/>
+                <listheader label="Block To"             width="150px"  visible="true"/>
+                <listheader label="Qty"                  width="100px"  visible="true"/>
+                <listheader label="Status"               width="150px"  visible="true"/>
+                <listheader label="Description"          width="300px"  visible="true"/>
+                <listheader label="ASSIGN ID"            width="0px"    visible="false"/>
+                <listheader label="ASSIGN DTL ID"        width="0px"    visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.lineNo}"/>
+                    <listcell label="${each.blockFrom}"/>
+                    <listcell label="${each.blockTo}"/>
+                    <listcell label="${each.qty}"/>
+                    <listcell label="${each.statusName}"/>
+                    <listcell label="${each.description}"/>
+                    <listcell label="${each.assignId}"/>
+                    <listcell label="${each.assignDtlId}"/>
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>
+    
+    <grid id="grid_find" oddRowSclass="non-odd" width="810px">
+        <columns>
+           <column label="" width="95px" align="center" />
+           <column label="" width="95px" align="center"/>
+           <column label="" width="115px" align="center"/>
+           <column label="" width="125px" align="center"/>
+           <column label="" width="130px" align="center"/>
+           <column label="" width="120px" align="center"/>
+       </columns>
+       <rows>
+           <row height="35px">
+               <button id="newrecord"  tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+               <button id="save"       tabindex="31" label="Save"       width="80px"   image="/img/Save24.png"    tooltiptext="Save Record"/>
+               <button id="clear"      tabindex="38" label="Clear"      width="85px"   image="/img/DeleteSelection24.png"  tooltiptext="Clear"/>               
+               <button id="proses"     tabindex="36" label="Assign"     width="110px"  image="/img/Action24.png"  tooltiptext="Assign"/>
+               <!--<button id="cr2"        tabindex="37" label="LAR"        width="110px"  image="/img/FileDownload-24x24.png"  tooltiptext="Create CR2"/>-->
+               <button id="btnLars"    tabindex="37" label="LAR"        width="110px"  image="/img/FileDownload-24x24.png"  tooltiptext="Create LAR"/>
+               <button id="refresh"    tabindex="33" label="Refresh"    width="100px"  image="/img/Refresh24.png" tooltiptext="Refresh"/>
+               <button id="close"      tabindex="38" label="Close"      width="85px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+               
+           </row>
+       </rows>
+   </grid>	                      	
+
+</window>
+</zk>

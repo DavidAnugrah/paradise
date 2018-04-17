@@ -1,0 +1,615 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="reportGD"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="535"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="SUPP_DELIVERY_ID" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="PURCHASE_ORDER" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="GD_NO" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="StartDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="EndDate" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="STATUS" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" isForPrompting="true" class="java.lang.String">
+		<defaultValueExpression ><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString><![CDATA[select      row_id,
+                            supp_delivery_id,
+                            po_id,
+                            supplier_id,
+                            supplier_number,
+                            supplier_name,
+                            to_char(supp_delivery_date,'dd-mm-rrrr hh24:mi:ss') supp_delivery_date,
+                            site_id,
+                            site_code,
+                            site_name,
+                            bu_id,
+                            bu_code,
+                            bu_description,
+                            wh_code,
+                            wh_description,
+                            wh_id,
+                            supp_delivery_status,
+                            supp_delivery_status_desc,
+                            supp_delivery_remark,
+                            to_char(created_date,'dd-mm-rrrr hh24:mi:ss') created_date,
+                            created_by,
+                            created_by_name,
+                            to_char(modified_date,'dd-mm-rrrr hh24:mi:ss') modified_date,
+                            modified_by,
+                            modified_by_name,
+                            to_char(approved_date,'dd-mm-rrrr hh24:mi:ss') approved_date,
+                            approved_by,
+                            approved_by_name,
+                            to_char(canceled_date,'dd-mm-rrrr hh24:mi:ss') canceled_date,
+                            canceled_by,
+                            canceled_by_name,
+                            purchase_order,
+                            supp_delivery_no,
+                            to_char(est_time_arrive,'dd-mm-rrrr hh24:mi:ss') est_time_arrive,
+                            to_char(est_time_arrive_to,'dd-mm-rrrr hh24:mi:ss') est_time_arrive_to,
+                            line_remark,
+                            forwarding_agent,
+                            pkg_hrn_test.WoGetAttrDesc('AGENT-NAME',forwarding_agent) agent_name,
+                            status
+                    from    ponrcv020v]]></queryString>
+
+	<field name="ROW_ID" class="java.lang.String"/>
+	<field name="SUPP_DELIVERY_ID" class="java.math.BigDecimal"/>
+	<field name="PO_ID" class="java.math.BigDecimal"/>
+	<field name="SUPPLIER_ID" class="java.math.BigDecimal"/>
+	<field name="SUPPLIER_NUMBER" class="java.lang.String"/>
+	<field name="SUPPLIER_NAME" class="java.lang.String"/>
+	<field name="SUPP_DELIVERY_DATE" class="java.lang.String"/>
+	<field name="SITE_ID" class="java.math.BigDecimal"/>
+	<field name="SITE_CODE" class="java.lang.String"/>
+	<field name="SITE_NAME" class="java.lang.String"/>
+	<field name="BU_ID" class="java.math.BigDecimal"/>
+	<field name="BU_CODE" class="java.lang.String"/>
+	<field name="BU_DESCRIPTION" class="java.lang.String"/>
+	<field name="WH_CODE" class="java.lang.String"/>
+	<field name="WH_DESCRIPTION" class="java.lang.String"/>
+	<field name="WH_ID" class="java.math.BigDecimal"/>
+	<field name="SUPP_DELIVERY_STATUS" class="java.math.BigDecimal"/>
+	<field name="SUPP_DELIVERY_STATUS_DESC" class="java.lang.String"/>
+	<field name="SUPP_DELIVERY_REMARK" class="java.lang.String"/>
+	<field name="CREATED_DATE" class="java.lang.String"/>
+	<field name="CREATED_BY" class="java.math.BigDecimal"/>
+	<field name="CREATED_BY_NAME" class="java.lang.String"/>
+	<field name="MODIFIED_DATE" class="java.lang.String"/>
+	<field name="MODIFIED_BY" class="java.math.BigDecimal"/>
+	<field name="MODIFIED_BY_NAME" class="java.lang.String"/>
+	<field name="APPROVED_DATE" class="java.lang.String"/>
+	<field name="APPROVED_BY" class="java.math.BigDecimal"/>
+	<field name="APPROVED_BY_NAME" class="java.lang.String"/>
+	<field name="CANCELED_DATE" class="java.lang.String"/>
+	<field name="CANCELED_BY" class="java.math.BigDecimal"/>
+	<field name="CANCELED_BY_NAME" class="java.lang.String"/>
+	<field name="PURCHASE_ORDER" class="java.lang.String"/>
+	<field name="SUPP_DELIVERY_NO" class="java.lang.String"/>
+	<field name="EST_TIME_ARRIVE" class="java.lang.String"/>
+	<field name="EST_TIME_ARRIVE_TO" class="java.lang.String"/>
+	<field name="LINE_REMARK" class="java.lang.String"/>
+	<field name="FORWARDING_AGENT" class="java.lang.String"/>
+	<field name="AGENT_NAME" class="java.lang.String"/>
+	<field name="STATUS" class="java.math.BigDecimal"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="50"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="190"
+						y="11"
+						width="179"
+						height="20"
+						key="staticText-12"/>
+					<box></box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[GOODS DELIVERY ]]></text>
+				</staticText>
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="2"
+						y="0"
+						width="167"
+						height="31"
+						key="image-1"/>
+					<box></box>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA["D:\\Tsel Project\\Repo\\paradise\\trunk\\web\\img\\Logo1.png"]]></imageExpression>
+				</image>
+				<staticText>
+					<reportElement
+						x="2"
+						y="31"
+						width="188"
+						height="14"
+						key="staticText-13"/>
+					<box></box>
+					<textElement>
+						<font isBold="true"/>
+					</textElement>
+				<text><![CDATA[PT. TELEKOMUNIKASI SELULER]]></text>
+				</staticText>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="45"
+						width="555"
+						height="1"
+						key="line-1"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="141"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="127"
+						height="20"
+						key="staticText-14"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[GD Number		:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="287"
+						y="0"
+						width="82"
+						height="20"
+						key="staticText-15"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[WO Number	:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="57"
+						width="127"
+						height="20"
+						key="staticText-16"/>
+					<box></box>
+					<textElement textAlignment="Justified">
+						<font/>
+					</textElement>
+				<text><![CDATA[GD Status	:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="287"
+						y="57"
+						width="82"
+						height="20"
+						key="staticText-17"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Production Date :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="93"
+						width="127"
+						height="20"
+						key="staticText-18"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Vendor Name		:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="287"
+						y="93"
+						width="82"
+						height="20"
+						key="staticText-19"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[BU Requestor	 :]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="127"
+						y="57"
+						width="160"
+						height="18"
+						key="textField-10"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.math.BigDecimal"><![CDATA[$F{STATUS}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="127"
+						y="93"
+						width="160"
+						height="18"
+						key="textField-11"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{AGENT_NAME}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="369"
+						y="0"
+						width="166"
+						height="18"
+						key="textField-12"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PURCHASE_ORDER}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="127"
+						y="0"
+						width="160"
+						height="18"
+						key="textField-13"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SUPP_DELIVERY_NO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="369"
+						y="93"
+						width="166"
+						height="18"
+						key="textField-14"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{BU_DESCRIPTION}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="369"
+						y="57"
+						width="166"
+						height="18"
+						key="textField-15"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{APPROVED_DATE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="26"
+						width="127"
+						height="20"
+						key="staticText-20"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[GD Aprove Date :]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="287"
+						y="26"
+						width="82"
+						height="20"
+						key="staticText-21"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[WO Type	:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="127"
+						y="26"
+						width="160"
+						height="18"
+						key="textField-17"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{SUPP_DELIVERY_DATE}]]></textFieldExpression>
+				</textField>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="36"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="2"
+						y="0"
+						width="28"
+						height="36"
+						forecolor="#000000"
+						key="staticText-22"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[LINE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="30"
+						y="0"
+						width="84"
+						height="36"
+						forecolor="#000000"
+						key="staticText-23"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font pdfFontName="Helvetica-Bold" size="12" isBold="true"/>
+					</textElement>
+				<text><![CDATA[ITEM]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="114"
+						y="0"
+						width="105"
+						height="36"
+						forecolor="#000000"
+						key="staticText-24"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Center">
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[ITEM DESCRIPTION]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="219"
+						y="0"
+						width="130"
+						height="36"
+						forecolor="#000000"
+						key="staticText-25"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[REGIONAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="349"
+						y="0"
+						width="72"
+						height="36"
+						forecolor="#000000"
+						key="staticText-26"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Top">
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[QTY DELIVERED]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="421"
+						y="0"
+						width="114"
+						height="36"
+						forecolor="#000000"
+						key="staticText-27"/>
+					<box>					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="12"/>
+					</textElement>
+				<text><![CDATA[ORDER DATE]]></text>
+				</staticText>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="99"  isSplitAllowed="true" >
+				<subreport  isUsingCache="true">
+					<reportElement
+						x="7"
+						y="8"
+						width="519"
+						height="88"
+						key="subreport-1"/>
+					<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					<subreportExpression  class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "reportGD_subreport0.jasper"]]></subreportExpression>
+				</subreport>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="113"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="1"
+						width="43"
+						height="20"
+						key="staticText-5"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Remark	:]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="21"
+						width="535"
+						height="83"
+						key="textField-4"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{LINE_REMARK}]]></textFieldExpression>
+				</textField>
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<lastPageFooter>
+			<band height="94"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="43"
+						y="0"
+						width="62"
+						height="20"
+						key="staticText-6"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Prepared By]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="413"
+						y="-3"
+						width="68"
+						height="20"
+						key="staticText-7"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Approved By]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="27"
+						y="72"
+						width="100"
+						height="20"
+						key="staticText-8"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[(.............................)]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="395"
+						y="72"
+						width="100"
+						height="20"
+						key="staticText-9"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[(.............................)]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="7"
+						y="72"
+						width="138"
+						height="18"
+						key="textField-8"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{CREATED_BY_NAME}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="362"
+						y="72"
+						width="148"
+						height="18"
+						key="textField-9"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{APPROVED_BY_NAME}]]></textFieldExpression>
+				</textField>
+			</band>
+		</lastPageFooter>
+		<summary>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

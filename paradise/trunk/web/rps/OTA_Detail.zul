@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_detail_ota" title="Migration USIM via OTA" apply="id.my.berkah.rps.ota.controller.PrintOTADetail"  border="normal" height="435px" width="860px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+		
+     <script type="text/javascript">
+         function RunExe(param1, param2, param3)
+         {
+          try
+          {
+           var ua = navigator.userAgent.toLowerCase();
+           if (ua.indexOf("msie") != -1 || ua.indexOf(".net") != -1)
+           {
+               MyObject = new ActiveXObject("WScript.Shell");
+               var par = "C:\\Perso\\MyPerso.exe " + param1 + ' ' + param2 + ' ' + param3;
+               MyObject.Run(par);
+           }
+           else
+           {
+               alert("Browser not supported, please use Internet Explorer.");
+           }
+          }
+          catch (ex)
+          {
+             alert(ex.toString());
+          }
+         }        
+    </script>
+    <div>
+        <grid id="grid" oddRowSclass="non-odd" width="840px" height="345px">
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="0px" />
+                <column label="" width="180px" align="right"/>
+                <column label="" width="285px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Transaction Number" width="50px" />
+                    <textbox width="200px" tabindex="1" id="txttransnumb" readonly="true"  focus="true"  value="${arg.txttransnumb}"/>
+                    <label   value=""/>
+                    <label   value="Transaction Date" width="50px"/>
+                    <textbox width="200px" tabindex="3" id="txttransdate" readonly="true"   value="${arg.txttransdate}"/>
+                </row>
+                <row>
+                    <label   value="Transaction Status" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txttransstat"  value="${arg.txttransstat}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Error Input Data" width="50px" />
+                    <textbox width="30px" tabindex="12" id="txterrinput"  value="${arg.errorothers} x" readonly="true"/>
+                   
+                </row>
+                <row>
+                    <label   value="OTA Status Inject" width="50px" />
+                    <textbox width="200px" tabindex="5" id="txtotastat"  value="${arg.txtotastat}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Error PIN " />
+                    <hlayout>
+                    <textbox width="200px" tabindex="13"  id="txterrpin" value="${arg.txterrpin}" readonly="true" visible="false"/>
+                    <checkbox  tabindex="13" id="checkerrpin"  disabled="true" />
+                    <label id="labell" value="Error PIN 3x" visible="true"/>
+<!--                    <zscript><![CDATA[
+               void doChecked() {
+               if(checkerrpin.isChecked()){
+                     labell.setVisible(true);
+                    }
+                    }
+        ]]></zscript> -->
+                    </hlayout>
+               
+                </row>
+                <row>
+                        <label   value="MSISDN Old" width="50px" />
+                        <textbox width="210px" tabindex="6" id="txtmsisdnold"  value="${arg.txtmsisdnold}" readonly="true" />
+                       <label   value=""/>
+                        <label   value="Perdana 4G" width="50px" />
+                        <textbox width="200px" tabindex="8" id="txtmsisdnnew"  value="${arg.txtmsisdnnew}" readonly="true"/>
+                </row>
+                <row>
+                    <label   value="IMSI New" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtimsinew"  value="${arg.txtimsinew}" readonly="true" />    
+                     <label   value=""/>
+                    <label   value="IMSI Old" width="50px" />
+                    <textbox width="200px"  tabindex="9" id="txtimsiold"  value="${arg.txtimsiold}" readonly="true" />
+                </row>
+                <row>
+                     <label   value="ICCID New " />
+                    <textbox width="200px" tabindex="13" id="txticcidnew"  value="${arg.txticcidnew}" readonly="true"/>
+                      <label   value=""/>
+                    <label   value="ICCID Old" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txticcidold"   value="${arg.txticcidold}" readonly="true"/>
+                </row>
+                <row visible="true" >
+                    <label   value="PIN 1 New" width="50px"/>
+                    <textbox width="200px" tabindex="15"  readonly="true"  value="${arg.txtpin1new}" id="txtpin1new"/>
+                    <label   value=""/>
+                    <label   value="PIN 1 Old" width="50px" />
+                    <textbox width="200px" tabindex="14" id="txtpin1old"  value="${arg.txtpin1old}" readonly="true" />
+                </row>
+                <row visible="true">
+                     <label   value="PIN 2 NEW" width="50px"/>
+                    <textbox width="200px" tabindex="15"  readonly="true"  value="${arg.txtpin2new}" id="txtpin2new"/>
+                      <label   value=""/>
+                    <label   value="PIN 2 Old" width="50px" />
+                    <textbox width="200px" tabindex="14" id="txtpin2old"  value="${arg.txtpin2old}"  readonly="true" />
+                </row>
+                <row visible="true">
+                     <label   value="PUK 1 New" width="50px"/>
+                    <textbox width="200px" tabindex="17"  readonly="true"  value="${arg.txtpuk1New}" id="txtpuk1New"/>
+                       <label   value=""/>
+                    <label   value="PUK 1 Old" width="50px"  />
+                    <textbox width="200px" tabindex="16" id="txtpuk1old"  value="${arg.txtpuk1old}" readonly="true" />
+                </row>
+                <row visible="true">
+                     <label   value="PUK 2 New" width="50px" />
+                    <textbox width="200px" tabindex="19"  readonly="true"  value="${arg.txtpuk2new}" id="txtpuk2new"/>
+                     <label   value=""/>
+                    <label   value="PUK 2 Old" width="50px" />
+                    <textbox width="200px" tabindex="18" value="${arg.txtpuk2old}"  readonly="true" id="txtpuk2old"/>
+                </row>
+                <row visible="false">
+                    <label   value="4KI Old" width="50px" />
+                    <textbox width="200px" tabindex="20" readonly="true"  value="${arg.txt4kiold}" id="txt4kiold"/> 
+                    <label   value=""/>
+                    <label   value="4KI New" width="50px" />
+                    <textbox width="200px" tabindex="21"  readonly="true"  value="${arg.txt4kinew}" id="txt4kinew"/>
+                </row>
+                <row visible="false">
+                    <label   value="SN Old" width="50px" />
+                    <textbox   width="200px" tabindex="22" readonly="true"  value="${arg.txtsnold}" id="txtsnold" />
+                    <label   value=""/>
+                    <label   value="SN New" width="50px" />
+                    <textbox width="200px" tabindex="23" readonly="true"  id="txtsnnew" value="${arg.txtsnnew}" style="background-color:#FFFACD"/>
+                </row>
+                
+<!--                <row>
+                    <label   value="Error Input Data" width="50px" />
+                    <textbox width="200px" placeholder="12x " tabindex="12" id="txterrinput" value="${arg.txterrinput}" readonly="true"/>
+                  <label   value=""/>
+                    <label   value="Error PIN " />
+                    <hlayout>
+                    <textbox width="200px" tabindex="13" id="txterrpin" value="${arg.txterrpin}" readonly="true" visible="false"/>
+                    <checkbox  tabindex="13" id="checkerrpin"   disabled="true"   />
+                    <label id="labell" value="Error PIN 3x" visible="true"/>
+                    <zscript><![CDATA[
+               void doChecked() {
+               if(checkerrpin.isChecked()){
+                     labell.setVisible(true);
+                    }
+                    }
+        ]]></zscript> 
+                    </hlayout>
+                </row> -->
+                    <row visible="false">
+                    <textbox width="0px" readonly="true" id="txttrcid" disabled="true" value="${arg.txttrcid}"      visible="false" />
+                    <textbox width="0px" readonly="true" id="txtdate" disabled="true" value="${arg.txtdate}"    visible="false" />
+                </row>
+            </rows> 
+           
+           
+        </grid>
+        
+    </div>
+    <div>
+        <grid id="grid_button" oddRowSclass="non-odd" width="840px" height="45px">
+            <columns>
+               <column label="" width="420px"  align="right" />
+               <column label="" width="420px"  align="left"/>
+           </columns>
+           <rows>
+               <row>
+                  <button id="print"      tabindex="34" label="Print"   width="80px" image="/img/Print24.png"   tooltiptext="Print Record"/>
+                  <button id="close"      tabindex="37" label="Close"   width="85px" image="/img/Logout24.png"  tooltiptext="Close"/>
+               </row>
+           </rows>
+       </grid>	
+    </div>                             	
+    </window>
+</zk>

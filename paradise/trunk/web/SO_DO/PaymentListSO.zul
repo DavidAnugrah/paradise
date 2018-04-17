@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_payment_list_so" apply="id.my.berkah.sodo.controller.PaymentListSoCtrl" title="Payment List SO" border="normal" width="670px"  ctrlKeys="#down#up"  closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+         <div width="670px">
+            <groupbox width="650px" sclass="main z-demo-config">
+                <caption label="Payment From Sales Order" />			
+<!--                <separator height="10px"></separator>-->
+<!--                <vlayout spacing="15px"/>-->
+                <grid  id="grid" oddRowSclass="non-odd" width="635px" >
+                    <columns>
+                <column label="" width="200px" align="center" />
+                <column label="" width="430px" />
+            </columns>
+             <rows id="rowh">
+                <row>
+                    <label   value="Payment Ref No." width="130px" />
+                    <hbox>
+                    <textbox width="310px" tabindex="4" id="txtPaymentrefno" readonly="true" value="${arg.paymentNo}"/>
+                    <textbox width="50px" tabindex="4" id="txtPaymentid" readonly="true" visible="false" value="${arg.paymentId}"/>
+                    <textbox width="50px" tabindex="4" id="txtSoid" readonly="true" visible="false" value="${arg.soId}"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Payment Line" width="100px" />
+                    <textbox width="50px" tabindex="4" id="txtPaymentLine" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Amount" width="50px"  />
+                    <decimalbox width="150px" format="###,###,##0" value="0" tabindex="4" id="txtAmount"  style="text-align:right" readonly="false"/>
+                </row>
+                <row>
+                    <label   value="Payment Method" width="100px" />
+                    <hbox>
+                    <textbox width="50px" tabindex="4" id="txtPaymentMethodId" readonly="true" />
+                    <textbox width="250px" tabindex="4" id="txtpaymentmethodCode" readonly="true"  />
+                    <button id="btnlov" src="/img/search.png" />
+                    </hbox>
+                </row>
+                <row id="r1" visible="false"  >
+                    <label   value="Payment Issuer" width="100px"  />
+                    <hbox>
+                    <textbox width="50px" tabindex="4" id="txtpaymentissuerCode" readonly="false" />
+                    <textbox width="250px" tabindex="4" id="txtpaymentissuerdesc" readonly="false" />
+                    <button id="btnlov1" src="/img/search.png" />
+                    </hbox>
+                </row>
+                <row id="r2" visible="false" >
+                    <label   value="Acc no" width="50px" />
+                    <textbox width="310px" tabindex="4" id="txtAccNo" readonly="false"  />
+                </row>
+                <row id="r3" visible="false" >
+                    <label   value="Holder Name" width="90px"  />
+                    <textbox width="400px" tabindex="4" id="txtHolderName"  readonly="false" />
+                </row>
+                <row id="r4" visible="false" >
+                    <label   value="Issuer Date" width="90px"  />
+                    <hbox>
+                        <textbox id="txtissuerdate" width="100px" />
+                    <datebox width="100px" id="txtdate" />
+                    </hbox>
+                </row>
+                <row id="r5"  >
+                    <label   value="User Payment" width="90px"  />
+                    <textbox width="310px" tabindex="4" id="txtUserPayment" readonly="true"/>
+                </row>
+                <row id="r6"  >
+                    <label   value="Payment Date" width="90px"  />
+                    <textbox width="150px" tabindex="4" id="txtPaymentDate" readonly="true"   />
+                </row>
+             </rows>
+                </grid>
+                         <separator height="15px"></separator>       
+                <grid id="grids" oddRowSclass="non-odd" width="635px">
+                    
+                     <columns>
+                <column label="" width="200px" align="right" />
+                <column label="" width="420px" />
+            </columns>
+                    <rows>
+                <row>
+                    <label   value="Total Amount" width="90px"  />
+                    <decimalbox format="###,###,##0" width="180px"  id="txtTotalAmount"  style="text-align:right"   readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Stamp Duty" width="90px"  />
+                    <decimalbox format="###,###,##0" width="180px" tabindex="4" id="txtStampDuty"  style="text-align:right"  readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Total Amount With Stamp" width="90px"  />
+                    <decimalbox format="###,###,##0" width="180px" tabindex="4" id="txtTotalAmountWithStamp"  style="text-align:right" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Total Payment" width="90px"  />
+                    <decimalbox format="###,###,##0" width="180px" tabindex="4" id="txtTotalPayment"   style="text-align:right" readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Balance" width="90px"  />
+                    <decimalbox format="###,###,##0" width="180px" tabindex="4" id="txtBalance"  style="text-align:right" readonly="true" />
+                </row>
+                       <row visible="false">
+                            <textbox id="txtsoId" width="80px" value="${arg.soId}"  />
+                            <textbox width="20px" tabindex="4" id="txtPaymentIssuerId" readonly="false"  />
+                        </row>
+                    </rows>
+               
+                                 </grid>
+            </groupbox>
+            
+            <grid id="grid_close" oddRowSclass="non-odd" width="700px">
+            <columns>
+                <column label="" width="300px" align="right" />
+                <column label="" width="300px" align="left" />
+               </columns>
+                 <rows>
+                <row height="10px">
+                 <button id="save"      tabindex="10" label="Payment"  width="100px" height="30px" src="/img/Payment.png"  />
+                 <button id="close"      tabindex="10" label="Close"  width="100px" height="30px"  src="/img/Exit_button.png"/>
+                 </row>
+        </rows>
+        </grid>
+         </div>
+ </window>
+</zk>

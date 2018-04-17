@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration	PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <settings>
+        <setting name="lazyLoadingEnabled" value="false" />
+    </settings>
+    <environments default="tomcat">
+        <environment id="tomcat">            
+            <transactionManager type="JDBC"/>
+            <dataSource type="JNDI">
+                <property name="data_source" value="java:/comp/env/paradiseConn"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="id/my/berkah/pos/sqlmap/PosHeaderMapper.xml"/>
+        <mapper resource="id/my/berkah/pos/sqlmap/PosDetailMapper.xml"/>
+        <mapper resource="id/my/berkah/pos/sqlmap/LovPOSMapper.xml"/>
+        <mapper resource="id/my/berkah/pos/sqlmap/ProcedurePOSMapper.xml"/>
+        <mapper resource="id/my/berkah/pos/sqlmap/PaymentMapper.xml"/>
+        <mapper resource="id/my/berkah/rps/sqlmap/LovRPSMapper.xml"/>
+        <mapper resource="id/my/berkah/rps/sqlmap/ProcedureRPSMapper.xml"/>
+        <mapper resource="id/my/berkah/rps/sqlmap/RPSMapper.xml"/>
+        <mapper resource="id/my/berkah/rps/setup/sqlmap/RPSMapper.xml"/>
+        <mapper resource="id/my/berkah/rps/ota/sqlmap/RPSMapperota.xml"/>
+        <mapper resource="id/my/berkah/rps/cloning/sqlmap/RPSCloneMapper.xml"/>
+        <mapper resource="id/my/berkah/rps/dpa/sqlmap/RPSDPAMapper.xml"/>
+        <mapper resource="id/my/berkah/util/sqlmap/UtilMapper.xml"/>
+        <mapper resource="id/my/berkah/um/sqlmap/UMMapper.xml"/>
+        <mapper resource="id/my/berkah/rps/dpa/sqlmap/list_client.xml"/>
+        <mapper resource="id/my/berkah/rps/dpa/sqlmap/RPSDPAUnalloc.xml"/>
+        <mapper resource="id/my/berkah/urp/sqlmap/URPChannel.xml"/>
+        <mapper resource="id/my/berkah/urp/sqlmap/MstrChannel.xml"/>
+        <!--<mapper resource="id/my/berkah/json/sqlmap/Sql.xml"/>-->
+        <mapper resource="id/my/berkah/sodo/sqlmap/SodoSqlMap.xml"/>
+        <mapper resource="id/my/berkah/sodo/sqlmap/SodoSqlMap2.xml"/>
+        <!--<mapper resource="id/my/berkah/mkios/sqlmap/MkiosMapper.xml"/>-->
+        <mapper resource="id/my/berkah/webservice/sqlmap/WSMapper.xml"/>
+        <!--<mapper resource="id/my/berkah/mkiossetup/sqlmap/MkiosBulkMapper.xml"/>-->
+        <mapper resource="id/my/berkah/ifm/sqlmap/IFMConfig.xml"/>
+        <!--<mapper resource="id/my/berkah/hrn/sqlmap/IFMConfig1.xml"/>-->
+        <mapper resource="id/my/berkah/hrnbox/sqlmap/HrnBoxConfig.xml"/>
+        <mapper resource="id/my/berkah/lar/sqlmap/LARsqlconfig.xml"/>
+        <mapper resource="id/my/berkah/hrn/sqlmap/hrnMapper.xml"/>
+        <mapper resource="id/my/berkah/reports/sqlmap/Reports.xml"/>
+        <mapper resource="id/my/berkah/sn/sqlmap/SNmap.xml"/>
+        <mapper resource="id/my/berkah/mass/sqlmap/MassProvConfig.xml"/>
+        <mapper resource="id/my/berkah/tcash1/sqlmap/TcashCofig.xml"/>
+        <mapper resource="id/my/berkah/TcashMntr/sqlmap/TCashMntr.xml"/>
+        <!--<mapper resource="id/my/berkah/ifmnew/sqlmap/IFMNewConfig.xml"/>-->
+        <!--<mapper resource="id/my/berkah/tcash/sqlmap/tcashMapper.xml"/>-->
+        <!--<mapper resource="id/test/sql/tracemapper.xml"/>-->
+        <!--<mapper resource="id/my/berkah/rpsbaru/sqlmap/rpsnew.xml"/>-->
+        
+    </mappers>
+</configuration>

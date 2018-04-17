@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Mapping_item_WH" title="List Item " border="normal" width="1130px" height="100%"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <div>
+        <listbox id="listbox" height="467px" mold="paging"  pageSize="10">
+            <listhead sizable="true">
+                <listheader label="WH Id"     width="100px" visible="false" sort="auto" />
+                <listheader label="WH Code"     width="100px" visible="true" sort="auto" />
+                <listheader label="WH Description"     width="150px" visible="true" sort="auto" />
+                <listheader label="Effective By"          width="140px" visible="true" sort="auto"/>
+                <listheader label="Effective Date"          width="100px" visible="true" />
+                <listheader label="Expired By"          width="140px" visible="true" />
+                <listheader label="Expired Date"      width="100px" visible="true" />
+                <listheader label="Created By"        width="140px" visible="true" />
+                <listheader label="Created Date"      width="100px" visible="true" />
+                <listheader label="Modified By"          width="140px" visible="true" sort="auto"/>
+                <listheader label="Modified Date"          width="100px" visible="true"/>
+                <listheader label="Id"                     width="40px" visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+        <grid>
+            <columns>
+                    <column label="" width="250px" align="right" />
+                    <column label="" width="200px" align="center"/>
+                    <column label="" width="180px" align="center"/>
+                    <column label="" width="258px" align="left"/>
+            </columns>
+<!--            <rows>
+                    <row height="35px">
+                        <button id="Add"  tabindex="30" label="Add" width="115px"   image="/img/New24.png"     tooltiptext="Add New"/>
+                        <button id="refresh" src="/img/Refresh24.png" tooltiptext="Refresh" label="Refresh" width="115px" />
+                        <label value=""/>
+                        <label value=""/>
+                        <label value=""/>
+                    </row>
+            </rows>-->
+        </grid>
+        
+ <window id="win_list_find" title="Find Parameter" apply="id.my.berkah.urp.controller.ListMappingWH" position="center" visible="false" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Warehouse" width="50px" />
+                        <hbox>
+                        <textbox id="txtwhid" placeholder="Supplier" width="200px" />
+                        <textbox id="txtWarehousecode" placeholder="Warehouse Code" width="200px" readonly="true"/>
+                        <textbox id="txtiWarehousedesc" placeholder="Warehouse Description" width="140px" readonly="true" style="background-color:#FFFACD"/>
+                        <button id="btnwa" src="/img/search.png"/>
+                        </hbox>
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="210px" align="center" />
+                    <column label="" width="210px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                     <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Close1" tabindex="13" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+    
+</zk>

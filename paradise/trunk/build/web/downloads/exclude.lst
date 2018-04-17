@@ -1,0 +1,8 @@
+[exclude]
+total=4
+
+[files]
+1=3des.dll
+2=msvbvm60.dll
+3=tcpip.dll
+4=wrapper.dll

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Monitoring_Rps_Migrasi" title="Monitoring RPS Migrasi" border="normal" width="1130px"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <listbox id="listbox" height="400px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Item Id"   width="130px" visible="false"  />
+                <listheader label="Item Code"   width="230px" visible="true"  />
+                <listheader label="Packet Id" width="130px" visible="false"  />
+                <listheader label="Packet Code" width="230px" visible="true"  />
+                <listheader label="Location Id" width="130px" visible="false"  />
+                <listheader label="Location Code" width="230px" visible="true"  />
+                <listheader label="Status"      width="230px" visible="true"/>
+                <listheader label="QTY"         width="185px" visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.itemId}"/>
+                    <listcell label="${each.itemCode}"/>
+                    <listcell label="${each.packetId}"/>
+                    <listcell label="${each.packetCode}"/>
+                    <listcell label="${each.locationId}"/>
+                    <listcell label="${each.locationCode}"/>
+                    <listcell label="${each.status}"/>
+                    <listcell label="${each.qty}"/>
+                </listitem>
+            </template>
+        </listbox>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    </window>
+</zk>

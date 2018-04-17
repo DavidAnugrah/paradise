@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_list_wip_find" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListSetupWIPFind" position="center" visible="true" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="WIP Warehouse" width="50px" />
+                        <hbox>
+                        <textbox id="txtid" visible="false"  width="40px" />
+                        <textbox id="txtwipcode" placeholder="WIP Code" width="70px" value="${arg.header.wh_code}" readonly="true" mold="rounded" />
+                        <textbox id="txtwipdesc" placeholder="WIP Description" value="${arg.header.wh_id}" width="140px" readonly="true" mold="rounded" />
+                        <button id="btnwip" src="/img/search.png" mold="trendy"/>
+                        </hbox>
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="210px" align="right" />
+                    <column label="" width="210px" align="left" />
+                </columns>
+                <rows>
+                 <row>
+                    <button id="goFind" height="30px" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                    <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+</zk>

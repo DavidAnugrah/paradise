@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+
+    <style dynamic="true">
+
+        <!-- Make Plain Grid -->
+        .GridLayoutNoBorder tr.z-row td.z-row-inner, tr.z-row .z-cell,div.z-grid
+        {
+        border: none;
+        overflow: hidden;
+        zoom: 1;
+        background: white;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+        border-bottom: none;
+        }
+
+    </style>         
+    
+    
+    <window id="winListMonitoring"  height="500px" border="normal" apply="id.my.berkah.rps.dpa.controller.ListMntrDPACTRL" title="Monitoring DPA"  visible="true" >                   
+        <toolbar id="tbAttr" height="27px" align="start" orient="horizontal" left="2">
+            <!--<toolbarbutton id="tbNew"       width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>-->
+            <toolbarbutton id="tbEdit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>                          
+            <toolbarbutton id="tbRefresh"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+            <toolbarbutton id="tbFind"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>                        
+            <toolbarbutton id="perso"     width="25px" height="25px" src="/img/Perso24x24.png" tooltiptext="Perso"/>
+            <!--<toolbarbutton id="tbExit"      width="25px" height="25px" src="/img/Logout24.png"   tooltiptext="Close Form"/>-->
+        </toolbar>                             
+        <listbox id="lstMonitor"  height="380px" mold="paging" pageSize="10" width="100%">
+            <listhead sizable="true">           
+                <listheader label="Reserve No" width="170px"  sort="auto(requestNo)" visible="true"/>         
+                <listheader label="Reserve Date" width="130px"  sort="auto(requestDate)" visible="true"/> 
+                <listheader label="Client Name" width="130px"  sort="auto(status)"    visible="true"/> 
+                <listheader label="Packet Code" width="130px" sort="auto(userName)"    visible="true"/> 
+                <listheader label="Packet Name" width="170px" visible="true"/>       
+                <listheader label="Perso Status" width="120px" visible="true"/> 
+                <listheader label="Perso Number" width="200px" visible="true"/> 
+                <listheader label="Status Reservation" width="130px" visible="true"/> 
+                <listheader label="Pos Status" width="130px" visible="true"/>  
+                <listheader label="Delivery status" width="130px" visible="true"/>                 
+                <listheader label="Reserve Date" width="130px" visible="false" /> 
+                <listheader label="Reserve Date" width="130px" visible="false" /> 
+                <listheader label="Client Name" width="130px"  visible="false"/> 
+                <listheader label="Packet Code" width="130px" visible="false"/> 
+                <listheader label="Packet Code" width="130px" visible="false"/> 
+                <listheader label="Packet Name" width="170px" visible="false"/>       
+                <listheader label="Status Desc" width="120px" visible="false"/> 
+                <listheader label="Perso Number" width="200px" visible="false"/> 
+                <listheader label="Status Reservation" width="130px" visible="false"/> 
+                <listheader label="Pos Status" width="130px" visible="false"/>  
+                <listheader label="Delivery status" width="130px" visible="false"/>      
+                <listheader label="Trc Id" width="130px" visible="false"/>
+                <listheader label="Customer Code" width="130px" visible="true"/>      
+                <listheader label="Customer Desc" width="130px" visible="true"/> 
+                <listheader label="Kode Pembayaran" width="130px" visible="true"/>                                                                                                                                   
+            </listhead>                    
+            <template name="model">
+                <listitem>                                  
+                    <listcell label="${each.reserveNo}" visible="true"/>                                                                    
+                    <listcell label="${each.reserveDate}" visible="true"/>  
+                    <listcell label="${each.clientName}" visible="true"/>  
+                    <listcell label="${each.packetCode}" visible="true"/>  
+                    <listcell label="${each.packetName}" visible="true"/>  
+                    <listcell label="${each.statusName}" visible="true"/> 
+                    <listcell label="${each.persoNumber}" visible="true"/> 
+                    <listcell label="${each.paymentStatus}" visible="true"/>                                                                                    
+                    <listcell label="${each.posStatus}" visible="true"/>  
+                    <listcell label="${each.deliveryStatus}" visible="true"/>                       
+                    <listcell label="${each.firstName}" visible="false"/>  
+                    <listcell label="${each.lastName}" visible="false"/>  
+                    <listcell label="${each.address}" visible="false"/>  
+                    <listcell label="${each.birthDate}" visible="false"/>  
+                    <listcell label="${each.birthPlace}" visible="false"/> 
+                    <listcell label="${each.paymentValue}" visible="false"/> 
+                    <listcell label="${each.typeId}" visible="false"/> 
+                    <listcell label="${each.posNumber}" visible="false"/> 
+                    <listcell label="${each.numberId}" visible="false"/>                                                                               
+                    <listcell label="${each.deliveredAddress}" visible="false"/>  
+                    <listcell label="${each.deliverType}" visible="false"/>      
+                    <listcell label="${each.trcId}" visible="true"/> 
+                    <listcell label="${each.customerCode}" />  
+                    <listcell label="${each.customerDesc}" /> 
+                    <listcell label="${each.paymentCode}" visible="true"/>                                                                
+                </listitem>
+            </template>
+        </listbox>
+         
+        
+        <paging id="userPagingM" width="99%" style="color: black" detailed="true" pageIncrement="1" />
+           
+        <window id="winEditMonitor"  height="520px" border="normal" apply="id.my.berkah.rps.dpa.controller.EditMntrDPACTRL" title="Edit Data Reservation DPA"  visible="false" width="900px" >   
+            <grid sclass="GridLayoutNoBorder">
+                <columns>
+                    <column label="" width="150px"/>
+                    <column label="" width="300px"/>
+                    <column label="" width="150px"/>
+                    <column label=""/>
+                </columns>
+                <rows>
+                    <row>                                
+                        <label value="Reservation No" />
+                        <textbox id = "txtReserveNo" value="" width="220px" readonly="true"/>
+                        <label value="Reservation Status" />
+                        <textbox id = "txtPaymentStatus" value="" width="220px" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Merchant" />
+                        <textbox id = "txtMerchant" width="220px" readonly="true"/>
+                        <label value="Perso Status" />
+                        <textbox id = "txtPersoStatus" width="220px" readonly="true"/>
+                    </row>
+                    <row >
+                        <label value="Nama Lengkap" />
+                        <hbox>
+                            <textbox id = "txtNamaLengkap1" width="100px"/>
+                            <textbox id = "txtNamaLengkap2" width="110px"/>
+                        </hbox>
+                        <label value="Perso Number" />
+                        <textbox id = "txtPersoNumber" width="220px" readonly="true"/>
+                    </row>      
+                    <row visible="false">
+                        <textbox id = "txtTrcId" value="" visible="false" />              
+                    </row>       
+                </rows>
+            </grid>
+            <hbox>
+                <grid width="444px" height="100px" sclass="GridLayoutNoBorder">
+                    <columns>
+                        <column label="" width="150px"/>
+                        <column label=""/>                       
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Alamat" />
+                            <textbox id = "txtAlamat" value="" multiline="true" height="80px" width="220px"/>                               
+                        </row>
+                       
+                    </rows>
+                </grid>
+                <grid width="400px" height="100px" sclass="GridLayoutNoBorder">
+                    <columns>
+                        <column label="" width="150px"/>
+                        <column label=""/>                       
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Packet Code" />
+                            <textbox id = "txtPacketCode" value="" width="220px" readonly="true"/>                               
+                        </row>
+                        <row>
+                            <label value="MSISDN" />
+                            <textbox id = "txtMsisdn" value="" width="220px" readonly="true"/>                               
+                        </row>                        
+                    </rows>
+                </grid>
+            </hbox>        
+            <grid sclass="GridLayoutNoBorder">
+                <columns>
+                    <column label="" width="150px"/>
+                    <column label="" width="300px"/>
+                    <column label="" width="150px"/>
+                    <column label=""/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Tempat Lahir" />
+                        <textbox id = "txtLahir" value="" width="220px"/>
+                        <label value="Kode Pembayaran" />
+                        <textbox id = "txtPaymentCode" width="220px" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Tgl Lahir" />
+                        <textbox id = "txtTglLahir" width="220px"/>
+                        <label value="Jumlah Pembayaran" />
+                        <textbox id = "txtAmount" width="220px" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Tanda Pengenal" />
+                        <textbox id = "txtKTP" width="220px"/>
+                        <label value="POS Number" />
+                        <textbox id = "txtPOSNo" width="220px" readonly="true"/>
+                    </row>     
+                    <row>
+                        <label value="No Tanda Pengenal" />
+                        <textbox id = "txtNoKTP" width="220px"/>
+                        <label value="POS Status" />
+                        <textbox id = "txtPOSStatus" width="220px" readonly="true"/>
+                    </row>                 
+                </rows>
+            </grid>        
+            <hbox>
+                <grid width="444px" height="110px" sclass="GridLayoutNoBorder">
+                    <columns>
+                        <column label="" width="150px"/>
+                        <column label=""/>                       
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Alamat Pengantaran" />
+                            <textbox id = "txtAlamatAntar" value="" multiline="true" height="80px" width="220px"/>                               
+                        </row>
+                       
+                    </rows>
+                </grid>
+<!--                <grid width="400px" height="110px" sclass="GridLayoutNoBorder">
+                    <columns>
+                        <column label="" width="150px"/>
+                        <column label=""/>                       
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Jasa Pengantaran" />
+                            <textbox id = "txtJasa" value="" width="220px" readonly="true"/>                               
+                        </row>
+                        <row>
+                            <label value="No Resi" />
+                            <textbox id = "txtResi" value="" width="220px" readonly="true"/>                               
+                        </row>
+                        <row>
+                            <label value="Status Pengantaran" />
+                            <textbox id = "txtdeliveryStatus" value="" width="220px" readonly="true"/>                               
+                        </row>
+                    </rows>
+                </grid>-->
+            </hbox>         
+
+            <grid sclass="GridLayoutNoBorder">
+                <columns>
+                    <column label="" align="Right"/>
+                    <column label="" width="110px" align="center" />	
+                    <column label="" width="100px" align="center" />                        
+                    <column label="" align="Left"/>			
+                </columns>
+                <rows>
+                    <row> 
+                        
+                        <button id="btnSave" label="Save" image="/img/Save.png"> </button>
+                        <button id="btnAttribute" label="Attribute" image="/img/Print24.png"> </button>
+                        <button id="btnPrint" label="Print" visible="true" image="/img/Print24.png"> </button>                             
+                        <button id="btnClose" label="Close" image="/img/Logout24.png"> </button>
+                        <label value=""></label> 
+                    </row>                     
+                </rows>
+            </grid>
+
+            <window id="winAttribute"  height="410px" border="normal" title="Attribute DPA"   
+                visible="false" width="370px"  apply="id.my.berkah.rps.dpa.controller.AttrDPACTRL">   
+                <grid sclass="GridLayoutNoBorder" height="320px">
+                    <columns>
+                        <column label="" width="100px"/>
+                        <column label="" width="250px"/>                     
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Attribute 1" />
+                            <textbox id = "txtAttribute1" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 2" />
+                            <textbox id = "txtAttribute2" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 3" />
+                            <textbox id = "txtAttribute3" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 4" />
+                            <textbox id = "txtAttribute4" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 5" />
+                            <textbox id = "txtAttribute5" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 6" />
+                            <textbox id = "txtAttribute6" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 7" />
+                            <textbox id = "txtAttribute7" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 8" />
+                            <textbox id = "txtAttribute8" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 9" />
+                            <textbox id = "txtAttribute9" value="" width="220px" readonly="true"/> 
+                        </row>	
+                        <row>
+                            <label value="Attribute 10" />
+                            <textbox id = "txtAttribute10" value="" width="220px" readonly="true"/> 
+                        </row>
+                    </rows>    	
+                </grid>
+        
+                <grid >
+                    <columns>
+                        <column label="" align="center"/>                        		
+                    </columns>
+                    <rows>  
+                        <row>                                   
+                            <button id="btnClose" label="Close" image="/img/Logout24.png"> </button>
+                        </row>                     
+                    </rows>
+                </grid>
+        
+            </window> 
+        
+        </window>      
+  
+        <window id="winFindMonitor"  height="440px" border="normal" apply="id.my.berkah.rps.dpa.controller.FindDPAController2" title="Edit Data Reservation DPA"  visible="false" width="480px" >   
+            <grid sclass="GridLayoutNoBorder" height="350px">
+                <columns>
+                    <column label="" width="200px"/>
+                    <column label="" width="250px"/>                     
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Client Code" />
+                        <textbox id = "txtClientCode" value="" width="220px" /> 
+                    </row>	
+                    <row>
+                        <label value="Reserve number" />
+                        <textbox id = "txtReserveNo" value="" width="220px" /> 
+                    </row>
+                    <row>
+                        <label value="Satus Reservation" />
+                        <combobox id = "txtPaymentStatus" value="" width="225px">              
+                            <comboitem label="DRAFT" />  
+                            <comboitem label="CANCEL"    />
+                            <comboitem label="CREATE RESERVE NO"    />
+                            <comboitem label="PAYMENT"    />
+                            <comboitem label="PERSO" />
+                            <comboitem label="POS" />
+                        </combobox>    
+                    </row>	
+                    <row>
+                        <label value="Reservation Date" />
+                        <hbox>
+                            <datebox id = "txtDateFrom" /> s/d
+                            <datebox id = "txtDateTo" />
+                        </hbox>
+                    </row>	
+                    <row>
+                        <label value="Packet Code" />
+                        <textbox id = "txtPacketCode" value="" width="220px" /> 
+                    </row>	
+                    <row>
+                        <label value="MSISDN" />
+                        <textbox id = "txtMsisdn" value="" width="220px" /> 
+                    </row>	
+                    <row>
+                        <label value="Status Perso" />
+                        <combobox id = "txtPersoStatus"  width="225px">
+                            <comboitem label="READY PERSO" />
+                            <comboitem label="DRAFT"       />                
+                            <comboitem label="SUCCESS"    />
+                            <comboitem label="FAILED"    />
+                            <comboitem label="CANCEL"    />   
+                        </combobox>    
+                    </row>	
+                    <row>
+                        <label value="Perso Number" />
+                        <textbox id = "txtPersoNumber" value="" width="220px" /> 
+                    </row>		
+                    <row>
+                        <label value="Kode Pembayaran" />
+                        <textbox id = "txtPaymentCode" value="" width="220px" /> 
+                    </row>	
+                    <row>
+                        <label value="Pos Status" />
+                        <combobox id = "txtPosStatus" value="" width="225px" >
+                            <comboitem label="CANCEL" />
+                            <comboitem label="IN TRANSACTION"  />                
+                            <comboitem label="PAYMENT IN PROGRESS" />
+                            <comboitem label="PAID"  />
+                        </combobox>                  
+                    </row>
+                    <row>
+                        <label value="Delivery Status" />
+                        <textbox id = "txtDeliveryStatus" value="" width="220px" /> 
+                    </row>
+                </rows>    	
+            </grid>
+        
+            <grid >
+                <columns>
+                    <column label="" align="Right"/>                        		
+                    <column label="" align="Left"/>                        		
+                </columns>
+                <rows>  
+                    <row>                                   
+                        <button id="btnFind" label="Find" image="/img/Find24.png"> </button>
+                        <button id="btnClose" label="Close" image="/img/Logout24.png"> </button>
+                    </row>                     
+                </rows>
+            </grid>
+        
+      
+        </window>                     
+                                                     
+    </window>
+  
+              
+</zk>

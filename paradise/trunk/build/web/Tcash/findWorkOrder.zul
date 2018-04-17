@@ -1,0 +1,70 @@
+  <window id="win_list_WO_find" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListWorKOrder"  position="center" visible="false" border="normal" width="450px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="430px">
+                <columns>
+                    <column label="" width="80px" align="right" />
+                    <column label="" width="350px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label value="WO. No" />
+                        <textbox width="200px" id="txtPoNo"/>
+                    
+                    </row>
+                    <row>
+                        <label   value="BU Unit"  />
+                        <hbox>
+                            <textbox width="50px" id="txtbuId" visible="false"    />
+                            <textbox width="70px" id="txtbucode" readonly="false" />
+                            <button id="btnLovBu" mold="trendy" width="40px" height="20px"  src="/img/search.png"  tooltiptext="Lov Bu" />
+                            <textbox width="200px" id="txtbuDesc" readonly="true"  />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" format="dd/MM/yyyy"/>
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Status" />
+                        <combobox id="cmbStatus" width="200px">
+                            <comboitem label="Draft"/>
+                            <comboitem label="Released"/>
+                            <comboitem label="Approved"/>
+                            <comboitem label="SN Generated"/>
+                            <comboitem label="Ready to Delivery"/>
+                            <comboitem label="Completed"/>
+                            <comboitem label="Canceled"/>
+                        </combobox>
+                    </row>
+                    <row visible="false">
+                        <label value="Order" />
+                        <combobox width="205px"  id="cmbOrder" readonly="true">
+                            <comboitem label="Packaging" />
+                            <comboitem label="Personalization"/>
+                            <comboitem label="One Stop Production"/>
+                        </combobox>
+                    </row>
+                    
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="430px">
+                <columns>
+                    <column label="" width="200px" align="center" />
+                    <column label="" width="200px" align="center" />
+                </columns>
+                <rows>
+                    <row>
+                        <button id="goFind" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" mold="trendy" tabindex="13" label="Close" image="/img/End16.png" />
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>

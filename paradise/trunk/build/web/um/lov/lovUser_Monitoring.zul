@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="winlovUser" title="Lov User" border="normal" width="500px"  closable="true" apply="id.my.berkah.um.controller.LovCTRL">
+        <grid height="70px" >
+            <columns >
+                <column label="" width="70px"/>
+                <column label="" width="310px"/>
+                <column label="" width="90px"/>
+            </columns>
+            <rows>
+            <row height="70px">
+                    <label value="Keyword" />
+                    <textbox id="txtFindUser" width="300px"/>
+                    <button id="btnFindUser" label="" image="/img/search.png" />
+                </row>
+            </rows>
+        </grid>
+        <listbox id="listUser" height="300px" width="100%">
+            <listhead>
+                <listheader label="User Id" width="25%" visible="false" />
+                <listheader label="User Name" width="100%" />
+                <listheader label="User Description" width="100%" />
+                
+            </listhead>
+            <template name="model" style="border:1px;background:#FF0000;">
+                <listitem>
+                    
+                    <listcell label="${each.userId}" />
+                    <listcell label="${each.userName}" />
+                    <listcell label="${each.userDesc}" />
+                </listitem>
+            </template>
+        </listbox>
+        <grid height="60px" >
+            <columns >
+                <column label="" width="50%"  align="right" />
+                <column label="" width="50%" align="left"/>
+            </columns>
+            <rows>
+            <row height="50px">
+                    <button id="btnSubmitUser" label="Submit" image="/img/dialog-ok-apply-2_1.png"  />
+                    <button id="btnCloseUser" label="Close" image="/img/process-stop-6.png" />
+                </row>
+            </rows>
+        </grid>
+    </window>
+</zk>

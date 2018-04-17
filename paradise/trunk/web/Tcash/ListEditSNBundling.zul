@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_SelectRange_bundling" title="Selection Range " apply="id.my.berkah.tcash1.controller.ListEditSnBundling" border="normal" closable="false" mode="modal" width="650px" >
+        <!--<vbox hflex="1">-->
+        <textbox id="txtbundling" visible="false"  value="${arg.bundling_id}" width="160px"/>
+        <textbox id="txtitem" value="${arg.item}" visible="false"   width="10px"/>
+        <textbox id="flag" visible="false"   width="10px"/>
+        <textbox id="mode" visible="false"  value="${arg.nonRegional}" width="10px"/>
+        <textbox id="txtitemDtlId" visible="false"   width="160px"/>
+        <textbox id="txtfromDtlId" visible="false"  width="160px"/>
+        <textbox id="txttoDtlId" visible="false"   width="160px"/>
+        <textbox id="txtreg" visible="false" value="${arg.reg}"  width="160px"/>
+        <textbox id="txtqty" visible="false" value="${arg.AvQty}"  width="160px"/>
+            
+        <groupbox width="630px" >
+            <caption label="Available Range" sclass="main z-demo-config"/>	
+            <listbox id = "listboxSelect" height = "200px" mold = "paging"  pageSize = "10" hflex="1" vflex="1">
+                <listhead sizable = "true">
+                    <listheader label = "BundlindId" width = "50px" visible = "false" />
+                    <listheader label = "BundlindDtId" width = "50px" visible = "false" />
+                    <listheader label = "ItemId" width = "50px" visible = "false" />
+                    <listheader label = "ItemLocId" width = "50px" visible = "false" />
+                    <listheader label = "From S/N" width = "250px"  visible = "true" />
+                    <listheader label = "To S/N" width = "250px"  visible = "true" />
+                    <listheader label = "Quantity" width = "110px" align="right" visible = "true" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+       
+        </groupbox>
+               
+        <grid id="grid" oddRowSclass="non-odd" width="630px">
+            <columns>
+                <column label="" width="210px" align="right" />
+                <column label="" width="210px" align="right"/>
+                <column label="" width="210px" />
+            </columns>
+            <rows>
+                <row>
+                    <label/>
+                    <label/>
+                    <hbox>
+                        <label value="Total "  style="margin-left:125px; color:black;"/>
+                        <label id="txttotal" width="110px" value="0"  style="margin-left:10px; color:black;"/>       
+                    </hbox>
+                </row>
+            </rows>
+                 
+        </grid>
+            
+        <div width="100%" height="40px" style="border-bottom:0px dotted;background:#eee; margin-bottom:1px;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="180" y="4" width="160px" >
+                    <button id="selectRange" width="120px" mold="trendy" label="Select" image="/img/Next24.png" />
+                </absolutechildren>
+                <absolutechildren x="350" y="4" width="160px" >
+                    <button id="unselectRange" width="120px" mold="trendy"  label="Unselect" image="/img/Previous24.png" />
+                </absolutechildren>
+                <!--                <absolutechildren x="380" y="6" width="160px" height="30px">
+                    <label value="Total" style="margin-left:100px; color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="520" y="6" width="160px" height="30px">
+                    <label id="txttotal" width="110px" value="0" style="color:black;"/>
+                </absolutechildren>-->
+            </absolutelayout>
+        </div>
+            
+        <groupbox width="630px" >
+            <caption label="Selected Range" sclass="main z-demo-config"/>	 
+            <listbox id = "listboxUnselect" height = "200px" mold = "paging"  pageSize = "10" hflex="1" vflex="1">
+                <listhead sizable = "true">
+                    <listheader label = "BundlindId" width = "50px" visible = "false" />
+                    <listheader label = "BundlindDtId" width = "50px" visible = "false" />
+                    <listheader label = "ItemId" width = "50px" visible = "false" />
+                    <listheader label = "ItemLocId" width = "50px" visible = "false" />
+                    <listheader label = "From S/N" width = "250px"  visible = "true" />
+                    <listheader label = "To S/N" width = "250px"  visible = "true" />
+                    <listheader label = "Quantity" width = "110px" align="right" visible = "true" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+            
+            
+        </groupbox>
+        <grid id="grid1" oddRowSclass="non-odd" width="630px">
+            <columns>
+                <column label="" width="210px" align="right" />
+                <column label="" width="210px" align="right"/>
+                <column label="" width="210px" />
+            </columns>
+            <rows>
+                <row>
+                    <label/>
+                    <label/>
+                    <hbox>
+                        <label value="Total "  style="margin-left:125px; color:black;"/>
+                        <label id="txttotal1" width="110px" value="0"  style="margin-left:20px; color:black;"/>       
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+        <div width="100%" height="40px" style="border:1px;margin-bottom:0px;background:#d3d3d3;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="270" y="4" width="160px" >
+                    <button id="btnClose" tabindex="38" label="Close" width="120px" height="30px"  mold="trendy"  />
+                </absolutechildren>
+                <!--                <absolutechildren x="470" y="6" width="160px" height="30px">
+                    <label value="Total" style="color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="520" y="6" width="125px;" height="30px">
+                    <label id="txttotal1" width="100px" value="0" style="color:black;"/>
+                </absolutechildren>-->
+            </absolutelayout>
+        </div>
+        <!--</vbox>-->
+    </window>
+    
+
+</zk>

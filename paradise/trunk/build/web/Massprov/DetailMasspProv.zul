@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="detail_Mass_Prov" title="List Mass Provisioning " apply="id.my.berkah.mass.controller.DetailMassProv"  border="normal"  width="860px" height="4000x" closable="true" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+      <div>
+        <grid id="grid" oddRowSclass="non-odd" width="840px" height="150px">
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="0px" />
+                <column label="" width="180px" align="right"/>
+                <column label="" width="285px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="MSISDN Status Not Valid" width="50px" />
+                    <textbox width="200px" tabindex="1" mold="rounded" id="txtmsisdn" readonly="true"  focus="true" />
+                    <label   value=""/>
+                    <label   value="IMSI Status Not Valid" width="50px"/>
+                    <textbox width="200px" tabindex="3" id="txtimsi" mold="rounded" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Not Exists" width="50px" />
+                    <textbox width="200px" tabindex="4" mold="rounded" id="txtexist"  readonly="true" />
+                    <label   value=""/>
+                    <label   value="Expired Date" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtexpired"  mold="rounded" readonly="true"/>
+                   
+                </row>
+                <row>
+                    <label   value="Total Not Valid" width="50px" />
+                    <textbox width="200px" tabindex="5" id="txttotalnotvalid" mold="rounded"  readonly="true" />
+                    <label   value=""/>
+                    <label   value="Total Valid " />
+                    <textbox width="200px" tabindex="13"  id="txttotalvalid" mold="rounded" readonly="true" visible="true"/>
+                </row>
+                <row>
+                        <label   value="Total" width="50px" />
+                        <textbox width="200px" tabindex="6" id="txttotal" mold="rounded"  readonly="true" />
+                       <label   value=""/>
+                       
+                </row>
+                    <row visible="false">
+                    <textbox width="220px" readonly="true" id="txtlrid" disabled="true" value="${arg.larid}"   />
+                    <textbox width="20px" readonly="true" id="txtdate" disabled="true"     />
+                    </row>
+            </rows> 
+           
+           
+        </grid>
+        
+    </div>
+    <div >
+        <grid id="grid_button" oddRowSclass="non-odd" width="840px" height="45px">
+            <columns>
+               <column label="" width="840px"  align="center"/>
+           </columns>
+           <rows >
+               <row >
+                  <button id="close"   mold="trendy"   tabindex="37" label="Close"   width="85px" image="/img/Logout24.png"  tooltiptext="Close"/>
+               </row>
+           </rows>
+       </grid>	
+    </div>
+    
+                     	
+    </window>
+</zk>

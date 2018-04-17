@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_bundling_allocated_non_regional"  title="Bundling" apply="id.my.berkah.tcash1.controller.BundlingAllocatedNonRegional" border="normal" width="500px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+          <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        
+        <grid id="grid" oddRowSclass="non-odd" width="480px">
+            <columns>
+                <column label="" width="100px" align="right" />
+                <column label="" width="280px"  />
+                <column label="" width="80px"  />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Item"  />
+                    <hbox>
+                    <textbox width="50px" id="txtitemCode" value="${arg.dtl.item_code}" readonly="true" />   
+                    <textbox width="200px" id="txtitemdesc" value="${arg.dtl.item_desc}"  readonly="true" />   
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Available Qty" />
+                    <textbox width="100px"  id="txtavailabelqty" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Qty" />
+                    <intbox width="100px" format="#,##0" id="txtqty"  value="${arg.dtl.qty}"   />
+                </row>
+                <row visible="false">
+                     <textbox id="itemId" value="${arg.dtl.item_id}"/>  
+                    <hbox>
+                     <textbox id="txtbundlingid" value="${arg.dtl.bundling_id}"  />
+                     <textbox id="txtbundlingno" value="${arg.bundlingno}"  />
+                     <textbox id="txtbundlingdtlid"  value="${arg.dtl.bundling_dtl_id}" />
+                     <textbox id="txtwip" value="${arg.wip}"   />
+                     <textbox id="flag"   />
+                     <textbox id="txtstatus" value="${arg.status}"/>
+                    </hbox>
+                   
+                </row>
+
+            </rows>
+        </grid>
+        
+    <div align="center">
+        <button id="refresh" label="Refresh" height="35px" visible="false" image="/img/Refresh24.png" />
+        <button id="btnsave"        tabindex="18" label="Save"     height="35px"   width="100px"     image="/img/Save24.png"     tooltiptext="Save"/>
+        <button id="Edit"       label="Edit SN"  height="35px"      image="/img/Edit24.png" tooltiptext="Edit Serial Number"/>   
+        <button id="close" label="Close" tooltiptext="Close" height="35px" width="100px"   image="/img/Logout24.png" />
+    </div>
+    </window>
+</zk>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="dlgAddItem" title="${arg.operation} Item" border="normal" mode="modal" width="500px" apply="${arg.controller}">
+        <vbox hflex="1">
+            <grid hflex="1">
+                <columns>
+                    <column width="120px" align="right" />
+                    <column hflex="1" />
+                    <column hflex="1" />
+                </columns>
+                <rows>
+                    <row style="border:0px; background:#FFFFFF;">
+                        Item Code
+                        <cell colspan="2">
+                            <textbox id="txtOperation" visible="false" value="${arg.operation}" width="160px"/>
+                            <textbox id="txtProductionIssuedId" visible="false" value="${arg.productionIssuedId}" width="160px" />
+                            <textbox id="txtProductionIssuedIdDtl" visible="false" value="${arg.productionIssuedIdDtl}" width="160px" />
+                            <textbox id="txtItemCodeId" visible="false" value="${arg.ItemCodeId}" width="160px" />
+                            <textbox id="txtItemCode" readonly="true" value="${arg.ItemCode}" hflex="1"/>
+                            <button id="btnLovItemCode" mold="trendy" image="/img/search.png" width="30px" style="margin:0px 5px 0px 5px" />
+                        </cell>
+                    </row>
+                    <row style="border:0px; background:#FFFFFF;">
+                        Item Description
+                        <cell colspan="2">
+                            <textbox id="txtItemDescription" readonly="true" value="${arg.ItemDescription}" hflex="1"/>
+                        </cell>
+                    </row>
+                    <!--                    <row style="border:0px; background:#FFFFFF;">
+                        Quantity
+                        <cell colspan="2">
+                            <textbox id="txtQuantity" hflex="1"/>
+                        </cell>
+                    </row>
+                    <row style="border:0px; background:#FFFFFF;">
+                        Unit
+                        <cell colspan="2">
+                            <textbox id="txtUnit" hflex="1"/>
+                        </cell>
+                    </row>-->
+                </rows>
+            </grid>
+            <div hflex="1" align="center">
+                <hbox align="center">
+                    <button id="btnAdd" width="120px" height="35px" mold="trendy" label="Add" image="/img/Plus24.png" />
+                    <button id="btnClose" width="120px" height="35px" mold="trendy" label="Close" image="/img/Logout24.png" />
+                </hbox>
+            </div>
+        </vbox>
+    </window>
+</zk>

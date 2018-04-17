@@ -1,0 +1,54 @@
+<zk>
+<window id="win_item"  title="List of Items" width="700px" border="normal" apply="id.my.berkah.pos.lov.controller.LovItemController" closable="true" style="border:1px;background:#3366FF;">
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+    	<grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right" width="10%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">
+                    <label value="Keyword:" style="color: white"/>
+                    <textbox id="keywordBox"   width="100%" value="%"/>
+                    <button  id="searchButton" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="listbox" mold="paging" pageSize="10" style="border:1px;background:#0099FF;color:white;">
+	<listhead style="border:0px;background:#0099FF;color:white;">
+            <listheader label="Item Id"          width="0px" style="color: white"/>
+            <listheader label="Item Code"        width="100px" sort="auto(itemCode)" style="color: white"/>
+            <listheader label="Item Description" width="300px" sort="auto(itemDescription)" style="color: white"/>
+            <listheader label="Item Group"       width="150px" sort="auto(itemGroup)" style="color: white"/>
+            <listheader label="UOM"              width="100px" sort="auto(uomDesc)" style="color: white"/>
+            <listheader label="Tax"              width="100px" style="color: white"/>
+	</listhead>
+        <template name="model" style="border:1px;background:#0099FF;">
+            <listitem>
+                <listcell label="${each.itemId}"/>
+                <listcell label="${each.itemCode}"/>
+                <listcell label="${each.itemDescription}"/>
+                <listcell label="${each.itemGroup}"/>
+                <listcell label="${each.uomDesc}"/>
+                <listcell label="${each.pctTax}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+        <grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">	
+                    <button id="submit" label="Submit" orient="horizontal"/>
+                    <button id="close"  label="Cancel" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+ </zk>

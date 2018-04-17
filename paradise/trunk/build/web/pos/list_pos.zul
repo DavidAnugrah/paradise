@@ -1,0 +1,321 @@
+<zk>
+<window id="win_list_pos" title="List Data Point Of Sales" width="99%" height="480px" border="normal" apply="id.my.berkah.pos.controller.WindowListPOS" ctrlKeys="#down#up">   
+   <attribute name="onLater">
+       Clients.clearBusy(); //remove the busy message
+   </attribute>
+   <div>
+        <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+           <toolbarbutton id="l_newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+           <toolbarbutton id="l_edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+           <toolbarbutton id="l_payment"   width="25px" height="25px" src="/img/dollar24.png"  tooltiptext="Payment"/>
+           <toolbarbutton id="l_cancel"    width="25px" height="25px" src="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+           <toolbarbutton id="l_requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+           <toolbarbutton id="l_find"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+        </toolbar>
+   </div>
+   <div>
+        <listbox id="listbox" height="368px">
+                <listhead sizable="true">
+                    <listheader label="POS ID"          width="100px"  sort="auto(salesId)" visible="false"/>
+                    <listheader label="BU ID"           width="200px"  sort="auto(buId)"    visible="false"/>
+                    <listheader label="POS Number"      width="250px"  sort="auto(salesNo)" />
+                    <listheader label="POS Date"        width="150px"  sort="auto(posDate)" visible="true"/>
+                    <listheader label="POS Date"        width="200px"  sort="auto(createDate)" visible="false"/>
+                    <listheader label="Currency"        width="70px"   sort="auto(currCode)" />
+                    <listheader label="POS Status"      width="150px"  sort="auto(salesStatusName)" />
+                    <listheader label="BU Code"         width="150px"  sort="auto(buCode)"/>
+                    <listheader label="BU Description"  width="400px"  sort="auto(buDescription)"  visible="false"/>
+                    <listheader label="Company Code"    width="100px"  sort="auto(companyCode)"/>
+                    <listheader label="Cust Group"      width="150px"  sort="auto(custGroupCode)" />
+                    <listheader label="Cust Group Desc" width="150px"  sort="auto(custGroupDesc)" />
+                    <listheader label="Customer Name"   width="300px"  sort="auto(custName)" />
+                    <listheader label="Dealer Code"     width="100px"  sort="auto(dealerCode)"/>
+                    <listheader label="Remark"          width="150px"/>
+                    <listheader label="ttl_lineamount"  width="150px"  visible="false"/>
+                    <listheader label="stamp_duty"      width="150px"  visible="false"/>
+                    <listheader label="balance"         width="150px"  visible="false"/>
+                    <listheader label="create_date"     width="100px"  visible="false"/>
+                    <listheader label="create_by_name"  width="150px"  visible="false"/>
+                    <listheader label="currency_desc"   width="100px"  visible="false"/>
+                    <listheader label="printed_by_name" width="100px"  visible="false"/>
+                    <listheader label="commit_date"     width="100px"  visible="false"/>
+                    <listheader label="commit_by_name"  width="100px"  visible="false"/>
+                    <listheader label="cancel_date"     width="100px"  visible="false"/>
+                    <listheader label="cancel_by_name"  width="100px"  visible="false"/>
+                    <listheader label="modify_date"     width="100px"  visible="false"/>
+                    <listheader label="modify_by_name"  width="100px"  visible="false"/>
+                    <listheader label="dealer_id"       width="300px"  visible="false"/>
+                    <listheader label="cust_group_id"   width="150px"  visible="false"/>
+                    <listheader label="sales_no_keep"   width="150px"  visible="false"/>
+                    <listheader label="sales_status"    width="150px"  visible="false"/>
+                    <listheader label="book_no"         width="100px"  visible="false"/>
+                    <listheader label="book_id"         width="100px"  visible="false"/>
+                    <listheader label="company_id"      width="100px"  visible="false"/>
+                    <listheader label="sales_type"      width="100px"  visible="false"/>
+                    <listheader label="quota_policy"    width="100px"  visible="false"/>
+                    <listheader label="created_period"  width="100px"  visible="false"/>
+                    <listheader label="modify_by"       width="100px"  visible="false"/>
+                    <listheader label="create_by"       width="100px"  visible="false"/>
+                    <listheader label="cancel_by"       width="100px"  visible="false"/>
+                    <listheader label="commit_by"       width="100px"  visible="false"/>
+                    <listheader label="curr_rate"       width="100px"  visible="false"/>
+                    <listheader label="npwp"            width="100px"  visible="false"/>
+                    <listheader label="recon_id"        width="100px"  visible="false"/>
+                    <listheader label="n_print"         width="100px"  visible="false"/>
+                    <listheader label="flag"            width="150px"  visible="false"/>
+                </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.salesId}"/>
+                    <listcell label="${each.buId}"/>
+                    <listcell label="${each.salesNo}"/>
+                    <listcell label="${each.posDate}"/>
+                    <listcell label="${each.createDate}"/>
+                    <listcell label="${each.currCode}"/>
+                    <listcell label="${each.salesStatusName}"/>
+                    <listcell label="${each.buCode}"/>
+                    <listcell label="${each.buDescription}"/>
+                    <listcell label="${each.companyCode}"/>
+                    <listcell label="${each.custGroupCode}"/>
+                    <listcell label="${each.custGroupDesc}"/>
+                    <listcell label="${each.custName}"/>
+                    <listcell label="${each.dealerCode}"/>
+                    <listcell label="${each.remark}"/>
+                    <listcell label="${each.totalGrossAmount}"/>
+                    <listcell label="${each.stampDuty}"/>
+                    <listcell label="${each.balance}"/>
+                    <listcell label="${each.createDate}"/>
+                    <listcell label="${each.createByName}"/>
+                    <listcell label="${each.currencyDesc}"/>
+                    <listcell label="${each.printedByName}"/>
+                    <listcell label="${each.commitDate}"/>
+                    <listcell label="${each.commitByName}"/>
+                    <listcell label="${each.cancelDate}"/>
+                    <listcell label="${each.cancelByName}"/>
+                    <listcell label="${each.modifyDate}"/>
+                    <listcell label="${each.modifyByName}"/>
+                    <listcell label="${each.dealerId}"/>
+                    <listcell label="${each.custGroupId}"/>
+                    <listcell label="${each.salesNoKeep}"/>
+                    <listcell label="${each.salesStatus}"/>
+                    <listcell label="${each.bookNo}"/>
+                    <listcell label="${each.bookId}"/>
+                    <listcell label="${each.companyId}"/>											
+                    <listcell label="${each.salesType}"/>											
+                    <listcell label="${each.quotaPolicy}"/>											
+                    <listcell label="${each.createdPeriod}"/>											
+                    <listcell label="${each.modifyBy}"/>											
+                    <listcell label="${each.createBy}"/>											
+                    <listcell label="${each.cancelBy}"/>											
+                    <listcell label="${each.commitBy}"/>											
+                    <listcell label="${each.currRate}"/>											
+                    <listcell label="${each.npwp}"/>											
+                    <listcell label="${each.reconId}"/>											
+                    <listcell label="${each.nPrint}"/>											
+                    <listcell label="${each.flag}"/>											
+                </listitem>
+            </template>
+        </listbox>
+   </div>
+   <div>
+       <paging id="userPaging" activePage="0" totalSize="0" pageSize="100"  width="100%" style="color: black"/>
+   </div>
+   
+    <window id="win_list_pos_find" title="Parameter Pencarian" border="normal" mode="modal" width="470px" apply="id.my.berkah.pos.controller.WindowFindPOS">
+        <attribute name="onLater">
+             Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <div>
+         <tabbox width="100%">
+         <tabs id="tabs">
+                <tab label="Utama"/>
+                <tab label="Lainnya"/>
+         </tabs>
+          <tabpanels height="400px">
+           <tabpanel>
+                 <grid id="grid_find1" oddRowSclass="non-odd">
+                    <columns>
+                        <column label="" width="120px" align="right" />
+                        <column label="" width="280px" />
+                    </columns>
+                    <rows>
+                    <row>
+                <label   value="BU Code" width="50px" />
+                <hbox>
+                    <textbox id="findBuCode"  readonly="true" tabindex="1" width="100px" />
+                    <button  id="btnLovbucodeFind"  tabindex="2" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Business Units"/>
+               </hbox> 	
+                    </row>
+                    <row>
+                <label   value="Nomor POS" width="50px" />
+                <textbox id="findSalesNo" tabindex="3" width="200px" />
+                    </row>
+                    <row>
+                <label   value="Dibuat Oleh" width="50px" />
+                <textbox id="findCreatedBy" tabindex="3" width="200px" />
+                    </row>
+                    <row>
+                <label  value="Tanggal POS" width="50px" />
+                <hbox>  <datebox id="findFromDate" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                        <datebox id="findToDate"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                </hbox>
+                    </row>
+                    <row>
+                 <label   value="Status" width="50px" />
+                     <hbox>
+                        <textbox id="findStatus" 		tabindex="6" width="200px"/>
+                        <button  id="btnLovStatusFind" 	tabindex="7" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Type"/>
+                     </hbox>
+                    </row>
+                    <row>
+                             <label   value="Dealer" width="50px" />
+                             <hbox>
+                                <textbox id="findDealerCode"  tabindex="8" width="100px" />
+                                <button  id="btnLovDelaerFind" tabindex="9" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                             </hbox>
+                    </row>
+                    <row>
+                             <label value="Group Customer" width="50px" />
+                             <hbox>
+                                    <textbox id="findCustomerGroup"   tabindex="10" width="220px" maxlength="16"/>
+                                    <button  id="btnLovCustGroupFind" tabindex="11" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                             </hbox>
+                    </row>
+                    <row>
+                        <label   value="Nama Customer" width="50px" />
+                        <textbox id="findCustomerName"  tabindex="12" width="220px" maxlength="16"/>
+                    </row>
+                   </rows>
+                  </grid>	
+                 </tabpanel>               
+                 <tabpanel height="353px">
+                   <grid id="grid_find2" oddRowSclass="non-odd">
+                     <columns>
+                    <column label="" width="150px" align="right" />
+                    <column label="" width="280px" />
+                     </columns>
+                     <rows>
+                     <row>
+                <label  value="Dicommit Oleh" width="50px" />
+                <textbox id="commitByName"  tabindex="13" width="220px" maxlength="16"/>
+                     </row>
+                     <row>
+                <label  value="Tanggal Commit" width="50px" />
+                <hbox>  <datebox id="commitDateFrom" tabindex="14" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                        <datebox id="commitDateTo"   tabindex="15" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                </hbox>
+                     </row>
+                     <row>
+                <label  value="Dicancel Oleh" width="50px" />
+                <textbox id="cancelByName"   tabindex="16" width="220px" maxlength="16"/>
+                     </row>
+                     <row>
+                <label  value="Tanggal Cancel" width="50px" />
+                <hbox>  <datebox id="cancelDateFrom" tabindex="17" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                        <datebox id="cancelDateTo"   tabindex="18" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                </hbox>
+                     </row>
+                     <row>
+                <label   value="Kode Item" width="50px" />
+                <hbox>
+                    <textbox id="findItemCode"   tabindex="19" width="200px"/>
+                    <button  id="btnLovItemFind" tabindex="20" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                </hbox>
+                     </row>
+                     <row>
+                <label   value="Nomor Serial" width="50px" />
+                <textbox id="findSerialNo" tabindex="21" width="200px" />
+                     </row>
+                     <row>
+                <label   value="Metode Pembayaran" width="50px" />
+                <textbox id="findPaymentMethod" tabindex="22" width="250px" />
+                     </row>
+                     <row>
+                <label   value="Penerbit" width="50px" />
+                <textbox  id="findIssuerCode" tabindex="23" width="250px"/>
+                     </row>
+                     <row>
+                <label   value="No Kartu" width="50px" />
+                <textbox id="findAccNo" tabindex="23" width="250px" />
+                     </row>
+             <row>
+                <label   value="Nama Pemegang Kartu" width="50px" />
+                <textbox id="findHolderName" tabindex="24" width="250px" />
+                     </row>
+                    </rows>
+                   </grid>	
+                      </tabpanel>
+             </tabpanels>
+           </tabbox>
+         </div>
+         <div height="30px">
+               <absolutelayout width="100%" height="100%">	
+               <absolutechildren x="150" width="100px" height="30px">
+                       <button id="f_find"  tabindex="25" label="Find"  image="/img/search.png" width="100px" height="25px"/>
+               </absolutechildren>
+               <absolutechildren x="255" width="100px" height="30px">
+                       <button id="f_close" tabindex="26" label="Close" image="/img/End16.png" width="100px" height="25px"/>
+               </absolutechildren>
+                    </absolutelayout>       
+         </div>
+    </window>
+    <window id="win_list_pos_print" title="Print Parameter" border="normal" mode="modal" width="440px" apply="id.my.berkah.pos.controller.WindowPrintPOS">
+        <grid id="grid_print" oddRowSclass="non-odd">
+            <columns>
+                <column label="" width="100px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="35px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="BU Code" width="50px" />
+                    <hbox>
+                        <textbox id="PRINT_BU_CODE"      tabindex="1" width="100px" />
+                        <button  id="btnLovbucodePrint" tabindex="2" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Business Units"/>
+                    </hbox> 	
+                </row>
+                <row>
+                    <label  value="POS DATE" width="50px" />
+                    <hbox>  <datebox id="PRINT_FROM_DATE" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                            <datebox id="PRINT_TO_DATE"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Company Code" width="50px" />
+                    <hbox>
+                        <textbox id="PRINT_COMPANY_CODE" tabindex="6" width="200px"/>
+                        <button  id="btnLovCompanyCodePrint" tabindex="7" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Type"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Status" width="50px" />
+                    <hbox>
+                        <textbox id="PRINT_STATUS_NAME"  tabindex="8" width="100px" />
+                        <button  id="btnLovStatusPrint" tabindex="9" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Print Type" width="50px" />
+                    <combobox id="PRINT_DEST_TYPE" value="PDF">
+                           <comboitem id="pdf"  value="pdf"  label="PDF"/>
+                           <comboitem id="xls"  value="xls"  label="Excel (Microsoft)"/>
+                           <comboitem id="jxl"  value="jxl"  label="Excel (JLX)"/>
+                           <comboitem id="html" value="html" label="HTML"/>
+                           <comboitem id="rtf"  value="rtf"  label="Word (RTF)"/>
+                           <comboitem id="csv"  value="csv"  label="CSV"/>
+                           <comboitem id="odt"  value="odt"  label="OpenOffice (ODT)"/>
+                    </combobox> 
+                </row>
+                <row>
+                    <label/>
+                    <hbox>
+                        <button id="p_print" tabindex="11" label="Print" image="/img/Print24.png" width="100px" height="30px"/>
+                        <button id="p_close" tabindex="12" label="Close" image="/img/End24.png"   width="100px" height="30px"/>
+                    </hbox>
+                </row>
+            </rows>
+            </grid>	     
+    </window>	
+
+    </window>
+</zk>

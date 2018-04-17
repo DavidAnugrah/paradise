@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="viewStockAllocSO" title="Stock Allocation for Sales" apply="id.my.berkah.sodo.controller.ViewStockAllocCTRL"  border="normal" width="840px" ctrlKeys="#down#up"  closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="820px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="60px" />
+                <column label="" width="170px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Allocation Id" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtAllocationId" readonly="true" value="${arg.allocationId}"/>
+                    <label   value=""/>
+                    <label   value="Sales Order No." width="50px" />
+                    <!--<cell colspan="2">-->
+                    <hbox>
+                    <textbox width="120px" tabindex="5" id="txtSONo" readonly="true" value="${arg.soNo}" />
+                    <label   value="Line No." width="50px" />
+                    <textbox width="20px" tabindex="5" id="txtLineNo" readonly="true" value="${arg.lineNo}" />
+                    </hbox>
+                    <!--</cell>-->
+                </row>
+                <row>
+                    <label   value="Sender" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtSender" readonly="true" value="${arg.sender}"/>
+                    <label   value=""/>
+                    <label   value="Item" />
+                    <hbox>
+                        <textbox width="200px" tabindex="7" id="txtItem"  readonly="true" value="${arg.item}" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Warehouse" width="50px" />
+                    <hbox>
+                    <textbox width="50px" tabindex="10" id="txtWareHouseCode"  readonly="true" value="${arg.warehouseCode}"/>
+                    <textbox width="148px" tabindex="10" id="txtWareHouseDesc"  readonly="true" value="${arg.warehouseDesc}" />
+                    </hbox>
+                    <button  id="btnWH" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    <label   value="HLR" />
+                    <hbox>
+                    <textbox width="150" tabindex="12" id="txtHLR" readonly="true" value="${arg.hlr}"/>
+                    <button  id="btnHLR" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Items"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Customer" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtCustomer"  readonly="true" value="${arg.customer}" />
+                    <label   value=""/>
+                    <label   value="UOM" />
+                    <textbox width="200px" tabindex="12" id="txtUOM" readonly="true" value="${arg.uom}"/>
+                </row>
+                <row>
+                    <label   value="Customer Site" width="50px" />
+                    <hbox>
+                        <textbox width="200px" tabindex="10" id="txtCustomerSite"  readonly="true" value="${arg.customerSite}" />
+                    </hbox>
+                    <label   value=""/>
+
+                    <!--                    <button  id="btnCust" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Customer Group"/>-->
+                    <label   value="DO No. Asg." /> 
+                    <textbox width="200px" tabindex="7" id="txtDONo"  readonly="true" value="${arg.doNo}" />
+                </row>
+                <row visible="true">
+                    <textbox width="150px" readonly="true" id="txtSoId"       visible="true" value="${arg.soId}"/>
+                    <textbox width="150px" readonly="true" id="txtBuId"         visible="false" value="${arg.buId}"/>
+                    <textbox width="0px" readonly="true" id="txtUserId"      visible="false" value="${arg.userId}"/>
+                    <textbox width="0px" readonly="true" id="flag"           visible="false" value="${arg.flag}"/>
+                    <textbox width="150px" readonly="true" id="txtCompanyId"         visible="false" value="${arg.locId}"/>
+                    <textbox width="150px" readonly="true" id="txtDealerId"       visible="false" value="${arg.locDstId}"/>
+                    <textbox width="150px" readonly="true" id="txtItemId"       visible="false" value="${arg.locDstId}"/>
+                    <textbox width="0px" readonly="true" id="txtUnAllocatedId"      visible="false" value="${arg.unAllocatedId}"/>
+                    <textbox width="0px" readonly="true" id="txtError"       visible="false" value="${arg.erros}"/>
+                    <textbox width="150px" readonly="true" id="txtStatus"     visible="false" value="${arg.status}"/>
+                    <textbox width="0px" readonly="true" id="txtMessages"     visible="false" value="${arg.messages}"/>
+                </row>
+            </rows>
+        </grid>
+        
+        <grid id="grid2" oddRowSclass="non-odd" width="820px">
+            <columns>
+                <column label="" width="80px" align="right" />
+                <column label="" width="100px" />
+                <column label="" width="100px" />
+                <column label="" width="100px" align="right"/>
+                <column label="" width="100px" />
+                <column label="" width="100px" />
+                <column label="" width="130px" />
+                <column label="" width="100px" />
+            </columns>
+            <rows id="rowh2">
+                <row>
+                <label   value="Order Qty" width="50px" />
+                    <textbox width="80px" tabindex="4" id="txtOrderQty" readonly="true" value="${arg.orderQty}"/>
+                    <label   value="Total Rejected" width="50px" />
+                    <!--<cell colspan="2">-->
+                    <textbox width="80px" tabindex="5" id="txtTotalRejected" readonly="true" value="${arg.rejected}" />
+                    <label   value="Total Allocated" width="50px" />
+                    <textbox width="80px" tabindex="5" id="txtTotalAllocated" readonly="true" value="${arg.allocated}" />
+                    <label   value="OutStanding to Alloc" width="50px" />
+                    <textbox width="80px" tabindex="5" id="txtOutStandingToAlloc" readonly="true" value="${arg.outStanding}" />
+                </row>
+            </rows>
+        </grid>
+
+        <div height="12px">
+
+        </div>                 
+        <div>    
+            <listbox id="listbox" height="200px">
+                <listhead sizable="true">
+                    <listheader label="LOT Number"              width="80px"   sort="auto(lineNo)"/>
+                    <listheader label="Location"                  width="100px"  visible="true"/>
+                    <listheader label="Location"                  width="100px"  visible="true"/>
+                    <listheader label="Block From"             visible="true"/>
+                    <listheader label="Block To"               visible="true"/>
+                    <listheader label="Assigned Quantity"            width="200px"    visible="false"/>
+                </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="${each.LINE_NO}"/>
+                        <listcell label="${each.BLOCK_FROM}"/>
+                        <listcell label="${each.BLOCK_TO}"/>
+                        <listcell label="${each.QTY}"/>
+                        <listcell label="${each.unallocated_ID}"/>
+                        <listcell label="${each.unallocated_dtl_ID}"/>
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+
+        <grid id="grid_find" oddRowSclass="non-odd" width="840px">
+            <columns>
+                <column label="" width="115px" align="center" />
+                <column label="" width="105px" align="center"/>
+                <column label="" width="115px" align="center"/>
+                <column label="" width="115px" align="center"/>
+                <column label="" width="105px" align="center"/>
+                <column label="" width="165px" align="center"/>
+                <column label="" width="105px" align="center"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="selectRange"  tabindex="30" label="Select Range"        width="100px"        tooltiptext="New Record"/>
+                    <button id="viewDetail"      tabindex="38" label="View Detail"      width="85px"     tooltiptext="Save"/>
+                    <button id="AssignToDO"      tabindex="38" label="Assign To DO"      width="100px"     tooltiptext="Cancel"/>
+                    <button id="generatedDo"  tabindex="37" label="Generate DO" width="100px"    tooltiptext="UnAllocated"/>
+                    <button id="viewDo"    tabindex="33" label="View DO"    width="80px"   tooltiptext="Refresh"/>
+                    <button id="cancel"      tabindex="38" label="Cancel Allocation"      width="150px"    tooltiptext="Close"/>
+                    <button id="close"      tabindex="38" label="Close"      width="90px"    tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	                      	
+    </window>
+</zk>

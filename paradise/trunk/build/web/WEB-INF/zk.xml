@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk>
+<!--    <device-config>
+            <device-type>ajax</device-type>
+            <timeout-uri>/timeout/index.zul</timeout-uri>
+             An empty URL can cause the browser to reload the same URL 
+    </device-config>
+
+    -->    
+    <desktop-config>
+        <theme-uri>/css/style.css</theme-uri>
+    </desktop-config><!--
+
+    <desktop-config>
+           <desktop-timeout>300</desktop-timeout>
+    </desktop-config>
+        
+    <session-config>
+        session-timeout>300</session-timeout
+        <timer-keep-alive>true</timer-keep-alive>
+        max-desktops-per-session>15</max-desktops-per-session
+        max-requests-per-session>5</max-requests-per-session
+        max-pushes-per-session>3</max-pushes-per-session
+    </session-config>
+
+    <system-config>
+            <disable-event-thread>false</disable-event-thread>
+            <max-upload-size>204800</max-upload-size>
+    </system-config>-->
+    
+    <session-config>
+    <device-type>ajax</device-type>
+    <timeout-message>Session timeout. Please reload.</timeout-message>
+</session-config>
+
+    <error-reload>
+        <device-type>ajax</device-type>
+        <error-code>500</error-code>
+        <reload-uri></reload-uri>
+    </error-reload>
+    <error-reload>
+        <device-type>ajax</device-type>
+        <error-code>503</error-code>
+        <reload-uri></reload-uri>
+    </error-reload>
+    <library-property>
+        <name>org.zkoss.zul.progressbox.position</name>
+        <value>middle, center</value>            
+    </library-property>
+    
+    <library-property>
+        <name>org.zkoss.zul.nativebar</name>
+        <value>true</value>
+    </library-property>
+    
+    <library-property>
+   <name>org.zkoss.zul.frozen.smooth</name>
+   <value>false</value>
+</library-property>
+	
+
+<!--    
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>    
+        <location>/WEB-INF/error.zul</location>    
+    </error-page>-->
+   
+   
+</zk>

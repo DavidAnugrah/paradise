@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="winDetailUserAppr" title="Detail User Requester" width="650px" visible="true" height="520px" closable="true" border="normal" apply="id.my.berkah.um.controller.DetailUserApprCTRL" >
+        <div height="20px"></div>
+        <grid height="450px">
+            <columns>
+                <column label="" width="30%"/>
+                <column label=""/>
+            </columns>
+            <rows>
+                <row >
+                    <label value="Employe Id" height="70px" />
+                    <textbox id="txtEmploye" width="300px" readonly="true"/>
+                </row>
+                <row >
+                    <label value="Full Name" height="70px" />
+                    <textbox id="txtFullName" width="300px" readonly="true"/>
+                </row>
+                <row >
+                    <label value="Date Birth" height="70px" />
+                    <textbox id="dtBoxReqto" width="300px" readonly="true"/>
+                </row>
+                <row >
+                    <label value="Employe Status" height="70px" />
+                    <textbox id="txtEmployeStatus" width="300px" readonly="true"/>
+                </row>
+                <row >
+                    <label value="Position" height="70px" />
+                    <textbox id="txtPosition" width="300px" readonly="true"/>
+                </row>
+                <row >
+                    <label value="Division" height="70px" />
+                    <textbox id="txtDivision" width="200px" readonly="true"/>
+                </row>
+                <row >
+                    <label value="Department" height="70px" />
+                    <textbox id="txtDepartment" width="300px" readonly="true"/>
+                </row>
+<!--                <row >
+                    <label value="Superior" height="70px" />
+                    <textbox id="txtSuperior" width="300px" readonly="true"/>
+                </row>
+                <row >
+                    <label value="Email Superior" height="70px" />
+                    <textbox id="txtEmailSuperior" width="300px" readonly="true"/>
+                </row>-->
+                  
+                <row >
+                    <label value="Location" height="70px" />
+                    <hbox>
+                        <textbox id="txtLocation" width="300px" readonly="true"/>
+                        <label value="fLoor" height="70px" />
+                        <textbox id="txtFloor" width="70px" readonly="true"/>
+                    </hbox>
+                        
+                </row>
+                <row >
+                    <label value="Phone" height="70px" />
+                    <hbox>
+                        <textbox id="txtPhone" width="150px" readonly="true" />
+                        <label value=" Ext" height="70px" width="50px"/>
+                        <textbox id="txtExt" width="70px" readonly="true"/>
+                    </hbox> 
+                </row>
+                <row >
+                    <label value="No Hp" height="70px" />
+                    <textbox id="txtHp" width="300px" readonly="true" />
+                </row>
+                <row >
+                    <label value="Email" height="70px" />
+                    <textbox id="txtEmail" width="300px" readonly="true"/>
+                </row>
+            </rows>
+        </grid>
+<!--        <grid height="50px">
+            <columns>
+                <column label="" align="right" />
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row height="50px">
+                    <button id="btnFind" label="Find" onClick="" />
+                    <button id="btnCloseDetail" label="Close" onClick="" />
+                </row>
+            </rows>
+        </grid>-->
+    </window>
+</zk>

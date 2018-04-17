@@ -1,0 +1,155 @@
+<zk>
+    <window  id="win_payment" title="Payment" border="normal" width="850px" mode="modal" apply="id.my.berkah.pos.controller.WindowPayment" ctrlKeys="#f2#f3#f4#f5#f6#f7#f8#f9#f10#f11#f12">
+        <style src="/css/default.css"/>        
+	    <grid fixedLayout="true" oddRowSclass="non-odd" style="border:1px;background:#d3d3d3;">
+	        <columns>
+	            <column width="140px" align="right"/>
+	            <column width="250px" align="left"/>
+	            <column width="150px" align="right"/>
+	            <column width="290px" align="left"/>
+	        </columns>
+	        <rows>
+	            <row visible="false">
+	                <label   value="Sales Id" style="color:black"/>
+	                <textbox id="posId" value="${arg.salesId}" width="180px"/>
+	                <label   value="Payment Ref No" style="color:black"/>
+	                <textbox id="saleNo" width="200px" value="${arg.salesNo}"/>
+	            </row>
+	            <row style="border:1px;background:#d3d3d3;">
+	                <label   value="Payment Line" style="color:black"/>
+	                <textbox id="paymentLine" width="50px" disabled="true" style="background-color:#F3F3F3"/>
+	                <label   value="Amount Paid" style="color:black"/>
+	                <hbox>
+                            <decimalbox id="paymentPaid"  width="180px" zclass="required"  value="${arg.paidAmount}" format="###,###,##0.00" locale="EN" style="text-align:right" disabled="false"/>
+                            <textbox    id="currCode"  width="30px"  value="${arg.currCode}" disabled="true"/>
+	                </hbox>
+	            </row>
+	            <row style="border:1px;background:#d3d3d3;">
+	                <label   value="Payment Method" style="color:black"/>
+	                <hbox>
+                            <textbox id="methodId" width="50px"  readonly="true"/>
+                            <textbox id="paymentMethod" width="120px"  readonly="true"/>
+                            <button id="F2" label="[F2]" width="35px" height="23px"/>
+	                </hbox>
+                        <label/>
+                        <label/>
+	            </row>
+                    <row style="border:1px;background:#d3d3d3;">
+	                <label   value="Payment Issuer" style="color:black"/>
+	                <hbox>
+                            <textbox id="paymentIssuer" width="50px" readonly="true"/>
+                            <textbox id="paymentIssuerName" width="120px" readonly="true"/>
+                            <button id="F3" label="[F3]" width="35px" height="23px"/>
+	                </hbox>
+	                <label   value="Total Due" style="color:black"/>
+	                <decimalbox id="p_totalDue"   width="180px" disabled="true" format="###,###,###.00" locale="EN" style="text-align:right;background-color:#F3F3F3"/>
+                    </row>
+	            <row style="border:1px;background:#d3d3d3;">
+	                <label   value="Issuer Date" style="color:black"/>
+	                <datebox id="issuerDate" width="180px" cols="12" format="dd/MM/yyyy hh:mm:ss" disabled="false" tabindex="4"/>
+	                <label   value="Stamp Duty" style="color:black"/>
+	                <decimalbox id="p_stampDuty"   width="180px" disabled="true"  format="###,###,###.00" locale="EN" style="text-align:right;background-color:#F3F3F3"/>
+	            </row>
+	            <row style="border:1px;background:#d3d3d3;">
+	                <label   value="Acc No" style="color:black"/>
+	                <textbox id="accNo" width="180px" disabled="false"/>
+	                <label   value="Total Paid" style="color:black"/>
+	                <decimalbox id="p_totalPaid" width="180px" disabled="true"  format="###,###,###.00" locale="EN" style="text-align:right;background-color:#F3F3F3"/>
+	            </row>
+	            <row style="border:1px;background:#d3d3d3;">
+	                <label   value="Holder Name" style="color:black"/>
+	                <textbox id="holderName" width="180px"/>
+	                <label   value="Balance" style="color:black"/>
+	                <decimalbox id="p_balance"   width="180px" disabled="true"  format="###,###,###.00" locale="EN" style="text-align:right;background-color:#F3F3F3"/>
+	            </row>
+	            <row visible="false" >
+	                <textbox id="paymentIssuerId"/>
+	                <textbox id="paymentId"/>
+	            </row>
+	        </rows>
+	    </grid>   
+            <grid fixedLayout="true" oddRowSclass="non-odd" style="border:1px;background:#d3d3d3;" width="100%">
+                <columns>
+                   <column label="" width="85px" align="center" />
+                   <column label="" width="85px" align="center"/>
+                   <column label="" width="85px" align="center"/>
+                   <column label="" width="85px" align="center"/>
+                   <column label="" width="100px" align="center"/>
+                   <column label="" width="390px" align="left"/>
+               </columns>
+               <rows>
+                   <row style="border:1px;background:#d3d3d3;">
+                       <button id="newrecord" width="75px" tabindex="13" label="[F4]"  image="/img/New24.png"     tooltiptext="New Record"/>
+                       <button id="save"      width="75px" tabindex="14" label="[F5]"  image="/img/Save24.png"    tooltiptext="Save Record"/>
+                       <button id="print"     width="75px" tabindex="15" label="[F6]"  image="/img/Print24.png"   tooltiptext="Print Receipt"/>
+                       <button id="cancel"    width="75px" tabindex="16" label="[F7]"  image="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+                       <button id="refresh"   width="70px" tabindex="18" label="[F9]"  image="/img/Refresh24.png" tooltiptext="Refresh Grid"/>
+                       <button id="close"     width="80px" tabindex="19" label="[F10]" image="/img/Logout24.png"  tooltiptext="Close"/>
+                   </row>
+               </rows>
+        </grid>    
+        <listbox id="listbox" mold="paging" pageSize="10" height="200px">
+            <listhead sizable="true">
+                <listheader label="Id#"                width="100px"  visible="false"/>
+                <listheader label="Payment Id"         width="100px"  visible="false"/>
+                <listheader label="No"                 width="50px"   sort="auto(paymentLine)"/>
+                <listheader label="paymentRefType"     width="100px"  visible="false"/>
+                <listheader label="paymentRef"         width="10px"   visible="false"/>
+                <listheader label="Payment Ref No"     width="200px"  visible="false"/>
+                <listheader label="Refer Desc"         width="100px"  sort="auto(referDesc)"/>
+                <listheader label="methodId"           width="100px"  visible="false"/>
+                <listheader label="Method Name"        width="100px"  sort="auto(methodDescription)" />
+                <listheader label="Payment Amount"     width="120px"  sort="auto(strPaymentAmount)" align="right"/>
+                <listheader label="issuerId"           width="100px"  visible="false"/>
+                <listheader label="Issuer Code"        width="100px"  sort="auto(issuerCode)" />
+                <listheader label="Issuer Desc"        width="300px"/>
+                <listheader label="Acc No"             width="150px"/>
+                <listheader label="Holder Name"        width="200px"/>
+                <listheader label="Issuer Date"        width="100px"/>
+                <listheader label="Payment Fee"        width="100px"  align="right"/>
+                <listheader label="userPayment"        width="100px"  visible="false"/>
+                <listheader label="createdByName"      width="100px"  visible="false"/>
+                <listheader label="createdDate"        width="100px"  visible="false"/>
+                <listheader label="createdUser"        width="100px"  visible="false"/>
+                <listheader label="modifiedUser"       width="100px"  visible="false"/>
+                <listheader label="modifiedUserByName" width="100px"  visible="false"/>
+                <listheader label="modifiedDate"       width="100px"  visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.id}"/>
+                    <listcell label="${each.paymentId}"/>
+                    
+                    <listcell label="${each.paymentLine}"/>
+                    
+                    <listcell label="${each.paymentRefType}"/>
+                    <listcell label="${each.paymentRef}"/>
+                    <listcell label="${each.paymentRefNo}"/>
+                    <listcell label="${each.referDesc}"/>
+                    
+                    <listcell label="${each.methodId}"/>
+                    <listcell label="${each.methodDescription}"/>
+                    <listcell label="${each.strPaymentAmount}"/>
+                    <listcell label="${each.issuerId}"/>
+                    <listcell label="${each.issuerCode}"/>
+                    <listcell label="${each.issuerDescription}"/>
+                    <listcell label="${each.accNo}"/>
+                    <listcell label="${each.holderName}"/>
+                    <listcell label="${each.issuerDate}"/>
+                    
+                    <listcell label="${each.strPctPaymentFee}"/>
+                    <listcell label="${each.userPayment}"/>
+                    
+                    <listcell label="${each.createdByName}"/>
+                    <listcell label="${each.createdDate}"/>
+                    <listcell label="${each.createdUser}"/>
+
+                    <listcell label="${each.modifiedUser}"/>
+                    <listcell label="${each.modifiedUserByName}"/>
+                    <listcell label="${each.modifiedDate}"/>
+
+                </listitem>
+            </template>
+        </listbox>
+    </window>
+</zk>

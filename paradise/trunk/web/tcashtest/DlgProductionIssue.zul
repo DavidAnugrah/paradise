@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="windowProductionIssue" mode="modal" title="${arg.operation} Production issue" apply="${arg.controller}" border="normal" width="890px" height="85%" ctrlKeys="#down#up" style="border:1px;background:#3366FF;" >
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+            
+            <!-- cut/hide the vertical borders in the grid rows -->
+            <!--tr.z-row td.z-row-inner { border-right: 0px #CCC; }-->
+            
+            tr.overseld,td.overseld,tr.z-listitem-over,tr.z-listitem-over-seld
+            { background-image: none; background-color: none; }
+
+        </style>
+        
+        <div>
+            <textbox id="txtOperation" visible="false" value="${arg.operation}" width="160px"/>
+            <grid hflex="1">
+                <columns>
+                    <column width="170px" align="right"/>
+                    <column width="200px"/>
+                    <column width="140px" align="right"/>
+                    <column width="140px"/>
+                    <!--<column width="200px"/>-->
+                </columns>
+                
+                <rows>
+                    <row style="border:0px; background:#FFFFFF;">
+                        <label value="Business Unit"/>
+                        <cell colspan="2">
+                            <textbox id="txtBusinessUnitId" visible="false" value="${arg.businessUnitId}" width="160px"/>
+                            <textbox id="txtBusinessUnit" readonly="true" value="${arg.businessUnit}" width="160px"/>
+                            <button id="btnLovRegional"  mold="trendy" image="/img/search.png" width="30px" style="margin:0px 0px 0px 10px;" />
+                        </cell>
+                        
+                        <label value="Creation Date"/>
+                        <textbox id="txtCreationDate" readonly="true" value="${arg.creationDate}" width="180px" />
+                    </row>
+                
+                    <row style="border:0px; background:#FFFFFF;">
+                        <label value="Production Issued Number"/>
+                        <cell colspan="2">
+                            <textbox id="txtProductionIssuedId" visible="false" value="${arg.productionIssuedId}" width="160px" />
+                            <textbox id="txtProductionIssuedNumber" readonly="true" value="${arg.productionIssuedNumber}" width="160px" />
+                            <label />
+                        </cell>
+                         
+                        <label value="Created By"/>
+                        <textbox id="txtCreatedBy" readonly="true" value="${arg.createdBy}" width="180px" />
+                    </row>
+                        
+                    <row style="border:0px; background:#FFFFFF;">
+                        <label value="Production Issued Date"/>
+                        <cell colspan="2">
+                            <textbox id="txtProductionIssuedDate" readonly="true" value="${arg.productionIssuedDate}" width="160px" />
+                            <label />
+                        </cell>
+                        
+                        <label value="Approve Date"/>
+                        <textbox id="txtApproveDate" readonly="true" value="${arg.approveDate}" width="180px" />
+                    </row>
+                        
+                    <row style="border:0px; background:#FFFFFF;">
+                        <label value="Work Order Number"/>
+                        
+                        <cell colspan="2">
+                            <textbox id="txtWorkOrderNumberId" visible="false" value="${arg.workOrderNumberId}" width="160px" />
+                            <textbox id="txtWorkOrderNumber" readonly="true" value="${arg.workOrderNumber}" width="160px" />
+                            <button id="btnLovWorkOrder"  mold="trendy" image="/img/search.png" width="30px" style="margin:0px 0px 0px 10px" />
+                        </cell>
+                        
+                        <label value="Approved By"/>
+                        <textbox id="txtApprovedBy" readonly="true" value="${arg.approvedBy}" width="180px" />
+                    </row>
+                        
+                    <row style="border:0px; background:#FFFFFF;">
+                        <label value="Item Finish Goods"/>
+                        <cell colspan="2">
+                            <textbox id="txtItemFinishGoodsId" visible="false" value="${arg.itemFinishGoodsId}" width="160px" />
+                            <textbox id="txtItemFinishGoods" readonly="true" value="${arg.itemFinishGoods}" width="160px" />
+                            <button id="btnLovItemFinishGoods"  mold="trendy" image="/img/search.png" width="30px" style="margin:0px 0px 0px 10px" />
+                        </cell>
+                        
+                        <label value="Submit Date"/>
+                        <textbox id="txtSubmitDate" readonly="true" value="${arg.submitDate}" width="180px" />
+                    </row>
+                        
+                    <row style="border:0px; background:#FFFFFF;">
+                        <label value="Warehouse"/>
+                        <cell colspan="2">
+                            <textbox id="txtWarehouseId" visible="false" value="${arg.warehouseId}" width="160px" />
+                            <textbox id="txtWarehouse" readonly="true" value="${arg.warehouse}" width="160px" />
+                            <button id="btnLovWarehouse"  mold="trendy" image="/img/search.png" width="30px" style="margin:0px 0px 0px 10px" />
+                        </cell>
+                        
+                        <label value="Submited By"/>
+                        <textbox id="txtSubmitedBy" readonly="true" value="${arg.submitedBy}" width="180px" />
+                    </row>
+                        
+                    <row style="border:0px; background:#FFFFFF;">
+                        <label value="WIP Warehouse"/>
+                        <cell colspan="2">
+                            <textbox id="txtWIPWarehouseId" visible="false" value="${arg.wipWarehouseId}" width="160px" />
+                            <textbox id="txtWIPWarehouse" readonly="true" value="${arg.wipWarehouse}" width="160px" />
+                            <button id="btnLovWIPWarehouse"  mold="trendy" image="/img/search.png" width="30px" style="margin:0px 0px 0px 10px" />
+                            <label />
+                        </cell>
+                        
+                        <label value="Status"/>
+                        <textbox id="txtStatus" readonly="true" value="${arg.status}" width="180px" />
+                    </row>
+                </rows>                                
+            </grid>
+        </div>
+        
+        <div>
+            <listbox id="listboxDtlItem" height="235px" mold="paging" pageSize="5" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+<!--                    <listheader label = "prod_dtl_issue_id" width = "200px"  visible = "false" />
+                    <listheader label = "prod_issue_id" width = "200px"  visible = "false" />
+                    <listheader label = "item_id" width = "200px"  visible = "false" />-->
+                    <listheader label = "Item Code" width = "200px"  visible = "true" />
+                    <listheader label = "Item Description" width = "470px" visible = "true" />
+                    <listheader label = "Quantity" width = "100px" visible = "true" align="right" />
+                    <listheader label = "Unit" width = "100px" visible = "true" />
+<!--                    <listheader label = "create_date" width = "200px"  visible = "false" />
+                    <listheader label = "created_by" width = "200px"  visible = "false" />-->
+                </listhead>
+            </listbox>
+        </div>
+                
+        <div>
+            <vbox hflex="1" style="padding:10px 5px 5px 5px;background:#FFFFFF;">
+                <hbox hflex="1">
+                    <hbox align="center" pack="center" hflex="1">
+                        <button label="New" id="btnNew"   mold="trendy" image = "/img/New24.png"/>
+                        <button label="Save" id="btnSave"   mold="trendy" image="/img/Save24.png"/>
+                        
+                        <button label="Add Line" id="btnAddLine"   mold="trendy" image="/img/Plus24.png"/>
+                        <button label="Edit Line" id="btnEditLine"   mold="trendy" image="/img/Edit24.png"/>
+                        <button label="Select S/N" id="btnSelectSN"   mold="trendy" image="/img/Ok24.png"/>
+                        <button label="Auto Allocate S/N" id="btnAutoAllocateSN"  mold="trendy" height="35px" image="/img/About24.png"/>
+                    
+                        <button label="Approve" id="btnApprove"   mold="trendy" image="/img/1449847706_OK.png"/>
+                        <button label="Submit" id="btnSubmit"   mold="trendy" image="/img/Action24.png"/>
+                        <button label="Close" id="btnClose"    mold="trendy" image="/img/Logout24.png"/>
+                    </hbox>
+                </hbox>
+            </vbox>                          
+        </div>
+    </window>
+</zk>

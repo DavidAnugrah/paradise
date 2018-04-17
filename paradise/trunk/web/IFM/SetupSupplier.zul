@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_setup_supplier" title="Setup Supplier" apply="id.my.berkah.ifm.controller.SetupSupplierCTRL" border="normal" width="990px" height="450px" ctrlKeys="#down#up"  closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <grid id="grid" oddRowSclass="non-odd" width="100%" height="120px">
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="200px" />
+                    <column label="" width="100px" align="right"/>
+                    <column label="" width="200px" />
+                    <column label="" width="100px" align="right"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Supplier  Code" width="50px" />
+                        <textbox width="170px" tabindex="1" id="txtsuppnumb" placeholder="Supplier Code" value="${arg.suppliernumber}" mold="rounded" style="background-color:#FFFACD" readonly="false"  focus="true"  />
+                        <label   value="Supplier Name" width="50px"/>
+                        <textbox width="170px" tabindex="3" id="txtsuppname" placeholder="Supplier Name" value="${arg.suppliername}" mold="rounded" readonly="false"   />
+                        <label   value="Supplier Group" width="50px" />
+                        <textbox width="170px" tabindex="4" id="txtsuppgroup" mold="rounded"  readonly="false" />
+                    </row>
+                    <row>
+                        <label   value="Create Date" width="50px" />
+                        <textbox width="170px" tabindex="1" id="txtCreateDate" value="${arg.creationdate}" mold="rounded" readonly="true" />
+                        <label   value="Effective Date" width="50px"/>
+                        <textbox width="170px" tabindex="3" id="txtEffectiveDate" value="${arg.startactivedate}" mold="rounded" readonly="true"  />
+                        <label   value="Modified Date" width="50px" />
+                        <textbox width="170px" tabindex="4" id="txtModifiedDate" value="${arg.lastupdatedate}" mold="rounded"  readonly="true" />
+                    </row>
+                    <row>
+                        <label   value="Create By" width="50px" />
+                        <textbox width="170px" tabindex="1" id="txtcreateBy" value="${arg.createdbydesc}" mold="rounded" readonly="true"  />
+                        <label   value="Expired Date" width="50px"/>
+                        <textbox width="170px" tabindex="3" id="txtexpiredDate" value="${arg.inactivedate}" mold="rounded" readonly="true"  />
+                        <label   value="Modified By" width="50px" />
+                        <textbox width="170px" tabindex="4" id="txtModifedBy" value="${arg.lastupdatebydesc}" mold="rounded"  readonly="true" />
+                    </row>
+                    <row visible="false">
+                        <textbox width="50px" readonly="true" id="flag" disabled="true"  />
+                        <textbox width="50px" readonly="true" id="sgid" value="${arg.sgid}" disabled="true"  />
+                        <textbox width="50px" readonly="true" id="txtsupid" value="${arg.supplierid}" disabled="true"  />
+                        <textbox width="50px" readonly="true" id="mappingcode" value="${arg.mappingcode}" disabled="true"  />
+                        <textbox width="50px" readonly="true" id="orgid" value="${arg.orgid}" disabled="true"  />
+                        <textbox width="50px" readonly="true" id="fsid" value="${arg.fsid}" disabled="true"  />
+                        <textbox width="50px" readonly="true" id="sgdesc" value="${arg.sgdescription}" disabled="true"  />
+                        <textbox width="50px" tabindex="3" id="txtEffectiveby" visible="false" value="${arg.startactiveby}" mold="rounded" readonly="true"  />
+                        <textbox width="50px" tabindex="3" id="txtexpiredby" visible="false" value="${arg.inactiveby}" mold="rounded" readonly="true"  />
+                    </row>
+                </rows> 
+           
+            </grid>
+        </div>
+        <div>
+            <listbox id="listbox" height="200px" width="100%" sizedByContent="true" emptyMessage="No items match your search" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="id"                    width="10px"  visible="false" />
+                    <listheader label="Code"                  width="100px" visible="true" sort="auto" />
+                    <listheader label="supplier id"                  width="100px" visible="false" sort="auto" />
+                    <listheader label="Name"                  width="170px" visible="true" sort="auto"/>
+                    <listheader label="country"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="city id"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="city code"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="city "                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="City Name"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="province id"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="province code"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="province "                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="Province Name"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="pay site"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="Contact Person"                  width="200px" visible="true" sort="auto"/>
+                    <listheader label="Address"                  width="200px" visible="true" sort="auto"/>
+                    <listheader label="phone"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="phone2"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="npwp"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="supplier status"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="Expire date"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="Zip Code"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="Mapping Code"                  width="200px" visible="false" sort="auto"/>
+                    <listheader label="Effective date"                  width="150px" visible="true" sort="auto"/>
+                    <listheader label="Create Date"          width="150px" visible="true" sort="auto" />
+                    <listheader label="Create By"             width="150px" visible="false" sort="auto" />
+                    <listheader label="Create By desc"             width="150px" visible="false" sort="auto" />
+                    <listheader label="Modified date"           width="150px" visible="false" sort="auto"/>               
+                    <listheader label="Modified by"         width="150px" visible="false" sort="auto"/>       
+                    <listheader label="Modified by desc"         width="150px" visible="false" sort="auto"/>       
+                    <listheader label="user login"         width="150px" visible="false" sort="auto"/>       
+                    <listheader label="user "         width="150px" visible="false" sort="auto"/>       
+                    <listheader label="email"         width="150px" visible="false" sort="auto"/>       
+                </listhead>
+            
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+            <!--<hlayout>-->
+            <div >
+                <paging id="userPaging" width="100%" style="color: black"/>
+            </div>
+            <grid>
+                <columns>
+                    <column label=""  width="100%" align="center" />
+                </columns> 
+                <rows>
+                    <row height="35px">
+                        <hbox>
+                            <!--<button id="btnbrowse"  upload="true,maxsize=1024,multiple=true"     mold="trendy"  label="Browse"   image="/img/Next24.png"     tooltiptext="Browse"/>-->
+                            <button id="btnadd"     label="Add Detail" mold="trendy" image="/img/Plus24.png" tooltiptext="Add"/>   
+                            <button id="newrecord"  mold="trendy" label="New"       width="80px"   image="/img/New24.png"   tooltiptext="New Record"/>
+                            <button id="btnrefresh" label="refresh" mold="trendy"   image="/img/Refresh24.png" tooltiptext="Refresh" />
+                            <button id="btndelete"  label="Delete" mold="trendy"   width="80px" image="/img/DeleteSelection24.png" tooltiptext="Delete List" />
+                            <button id="save"       mold="trendy" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                            <button id="submit"     mold="trendy" label="Submit"    width="90px"   image="/img/Action24.png"  tooltiptext="Submit"/>
+                            <button id="expire"     mold="trendy" label="Expired"    width="90px"   image="/img/Action24.png"  tooltiptext="Expired"/>
+                            <!--<button id="approve"    mold="trendy" label="Approve"   width="100px"  image="/img/1449847706_OK.png"  tooltiptext="Approve"/>-->
+                            <!--<button id="cancel"     mold="trendy" label="Cancel"    width="90px"   image="/img/Cancel24.png"  tooltiptext="Cancel"/>-->
+                            <button id="close"      mold="trendy" label="Close"     width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                        </hbox>   
+                    </row>  
+                </rows>
+            </grid>
+        </div>
+    </window>
+</zk>

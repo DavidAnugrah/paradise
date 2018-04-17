@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_job_alert" title="Job Set Up" apply="id.my.berkah.rpsbaru.controller.JobAlertCTRL" border="normal" width="400px"  ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+        <div>
+        <groupbox width="378px" sclass="main z-demo-config">
+            <caption label="Status Job"  style="color:black;" />
+            <separator height="15px"></separator>
+            <grid>
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="242px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Job Id"/>
+                        <textbox width="200px" id="txtJobId" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Next Date"/>
+                        <textbox width="200px" id="txtDate" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Interval"/>
+                        <textbox width="200px" id="txtInterval" readonly="true"/>
+                    </row>
+                    <row>
+                        <hbox>
+                            <label value="Active Status"/>
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbForceActiveY" value="Y" disabled="true"/>
+                            <checkbox id="cbForceActiveN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+        
+        <groupbox width="378px" sclass="main z-demo-config">
+            <caption label="Do Job Every" style="color:black;"/>
+            <separator height="15px"></separator>
+                <grid oddRowSclass="non-odd">
+                    <columns>
+                        <column align="right" width="50px"/>
+                        <column width="313px"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label/>
+                            <hbox>
+                            <intbox id="txtMinute" width="80px"/>
+                            <label value="Minute"/>
+                            </hbox>
+                        </row>
+                    </rows>
+                </grid>
+        </groupbox>
+        <separator height="15px"></separator>
+        <groupbox width="378px" sclass="main z-demo-config">
+            <caption label="Duedate Activation Perso Migration" style="color:black;"/>
+            <separator height="15px"></separator>
+            <radiogroup Id="rgDay">
+                <grid oddRowSclass="non-odd">
+                    <columns>
+                        <column align="right" width="50px"/>
+                        <column width="313px"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label />
+                            <hbox>
+                            <intbox id="txtDay" width="80px"/>
+                            <label value="Day"/>
+                            </hbox>
+                        </row>
+                    </rows>
+                </grid>
+            </radiogroup> 
+        </groupbox>
+        </div>
+        <grid oddRowSclass="non-odd">
+                <columns>
+                    <column label="" align="center" width="100px"/>
+                    <column label="" align="center" width="90px"/>
+                </columns>
+                <rows>
+                    <row>
+                            <button id="btnNonActive" height="32px"/>
+                            <button id="btnSave" label="Save"  height="32px"/>                    
+                    </row>
+                </rows>
+            </grid> 
+    </window>
+</zk>

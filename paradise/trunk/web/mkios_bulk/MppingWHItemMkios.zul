@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_mapping_itemwh_mkios" title="Add/Edit Item WareHouse" apply="id.my.berkah.mkiossetup.controller.MappingWHItemCTRL" border="normal"  width="750px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="760px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item Code" width="50px" />
+                    <hbox>
+                    <textbox width="150px" tabindex="4" id="txtitemcode" value="${arg.itemcode}" style="background-color:#FFFACD"/>
+                     <button  id="btnitem" tabindex="11" width="40px" height="20px"  src="/img/search.png"  tooltiptext="LOV WareHouse"/>
+                     </hbox>
+                     <label   value="Item Description" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtitemdesc" value="${arg.itemdescription}" style="background-color:#FFFACD"/>
+                </row>
+                    <row >
+                    <label   value="Location Code" width="50px" />
+                    <hbox>
+                        <textbox width="150px" tabindex="10" id="txtloccode" value="${arg.loccode}" readonly="false" style="background-color:#FFFACD"/>
+                        <button  id="btnloc" tabindex="11" width="40px" height="20px"  src="/img/search.png"  tooltiptext="LOV location"/>
+                    </hbox>
+                     <label   value="Location Desc" /> 
+                    <textbox width="200px" tabindex="7" id="txtlocdesc" value="${arg.locdesc}" readonly="true" style="background-color:#FFFACD" />
+                </row>
+                <row>
+                    <label   value="Effective By Name" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtEffectiveByName" value="${arg.effectiveby}" readonly="true"   />
+                    <label   value="Effective Date" />
+                    <datebox width="200px" tabindex="7" id="txtEffectiveByDate" value="${arg.effectivedate}" format="dd-MM-yyyy" readonly="true"   style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Expired By Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtExpiredByName" value="${arg.expiredbyname}" readonly="true"  />
+                    <label   value="Expired Date" />
+                    <textbox width="200px" tabindex="12" id="txtExpiredDate" value="${arg.expireddate}" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Created By Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtCreatedByName" value="${arg.createdby}" readonly="true"  />
+                    <label   value="Created Date" />
+                    <textbox width="200px" tabindex="12" id="txtCreatedDate" value="${arg.createddate}" readonly="true" />
+                </row>
+            
+                <row visible="false">
+                    <textbox width="100px" readonly="true" id="txtwhid" value="${arg.whid}"  />
+                    <textbox width="100px" readonly="true" id="txtId" value="${arg.id}  " />
+                    <textbox width="100px" readonly="true" id="txtitemId" value="${arg.itemid}"  />
+                    <textbox width="100px" readonly="true" id="txtwhlocid" value="${arg.whlocid}"/>
+                    <textbox width="100px" readonly="true" id="txtmkiosmappingitemId" />
+                    <textbox width="100px" readonly="true" id="txtvouchertype" />
+                    <textbox width="100px" readonly="true" id="txtbrandId" />
+                    <textbox width="100px" readonly="true" id="txtbranddesc" />
+                    <textbox width="100px" readonly="true" id="txtparentId" />
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="740px">
+            <columns>
+               <column label="" width="260px" align="right" />
+                <column label="" width="100px" align="center"/>
+                <column label="" width="105px" align="center"/>
+                <column label="" width="260px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="newrecord"  tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="save"       tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="process"    tabindex="37" label="Expire"    width="90px"  image="/img/Action24.png"  tooltiptext="UnAllocated"/>
+                    <button id="close"      tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

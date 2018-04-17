@@ -1,0 +1,135 @@
+<?page title="Parameter Pencarian" contentType="text/html;charset=UTF-8"?>
+<zk>
+<window title="Parameter Pencarian" border="normal" width="470px">
+    <div>
+    <tabbox width="100%">
+        <tabs id="tabs">
+            <tab label="Utama"/>
+            <tab label="Lainnya"/>
+        </tabs>
+        <tabpanels height="400px">
+           	<tabpanel>
+	            <grid id="grid_find1" oddRowSclass="non-odd">
+	            <columns>
+	                <column label="" width="120px" align="right" />
+	                <column label="" width="280px" />
+	            </columns>
+	            <rows>
+	                <row>
+	                    <label   value="BU Code" width="50px" />
+	                    <hbox>
+	                        <textbox id="FIND_BU_CODE"   tabindex="1" width="100px" />
+	                        <button  id="btnLovbucodeFind" tabindex="2" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Business Units"/>
+	                    </hbox> 	
+	                </row>
+	                <row>
+	                    <label   value="Nomor POS" width="50px" />
+	                    <textbox id="findSalesNo" tabindex="3" width="200px" />
+	                </row>
+	                <row>
+	                    <label   value="Dibuat Oleh" width="50px" />
+	                    <textbox id="findCreatedBy" tabindex="3" width="200px" />
+	                </row>
+	                <row>
+	                    <label  value="Tanggal POS" width="50px" />
+	                    <hbox>  <datebox id="findFromDate" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+	                            <datebox id="findToDate"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+	                    </hbox>
+	                </row>
+	                <row>
+	                    <label   value="Status" width="50px" />
+	                    <hbox>
+	                        <textbox id="findStatus" 		tabindex="6" width="200px"/>
+	                        <button  id="btnLovStatusFind" 	tabindex="7" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Type"/>
+	                    </hbox>
+	                </row>
+	                <row>
+	                    <label   value="Delaer" width="50px" />
+	                    <hbox>
+	                        <textbox id="findDealerCode"  tabindex="8" width="100px" />
+	                        <button  id="btnLovDelaerFind" tabindex="9" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+	                    </hbox>
+	                </row>
+	                <row>
+	                    <label   value="Group Customer" width="50px" />
+	                    <hbox>
+	                    	<textbox id="findCustomerGroup"  tabindex="10" width="220px" maxlength="16"/>
+	                    	<button  id="btnLovCustGroupFind" tabindex="9" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+	                    </hbox>
+	                </row>
+	                <row>
+	                    <label   value="Nama Customer" width="50px" />
+                    	<textbox id="findCustomerName"  tabindex="10" width="220px" maxlength="16"/>
+	                </row>
+	            </rows>
+	        </grid>	
+	     </tabpanel>               
+         <tabpanel height="353px">
+	        <grid id="grid_find2" oddRowSclass="non-odd">
+	            <columns>
+	                <column label="" width="150px" align="right" />
+	                <column label="" width="280px" />
+	            </columns>
+	            <rows>
+	                <row>
+	                    <label  value="Dicommit Oleh" width="50px" />
+	                    <textbox id="commitByName"  tabindex="10" width="220px" maxlength="16"/>
+	                </row>
+	                <row>
+	                    <label  value="Tanggal Commit" width="50px" />
+	                    <hbox>  <datebox id="commitDateFrom" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+	                            <datebox id="commitDateTo"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+	                    </hbox>
+	                </row>
+	                <row>
+	                    <label  value="Dicancel Oleh" width="50px" />
+	                    <textbox id="cancelByName"  tabindex="10" width="220px" maxlength="16"/>
+	                </row>
+	                <row>
+	                    <label  value="Tanggal Cancel" width="50px" />
+	                    <hbox>  <datebox id="cancelDateFrom" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+	                            <datebox id="cancelDateTo"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+	                    </hbox>
+	                </row>
+	                <row>
+	                    <label   value="Kode Item" width="50px" />
+	                    <textbox id="findItemCode" tabindex="11" width="200px"/>
+	                </row>
+	                <row>
+	                    <label   value="Nomor Serial" width="50px" />
+	                    <textbox id="findSerialNo" tabindex="12" width="200px" />
+	                </row>
+	                <row>
+	                    <label   value="Metode Pembayaran" width="50px" />
+	                    <textbox tabindex="13" width="250px" id="findPaymentMethod"/>
+	                </row>
+	                <row>
+	                    <label   value="Penerbit" width="50px" />
+	                    <textbox tabindex="13" width="250px" id="findIssuerCode"/>
+	                </row>
+	                <row>
+	                    <label   value="No Kartu" width="50px" />
+	                    <textbox tabindex="13" width="250px" id="findAccNo"/>
+	                </row>
+	                <row>
+	                    <label   value="Nama Pemegang Kartu" width="50px" />
+	                    <textbox tabindex="13" width="250px" id="findHolderName"/>
+	                </row>
+	            </rows>
+	        </grid>	
+		   </tabpanel>
+      </tabpanels>
+   </tabbox>
+   </div>
+   <div height="30px">
+	   <absolutelayout width="100%" height="100%">	
+    	   <absolutechildren x="150" width="100px" height="30px">
+	           <button id="f_find"  tabindex="14" label="Find"  image="/img/search.png" width="100px" height="25px"/>
+           </absolutechildren>
+    	   <absolutechildren x="255" width="100px" height="30px">
+	           <button id="f_close" tabindex="15" label="Close" image="/img/End16.png" width="100px" height="25px"/>
+           </absolutechildren>
+		</absolutelayout>       
+   </div>
+</window>
+</zk>

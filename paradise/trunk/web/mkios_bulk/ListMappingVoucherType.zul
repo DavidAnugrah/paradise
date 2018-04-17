@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Mapping_Voucher_Type" title="Mapping Voucher Type MKIOS" apply="id.my.berkah.mkiossetup.controller.ListItemMkios" border="normal" width="1130px"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+            <textbox id="txitemid"  visible="false" />
+            <textbox id="txtitemcode"  visible="false" />
+            <textbox id="txtitemDescription"  visible="false" />
+            <textbox id="txtnominal"  visible="false" />
+            <textbox id="txturpmappingid"  visible="false" />
+            <textbox id="txtvouchertype" visible="false" />
+            <textbox id="txtvouchertypedesc" visible="false" />
+            <textbox id="txtbrandid"  visible="false" />
+            <textbox id="txtbrand"  visible="false" />
+            <textbox id="txteffectiveby"  visible="false" />
+            <textbox id="txteffectivedate"  visible="false" />
+            <textbox id="txtExpiredby" visible="false" />
+            <textbox id="txtExpireddate" visible="false" />
+            <textbox id="txtcreatedby" visible="false" />
+            <textbox id="txtCreatedDate"  visible="false" />
+            <textbox id="txtModifiedDate"  visible="false" />
+            <textbox id="txtModifiedByName"  visible="false" />
+        </toolbar>
+        </div>
+        <div>
+           <listbox id="listbox" height="400px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Item Id"     width="130px" visible="false" sort="auto" />
+                <listheader label="Item Code"          width="120px" visible="true" sort="auto"/>
+                <listheader label="Item Description"          width="190px" visible="true" sort="auto"/>
+                <listheader label="Nominal"          width="100px" visible="true" sort="auto"/>
+                <listheader label="MKIOs MApping Id"          width="300px" visible="false" sort="auto"/>
+                <listheader label="Voucher Type Mkios"          width="130px" visible="true" sort="auto"/>
+                <listheader label="Voucher Type desc"          width="180px" visible="true" sort="auto"/>
+                <listheader label="Brand Id"          width="300px" visible="false" sort="auto"/>
+                <listheader label="Brand "          width="150px" visible="true" sort="auto"/>
+                <listheader label="Effective By"          width="150px" visible="true" sort="auto"/> 
+                <listheader label="Effective Date"          width="150px" visible="true" sort="auto"/>
+                <listheader label="Expire By"      width="130px" visible="true" sort="auto"/>
+                <listheader label="Expire Date"        width="150px" visible="true" sort="auto"/>
+                <listheader label="Created By"          width="150px" visible="true" sort="auto"/>
+                <listheader label="Created Date"          width="150px" visible="true" sort="auto"/>
+                <listheader label="Modified By"          width="150px" visible="false" sort="auto"/>
+                <listheader label="Modified Date"          width="150px" visible="false" sort="auto"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox> 
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+   
+     <window id="find_Mapping_Voucher" title="Find Parameter"  apply="id.my.berkah.mkios.controller.ListItemMkios" visible="false"  position="center" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;" >
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <grid>
+            <columns>
+                <column label="" width="110px" align="right" />
+                <column label="" width="300px" />
+            </columns>
+            <rows>
+               
+                <row visible="true">
+                    <label value="Brand Id"/>
+                    <hbox>
+                    <textbox width="50px" tabindex="4" id="txtBrandId" readonly="true"  style="background-color:#FFFACD"/>
+                    <textbox width="150px" tabindex="4" id="txtBrandcode" readonly="true"  style="background-color:#FFFACD"/>
+                    <button id="btnbrand"  src="/img/search.png" />
+                    </hbox>
+                </row>
+                <row visible="false">
+                    <label value="Mapping Item"/>
+                    <hbox>
+                    <textbox width="50px" tabindex="4" id="txtmappingitemid" readonly="false"  style="background-color:#FFFACD"/>
+                    <!--<textbox width="150px" tabindex="4" id="txtmappingitem" readonly="false"  style="background-color:#FFFACD"/>-->
+                     <!--<button id="btnmapping"  src="/img/search.png" />-->
+                    </hbox>
+                </row>
+                 <row>
+                    <label value="Item Code"/>
+                    <hbox>
+                    <textbox width="50px"  id="txtitemid" visible="false" readonly="true"  style="background-color:#FFFACD"/>
+                    <textbox width="50px"  id="txtitemcode" readonly="true"  style="background-color:#FFFACD"/>
+                    <textbox width="150px"  id="txtitemdesc" readonly="true"  style="background-color:#FFFACD"/>
+                    <button id="btnitem"  src="/img/search.png" />
+                    </hbox>
+                </row>
+                <row visible="true">
+                    <label value="Voucher Type"/>
+                    <hbox>
+                    <!--<textbox width="50px" tabindex="4" id="txtvoucherid" readonly="false" style="background-color:#FFFACD" />-->
+                    <textbox width="50px" tabindex="4" id="txtvoucherType" readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="150px" tabindex="4" id="txtvoucherdesc" readonly="true" style="background-color:#FFFACD" />
+                    <button id="btnvouchertype"  src="/img/search.png" />
+                    </hbox>
+                </row>
+                <row visible="false">
+                    <label value="Nominal"/>
+                    <hbox>
+                    <!--<textbox width="50px" tabindex="4" id="txtvoucherid" readonly="false" style="background-color:#FFFACD" />-->
+                    <textbox width="150px" tabindex="4" id="txtnominal" readonly="true" style="background-color:#FFFACD" />
+                    <!--<button id="btnvouchertype"  src="/img/search.png" />-->
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column align="right"/>
+                <column align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <button id="findTransaction" label="Find" image="/img/Find24.png"/>
+                    <button id="close" label="Close" image="/img/End24.png"/>
+                </row>
+            </rows>
+        </grid>
+        </div>
+    </window>
+     </window>
+    
+</zk>

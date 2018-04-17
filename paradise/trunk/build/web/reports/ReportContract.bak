@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="ReportContract"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Portrait"
+		 pageWidth="595"
+		 pageHeight="842"
+		 columnWidth="555"
+		 columnSpacing="0"
+		 leftMargin="20"
+		 rightMargin="20"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.zoom" value="1.0" />
+	<property name="ireport.x" value="0" />
+	<property name="ireport.y" value="0" />
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="Contract" isForPrompting="true" class="java.lang.String"/>
+	<parameter name="DateFrom" isForPrompting="true" class="java.util.Date"/>
+	<parameter name="DateTO" isForPrompting="true" class="java.util.Date"/>
+	<parameter name="WorkorderNo" isForPrompting="true" class="java.lang.String"/>
+	<queryString><![CDATA[SELECT contract_date,
+        contract,
+        doc_reff,
+        qty_wo,
+        purchase_order,
+        qty_receive_contract,
+        qty_outstanding_contract
+        FROM   table (pkg_hrn_test.PcListOutStanding
+        (
+        '',
+        '',
+        '',
+        ''))]]></queryString>
+
+	<field name="CONTRACT_DATE" class="java.lang.String"/>
+	<field name="CONTRACT" class="java.lang.String"/>
+	<field name="DOC_REFF" class="java.lang.String"/>
+	<field name="QTY_WO" class="java.math.BigDecimal"/>
+	<field name="PURCHASE_ORDER" class="java.lang.String"/>
+	<field name="QTY_RECEIVE_CONTRACT" class="java.math.BigDecimal"/>
+	<field name="QTY_OUTSTANDING_CONTRACT" class="java.math.BigDecimal"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="57"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="180"
+						y="0"
+						width="202"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font size="14" isBold="true"/>
+					</textElement>
+				<text><![CDATA[Report Contract Outstanding]]></text>
+				</staticText>
+				<image  evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="0"
+						width="156"
+						height="40"
+						key="image"/>
+					<box></box>
+					<graphicElement stretchType="NoStretch"/>
+					<imageExpression class="java.lang.String"><![CDATA["D:\\Tsel Project\\Repo\\paradise\\trunk\\web\\img\\Logo7.jpg"]]></imageExpression>
+				</image>
+				<line direction="TopDown">
+					<reportElement
+						x="180"
+						y="25"
+						width="202"
+						height="1"
+						key="line"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+				<line direction="TopDown">
+					<reportElement
+						x="0"
+						y="56"
+						width="555"
+						height="1"
+						key="line"/>
+					<graphicElement stretchType="NoStretch"/>
+				</line>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="142"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="382"
+						y="0"
+						width="173"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{CONTRACT_DATE}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="282"
+						y="3"
+						width="100"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contract Date]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="3"
+						width="100"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Contract No]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="100"
+						y="3"
+						width="154"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{CONTRACT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="41"
+						width="100"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Document Reff]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="100"
+						y="41"
+						width="154"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{DOC_REFF}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="282"
+						y="41"
+						width="100"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Purchase Order]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="382"
+						y="41"
+						width="173"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{PURCHASE_ORDER}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="82"
+						width="100"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Qty Workorder]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="100"
+						y="82"
+						width="154"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{QTY_WO}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="282"
+						y="82"
+						width="100"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Qty Receive]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="382"
+						y="82"
+						width="173"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{QTY_RECEIVE_CONTRACT}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement
+						x="0"
+						y="117"
+						width="100"
+						height="20"
+						key="staticText"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<text><![CDATA[Qty Outstanding]]></text>
+				</staticText>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="100"
+						y="117"
+						width="197"
+						height="20"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{QTY_OUTSTANDING_CONTRACT}]]></textFieldExpression>
+				</textField>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<summary>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_ProductionCTRL" title="Production Control" apply="id.my.berkah.ifm.Production.ProductionCTRL" border="normal"  width="1135px" height="100%" ctrlKeys="#down#up"  contentStyle="overflow:auto" closable="false" onClose="self.detach();" >
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid"  oddRowSclass="non-odd" width="1095px"  >
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="50px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="480px" />
+                <!--<column label="" width="100px" />-->
+            </columns>
+            <rows id="rowh" >
+                <row>
+                    <label   value="Supplier"  />
+                    <hbox>
+                    <textbox width="50px" id="txtsupId" visible="false"      />
+                    <textbox width="70px" id="txtsupcode" readonly="true"     />
+                    <textbox width="176px" id="txtsupdesc" readonly="true"  />
+                    </hbox>
+                    <button  id="btnsup" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Sup" />
+                    <label   value="Production Date" width="50px" />
+                    <hbox>
+                    <datebox width="150px"   id="txtdatefrom" mold="rounded"  readonly="true" format="dd-MM-yyyy" />
+                    <label value=" to" />
+                    <datebox width="150px"   id="txtdateto" mold="rounded"  readonly="true" format="dd-MM-yyyy" />    
+                    </hbox>
+                    
+                </row>
+                <row>
+				 <label   value="Bussiness Unit"  />
+                    <hbox>
+                         <textbox width="50px"  id="txtbuid"  visible="false"  />
+                         <textbox width="70px"  id="txtbucode" readonly="true" />
+                         <textbox width="176px"  id="txtbudesc" readonly="true"   />
+                    </hbox>
+                    <button  id="btnbu" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Suppier" /> 
+				
+                   <!-- <label   value="Supplier Site"  />
+                    <hbox>
+                         <textbox width="50px"  id="txtsiteid" visible="false" readonly="false"  />
+                         <textbox width="70px"  id="txtsitecode" readonly="true"   />
+                         <textbox width="176px"  id="txtsitedesc" readonly="true"  />
+                    </hbox>
+                  <button  id="btnsupsite" width="40px"  mold="trendy" height="25px" disabled="true" src="/img/search.png"  tooltiptext="Lov WareHouse" /> -->
+                    <label   value="WO No." />
+                    <hbox>
+                    <bandbox width="150px"  id="txtwonofrom"  mold="rounded" readonly="true" />    
+                    <textbox width="20px"  id="txtwonofromid" visible="false"   readonly="true" />    
+                    <!--<button  id="btnwofrom" width="40px"  mold="trendy" height="25px" disabled="false" src="/img/search.png"  tooltiptext="Lov WO" />-->    
+                    <label value="to" />
+                    <bandbox width="150px"  id="txtwonoto" mold="rounded"  readonly="true" />    
+                    <textbox width="120px"  id="txtwonotoid" visible="false"   readonly="true" />    
+                    <!--<button  id="btnWOto" width="40px"  mold="trendy" height="25px" disabled="false" src="/img/search.png"  tooltiptext="Lov WO" />--> 
+                    </hbox>
+                </row>
+                <row>
+                   <label value=""/>
+				<label value=""/>
+				<label value=""/>
+                    <label value="RP No"/>
+                    <hbox>               
+                    <bandbox width="150px"  id="txtrpcode"  mold="rounded" readonly="true" />
+                    <textbox width="20px"  id="txtrpidcode" visible="false" readonly="true" />
+                     <!--<button  id="btnRpfrom" width="40px"  mold="trendy" height="25px" disabled="false" src="/img/search.png"  tooltiptext="Lov RP" />-->   
+                     <label value="to" />
+                     <bandbox width="150px"  id="txtrpdesc"   mold="rounded" readonly="true"    />
+                     <textbox width="20px"  id="txtrpdescid" visible="false"   readonly="true"     />
+                     <!--<button  id="btnRpto" width="40px"  mold="trendy" height="25px" disabled="false" src="/img/search.png"  tooltiptext="Lov Rp" />-->   
+                    </hbox>
+                </row>
+                <row>
+<!--                    <button id="find" mold="trendy" width="125px" image="/img/Find24.png" tooltiptext="FIND"/>
+                    <hbox>-->
+                         <label   value=""  />
+                         <label   value=""  />
+                    <!--</hbox>-->
+                    <label   value=""  />
+                    <label   value="Status WO" />
+                    <hbox>
+                    <combobox id="cmbstatus" width="150px" mold="rounded" value="ALL" readonly="true">
+                        <comboitem label="ALL"/>
+                        <comboitem label="OutStanding GD"/>
+                        <comboitem label="OutStanding GR"/>
+                    </combobox>
+                 <button id="btnQuery" mold="trendy" label="Query"  image="/img/Process16.png"    tooltiptext="Refresh"/>
+                 <button id="new" mold="trendy" label="Clear"  width="82px" image="/img/End16.png"     tooltiptext="Clear"/>
+                </hbox>
+                </row>
+                <row visible="false" >
+                    <label value="" />
+                    <hbox>
+                    <textbox id="flag" width="100px" />
+                    <textbox id="txtcmbstat" width="100px" />
+                    <textbox id="supcode" width="100px" />
+                    <textbox id="supdesc" width="100px" />
+                    <textbox id="sitecode" width="100px" />
+                    <textbox id="sitedes" width="100px" />
+                    <textbox id="buname" width="100px" />
+                    <textbox id="budes" width="100px" />
+                    <textbox id="date" width="100px" />
+                    <textbox id="stat" width="100px" />
+                    <textbox id="txtsuppdeliveryid" value="${arg.suppdeliveryid}"/>
+                    <textbox id="txtsuppdeliveryno" value="${arg.suppdeliveryno}"  />
+                    <textbox id="txtpoid"  value="${arg.poid}"/>   
+                    <textbox id="txtsuppdeliverydate" value="${arg.suppdeliverydate}" />
+                    <textbox id="txtpo" width="100px" value="${arg.purchaseorder}"/>
+                    <textbox id="txtpodtl" width="100px" />
+                    <textbox id="txtposition" width="100px" />
+                    <textbox id="txtitem" width="100px" />
+                    <textbox id="txtitemdesc" width="100px" />
+                    <textbox id="txtpriceunit" width="100px" />
+                    <textbox id="txtwhdesc" width="100px" />
+                    <textbox id="txtregdesc" width="100px" />
+                    <textbox id="txtdevqty" width="100px" />
+                    <textbox id="txtqty" width="100px" />
+                    <textbox id="txtbackorder" width="100px" />
+                    <textbox id="txtblockfrom" width="100px" />
+                    <textbox id="txtblockto" width="100px" />
+                    <textbox id="txtGdid" width="100px" />
+                    <textbox id="txtGdpoline" width="100px" />
+                    <textbox id="txtGdsupno" width="100px" />
+                    <textbox id="txtGdlineno" width="100px" />
+                    <textbox id="txtGditemcode" width="100px" />
+                    <textbox id="txtGditemdesc" width="100px" />
+                    <textbox id="txtGdqty" width="100px" />
+                    <textbox id="txtGdrangfrom" width="100px" />
+                    <textbox id="txtGdrangto" width="100px" />
+                    <textbox id="txtGdlinstatus" width="100px" />
+                    <textbox id="txtGdlineremark" width="100px" />
+                    <textbox id="txtGdstatupload" width="100px" />
+                    <textbox id="txtreqid" width="100px" />
+                    <textbox id="txtcreated" width="100px" />
+                    <textbox id="txtsupdelid" width="100px" />
+                    
+                    </hbox>
+                    
+                </row>
+            </rows>
+        </grid>
+       <separator spacing="20px"/>
+        <div>
+            <groupbox width="1095px" mold="3d" open="true" >
+                  <caption label="WO Header" sclass="main z-demo-config"/>	
+        <listbox id="listbox" height="130px" mold="paging"   sizedByContent="true" emptyMessage="No items match your search" tooltiptext="Double Click to View Detail" >
+            <frozen  columns="3"/>
+            <listhead sizable="true">
+                <listheader label="Work Order No"     visible="true" />
+                <listheader label="ID"     visible="false"/>
+                <listheader label="Supplier ID"          visible="true" sort="auto"/>
+                <listheader label="Supplier Name" visible="true" sort="auto"/>
+                <listheader label="BU code"  visible="true" sort="auto" />
+                <listheader label="BU description"  visible="true" sort="auto" />
+                <listheader label="Order Date"   visible="true" sort="auto" />
+                <listheader label="Status"   visible="true" sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+      
+        </groupbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="1070px" style="color: black"/>
+        </div>
+        <div>
+            <groupbox width="1095px"  mold="3d" open="true">
+                  <caption label="WO Detail" sclass="main z-demo-config"/>	
+        <listbox id="listboxdetail" height="120px" mold="paging" sizedByContent="true" emptyMessage="No items match your search"  tooltiptext="Double Click to View Detail" >
+            <frozen  columns="6" />
+            <listhead sizable="true">
+                <listheader label="Work Order No"            width="150px"  visible="true" />
+                <listheader label="Line"        width="50px" visible="true" sort="auto"/>
+                <listheader label="Item Code"      width="100px" visible="true" sort="auto"/>
+                <listheader label="Description " width="150px" visible="true" sort="auto"/>
+                <listheader label="UOM" width="50px"  visible="true" sort="auto" />
+                <listheader label="Warehouse Description"            width="150px" visible="true" sort="auto" />
+                <listheader label="Regional description" width="140px" visible="true" sort="auto" />
+                <listheader label="Delivered Qty"    width="150px" visible="true" sort="auto" />
+                <listheader label="Recieve"    width="150px" visible="true" sort="auto" />
+                <listheader label="Back Order"    width="150px" visible="true" sort="auto" />
+                <listheader label="Block From"    width="80px" visible="false" sort="auto" />
+                <listheader label="Block To"    width="80px" visible="false" sort="auto" />
+                <listheader label="Line Remark"    width="80px" visible="false" sort="auto" />
+                <listheader label="Qty Ordered"    width="120px" visible="true" sort="auto" />
+                <listheader label="Status"    width="120px" visible="true" sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                </listitem>
+            </template>
+        </listbox>
+      
+        </groupbox>
+        </div>
+         <div>
+            <paging id="userPagingdetail" width="1070px" style="color: black"/>
+        </div>
+        <div>
+            <groupbox width="1095px"  mold="3d" open="true">
+                  <caption label="WO Good Delivery Detail" sclass="main z-demo-config"/>	
+        <listbox id="listboxGDdetail" height="120px" mold="paging" sizedByContent="true" emptyMessage="No items match your search"  tooltiptext="Double Click to View Detail" >
+            <frozen  columns="6" />
+            <listhead sizable="true">
+                <listheader label="id"            width="50px"  visible="false" />
+                <listheader label="Po Line Ref"        width="150px" visible="false" sort="auto"/>
+                <listheader label="Goods Delivery"      width="200px" visible="true" sort="auto" />
+                <listheader label="Line" width="50px" visible="true" sort="auto"/>
+                <listheader label="Item Code" width="100px"  visible="true" sort="auto"/>
+                <listheader label="Description"     width="200px" visible="true" sort="auto" />
+                <listheader label="Delivered"            width="100px" visible="true" sort="auto" />
+                <listheader label="Block From" width="140px" visible="true" sort="auto" />
+                <listheader label="Block To"    width="80px" visible="true" sort="auto" />
+                <listheader label="Status"    width="80px" visible="true" sort="auto" />
+                <listheader label="Remark"    width="180px" visible="true" sort="auto" />
+                <listheader label="Status Upload File"    width="180px" visible="true" sort="auto" />
+                <listheader label="Sup delivery Id"    width="180px" visible="false" sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                </listitem>
+            </template>
+        </listbox>
+      
+        </groupbox>
+        </div>
+         <div>
+            <paging id="userPagingGDdetail" width="1070px" style="color: black"/>
+        </div>
+         <div>
+            <groupbox width="1095px"  mold="3d" open="true">
+                  <caption label="WO Receiving Detail" sclass="main z-demo-config"/>	
+        <listbox id="listboxgrdetail" height="120px" mold="paging" sizedByContent="true" emptyMessage="No items match your search"  pageSize="3" tooltiptext="Double Click to View Detail" >
+            <frozen  columns="6" />
+            <listhead sizable="true">
+                <listheader label="Goods Receive No"          width="150px"  visible="true" />
+                <listheader label="Line"        width="50px" visible="true" sort="auto"/>
+                <listheader label="Item Code"           width="100px" visible="true" sort="auto"/>
+                <listheader label="Description"    width="200px" visible="true" sort="auto"/>
+                <listheader label="Received"         width="130px"  visible="true" sort="auto"/>
+                <listheader label="Block From"          width="100px" visible="true" sort="auto" />
+                <listheader label="Block To"            width="100px" visible="true" sort="auto" />
+                <listheader label="Status" width="140px" visible="true" sort="auto" />
+                <listheader label="Remark"         width="100px" visible="true" sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                </listitem>
+            </template>
+        </listbox>
+      
+        </groupbox>
+        </div>
+         <div>
+            <paging id="userPagingGRdetail" width="1070px" style="color: black"/>
+        </div>
+        
+         <grid width="1095px">
+           <columns >
+               <column label=""  width="230px" align="right" />
+			    <column label=""  width="185px" align="center" />
+				 <column label=""  width="185px" align="center" />
+				  <column label=""  width="185px" align="center" />
+				   <column label=""  width="100px" align="center" />
+				    <column label=""  width="150px" align="left" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                   
+                    <button id="gnrtIF"     label="Generate Input File"     mold="trendy"   image="/img/OnChangingEvent-24x24.png" tooltiptext="Generate Input File"/>   
+                    <button id="createGD"   label="Create Goods Delivery"   mold="trendy"   image="/img/ScriptGroovy-24x24.png" tooltiptext="Create Goods Delivery"/>   
+                    <button id="createGR"   mold="trendy" label="Create Goods Receipt"      image="/img/ScriptRuby-24x24.png"  tooltiptext="Create Goods Receipt"/>
+                    <button id="uOF"        mold="trendy" label="Upload Output File"        image="/img/FileUpload-24x24.png"  tooltiptext="Upload Output File"/>
+                    <button id="print"      mold="trendy" label="Print"  width="90px"  image="/img/Report24.png"  tooltiptext="Print"/>
+                    <button id="close"      mold="trendy" label="Close"  width="90px"  image="/img/Logout24.png"  tooltiptext="Close"/>
+              
+                </row>  
+            </rows>
+            </grid>
+        </window>
+</zk>

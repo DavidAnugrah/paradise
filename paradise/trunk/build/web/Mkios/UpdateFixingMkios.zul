@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_Mkios_Update_Fixing" title="Update" border="normal" closable="false" mode="modal" apply="${arg.controller}" width="220px" >
+        <grid id="grid_find" oddRowSclass="non-odd" width="200px">
+            <columns>
+                <column label="" width="200px" align="center" />
+            </columns>
+            <rows>
+                <row  style="background-color:#D3D4D5">
+                    <label id="lblHeader"  value="OTA Date From" width="180px"/>
+                </row>
+                <row>
+                    <hbox>
+                        <textbox id="txtValue"  width="180px" />
+                        <button id="lovBrand" label="..." />
+                    </hbox>
+                </row>
+                <row>
+                    <hbox>
+                        <button id="update"  tabindex="12" label="Update"  image="/img/ArrowUpGreen-16x16.png" />
+                        <button id="Close" tabindex="13" label="Close" image="/img/End16.png" />
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	     
+    </window>
+</zk>

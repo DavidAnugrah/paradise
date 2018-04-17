@@ -1,0 +1,115 @@
+<zk>
+    <window  id="win_input_serial_range" title="Input by Serial Range" border="normal" width="900px" mode="modal" apply="id.my.berkah.pos.controller.WindowSerialRange" ctrlKeys="#f3#f4#f5#f6">
+
+    <vlayout height="10px" style="border:1px;background:#d3d3d3;">
+    </vlayout>
+    
+    <div width="100%" height="30px" style="border:1px;background:#d3d3d3;">        
+        <absolutelayout width="100%" height="100%">			    
+            <absolutechildren x="30" y="5" width="300px" height="30px">
+                <label value="Block From " style="color:black"/>
+            </absolutechildren>
+
+            <absolutechildren x="100" y="3" width="300px" height="30px">
+                <textbox  id="i_block_from" width="200px"/>
+            </absolutechildren>
+
+            <absolutechildren x="390" y="5" width="350px" height="30px">
+                <label value="Qty " style="color:black"/>
+            </absolutechildren>
+
+            <absolutechildren x="420" y="3" width="80px" height="30px">
+                <longbox id="i_qty" width="60px"/>
+            </absolutechildren>
+
+            <absolutechildren x="500" y="5" width="150px" height="30px">
+                <label value ="Block To " style="color:black"/>
+            </absolutechildren>
+
+            <absolutechildren x="560" y="3" width="250px" height="30px">
+                <textbox  id="i_block_to" width="200px"/>
+            </absolutechildren>
+
+            <absolutechildren x="770" y="4" width="120px" height="30px">
+                <button id="F3" label="Submit [F3]" width="90px" height="20px"/>
+            </absolutechildren>
+
+        </absolutelayout>
+    </div>
+    <div width="100%" height="30px" style="border:1px;background:#d3d3d3;">        
+        <absolutelayout width="100%" height="100%">			    
+            <absolutechildren x="30" y="3" width="300px" height="30px">
+                <label value="Item Code " style="color:black"/>
+            </absolutechildren>
+            <absolutechildren x="100" width="300px" height="30px">
+                <textbox  id="i_item_code" width="200px" readonly="true"/>
+            </absolutechildren>
+
+            <absolutechildren x="320" y="3" width="550px" height="30px">
+                <label value="Item Description " style="color:black"/>
+            </absolutechildren>
+
+            <absolutechildren x="420" width="550px" height="30px">
+                <textbox id="i_item_description" width="435px" readonly="true"/>
+            </absolutechildren>
+
+        </absolutelayout>
+    </div>
+
+    <vlayout height="10px" style="border:1px;background:#d3d3d3;">
+    </vlayout>
+
+    <listbox id="listbox" mold="paging" pageSize="10" height="200px" checkmark="true">
+            <listhead sizable="true">
+                <listheader label="Line No"     width="100px"  />
+                <listheader label="Block From"  width="150px"  />
+                <listheader label="Block To"    width="150px"  />
+                <listheader label="Qty"         width="100px"   align="right"/>
+                <listheader label="Item Code"   width="100px"  />
+                <listheader label="Item Desc."  width="200px"  />
+                <listheader label="WH Code"     width="100px"  />
+                <listheader label="WH Desc."    width="200px"  />
+                <listheader label="LOC Code"    width="100px"  />
+                <listheader label="LOC Desc."   width="200px"  />
+                <listheader label="LOT"         width="100px"  />
+                <listheader label="Ref."        width="100px"  />
+                <listheader label="Pos Id"      width="100px"  visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.lineNo}"/>
+                    <listcell label="${each.blockFrom}"/>
+                    <listcell label="${each.blockTo}"/>
+                    <listcell label="${each.qty}"/>
+                    <listcell label="${each.itemCode}"/>
+                    <listcell label="${each.itemDescription}"/>
+                    <listcell label="${each.whCode}"/>
+                    <listcell label="${each.whDescription}"/>
+                    <listcell label="${each.locCode}"/>
+                    <listcell label="${each.locDescription}"/>                    
+                    <listcell label="${each.lot}"/>
+                    <listcell label="${each.lineNoRef}"/>
+                    <listcell label="${each.salesId}"/>
+                </listitem>
+            </template>
+        </listbox>
+        <grid fixedLayout="true" oddRowSclass="non-odd">
+            <columns>
+               <column label="" width="155px" align="center"/>
+               <column label="" width="165px" align="center"/>
+               <column label="" width="155px" align="center"/>
+           </columns>
+           <rows>
+               <row>
+                   <button id="add"    label="New [F4]"     image="/img/Plus24.png"    tooltiptext="Add New Range Serial" width="140px"/>
+                   <button id="cancel" label="Delete Serial [F5]"  image="/img/Cancel24.png"  tooltiptext="Cancel Record" width="150px"/>
+                   <button id="close"  label="Close [F6]"   image="/img/Logout24.png"  tooltiptext="Close" width="140px"/>
+               </row>
+           </rows>
+        </grid>  
+        <div visible="false">
+            <textbox id="posId"  value="${arg.posId}"/>
+            <textbox id="lineNo" value="${arg.lineNo}"/>
+        </div>  
+    </window>
+</zk>

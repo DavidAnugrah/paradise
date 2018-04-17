@@ -1,0 +1,299 @@
+<window id="win_cute_pos" width="1000px" border="normal" title="Cute POS" ctrlKeys="#f2#f3#f4#f5#f6#f7#f8#f9#f10#f11#f12" mode="modal" apply="id.my.berkah.pos.controller.WindowSinglePOS">
+    <toolbar id="tb" sclass="vista" height="35px" align="start" orient="horizontal" left="0">
+        <toolbarbutton id="e_add"      tabindex="5"  label="New [F7]"      image="/img/New24.png"      width="80px" height="30px"/>
+        <toolbarbutton id="e_submit"   tabindex="10" label="Submit [F9]"   image="/img/LiveData24.png" width="100px" height="30px"/>
+        <toolbarbutton id="e_pay"      tabindex="7"  label="Payment [F10]" image="/img/dollar24.png"   width="110px" height="30px"/>
+        <toolbarbutton id="e_print"    tabindex="8"  label="Print [F11]"   image="/img/Print24.png"    width="90px" height="30px"/>
+        <toolbarbutton id="e_refresh"  tabindex="9"  label="Refresh [F12]" image="/img/Refresh24.png"  width="100px" height="30px"/>
+        <toolbarbutton id="e_cancel"   tabindex="11" label="Cancel"        image="/img/Cancel24.png"   width="70px" height="30px"/>
+        <toolbarbutton id="e_close"    tabindex="12" label="Close"         image="/img/Logout24.png"   width="70px" height="30px"/>
+    </toolbar>
+    <vlayout height="10px" style="border:1px;background:#a52a2a;">
+    </vlayout>
+    <div style="border:1px;background:#a52a2a;">
+    <grid fixedLayout="true" oddRowSclass="non-odd" style="border:1px;background:#a52a2a;">
+        <columns style="border:1px;background:#a52a2a;">
+            <column width="100px" align="right"/>
+            <column width="220px" />
+            <column width="120px" align="right"/>
+            <column width="200px" />
+            <column width="80px" align="right"/>
+            <column width="262px" />
+        </columns>
+        <rows style="border:1px;background:#a52a2a;">
+            <row style="border:1px;background:#a52a2a;">
+                <label   value="Currency" style="color:white"/>
+                <hbox>
+                    <textbox id="currCode"   width="50px" readonly="true" value="${arg.currCode}"/>
+                    <button id="F2" label="[F2]" width="35px" height="23px"/>
+                </hbox>
+                <label   value="Customer Name" style="color:white"/>
+                <textbox id="custName" width="180px" readonly="false" value="${arg.custName}"/>
+                <label   value="POS No" style="color:white"/>
+                <textbox id="salesNo" width="200px" readonly="true" value="${arg.salesNo}"/>
+            </row>
+            <row style="border:1px;background:#a52a2a;">
+                <label   value="Dealer" style="color:white"/>
+                <hbox>
+                    <textbox id="dealerCode"   width="160px" readonly="true" value="${arg.dealerCode}"/>
+                    <button id="F3" label="[F3]" width="35px" height="23px"/>
+                </hbox>
+                <label   value="Customer Group" style="color:white"/>
+                <hbox>
+                    <textbox id="custGroupCode" width="145px" readonly="true" value="${arg.custGroupCode}"/>
+                    <button id="F5" label="[F5]" width="35px" height="23px"/>
+                </hbox>
+                <label   value="POS Date" style="color:white"/>
+                <datebox id="createDate" width="206px" readonly="true" value="${arg.createDate}" cols="12" format="dd/MM/yyyy hh:mm:ss" disabled="true"/>
+            </row>
+            <row style="border:1px;background:#a52a2a;">
+                <label   value="Company" style="color:white"/>
+                <hbox>
+                    <textbox id="companyCode"   width="160px" readonly="true" value="${arg.companyCode}"/>
+                </hbox>
+                <label   value="Sales" style="color:white"/>
+                <textbox id="createByName" width="180px" readonly="true" value="${arg.createByName}"/>
+                <label   value="Status" style="color:white"/>
+                <textbox id="salesStatusName" width="200px" readonly="true" value="${arg.salesStatusName}"/>
+            </row>
+            <row visible="false">
+                <textbox id="salesId" value="${arg.salesId}"/>
+                <textbox id="buId" value="${arg.buId}"/>
+                <textbox id="buCode" value="${arg.buCode}"/>
+                <textbox id="buDescription" value="${arg.buDescription}"/>
+                <textbox id="companyId" value="${arg.companyId}"/>
+                <textbox id="salesStatus" value="${arg.salesStatus}"/>		                
+            </row>
+            <row visible="false">
+                <textbox id="customerGroupId" value="${arg.customerGroupId}"/>
+                <textbox id="dealerId" value="${arg.dealerId}"/>
+            </row>
+            <row spans="6" style="border:1px;background:#a52a2a;">
+            </row>
+        </rows>
+    </grid>
+    <div width="100%" height="35px">
+        <absolutelayout width="100%" height="100%">			    
+            <absolutechildren x="50" y="7" width="100px" height="35px">
+                <label value="Remark" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="106" y="5" width="1000px" height="35px">
+                <textbox id="remark" width="520px" value="${arg.remark}"/>
+            </absolutechildren>
+        </absolutelayout>
+    </div>
+    <vlayout height="10px" style="border:1px;background:#a52a2a;">
+    </vlayout>
+    </div>    
+    <div style="border:1px;background:#fffacd;">    
+	<listbox id="listbox" height="200px" multiple="true" checkmark="true">
+            <listhead sizable="true" style="border:1px;background:#ffff00;"> 
+                <listheader label="No"               width="50px"/>
+                <listheader label="Item Code"        width="100px"/>
+                <listheader label="Serial"           width="150px"/>
+                <listheader label="Item Descriptiom" width="200px"/>
+                <listheader label="Qty"              width="100px" align="right"/>
+                <listheader label="Price"            width="150px" align="right"/>
+                <listheader label="Gross Amount"     width="150px" align="right"/>			            
+                <listheader label="% Disc"           width="100px" align="right"/>
+                <listheader label="Amt Disc"         width="100px" align="right"/>
+                <listheader label="Discount"         width="100px" align="right"/>
+                <listheader label="Tax"              width="100px" align="right"/>
+                <listheader label="Amount"           width="100px" align="right"/>
+                <listheader label="Installment Amount"     	width="150px" align="right"/>			            
+                <listheader label="DP Installment Amount"     	width="150px" align="right"/>			            
+                <listheader label="Status"           		width="100px"/>
+                <listheader label="id"               width="100px" visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem style="border:1px;background:#fffacd;">
+                    <listcell label="${each.lineNo}"/>
+                    <listcell label="${each.itemCode}"/>
+                    <listcell label="${each.serialNo}"/>
+                    <listcell label="${each.itemDescription}"/>
+                    <listcell label="${each.strQtySales}"/>
+                    <listcell label="${each.strUnitPrice}"/>
+                    <listcell label="${each.strGrossAmountBeforeDiscount}"/>
+                    <listcell label="${each.strPctDisc}"/>
+                    <listcell label="${each.strDisc}"/>
+                    <listcell label="${each.strLineDiscount}"/>
+                    <listcell label="${each.strLineTax}"/>
+                    <listcell label="${each.strLineAmount}"/>
+                    <listcell label="${each.strInstallmentAmount}"/>
+                    <listcell label="${each.strLineDpInstallment}"/>
+                    <listcell label="${each.statusLineName}"/>
+                    <listcell label="${each.id}"/>
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <vlayout height="10px" style="border:1px;background:#006400;">
+    </vlayout>
+    
+<div style="border:1px;background:#006400;">    
+    <div width="100%" height="35px">			    
+        <absolutelayout width="100%" height="100%">			    
+        <absolutechildren x="10" width="800px" height="35px">
+
+            <grid fixedLayout="true" oddRowSclass="non-odd" style="border:1px;background:#a52a2a;">
+                <columns style="border:1px;background:#a52a2a;">
+                    <column width="100px" align="right"/>
+                    <column width="170px" />
+                    <column width="120px" align="right"/>
+                    <column width="225px" />
+                    <column width="100px" />
+                </columns>
+                <rows style="border:1px;background:#a52a2a;">
+                    <row style="border:1px;background:#a52a2a;">
+                        <label    value="Scan Serial" style="color:white"/> 
+                        <textbox  id="e_serial" width="150px"/>
+                        <label    value="Scan Item" style="color:white" /> 
+                        <textbox  id="e_scan_code" width="215px"/>
+                        <button   id="F6" label="[F6]" width="35px" height="23px"/>
+                    </row>
+                </rows>            
+            </grid>
+        </absolutechildren>
+        
+        </absolutelayout>
+    </div>			
+    <div width="1100px" height="22px">			    
+        <absolutelayout width="100%" height="100%">			    
+            <absolutechildren x="10" width="200px" height="30px">
+                <label value="Item Code" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="80" width="200px" height="30px">
+                <textbox  id="e_item_code" width="100px" readonly="true"/> 
+            </absolutechildren>
+            <absolutechildren x="200" width="200px" height="30px">
+                <label value="Item Desc" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="270" width="320px" height="30px">
+                <textbox id="e_item_desc" width="300px" readonly="true"/>
+            </absolutechildren>
+            <absolutechildren x="600" width="70px" height="30px">
+                <label value="UoM" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="630" width="70px" height="30px">
+                <textbox id="e_uom"  width="50px" readonly="true"/>
+            </absolutechildren>
+
+            <absolutechildren x="770" width="120px" height="30px">
+                <label value="Amount" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="850" width="120px" height="30px">
+                <decimalbox id="e_total_amount" width="100px" readonly="true" format="####,###,###.00" value="${arg.totalAmount}" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+
+        </absolutelayout>
+    </div>			
+    <div width="1100px" height="22px">			    
+        <absolutelayout width="100%" height="100%">			    
+            <absolutechildren x="10" width="200px" height="30px">
+                <label value="Scan Qty" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="80" width="200px" height="30px">
+                <longbox id="e_qty"   width="100px" tabindex="2"/>
+            </absolutechildren>
+            <absolutechildren x="200" width="200px" height="30px">
+                <label value="Unit Price" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="270" width="200px" height="30px">
+                <decimalbox id="e_price" width="100px"  style="text-align:right" format="###,###,###.00" locale="EN"/>
+            </absolutechildren>
+            <absolutechildren x="390" width="200px" height="30px">
+                <label value="Gross Amt" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="470" width="300px" height="30px">
+                <decimalbox id="e_gross_amount" width="100px" readonly="true" format="###,###,###.00" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+
+            <absolutechildren x="770" width="120px" height="30px">
+                <label value="Installment" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="850" width="120px" height="30px">
+                <decimalbox id="e_installment_amount" width="100px" readonly="true" format="###,###,###.00" value="${arg.installmentAmount}" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+        </absolutelayout>
+    </div>			
+
+    <div width="1100px" height="22px">			    
+        <absolutelayout width="100%" height="100%">			    
+            <absolutechildren x="10" width="200px" height="30px">
+                <label value="Disc (%)" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="80" width="200px" height="30px">
+                <decimalbox id="e_pctDisc" width="50px" tabindex="3" style="text-align:right" format="###,###,###.00" locale="EN"/>
+            </absolutechildren>
+            <absolutechildren x="200" width="200px" height="30px">
+                <label value="Disc in Amt" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="270" width="200px" height="30px">
+                <decimalbox id="e_amtDisc" width="100px" tabindex="4" style="text-align:right" format="###,###,###.00" locale="EN"/>      	  
+            </absolutechildren>
+            <absolutechildren x="390" width="200px" height="30px">
+                <label value="Net Amt" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="470" width="300px" height="30px">
+                <decimalbox id="e_net_amount" width="100px" readonly="true" format="###,###,###.00" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+
+            <absolutechildren x="770" width="120px" height="30px">
+                <label value="Amount Due" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="850" width="120px" height="30px">
+                <decimalbox id="e_amount_due" width="100px" readonly="true" format="###,###,###.00" value="${arg.amountDue}" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+        </absolutelayout>
+    </div>	
+    <div width="1100px" height="22px">			    
+        <absolutelayout width="100%" height="100%">	
+            <absolutechildren x="770" width="120px" height="30px">
+                <label value="Stamp Duty" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="850" width="120px" height="30px">
+                <decimalbox id="e_stamp_duty" width="100px" readonly="true" format="###,###,###.00" value="${arg.stampDuty}" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+        </absolutelayout>
+    </div>	
+
+    <div width="1100px" height="22px">			    
+        <absolutelayout width="100%" height="100%">	
+            <absolutechildren x="770" width="120px" height="30px">
+                <label value="Paid" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="850" width="120px" height="30px">
+                <decimalbox id="e_paid_amount" width="100px" readonly="true" format="###,###,###.00" value="${arg.paidAmount}" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+        </absolutelayout>
+    </div>	
+
+    <div width="1100px" height="22px">			    
+        <absolutelayout width="100%" height="100%">	
+            <absolutechildren x="770" width="120px" height="30px">
+                <label value="Balance" style="color:white"/> 
+            </absolutechildren>
+            <absolutechildren x="850" width="120px" height="30px">
+                <decimalbox id="e_balance_amount" width="100px" readonly="true"  format="###,###,###.00" value="${arg.balance}" style="text-align:right" locale="EN"/>
+            </absolutechildren>
+        </absolutelayout>
+    </div>	
+    <div visible="false">
+        <textbox id="e_id" width="150px"/>
+        <decimalbox id="e_discount"  width="70px"  readonly="true" style="text-align:right" format="###.##"/>
+        <decimalbox id="e_tax"       width="70px"  readonly="true" style="text-align:right" format="###.##"/>
+        <decimalbox id="e_amount"    width="70px"  readonly="true" style="text-align:right" format="###.##"/>
+        <textbox    id="e_itemId"    width="70px"  readonly="true"/>
+    </div>
+    <vlayout height="10px">
+    </vlayout>
+</div>    
+    <vlayout height="10px" style="border:1px;background:#006400;" >
+    </vlayout>
+    <hlayout height="35px" style="border:1px;background:#006400;">
+        <button id="e_add_line"        tabindex="13"  label="Add Line [F8]" image="/img/Plus24.png"        width="150px" height="30px"/>
+        <button id="e_add_line_serial" tabindex="14"  label="Add Serial"    image="/img/Plus24.png"        width="150px" height="30px"/>
+        <button id="e_cancel_line"     tabindex="15"  label="Cancel Line"   image="/img/Cancel24.png"      width="150px" height="30px"/>
+        <button id="e_detail_line"     tabindex="16"  label="Detail Line"   image="/img/Detail-24x24.png"  width="150px" height="30px"/>
+    </hlayout>
+</window>

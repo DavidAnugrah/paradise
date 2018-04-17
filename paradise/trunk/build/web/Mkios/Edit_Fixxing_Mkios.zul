@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<!--<zk xmlns:n="native">-->
+    <window id="win_Mkios_monitoring" title="Fixing Mkios" width="1000px" apply="${arg.controller}" mode="modal" height="515px" border="normal"  ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+<!--        <div>
+            <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+                <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="View  Record"/>
+                <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+                <toolbarbutton id="Find"    width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+            </toolbar>
+        </div>    -->
+        <div>    
+    <listbox id="listbox"  height="430px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Trc Id"              width="75px"   visible="true" sort="auto"/>
+                <listheader label="TRC DATE"        width="120px"  visible="true"/>
+                <listheader label="DO. ID"           width="200px"  visible="false"/>
+                <listheader label="DO. NO."           width="200px"  visible="true"/>
+                <listheader label="DO DATE"             width="150px"  visible="false"/>
+                <listheader label="LINE"            width="50px"  visible="false"/>
+                <listheader label="DEALER ID"          width="200px"  visible="false"/>
+                <listheader label="DEALER CODE"          width="150px"  visible="false"/>
+                <listheader label="DEALER NAME"          width="200px"  visible="false"/>
+                <listheader label="ITEM ID"        width="70px"  visible="true"/>
+                <listheader label="ITEM CODE"        width="100px"  visible="true"/>
+                <listheader label="BRAND"        width="80px"  visible="true"/>
+                <listheader label="BRAND ID"        width="150px"  visible="false"/>
+                <listheader label="DENOMINASI"        width="100px"  visible="true"/>
+                <listheader label="QTY"        width="40px"  visible="true"/>
+                <listheader label="TRC SIGN"        width="150px"  visible="false"/>
+                <listheader label="TRC BY"        width="150px"  visible="false"/>
+                <listheader label="STATUS"        width="150px"  visible="false"/>
+                <listheader label="FILE NO KEEP"        width="150px"  visible="false"/>
+                <listheader label="MSISDN AD"        width="100px"  visible="false"/>
+                <listheader label="RTRY"        width="150px"  visible="false"/>
+                <listheader label="VALUE"        width="150px"  visible="false"/>
+                <listheader label="ERROR CODE"        width="100px"  visible="true"/>
+                <listheader label="ERROR DESC"        width="150px"  visible="true"/>
+                <listheader label="ERROR FLAG"        width="150px"  visible="false"/>
+                <listheader label="FLAG"      width="50px"  visible="true"/>
+                <listheader label="CREATED DATE"        width="150px"  visible="false"/>
+                <listheader label="UPDATE DATE"        width="150px"  visible="false"/>
+                <listheader label="UPDATE BY"        width="150px"  visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <vlayout height="5px" width="100%" style="border:0px;">
+        </vlayout>  
+<!--    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>-->
+    <div align="center">
+        <!--<toolbar id="tb" sclass="vista" height="30px">-->
+        <button id="updateView" label="Update" height="35px" image="/img/ArrowUpGreen-16x16.png" />
+        <button id="close" label="Back" tooltiptext="Find" height="35px" image="/img/Logout24.png" />
+        <!--</toolbar>-->
+    </div>
+    
+</window>
+
+
+</zk>

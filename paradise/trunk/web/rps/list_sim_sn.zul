@@ -1,0 +1,75 @@
+<zk>
+<window id="win_list_simSN" title="List of SIM/SN" width="99%" height="480px" border="normal" apply="id.my.berkah.rps.controller.ListSimSNController" ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;"> 
+    <attribute name="onLater">
+        Clients.clearBusy(); //remove the busy message
+    </attribute>
+
+    <borderlayout id="bdr" style="background:#5C899B;" width="100%" height="100%">
+        <north id="north" size="35px" border="0" style="background:#CAE8F0;">
+            <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+               <toolbarbutton id="newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+               <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+               <toolbarbutton id="cancel"    width="25px" height="25px" src="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+               <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+               <toolbarbutton id="find"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+               <toolbarbutton id="print"     width="25px" height="25px" src="/img/Print24.png"   tooltiptext="Print History Perso"/>
+            </toolbar>
+        </north>
+        <center id="center" border="0" style="background:#CAE8F0;">
+            <borderlayout id="bdrh" style="background:#5C899B;" width="90%" height="90%">
+                <center>
+                        <listbox id="listbox" height="397px" width="100%" mold="paging" pageSize="25">
+                            <listhead sizable="true">
+                                
+                                <listheader label="ID"                  width="100px"   visible="false"/>
+                                <listheader label="Vendor Code"         width="100px"   sort="auto(vendorCode)"/>
+                                <listheader label="Vendor Name"         width="150px"   sort="auto(vendorName)" />
+                                <listheader label="Appl. Code"          width="100px"   sort="auto(applicationCode)"/>
+                                <listheader label="Appl. Name"          width="150px"   sort="auto(applicationName)" />
+                                <listheader label="Prod. Code"          width="100px"   sort="auto(productCode)"/>
+                                <listheader label="Fist Serial"         width="150px"   sort="auto(firstSerial)" />
+                                <listheader label="Last Serial"         width="150px"   sort="auto(lastSerial)" />
+                                <listheader label="QTY"                 width="100px"   sort="auto(qty)" align="right"/>
+                                <listheader label="Sim Type"            width="100px"   sort="auto(simType)" />
+                                <listheader label="SubScriber Type"     width="100px"   sort="auto(subscriberType)" />
+                                
+                                <listheader label="CREATION DATE"       width="200px"  visible="false"/>
+                                <listheader label="CREATION DATE"       width="150px"  visible="true"/>
+                                <listheader label="CREATED BY"          width="150px"  visible="false"/>
+                                <listheader label="CREATED BY"          width="150px"  sort="auto(createdByName)" visible="true"/>
+                                <listheader label="LAST UPDATE DATE"    width="200px"  visible="false"/>
+                                <listheader label="UPDATE DATE"         width="150px"  visible="true"/>
+                                <listheader label="LAST UPDATED BY"     width="150px"  visible="false"/>
+                                <listheader label="LAST UPDATED BY"     width="150px"  sort="auto(lastUpdatedByName)" visible="true"/>
+                            </listhead>
+                            <template name="model">
+                                <listitem>
+                                    <listcell label="${each.id}"/>
+                                    <listcell label="${each.vendorCode}"/>
+                                    <listcell label="${each.vendorName}"/>
+                                    <listcell label="${each.applicationCode}"/>
+                                    <listcell label="${each.applicationName}"/>
+                                    <listcell label="${each.productCode}"/>
+                                    <listcell label="${each.firstSerial}"/>
+                                    <listcell label="${each.lastSerial}"/>
+                                    <listcell label="${each.qty}"/>
+                                    <listcell label="${each.simType}"/>
+                                    <listcell label="${each.subscriberType}"/>
+                                    
+                                    <listcell label="${each.creationDate}"/>
+                                    <listcell label="${each.tanggalBuat}"/>
+                                    <listcell label="${each.createdBy}"/>
+                                    <listcell label="${each.createdByName}"/>
+                                    <listcell label="${each.lastUpdateDate}"/>
+                                    <listcell label="${each.tanggalUpdate}"/>
+                                    <listcell label="${each.lastUpdatedBy}"/>
+                                    <listcell label="${each.lastUpdatedByName}"/>
+                                </listitem>
+                            </template>
+                        </listbox>
+                </center>
+            </borderlayout>
+        </center>
+    </borderlayout>	
+    </window>
+</zk>

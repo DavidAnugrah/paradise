@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="List_Mappingitem_WH" title="List Item WareHouse " apply="id.my.berkah.mkiossetup.controller.ListMappingItemWH" border="normal" width="1070px" height="400px" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <!--<toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />-->            
+            <toolbarbutton id="refresh1" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" /> 
+            <toolbarbutton  id="close" image="/img/Logout24.png"  tooltiptext="Close" /> 
+            <textbox visible="false" id="txtitemId"/>
+            <textbox visible="false" id="txtitemCode"/>
+            <textbox visible="false" id="txtitemDesc"/>
+            <textbox visible="false" id="txtEffectiveBy"/>
+            <textbox visible="false" id="txtEffectiveByDate"/>
+            <textbox visible="false" id="txtExpiredBy"/>
+            <textbox visible="false" id="txtExpiredDate"/>
+            <textbox visible="false" id="txtCreatedBy"/>
+            <textbox visible="false" id="txtCreatedDate"/>
+            <textbox visible="false"  id="txtWhid" value="${arg.whid}"/>
+            <textbox visible="false"  id="txtid"   value="${arg.id}"  />
+            <textbox visible="false" id="txtparentid"/>
+            <textbox visible="false" id="txtwhlocid"/>
+            <textbox visible="false" id="txtloccode"/>
+            <textbox visible="false" id="txtlocdesc"/>
+        </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="280px" mold="paging"  pageSize="10">
+            <listhead sizable="true">
+                 <listheader label="Wh id"            width="50px" visible="false"  />
+                <listheader label="Item id"            width="50px" visible="false" sort="auto" />
+                <listheader label="Item Code"          width="100px" visible="true" sort="auto" />
+                <listheader label="Item Description"   width="130px" visible="true" sort="auto"/>
+                <listheader label="Effective By"       width="140px" visible="true" sort="auto"/>
+                <listheader label="Effective Date"     width="140px" visible="true" sort="auto"/>
+                <listheader label="Expired By"         width="140px" visible="true" sort="auto"/>
+                <listheader label="Expired Date"         width="100px" visible="true" sort="auto"/>
+                <listheader label="id"               width="140px" visible="false" sort="auto" />
+                <listheader label="parent id"          width="140px" visible="false" sort="auto" />
+                <listheader label="Wh loc id"          width="140px" visible="false"  sort="auto"/>
+                <listheader label="Location Code"          width="100px" visible="true" sort="auto"/>
+                <listheader label="Location Description"   width="140px" visible="true" sort="auto" />
+                <listheader label="Created By"        width="130px" visible="true" sort="auto"/>
+                <listheader label="Created Date"      width="130px" visible="true" sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+        
+           <window id="win_Findlist_item" title="Find Parameter"  apply="id.my.berkah.mkios.controller.ListMappingItemWH"  position="center" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;" >
+        <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                   
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Item Code" width="50px" />
+                        <hbox>
+                        <textbox id="txtitemcode" placeholder="Item Code" tabindex="1" readonly="false" width="65px" style="background-color:#FFFACD"/>
+                       <textbox id="txtitemdesc" tabindex="1" placeholder="Item Description" width="200px" readonly="false" style="background-color:#FFFACD"/>
+                         </hbox>
+                    </row>
+                </rows>
+            </grid>
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="100px" align="center" />
+                    <column label="" width="100px" align="left" />
+                </columns>
+                <rows>
+                 <row>
+                     <label/>
+                     <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="closeFind" tabindex="13" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>
+    </window>	     
+       </window>         
+</zk>

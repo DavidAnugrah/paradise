@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="winListAttribute"  height="500px" border="normal" title="List Attribute" apply="id.my.berkah.rps.dpa.controller.ListAttributeCTRL" visible="true" >            
+        <!--TOOLBAR-->            
+        <toolbar id="tbAttr" height="27px" align="start" orient="horizontal" left="2">
+            <toolbarbutton id="tbNew"       width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+            <toolbarbutton id="tbEdit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>                          
+            <toolbarbutton id="tbRefresh"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+            <toolbarbutton id="tbFind"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>         
+        </toolbar>            
+        <hbox height="2px"/>
+        <listbox id="lstAttribute" mold="paging" height="370px" sizedByContent="true" width="100%" pageSize="10">
+            <listhead sizable="true">           
+                <listheader label="Attibute Code" width="170px"  sort="auto(attrCode)" visible="true"/>         
+                <listheader label="Attibute Name" width="130px"  sort="auto(attrDesc)" visible="true"/> 
+                <listheader label="Created Date" width="130px"  sort="auto(createdDate)" visible="true"/> 
+                <listheader label="Created by" width="130px" sort="auto(createdBy)" visible="true"/> 
+                <listheader label="Updated Date" width="170px" visible="true" sort="auto(updatedBy)"/>       
+                <listheader label="Updated By" width="120px" visible="true" sort="auto(updatedBy)"/> 
+                <listheader label="Expired Date" width="130px" visible="true" sort="auto(expiredBy)"/> 
+                <listheader label="Expired by" width="130px" visible="true" sort="auto(expiredBy)"/> 
+                <listheader label="Attr Id" width="130px" visible="false" sort="auto(createdBy)"/>                                                                                                      
+            </listhead>                    
+            <template name="model">
+                <listitem>                                                                                                     
+                    <listcell label="${each.attrCode}" visible="true"/>  
+                    <listcell label="${each.attrDesc}" visible="true"/>  
+                    <listcell label="${each.createdDate}" visible="true"/>  
+                    <listcell label="${each.createdBy}" visible="true"/>  
+                    <listcell label="${each.updatedDate}" visible="true"/> 
+                    <listcell label="${each.updatedBy}" visible="true"/> 
+                    <listcell label="${each.expiredDate}" visible="true"/> 
+                    <listcell label="${each.expiredBy}" visible="true"/>                                                                               
+                    <listcell label="${each.attrId}" visible="false"/>                                                
+                </listitem>
+            </template>
+        </listbox>     
+       <div>
+        <paging id="userPagingAttribute" width="100%" style="color: black" />
+       </div>
+        <window id="winAttribute"  height="154px" border="normal" title="Master Attribute" apply="id.my.berkah.rps.dpa.controller.AttributeCTRL" visible="false" width="500px" >   
+            <grid>
+                <columns>
+                    <column label="" width="150px" align="right"/>
+                    <column label="" align="left"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Attribute Code" />
+                        <textbox id = "txtAttributeCode" value="" style="background-color:#FFFACD; text-transform: uppercase"/>
+                    </row>
+                    <row>
+                        <label value="Attribute Name" />
+                        <textbox id = "txtAttributeName" width="250px" style="background-color:#FFFACD; text-transform: uppercase"/>
+                    </row>
+                </rows>
+            </grid>
+            <hbox height="2px"/>
+            <grid>
+                <columns>
+                    <column label="" align="Right" width="5%"/>
+                    <column label="" align="center" width="90%"/>	
+                    <column label="" align="Left" width="5%"/>			
+                </columns>
+                <rows>
+                    <row>   
+                        <label value=""/>
+                        <hbox>
+                            <button id="btnNew" label="New" onClick="" image="/img/New24.png" height="32px"> </button>
+                            <button id="btnSave" label="Save" onClick="" image="/img/Save.png" height="32px"> </button>
+                            <button id="btnClose" label="Close" onClick="" image="/img/Logout24.png" height="32px"> </button>
+                        </hbox>
+                        <label value=""/>
+                    </row>                     
+                </rows>
+            </grid>        
+        </window>      
+  
+        <window id="winEditAttribute"  height="167px" border="normal" title="Master Attribute" apply="id.my.berkah.rps.dpa.controller.EditAttributeCTRL" visible="false" width="500px" >   
+            <grid>
+                <columns>
+                    <column label="" width="150px" align="right"/>
+                    <column label="" align="left"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Attribute Code" />
+                        <hbox>
+                            <textbox id="txtExpiredBy" visible="false"/>
+                            <textbox id = "txtAttributeCode" value="" style="background-color:#FFFACD" readonly="true"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Attribute Name" />
+                        <textbox id = "txtAttributeName" width="250px" style="background-color:#FFFACD; text-transform: uppercase"/>
+                    </row>
+                    <row>                               
+                        <textbox id = "txtAttributeId" visible="false" width="250px" />
+                    </row>
+                </rows>
+            </grid>
+            <hbox height="2px"/>
+            <grid>
+                <columns>
+                    <column label="" align="right" width="5%"/>
+                    <column label="" align="center" width="90%"/>	
+                    <column label="" align="left" width="5%"/>			
+                </columns>
+                <rows>
+                    <row>   
+                        <label value=""/>
+                        <hbox>
+                            <button id="btnSave" label="Save" onClick="" image="/img/Save.png" height="32px"> </button>
+                            <button id="btnExpired" label="Expired" onClick="" image="/img/LockX24.png" height="32px"> </button>
+                            <button id="btnClose" label="Close" onClick="" image="/img/Logout24.png" height="32px"> </button>
+                        </hbox>
+                        <label value=""/>
+                    </row>
+                </rows>
+            </grid>
+        
+        </window>       
+  
+        <window id="winFind"  height="120px" border="normal" title="Master Attribute" apply="id.my.berkah.rps.dpa.controller.FindAttributeCTRL" visible="false" width="400px" >   
+            <grid>
+                <columns>
+                    <column label="" align="right" width="150px"/>
+                    <column label="" align="left"/>        			
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Attribute" />
+                        <textbox id = "txtAttribute" value="" width="150px"/>
+                    </row>
+                </rows>
+            </grid>
+            <hbox height="2px"/>
+            <grid>
+                <columns>
+                    <column label="" align="Right"/>
+                    <column label="" align="Left"/>			
+                </columns>
+                <rows>
+                    <row>   
+                        <button id="btnFind" label="Find" onClick="" image="/img/Find24.png" height="32px"> </button>
+                        <button id="btnClose" label="Close" onClick="" image="/img/Logout24.png" height="32px"> </button>
+                    </row>                     
+                </rows>
+            </grid>       
+        </window>    
+        
+    </window>               
+</zk>

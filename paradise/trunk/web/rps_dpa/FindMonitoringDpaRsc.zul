@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="find_Monitoring_DPA_Rsc" title="Find Parameter" apply="id.my.berkah.rps.dpa.controller.FindMonitoringDpaRscCtrl" width="320px" border="normal"  ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <grid>
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="0px" align="right" visible="false"/>
+                <column label="" width="150px" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="Item Code"/>
+                    <label />
+                    <textbox width="130px" tabindex="4" id="txtItemCode" readonly="false" value="${arg.channelId}" />
+                </row>
+                <row>
+                    <label value="Packet Code"/>
+                    <label />
+                    <textbox width="130px" tabindex="4" id="txtPacketCode" readonly="false" value="${arg.channelId}" />
+                </row>
+                <row>
+                    <label value="Location Code"/>
+                    <label />
+                    <textbox width="130px" tabindex="4" id="txtLocCode" readonly="false" value="${arg.channelId}" />
+                </row>
+                <row>
+                    <label value="Status" />
+                    <textbox width="0px" tabindex="4" id="txtTypeId" visible="false"/>
+                    <combobox id="cmbType" width="130px" readonly="true" >
+                        <comboitem label="Draft" />
+                        <comboitem label="LAR SENT"/>
+                        <comboitem label="Available"/>
+                        <comboitem label="Booked"/>
+                        <comboitem label="Used"/>
+                    </combobox>
+                </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column align="right"/>
+                <column align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <button id="find" label="Find" image="/img/Find24.png"/>
+                    <button id="close" label="Close" image="/img/End24.png"/>
+                </row>
+            </rows>
+        </grid>
+        </div>
+    </window>
+</zk>

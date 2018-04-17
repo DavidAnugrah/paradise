@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+  <window id="List_Wo_Item" title="List WorkOrder Item" apply="id.my.berkah.ifm.controller.ListWOItem"  border="normal" width="1000px" height="480px" closable="true" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <listbox id="listbox" height="355px" mold="paging"  multiple="true" checkmark="true"   pageSize="10">
+                <listhead sizable="true">
+                    <listheader label="" width="50px" visible="true" sort="auto"/>
+                    <listheader label="ID" width="50px" visible="true" sort="auto"/>
+                    <listheader label="Line" width="50px" visible="true" sort="auto"/>
+                    <listheader label="Item Code" width="150px" visible="true" sort="auto"/>
+                    <listheader label="Item Description" width="200px" visible="true" sort="auto"/>
+                    <listheader label="Production Date" width="150px" visible="true" sort="auto"/>
+                    <listheader label="Regional Description" width="200px" visible="true" sort="auto"/>
+                    <listheader label="HLR Description" width="200px" visible="true" sort="auto"/>
+                    <listheader label="Range From" width="150px" visible="true" sort="auto"/>
+                    <listheader label="Range To" width="150px" visible="true" sort="auto"/>
+                    <listheader label="UOM" width="100px" visible="false" sort="auto"/>
+                    <listheader label="Qty Ordered" width="50px" visible="true" sort="auto"/>
+                    <listheader label="Qty Delivered" width="50px" visible="true" sort="auto"/>
+                    <listheader label="OutStanding" width="100px" visible="true" sort="auto"/>
+                    <listheader label="Action"   width="150px" visible="false" />
+                   
+                </listhead>
+                <template name="model">
+                    <listitem>
+                  
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+       <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+       </div>
+        
+        <grid id="grid_find" oddRowSclass="non-odd" width="980px">
+            <columns>
+                <column label="" width="200px" align="left" />
+                <column label="" width="200px" align="center"/>
+                <column label="" width="200px" align="center"/>
+                <column label="" width="280px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox visible="false">
+                    <textbox id="txtwh" width="50px" value="${arg.InWhId}"  />
+                    <textbox id="txtid" width="50px" value="${arg.id}"/>
+                     <textbox id="txtexpire" width="50px" value="${arg.expireddate}"/>
+                    <textbox id="txtparentid" />
+                    <textbox id="txtwhid" />
+                    <textbox id="txtchannelid" />
+                    <textbox id="txtcompanyid" />
+                    <textbox id="txtbuid" />
+                    <textbox id="txturpcode"/>
+                    <textbox id="txturpdesc" />
+                    <textbox id="txtreid" />
+                    <textbox id="txtrpn" />
+                    <textbox id="txtBucode" />
+                     </hbox>
+                <button id="submit"  tabindex="30" label="Submit" width="115px"   image="/img/New24.png"     tooltiptext="Add"/>
+                <button id="refresh"      tabindex="38" label="Refresh"      width="115px"   image="/img/Refresh24.png"  tooltiptext="Close"/>
+                <button id="close"      tabindex="38" label="Close"      width="115px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                <label/>    
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

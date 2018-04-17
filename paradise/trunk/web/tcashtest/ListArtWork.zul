@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window apply="id.my.berkah.tcash.controller.ListArtWorkCtrl" id="List_ArtWork" title="List Art Work"  border="normal" width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+                <textbox id="txtid" visible="false" />
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="400px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="Id" width="50px"  visible="false" />
+                    <listheader label="Art Code"    width="100px"  visible="true" />
+                    <listheader label="Art Description"   width="200px"  visible="true" />
+                    <listheader label="File Name"           width="150px" visible="false" sort="auto"/>               
+                    <listheader label="Created By"           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Created Date"           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Update By"           width="150px" visible="false" sort="auto"/>               
+                    <listheader label="Update Date"           width="150px" visible="false" sort="auto"/>               
+                    <listheader label="Expired By"           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Expired Date"           width="150px" visible="true" sort="auto"/>               
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+        <window id="win_list_find" apply="id.my.berkah.tcash.controller.ListArtWorkCtrl" title="Find Parameter"  position="center"  border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="130px" align="right" />
+                    <column label="" width="290px" />
+                </columns>
+                <rows>
+                    <row visible="true">
+                        <label   value="Art" width="50px" />
+                        <textbox id="txtArt"  width="200px" />
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="415px" align="center" />
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                        <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+    </window>
+</zk>

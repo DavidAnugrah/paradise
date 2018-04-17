@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Dist_Data" title="List Distribution Data" apply="id.my.berkah.tcash1.controller.ListDistData" border="normal"  width="1130px" height="100%" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+                <toolbarbutton id="print" mold="default" image="/img/Print24.png" tooltiptext="Print" />
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="400px" mold="paging"  pageSize="10" >
+                <listhead sizable="true">
+                    <listheader label="Item Group" width="100px" sort="auto" />
+                    <listheader label="Item Description" width="130px" sort="auto" />
+                    <listheader label="Transaction Type" width="130px" sort="auto" />
+                    <listheader label="WO No" width="200px" sort="auto" />
+                    <listheader label="Ref No" width="200px" sort="auto" />
+                    <listheader label="Branch" width="130px" sort="auto" />
+                    <listheader label="Warehouse" width="180px" sort="auto" />
+                    <listheader label="Relation Branch" width="130px" sort="auto" />
+                    <listheader label="Warehouse Relation" width="180px" sort="auto" />
+                    <listheader label="Transaction Date" width="130px" sort="auto" />
+                    <listheader label="Qty Out" width="130px" sort="auto" />
+                    <listheader label="Qty In" width="130px" sort="auto" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+        <window id="win_list_find" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListDistData"  position="center" visible="false" border="normal" width="450px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="430px">
+                <columns>
+                    <column label="" width="80px" align="right" />
+                    <column label="" width="350px" />
+                </columns>
+                <rows>
+                    <row visible="false">
+                        <label value="WO No" />
+                        <textbox width="200px" id="txtWoNo"/>
+                    
+                    </row>
+                    <row>
+                        <label value="Ref No" />
+                        <textbox width="200px" id="txtRefNo"/>
+                    
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" format="dd/MM/yyyy"/>
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="430px">
+                <columns>
+                    <column label="" width="200px" align="center" />
+                    <column label="" width="200px" align="center" />
+                </columns>
+                <rows>
+                    <row>
+                        <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" tabindex="13" label="Close" image="/img/End16.png" />
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+    </window>
+</zk>

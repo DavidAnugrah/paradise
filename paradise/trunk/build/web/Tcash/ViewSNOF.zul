@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_view_OF"  title="View Logs" width="600px"  border="normal" closable="false" 
+             apply="id.my.berkah.tcash1.controller.ListViewOF"
+            style="border:1px;background:#3366FF;" onClose="self.detach();">
+        <style>
+            .labelstyle {
+			font-weight: bold;
+			font-family: 'Trebuchet MS';
+			color: black;
+		}
+        </style>
+        <grid>
+            <columns>
+                <column label="" align="right" width="80px"/>
+                <column label="" align="left" width="380px"/>
+            </columns>
+            <rows>
+                <row>	
+
+                    <textbox width="50px" visible="false" id="txtOF" value="${arg.header.of_id}" readonly="true"/>
+                    <textbox width="50px" visible="false" id="txtline" value="${arg.header.line_no}" readonly="true"/>
+                  
+                </row>
+
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label="" align="center" width="460px"/>
+            </columns>
+
+        </grid>
+        <listbox id="listboxview"  span="true" height="250px" mold="paging" pageSize="5">
+            <listhead sizable="true">
+                <listheader label="of_dtl_id"         visible="false"/>
+                <listheader label="of_id"          width="0px"  visible="false" />
+               <listheader label="Filename"          width="150px" visible="false" />
+                <listheader label="Item Code"          width="100px" />
+                <listheader label="Item Desc"          width="100px" />
+                <listheader label="OF No"          width="100px" visible="false"  />
+                <listheader label="SN Tcash"          width="120px" />
+                <listheader label="Sn Inventory"    width="100px" />
+                <listheader label="UID"             />
+                <listheader label="status"          width="0px" visible="false" />
+                <listheader label="Message"          />
+           
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+    <div align="center">
+        <button id="close" label="Back" tooltiptext="Back" height="35px"  width="100px" image="/img/Logout24.png" />
+    </div>
+    </window>
+</zk>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_Add_Line_Wo"  title="Insert Wo Line From RP List1" width="1150px" border="normal" closable="true"
+    apply="${arg.controller}"
+            style="border:1px;background:#3366FF;" onClose="self.detach();">
+        <vlayout></vlayout>
+        <!--for false-->
+        <div >  
+            <listbox id="lboxHdr" mold="paging" pageSize="100" height="330px" >
+                <listhead sizable="true" style="background:#eee; color:black;">
+                    <listheader label="Requisition Number" width="220px" sort="" />
+                    <listheader label="Bu Id" width="280px" sort="" visible="false"/>
+                    <listheader label="Bu Code" width="85px" sort="" />
+                    <listheader label="Bu Description"  width="280px" sort="" />
+                    <listheader label="Requisition Date"  width="150px" sort="" />
+                    <listheader label="Currency"  width="100px" sort="" />
+                    <listheader label="Remarks"  width="280px" sort="" />
+                    <listheader label="Requisition Id" visible="true" width="100px" />
+                </listhead>
+                <template name="model" >
+                    <listitem>
+                       
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <listbox id="listbox" mold="paging" pageSize="100" height="330px" >
+            <listhead  style="background:#eee; color:black;">
+                <listheader label="Chk" width="40px" sort="" />
+                <listheader label="Requisition Line" width="130px"/>
+                <listheader label="Item Id" width="100px"  visible="false" />
+                <listheader label="Item Code" width="100px" />
+                <listheader label="Item Name" width="280px" />
+                <listheader label="Regional Id" width="100px"   visible="false" />
+                <listheader label="Regional Description" width="280px"  />
+                <listheader label="Required Date" width="100px"  />
+                <listheader label="Order Unit" width="85px"  />
+                <listheader label="Order Quantity" width="100px"  />
+                <listheader label="Bu Id" width="100px" visible="false" />
+                <listheader label="Bu Code" width="100px"  />
+                <listheader label="Bu Description" width="280px"  />
+                <listheader label="Wh Description" width="280px"  />
+            </listhead>
+            <template name="model" >
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+        
+        <div width="100%" height="30px" style="border:1px;margin-bottom:0px;background:#d3d3d3;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="200" y="4" width="160px" height="30px">
+                    <button id="btnAdd" tabindex="38" label="Add" width="150px"     />
+                </absolutechildren>
+                <absolutechildren x="400" y="4" width="160px" height="30px">
+                    <button id="btnSubmit" tabindex="38" label="OK" width="150px"     />
+                </absolutechildren>
+                <absolutechildren x="600" y="4" width="160px" height="30px">
+                    <button id="btnCancel" tabindex="38" label="Cancel" width="150px"     />
+                </absolutechildren>
+                <absolutechildren x="810" y="4" width="160px" height="30px">
+                    <label value="Total" style="color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="865" y="5" width="125px;" height="30px">
+                    <label id="txtTotalQty" width="100px" value="0" style="color:black;"/>
+                </absolutechildren>
+            </absolutelayout>
+        </div>
+       
+    </window>
+</zk>

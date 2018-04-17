@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="Monitoring_StockIn" title="Monitoring Stock In" border="normal" apply="id.my.berkah.urp.controller.ListMonitoringStockIn" width="1130px"  ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="findTransaction" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <listbox id="listbox" height="400px"  mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Trx Id"     width="80px" visible="false"  />
+                <listheader label="Account Id" width="100px" visible="true"/>
+                <listheader label="Account Name"   width="250px" visible="true"/>
+                <listheader label="Brand Id"             width="100px"  visible="false"/>
+                <listheader label="Brand Desc"             width="100px"  visible="true"/>
+                <listheader label="Nominal"       width="100px" visible="true" sort="auto(nominal)" />
+                <listheader label="Qty"            width="70px" visible="true"/>
+                <listheader label="Voucher Type"        width="100px" visible="true"/>
+                <listheader label="Voucher Type Desc"        width="150px" visible="true"/>
+                <listheader label="Trx Ref Id"      width="90px" visible="false"/>
+                <listheader label="Trx Ref Item Id"      width="100px" visible="false"/>
+                <listheader label="Trx Ref Item Code"      width="120px" visible="true"/>
+                <listheader label="Trx Ref Item Desc"      width="170px" visible="true"/>
+                <listheader label="Trx Ref Date"      width="210px" visible="true"/>
+                <listheader label="Trx Ref No"      width="210px" visible="true"/>
+                <listheader label="Created By"   width="140px" visible="true"/>
+                <listheader label="Flag Transaction"      width="110px" visible="false"/>
+                <listheader label="Flag Transaction Desc"      width="170px" visible="true"/>
+                <listheader label="Creation Date" width="210px" visible="true"/>
+                <listheader label="Creation Date Char"          width="150px"  visible="true"/>
+                <listheader label="Updated Date By Urp"          width="210px"  visible="true"/>
+                <listheader label="Trx Type"          width="70px"  visible="false"/>
+                <listheader label="Trx Type Desc"          width="120px"  visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.trxId}"/>
+                    <listcell label="${each.accountId}" style="text-align: right"/>
+                    <listcell label="${each.accountName}" />
+                    <listcell label="${each.brandId}" style="text-align: right" />
+                    <listcell label="${each.brandDesc}"/>
+                    <listcell label="${each.nominal}"    style="text-align: right" />
+                    <listcell label="${each.qty}"  style="text-align: right"/>
+                    <listcell label="${each.voucherType}" style="text-align: right" />
+                    <listcell label="${each.voucherTypeDesc}" style="text-align: right" />
+                    <listcell label="${each.trxRefId}" style="text-align: right" />
+                    <listcell label="${each.trxRefItemId}"/>
+                    <listcell label="${each.trxRefItemCode}"/>
+                    <listcell label="${each.trxRefItemDesc}"/>
+                    <listcell label="${each.trxRefDate}" />
+                    <listcell label="${each.trxRefNo}" />
+                    <listcell label="${each.createdBy}" style="text-align: right" />
+                    <listcell label="${each.flagTransaction}" />
+                    <listcell label="${each.flagTransactionDesc}" />
+                    <listcell label="${each.creationDate}" />
+                    <listcell label="${each.creationDateChar}" />
+                    <listcell label="${each.updateDateUrp}" />
+                    <listcell label="${each.trxType}" />
+                    <listcell label="${each.trxTypeDesc}" />
+                </listitem>
+            </template>
+        </listbox>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    </window>
+</zk>

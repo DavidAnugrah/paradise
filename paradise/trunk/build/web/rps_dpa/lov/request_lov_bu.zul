@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="winLovBU"  title="LOV BU" width="500px" border="normal" apply="id.my.berkah.um.controller.LovBUCTRL" mode="modal" style="border:1px;">
+    <hbox align="center" style="border:1px;" width="100%">
+        <grid>
+            <columns style="border:1px;">
+                <column label="" align="right" width="10%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;">
+                    <label value="Keyword:" style="color: black"/>
+                    <textbox id="txtKeywordBU"   width="100%" value="%"/>
+                    <button  id="btnSearchBU" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="lstLovBU" mold="paging" pageSize="10" style="border:1px;">
+        <listhead style="border:0px;color:black;">
+            <listheader label="BU Id" width="100px" visible="false" style="color: black"/>
+            <listheader label="BU Code" width="100px" sort="auto(buCode)" style="color: black"/>
+            <listheader label="BU Description" width="300px" sort="auto(buDesc)" style="color: black"/>          
+        </listhead>
+        <template name="model" style="border:1px;">
+            <listitem>
+                <listcell label="${each.buId}"/>
+                <listcell label="${each.buCode}"/>
+                <listcell label="${each.buDesc}"/>               
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;" width="100%" >
+        <grid>
+            <columns style="border:1px;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+            <row style="border:0px;" >	
+                    <button id="btnLovSubmitBU" image="/img/Ok24.png"    label="Submit" orient="horizontal"/>
+                    <button id="btnLovCloseBU" image="/img/Logout24.png" label="Close" orient="horizontal"/>
+             </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+</zk>

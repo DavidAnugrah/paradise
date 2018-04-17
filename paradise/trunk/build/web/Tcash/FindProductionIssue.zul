@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="windowFindPIDialog" title="Find Production Issue" border="normal" mode="modal" width="550px" apply="${arg.controller}">
+        <grid width="95%" style="margin: auto;">
+            <columns>
+                <column width="130px"/>
+                <column width="180px"/>
+                <column width="180px"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="Period" />
+                    <datebox id="dateFrom" hflex="1" format="dd-MM-yyyy"/>
+                    <datebox id="dateTo" hflex="1" format="dd-MM-yyyy"/>
+                </row>
+                <row>
+                    <label value="Production Issue No" />
+                    <cell colspan="2" align="left">
+                        <hbox hflex="1">
+                            <textbox id="txtProdIssueNo" width="200px"/>
+                        </hbox>
+                    </cell>
+                </row>
+                <row>
+                    <label value="Status" />
+                    <cell colspan="2" align="left">
+                        <hbox hflex="1">
+                            <combobox id="cmbStatus" width="205px" readonly="true">
+<!--                                <comboitem label="Draft" value="1"/>
+                                <comboitem label="Submited" value="2"/>
+                                <comboitem label="Approved" value="3"/>
+                                <comboitem label="Canceled" value="4"/>
+                                <comboitem label="All" value=""/>-->
+                            </combobox>
+                        </hbox>
+                    </cell>
+                </row>
+                <row>
+                    <label value="Work Order Number" />
+                    <cell colspan="2" align="left">
+                        <hbox hflex="1">
+                            <textbox id="txtWoNo" width="200px"/>                            
+                        </hbox>
+                    </cell>
+                </row>
+            </rows>
+        </grid>
+        <div align="center" style="margin: 10px 0px 10px 0px;" >
+            <hbox>
+                <button id="btnOk" width="120px" height="35px" label="Select" image="/img/Ok24.png" />
+                <button id="btnClose" width="120px" height="35px" label="Close" image="/img/Logout24.png" />
+            </hbox>
+        </div>
+    </window>
+</zk>

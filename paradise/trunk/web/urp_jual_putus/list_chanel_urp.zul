@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_channel_urp" title="Channel Urp" border="normal" width="1130px" apply="id.my.berkah.urp.controller.ListChannelUrp" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <div>
+        <listbox id="listbox" height="400px" mold="paging"  pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Channel Id"     width="130px" visible="false" sort="auto(channelId)" />
+                <listheader label="Channel Code"     width="130px" visible="true" sort="auto(channelCode)" />
+                <listheader label="Channel Description" width="210px" visible="true" sort="auto(channelName)"/>
+                <listheader label="NPWP"   width="130px" visible="true" />
+                <listheader label="Addres"             width="350px"  visible="true" />
+                <listheader label="Trx Type"             width="100px"  visible="false" />
+                <listheader label="Trx Type Description" width="210px"  visible="true" />
+                <listheader label="Modified By"          width="100px" visible="true" sort="auto(modifiedBy)"/>
+                <listheader label="Modified Date"          width="140px" visible="true" />
+                <listheader label="Effective By"          width="100px" visible="true" sort="auto(effectiveBy)"/>
+                <listheader label="Effective Date"          width="140px" visible="true" />
+                <listheader label="Expired Name"          width="100px" visible="true" />
+                <listheader label="Expired Date"      width="140px" visible="true" />
+                <listheader label="Created By"        width="130px" visible="true" />
+                <listheader label="Created Date"      width="130px" visible="true" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.channelId}"/>
+                    <listcell label="${each.channelCode}"/>
+                    <listcell label="${each.channelName}"/>
+                    <listcell label="${each.npwp}"/>
+                    <listcell label="${each.address}"/>
+                    <listcell label="${each.trxType}"/>
+                    <listcell label="${each.txtTypeDesc}"/>
+                    <listcell label="${each.modifiedBy}"/>
+                    <listcell label="${each.modifiedDate}"/>
+                    <listcell label="${each.effectiveBy}"/>
+                    <listcell label="${each.effectiveDate}"/>
+                    <listcell label="${each.expiredBy}"/>
+                    <listcell label="${each.expiredDate}"/>
+                    <listcell label="${each.createdBy}"/>
+                    <listcell label="${each.createdDate}"/>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+            <paging id="userPaging" width="100%" style="color: black" pageSize="10" detailed="true" pageIncrement="1"/>
+    </window>
+    <window id="find_Channel" title="Find Parameter" apply="id.my.berkah.urp.controller.FindChannel" width="320px" border="normal"  ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <grid>
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="0px" align="right" visible="false"/>
+                <column label="" width="150px" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="Procces Type" />
+                    <textbox width="0px" tabindex="4" id="txtTypeId" visible="false"/>
+                    <combobox id="cmbType" width="130px" readonly="true" >
+                        <comboitem label="Konsinyasi" />
+                        <comboitem label="Jual Putus"/>
+                    </combobox>
+                </row>
+                <row>
+                    <label value="Channel Code"/>
+                    <label />
+                    <textbox width="130px" tabindex="4" id="txtChannelId" readonly="false" value="${arg.channelId}" />
+                </row>
+                <row>
+                    <label value="Channel Description"/>
+                    <label />
+                    <textbox width="130px" tabindex="4" id="txtChannelDesc" readonly="false" value="${arg.channelId}" />
+                </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column align="right"/>
+                <column align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <button id="findTransaction" label="Find" image="/img/Find24.png"/>
+                    <button id="close" label="Close" image="/img/End24.png"/>
+                </row>
+            </rows>
+        </grid>
+        </div>
+    </window>
+</zk>

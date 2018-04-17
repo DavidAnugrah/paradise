@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="ListSelectRange_ShopFloor" title="List Select Range S/N " apply="id.my.berkah.tcash1.controller.ListRangeShopFloor" border="normal" closable="false" mode="modal" width="650px" >
+        <textbox id="txtsfcDtlId" visible="false"  value="${arg.sfcid}" width="160px"/>
+            <textbox id="txtprodDtlId" visible="false"  value="${arg.sfcid}" width="160px"/>
+            <textbox id="txtitemId" visible="false"  value="${arg.itemid}" width="160px"/>
+            <!--<textbox id="txtitemDtlId" visible="false"   width="160px"/>-->
+<!--            <textbox id="txtfromDtlId" visible="false"  width="160px"/>
+            <textbox id="txttoDtlId" visible="false"   width="160px"/>
+            <textbox id="txtqtyDtlId" visible="false"   width="160px"/>
+            <textbox id="txtitemlocid" visible="false"   width="160px"/>-->
+            <textbox id="txflag1" visible="false"   width="160px"/>
+            <textbox id="txtstatus" visible="false" value="${arg.status}"  width="160px"/>
+        <vbox hflex="1">
+            <listbox id = "listboxSelect" height = "200px" mold = "paging"  pageSize = "10" hflex="1" vflex="1">
+                <listhead sizable = "true">
+                    <listheader label = "SFCID" width = "50px" visible = "false" />
+                    <listheader label = "SFCDTLID" width = "50px" visible = "false" />
+                    <listheader label = "Item" width = "50px" visible = "false" />
+                    <listheader label = "From S/N" width = "200px"  visible = "true" />
+                    <listheader label = "To S/N" width = "200px"  visible = "true" />
+                    <listheader label = "Quantity" width = "100px"  visible = "true" />
+                    <listheader label = "ItemDTL ID" width = "100px"  visible = "false" />
+                    <listheader label = "Storage" width = "100px"  visible = "false" />
+                    <listheader label = "Itemloc ID" width = "100px"  visible = "false" />
+                    <listheader label = "LOtID" width = "100px"  visible = "false" />
+                    <listheader label = "WhID" width = "100px"  visible = "false" />
+                    <listheader label = "WhLocID" width = "100px"  visible = "false" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+            <div>
+                <paging id="userPaging" width="100%" style="color: black"/>
+            </div>
+            
+            <div hflex="1" align="center">
+                <hbox align="center">
+                    <button id="btnSelect" width="120px" mold="trendy" height="35px" label="Select" image="/img/Ok24.png" />
+                    <button id="btnUnselect" width="120px" mold="trendy" height="35px" label="Un-Select" image="/img/Cancel24.png" />
+                </hbox>
+            </div>
+            
+            <listbox id = "listboxUnselect" height = "200px" mold = "paging"  pageSize = "10" hflex="1" vflex="1">
+                <listhead sizable = "true">
+                    <listheader label = "Item"      width = "50px"       visible = "true" />
+                    <listheader label = "From S/N"  width = "200px"  visible = "true" />
+                    <listheader label = "To S/N"    width = "200px"    visible = "true" />
+                    <listheader label = "Quantity"  width = "100px"  visible = "true" />
+                    <listheader label = "itemdtl"  width = "100px"  visible = "false" />
+                    <listheader label = "itemmloc"  width = "100px"  visible = "false" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+            <div>
+                <paging id="userPaging1" width="100%" style="color: black"/>
+            </div>
+            <div hflex="1" align="center">
+                <hbox align="center">
+                    <button id="btnClose" width="120px" mold="trendy" height="35px" label="Close" image="/img/Logout24.png" />
+                </hbox>
+            </div>
+        </vbox>
+    </window>
+    
+
+</zk>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="dlgInputSelectRange" title="Input Select Range S/N Material" border="normal" mode="modal" width="650px" apply="${arg.controller}">
+        <vbox hflex="1">
+            <textbox id="txtOperation" visible="false" value="${arg.Operation}" width="160px"/>
+            <textbox id="txtProdIssueDtlId" visible="false" value="${arg.ProdIssueDtlId}" width="160px"/>
+            <textbox id="txtItemLocId" visible="false" value="${arg.ItemLocId}" width="160px"/>
+            <textbox id="txtItemId" visible="false" value="${arg.ItemId}" width="160px"/>
+            <textbox id="txtwoId" visible="false" value="${arg.WoId}" width="160px"/>
+            <textbox id="txtwhId" visible="false" value="${arg.WhId}" width="160px"/>
+            <grid hflex="1">
+                <columns>
+                    <column width="120px" align="right" />
+                    <column hflex="1" />
+                    <column hflex="1" />
+                </columns>
+                <rows>
+                    <row style="border:0px; background:#FFFFFF;">
+                        From S/N
+                        <cell colspan="2">
+                            <textbox id="txtFromSN" value="${arg.FromSN}" hflex="1" xmlns:w="client">
+                                <attribute w:name="doKeyPress_">
+                                    <![CDATA[
+                                        function(evt)
+                                        {
+                                            if (!this._shallIgnore(evt, "0123456789"))
+                                                this.$doKeyPress_(evt);
+                                        }
+                                    ]]>
+                                </attribute>
+                            </textbox>
+                            Qty
+                            <textbox id="txtQty" value="${arg.Qty}" hflex="1" xmlns:w="client">
+                                <attribute w:name="doKeyPress_">
+                                    <![CDATA[
+                                        function(evt)
+                                        {
+                                            if (!this._shallIgnore(evt, "0123456789"))
+                                                this.$doKeyPress_(evt);
+                                        }
+                                    ]]>
+                                </attribute>
+                            </textbox>
+                        </cell>
+                    </row>
+                    <row style="border:0px; background:#FFFFFF;">
+                        To S/N
+                        <cell colspan="2">
+                            <textbox id="txtToSN" value="${arg.ToSN}"  hflex="1" xmlns:w="client">
+                                <attribute w:name="doKeyPress_">
+                                    <![CDATA[
+                                        function(evt)
+                                        {
+                                            if (!this._shallIgnore(evt, "0123456789"))
+                                                this.$doKeyPress_(evt);
+                                        }
+                                    ]]>
+                                </attribute>
+                            </textbox>
+                        </cell>
+                    </row>
+                </rows>
+            </grid>
+            <div hflex="1" align="center">
+                <hbox align="center">
+                    <button id="btnSubmit" width="120px" height="35px" label="Submit" image="/img/Ok24.png" />
+                    <button id="btnClose" width="120px" height="35px" label="Close" image="/img/Logout24.png" />
+                </hbox>
+            </div>
+            
+        </vbox>
+    </window>
+</zk>

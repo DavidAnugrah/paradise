@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_dtl_Item_parameter" title="Add/Edit Detail Item Parameter" apply="id.my.berkah.ifm.controller.DetailItemParameter" border="normal" width="1010px" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="999px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="250px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Seq Id" width="50px" />
+                    <hbox>
+                    <!--<textbox width="50px"   id="txtseqid"   visible="false"    value="${arg.seqid}" style="background-color:#FFFACD" />-->
+                    <textbox width="70px"   mold="rounded" id="txtseqode" readonly="true" value="${arg.seqid}" style="background-color:#FFFACD" />
+                    <textbox width="160px" mold="rounded"  id="txtseqdesc" readonly="true"  value="${arg.prompt}" style="background-color:#FFFACD" />
+                    </hbox>
+                     <button id="btnseq" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov item" />
+                    <label   value="Pattern"/>
+                    <hbox>
+                    <textbox width="70px"  id="txtpatternid" visible="false" value="${arg.patternid}" readonly="false" style="background-color:#FFFACD" />
+                    <textbox width="70px"  mold="rounded" visible="false" id="txtpatcode" value="${arg.pattern}"  readonly="true" style="background-color:#FFFACD" />
+                    <checkbox id="chkpattern" onCheck="self.checked" />
+                    <textbox width="200px"  mold="rounded" id="txtpatdesc" value="${arg.patterndesc}"  readonly="true" style="background-color:#FFFACD" />
+                    </hbox>
+                    <button  id="btnpattern" width="40px" height="25px" mold="trendy"  src="/img/search.png"  tooltiptext="Lov Pattern" />
+                </row>
+                <row>
+                    <label   value="Type"  />
+                    <hbox>
+                    <!--<textbox width="70px" visible="false"  id="txttypeid" value="${arg.type}" readonly="true" style="background-color:#FFFACD" />-->
+                    <textbox width="70px"  mold="rounded" id="txttypecode" visible="true" value="${arg.type}" readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="160px"  mold="rounded" id="txttypedesc" value="${arg.typedesc}" readonly="true" style="background-color:#FFFACD" />
+                    </hbox>
+                    <button id="btntype" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov Receiving HLR" />
+                     <label   value="Random Number"  />
+                     <hbox>
+                     <textbox width="120px" mold="rounded" id="txtnum" value="${arg.randomnumber}"  />
+                     <label value="Position" />
+                      <textbox width="60px"  id="txtposition" mold="rounded" value="${arg.position}" style="background-color:#FFFACD" />
+                     </hbox>
+                    
+                </row>
+                <row visible="false" >
+                    <label value=""/>
+                    <textbox id="flag" width="100px" />
+                    <textbox id="txtitemid" width="100px" value="${arg.itemid}" />
+                    <textbox id="txtid" width="100px" value="${arg.id}" />
+                </row>
+            </rows>
+        </grid>
+         <grid id="grid1" oddRowSclass="non-odd" width="990px">
+              <columns>
+               <column label="" width="140px" align="right" />
+                <column label="" width="170px" align="center"/>
+                <column label="" width="150px" align="right"/>
+                <column label="" width="170px" align="center"/>
+                <column label="" width="140px" align="right"/>
+            </columns>
+            <rows>
+                <row>
+                   <label   value="Created Date" width="50px" />
+                   <textbox width="150px"  mold="rounded" id="txtcreatedate" value="${arg.createdate}" readonly="true"  />
+                   <label   value="Modified Date"  />
+                   <textbox width="150px" mold="rounded" id="txtmodifieddate" value="${arg.modifieddate}" readonly="true"  />
+                   <label   value="Expired Date" />
+                   <textbox width="150px" mold="rounded" id="txtexpireddate" value="${arg.expireddate}"  readonly="true"  />
+                </row>
+                <row>
+                   <label   value="Created By" />
+                   <textbox width="150px" mold="rounded" id="txtcreatedby" value="${arg.createby}"  readonly="true"  />
+                   <label   value="Modified By" />
+                   <textbox width="150px" mold="rounded" id="txtmodifiedby" value="${arg.modifiedby}"  readonly="true"  />
+                    <label   value="Expired By" />
+                   <textbox width="150px" mold="rounded"  id="txtexpiredby" value="${arg.expiredby}"  readonly="true"  />
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="990px">
+            <columns>
+               <column label=""  width="990px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord" mold="trendy" tabindex="30" label="New" width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <label value="" width="100px"/>
+                    <button id="save"   mold="trendy"   tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                     <label value="" width="100px"/>
+                    <button id="expired"  mold="trendy"  visible="true" label="Expired"     width="90px"   image="/img/Action24.png"  tooltiptext="Expired"/>
+                     <label value="" width="100px"/>
+                    <button id="close"  mold="trendy"   tabindex="37" label="Close"     width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

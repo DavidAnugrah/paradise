@@ -1,0 +1,49 @@
+<zk>
+<window id="win_list_pos_find_bu"  title="List of Business Units" width="450px" border="normal" apply="id.my.berkah.pos.lov.controller.LovFindBUController" closable="true" style="border:1px;background:#3366FF;">
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+    	<grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right" width="10%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">
+                    <label value="Keyword:" style="color: white"/>
+                    <textbox id="keywordBox"   width="100%" value="%"/>
+                    <button  id="searchButton" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="listbox" mold="paging" pageSize="10" style="border:1px;background:#0099FF;color:white;">
+        <listhead style="border:0px;background:#0099FF;color:white;">
+            <listheader label="Bu Id" width="0px" style="color: white"/>
+            <listheader label="BU Code" width="100px" sort="auto(BU_CODE)" style="color: white"/>
+            <listheader label="BU Description" width="300px" sort="auto(BU_DESCRIPTION)" style="color: white"/>
+        </listhead>
+        <template name="model" style="border:1px;background:#0099FF;">
+            <listitem>
+                <listcell label="${each.buId}"/>
+                <listcell label="${each.buCode}"/>
+                <listcell label="${each.buDescription}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+        <grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">	
+                    <button id="submit" label="Submit" orient="horizontal"/>
+                    <button id="close" label="Cancel" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+ </zk> 
+  

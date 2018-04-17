@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_Request_PO" title="List Request Production "  border="normal" apply="id.my.berkah.ifmnew.controller.RP.ListRequestProduction"  width="1100px" height="100%" closable="true" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+            <textbox id="txtbuid" visible="false" />
+            <textbox id="txtreqin" visible="false" />
+            <textbox id="txtbucode" visible="false" />
+            <textbox id="txtbudes" visible="false" />
+            <textbox id="txtid" visible="false" />
+            <textbox id="txtreqnum" visible="false" />
+            <textbox id="txtreqdte" visible="false" />
+            <textbox id="txtreqstat" visible="false" />
+            <textbox id="txtprocesste" visible="false" />
+            <textbox id="txtprocessby" visible="false" />
+            <textbox id="txtcanceleddte" visible="false" />
+            <textbox id="txtcanceledby" visible="false" />
+            <textbox id="txtapproveby" visible="false" />
+            <textbox id="txtapprovedate" visible="false" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="450px" sizedByContent="true" hflex="true" mold="paging" pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="req Id"                      visible="false" sort="auto"/>
+                <listheader label="Requisition Number"          visible="true" sort="auto"/>
+                <listheader label="Requisition Date"            visible="true" sort="auto" />
+                <listheader label="status"                      visible="false" sort="auto" />
+                <listheader label="Status"                      visible="false" sort="auto" />
+                <listheader label="bu id"                       visible="false" sort="auto" />
+                <listheader label="Bu Code"                     visible="true" sort="auto" />
+                <listheader label="Bu Description"              visible="true" sort="auto"/>               
+                <listheader label="Processed By"                visible="true" sort="auto"/> 
+                <listheader label="Processed Date"              visible="true" sort="auto"/>
+                <listheader label="Approved By"                 visible="true" sort="auto"/>               
+                <listheader label="Approved Date"               visible="true" sort="auto"/>     
+                <listheader label="Canceled By"                 visible="true" sort="auto"/>               
+                <listheader label="Canceled Date"               visible="true" sort="auto"/>                  
+                           
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+<!--         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>-->
+    
+    
+    </window>
+</zk>

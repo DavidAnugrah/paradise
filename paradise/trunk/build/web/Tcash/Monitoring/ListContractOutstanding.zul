@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_ContractOutstanding" title="List Contract Outstanding Monitoring" apply="id.my.berkah.TcashMntr.ctrl.ListContractOutstanding" border="normal"  width="100%" height="100%" closable="false" ctrlKeys="#down#up">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="35px">
+                <toolbarbutton id="refresh" mold="default" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" mold="default" image="/img/Find24.png" tooltiptext="Find" />
+                <toolbarbutton id="print" mold="default" image="/img/Print24.png" tooltiptext="Export To Excel" />
+                <datebox id="ddf" format="dd-MMM-yyyy" visible="false"/>
+                <datebox id="ddt" format="dd-MMM-yyyy" visible="false" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="380px" mold="paging"  pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Contract"/>
+                <listheader label="Contract Date" sort="auto"/>
+                <listheader label="Purchase Order"/>
+                <listheader label="Doc Reff"/>
+                <listheader label="Qty Contract" sort="auto"/>
+                <listheader label="Qty WO" sort="auto"/>
+                <listheader label="Qty Receive Contract" sort="auto"/>
+                <listheader label="Qty Outstanding Contract" sort="auto"/>    
+            </listhead>
+            <listitem>
+            </listitem>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+     <window id="win_ContractOS_find" title="Find Parameter"  apply="id.my.berkah.TcashMntr.ctrl.ListContractOutstanding" position="center" border="normal" width="420px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="400px">
+                <columns>
+                   <!--<column label="" width="100px" align="center" />-->
+                    <column label="" width="100px" align="right"/>
+                    <column label="" width="280px" />
+                </columns>
+                <rows>
+                    <row>
+                        <!--<hbox>-->
+                            <label value="Contract No"/>
+                            <textbox id="contractNo" width="260px"/>
+                    </row>
+                    <row>
+                        <!--<hbox>-->
+                            <label value="WO No"/>
+                            <textbox id="woNo" width="260px"/>
+                        <!--</hbox>-->
+                    </row>
+                    <row>
+                        <label value="Date From"/>
+                        <hbox>
+                            <datebox id="dbFrom" format="dd-MM-yyyy" width="125px"/>
+                            to
+                            <datebox id="dbTo" format="dd-MM-yyyy" width="125px"/>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="400px">
+                <columns>
+                    <column label="" width="400px" align="center" />
+<!--                    <column label="" width="140px" align="center" />
+                    <column label="" width="140px" align="center" />-->
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                        <button id="goFind" height="30px" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                        <!--<button id="Clear" mold="trendy" tabindex="13" label="Clear"  image="/img/DeleteSelection24.png" />-->
+                        <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+        
+        <window id="win_list_export" apply="id.my.berkah.TcashMntr.ctrl.ListContractOutstanding" mode="overlapped"  visible="false"  title="Export" position="center" width="445px" border="normal">
+            <div>
+                <grid oddRowSclass="non-odd" width="420px">
+                    <columns>
+                        <column label="" width="100px" align="right"/>
+                        <column label="" width="300px"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <label value="Date From"/>
+                            <hbox>
+                                <datebox id="dbFrom" format="dd-MMM-yyyy" width="130px"/>
+                                to
+                                <datebox id="dbTo" format="dd-MMM-yyyy" width="130px"/>
+                            </hbox>
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+            <div align="center">
+                <hbox align="center">
+                    <button id="export" label="Print" image="/img/Print24.png"/>
+                    <button id="tutup" label="Close" image="/img/End24.png"/>
+                </hbox>
+            </div>
+        </window>
+        
+    </window>
+</zk>

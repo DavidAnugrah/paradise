@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="Monitoring_IMSI" title="Monitoring IMSI" apply="id.my.berkah.rpsbaru.controller.Controller" border="normal"  width="1130px"  ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+<!--            <button id="brefresh" label="Refresh"/>
+            <button id="bfind" label="Find"/>-->
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="findTransaction" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <listbox id="listbox" height="400px"  mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="PERSO ID"  width="100px" visible="false"  />
+                <listheader label="PERSO NUMBER" width="200px" visible="true"/>
+                <listheader label="PERSO DATE"  width="150px" visible="true"/>
+                <listheader label="UPLOAD RESOURCE ID" width="170px"  visible="true"/>
+                <listheader label="BU ID"   width="100px" visible="false"/>
+                <listheader label="MSISDN"   width="120px" visible="true" />
+                <listheader label="SUBSCRIBER TYPE"   width="120px"  visible="true"/>
+                <listheader label="SUBSCRIBER TYPE NAME"   width="150px"   visible="true"/>
+                <listheader label="IMSI"   width="150px" visible="true"  />
+                <listheader label="ICCID" width="150px"  visible="true"  />
+                <listheader label="AKI"  width="250px" visible="true"/>
+                <listheader label="PIN1" width="60px"   visible="true"/>
+                <listheader label="PIN2" width="60px"  visible="true"/>
+                <listheader label="PUK1"   width="80px"  visible="true"/>
+                <listheader label="PUK2"  width="40px"  visible="true"/>
+                <listheader label="CREATED PERIOD"  width="110px" visible="true"/>
+                <listheader label="REF ID" width="50px" visible="true"  />
+                <listheader label="REF LINE NO" width="100px"  visible="true"   />
+                <listheader label="SERIAL NO" width="130px" visible="true"/>
+                <listheader label="STATUS" width="60px"   visible="true"/>
+                <listheader label="STATUS NAME"  width="110px"  visible="true"/>
+                <listheader label="PERSO TYPE" width="100px"   visible="true"/>
+                <listheader label="PERSO TYPE NAME"  width="140px" visible="true"/>
+                <listheader label="REASON CODE" width="100px" visible="true"  />
+                <listheader label="HLR_MAP ID" width="90px"  visible="true"  />
+                <listheader label="CREATION DATE" width="150px" visible="true"  />
+                <listheader label="CREATED BY" width="120px"  visible="true"/>
+                <listheader label="CREATED BY NAME" width="140px"  visible="true"/>
+                <listheader label="PRODUCT CODE" width="140px" visible="true"  />
+                <listheader label="DLLNAME"  width="100px" visible="true"/>
+                <listheader label="VERSION"  width="80px" visible="true"/>
+                <listheader label="PROFILE"  width="150px"  visible="true"/>
+                <listheader label="OLD IMSI"  width="90px"  visible="true"  />
+                <listheader label="OLD ICCID"  width="90px"  visible="true"  />
+                <listheader label="OLD SERIAL NO" width="110px"  visible="true"  />
+                <listheader label="NDC DTL ID" width="90px"  visible="true"/>
+                <listheader label="REASON NAME" width="150px" visible="true"/>
+                <listheader label="VENDOR NAME" width="150px" visible="true"/>
+                <listheader label="APPLICATION NAME" width="150px" visible="true"/>
+                <listheader label="HRL MAP DESC" width="150px" visible="true"/>
+                <listheader label="BU CODE" width="150px" visible="true"/>
+                <listheader label="BU DESCRIPTION" width="150px" visible="true"/>
+                <listheader label="NDC" width="80px" visible="true"  />
+                <listheader label="HLR" width="80px" visible="true"  />
+                <listheader label="PREFIX" width="80px" visible="true"  />
+                <listheader label="SIM TYPE" width="80px" visible="true"  />
+                <listheader label="SIM TYPE_NAME" width="150px" visible="true"  />
+                <listheader label="PRODUCT TYPE" width="300px" visible="true"/>
+                <listheader label="STATUS DATE" width="150px" visible="true"/>
+                <listheader label="PROVISIONING STATUS" width="150px" visible="true"  />
+                <listheader label="PROVISIONING STATUS_NAME" width="180px" visible="true"  />
+                <listheader label="PROVISIONING STATUS_DATE" width="180px" visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.persoId}"/>
+                    <listcell label="${each.persoNumb}" />
+                    <listcell label="${each.persoDate}" />
+                    <listcell label="${each.uploadresourceId}"  />
+                    <listcell label="${each.buId}"  />
+                    <listcell label="${each.msisdn}" />
+                    <listcell label="${each.subscriberType}"  />
+                    <listcell label="${each.subscriberTypeName}"  />
+                    <listcell label="${each.imsi}" />
+                    <listcell label="${each.iccid}"/>
+                    <listcell label="${each.aki}"/>
+                    <listcell label="${each.pin1}"/>
+                    <listcell label="${each.pin2}" />
+                    <listcell label="${each.puk1}" />
+                    <listcell label="${each.puk2}" />
+                    <listcell label="${each.createdPeriod}" />
+                    <listcell label="${each.refId}" />
+                    <listcell label="${each.reflineNO}" />
+                    <listcell label="${each.serialNo}" />
+                    <listcell label="${each.status}" />
+                    <listcell label="${each.statusName}" />
+                    <listcell label="${each.persoType}" />
+                    <listcell label="${each.persoTypeName}" />
+                    <listcell label="${each.reasonCode}" />
+                    <listcell label="${each.hlrmapId}" />
+                    <listcell label="${each.creatingDate}" />
+                    <listcell label="${each.creatingBy}" />
+                    <listcell label="${each.cratedbyName}" />
+                    <listcell label="${each.productCode}" />
+                    <listcell label="${each.dllNAme}" />
+                    <listcell label="${each.version}" />
+                    <listcell label="${each.profile}" />
+                    <listcell label="${each.oldimsi}" />
+                    <listcell label="${each.oldIccid}" />
+                    <listcell label="${each.oldserialNo}" />
+                    <listcell label="${each.ndcdtlId}" />
+                    <listcell label="${each.reasonName}" />
+                    <listcell label="${each.vendorName}" />
+                    <listcell label="${each.applicationName}" />
+                    <listcell label="${each.hlrmapDesc}" />
+                    <listcell label="${each.buCode}" />
+                    <listcell label="${each.buDEscription}" />
+                    <listcell label="${each.ndc}" />
+                    <listcell label="${each.hlr}" />
+                    <listcell label="${each.prefix}" />
+                    <listcell label="${each.simType}" />
+                    <listcell label="${each.simTypeName}" />
+                    <listcell label="${each.productType}" />
+                    <listcell label="${each.statusdate}" />
+                    <listcell label="${each.provStat}" />
+                    <listcell label="${each.provStatName}" />
+                    <listcell label="${each.provdate}" />
+                </listitem>
+            </template>
+        </listbox>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    </window>
+</zk>

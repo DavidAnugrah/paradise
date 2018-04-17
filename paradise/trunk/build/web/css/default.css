@@ -1,0 +1,162 @@
+    .mydb-disd 
+    {
+        color: blue !important; 
+        cursor: default !important; 
+        opacity: .6; 
+        -moz-opacity: .6; 
+        filter: alpha(opacity=60);    
+        font-weight: bold;    
+    }
+    
+    .mydb-disd * 
+    {
+        color: blue !important; 
+        cursor: default !important;    
+        font-weight: bold;    
+    }
+    
+    .mydb 
+    {
+        background: white;    
+        border: 1px solid #7F9DB9;    
+    }
+    
+    .mydb-focus, .mydb-focus input 
+    {
+        border: 1px solid red;    
+    }
+    
+    .mydb-text-invalid 
+    {
+        background: yellow;    
+        border: 1px solid red;    
+    }
+    
+    .mydb-readonly, .mydb-text-disd 
+    {
+        background: green;    
+    }
+    
+    .selected-disd 
+    {
+        color: blue !important; 
+        cursor: default !important; 
+        opacity: .6; 
+        -moz-opacity: .6; 
+        filter: alpha(opacity=60);    
+        font-weight: bold;    
+    }
+    
+    .selected-disd * 
+    {
+        color: blue !important; 
+        cursor: default !important;    
+        font-weight: bold;    
+    }
+    
+    .selected 
+    {
+        color: blue !important; 
+        cursor: default !important;
+        background: #99FFCC;    
+        border: 1px solid #7F9DB9;    
+    }
+    
+    .selected-focus, .selected-focus input 
+    {
+        color: blue !important; 
+        cursor: default !important;
+        background: #99FFCC;    
+        border: 1px solid red;    
+    }
+    
+    .selected-text-invalid 
+    {
+        background: yellow;    
+        border: 1px solid red;    
+    }
+    
+    .selected-readonly, .selected-text-disd 
+    {
+        background: green;    
+    }
+    
+    .selected-readonly, .selected-text-dist
+    {
+        background: #99FFCC;
+    }
+    
+    .required-disd 
+    {
+        color: blue !important; 
+        cursor: default !important; 
+        opacity: .6; 
+        -moz-opacity: .6; 
+        filter: alpha(opacity=60);    
+        font-weight: bold;    
+    }
+    
+    .required-disd * 
+    {
+        color: blue !important; 
+        cursor: default !important;    
+        font-weight: bold;    
+    }
+    
+    .required 
+    {
+        color: blue !important; 
+        cursor: default !important;
+        background: #FFFFCC;    
+        border: 1px solid #7F9DB9;    
+    }
+    
+    .required-focus, .selected-focus input 
+    {
+        color: blue !important; 
+        cursor: default !important;
+        background: #FFFFCC;    
+        border: 1px solid red;    
+    }
+    
+    .required-text-invalid 
+    {
+        background: yellow;    
+        border: 1px solid red;    
+    }
+    
+    .required-readonly, .selected-text-disd 
+    {
+        background: #E0E0E0;    
+    }
+    
+    .required-readonly, .selected-text-dist
+    {
+        background: #E0E0E0;
+    }
+
+    .atas
+    { 
+        color: white;
+    }    
+
+    .atas:hover 
+    { 
+        -moz-box-shadow: 0 0 15px #fff; 
+        -webkit-box-shadow: 0 0 15px #fff; 
+        box-shadow: 0 0 15px #fff; 
+        color: red;
+    }
+    
+    .bawah
+    { 
+        color: white;
+    }        
+
+    .bawah:hover 
+    { 
+        -moz-box-shadow: 0 0 10px #ccc; 
+        -webkit-box-shadow: 0 0 10px #ccc; 
+        box-shadow: 0 0 10px #ccc; 
+        color: red;
+    }

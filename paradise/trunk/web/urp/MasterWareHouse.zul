@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_master_wh" title="Master WareHouse" border="normal" apply="id.my.berkah.urp.controller.MasterWarehouse" closable="false" width="980px" height="290px" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+       <div>
+        <grid id="grid" oddRowSclass="non-odd" width="960px" height="200px">
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="150px" />
+                <column label="" width="150px" />
+                <column label="" width="285px"/>
+                <!--<column label="" width="100px" />-->
+            </columns>
+            <rows>
+                <row>
+                    <label value="WareHouse Code"/>
+                    
+                    <textbox width="200px" tabindex="1" id="txtwhcode" readonly="true" value="${arg.whcode}" focus="true" /> 
+                    <button id="btnwh"  src="/img/search.png"/>
+                    <label   value="WareHouse Description" width="50px"/>
+                    <textbox width="200px" tabindex="3" id="txtwhdesc" readonly="true" value="${arg.whdescription}"/>
+                </row>
+                <row>
+                    <label   value="Effective By" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txttxteffectiveby"  value="${arg.effectivebyname}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Effective Date" width="50px" />
+                    <datebox width="200px" tabindex="12" id="txteffectivedate" format="dd-MM-yyyy" value="${arg.effectivedate}" readonly="true"/>
+                </row>
+              <row>
+                    <label   value="Expired By" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtexpiredby"  value="${arg.expiredbyname}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Expired Date" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtexpireddate"  value="${arg.expireddate}" readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Created By" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtcreatedby"  value="${arg.createdbyname}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="200px" tabindex="12" id="txtcreateddate"  value="${arg.createddate}" readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Modified By" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtmodifiedby"  value="${arg.modifiedbyname}" readonly="true" />
+                    <label   value=""/>
+                    <label   value="Modified Date" width="50px" />
+                <textbox width="200px" tabindex="12" id="txtmodifieddate"  value="${arg.modifieddate}"  readonly="true"/>
+                </row>
+                <row visible="false">
+                   <textbox width="20px" id="txtwhid" readonly="true"  value="${arg.whid}"/>   
+                   <textbox width="20px" id="txtid" readonly="true"  value="${arg.id}"/>   
+                   <textbox width="20px" id="txtwhlocid" readonly="true"  value="${arg.txtwhlocid}"/>   
+                   <textbox width="20px" id="txtchid" readonly="true"  value="${arg.txtwhlocid}"/>   
+                </row>
+            </rows>  
+        </grid>              
+       </div>
+            <grid id="grid_find" oddRowSclass="non-odd" width="960px">
+                <columns>
+                    <column label="" width="250px" align="right" />
+                    <column label="" width="200px" align="center"/>
+                    <column label="" width="180px" align="center"/>
+                    <column label="" width="258px" align="left"/>
+                    <column label="" width="70px" align="left"/>
+                </columns>
+                <rows>
+                    <row height="35px">
+                        <button id="save"      tabindex="38" label="Save"      width="115px"   src="/img/Save24.png"  tooltiptext="Expire Item"/>
+                        <button id="expirewh"  tabindex="37" label="Expire WH"    width="115px"  image="/img/Action24.png"  tooltiptext="Expire WareHouse"/>
+                        <button id="l2c"  tabindex="30" label="L2C" width="115px"   image="/img/New24.png"     tooltiptext="Mapping Location to Channel (L2C)"/>
+                        <button id="close"      tabindex="38" label="Close"      width="115px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                        <label value=""/>
+                    </row>
+                </rows>
+            </grid>	 
+        <!--</div>-->
+    </window>
+</zk>

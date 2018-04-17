@@ -1,0 +1,10 @@
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" arg0="win_report_rps_asdf" ?>
+<?page title="Print Kwitansi" contentType="text/html;charset=UTF-8"?>
+<zk>
+	<window id="win_report_rps_asdf" title="Print Perso" border="normal" mode="modal" apply="id.my.berkah.rps.controller.RunReportRPSController" width="480px" closable="true" sizable="true" maximizable="true" style="border:1px;background:#3366FF;">
+	    <attribute name="onLater">
+           Clients.clearBusy(); //remove the busy message
+        </attribute>
+		<jasperreport id="report" height="400px" width="500px"/>
+	</window>
+</zk>

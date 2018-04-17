@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_upload"  title="Upload Pairing" width="500px"  border="normal" closable="false"
+             apply="id.my.berkah.tcash1.controller.UploadParingCtrl"
+            style="border:1px;background:#3366FF;" onClose="self.detach();">
+        <style>
+            .labelstyle {
+			font-weight: bold;
+			font-family: 'Trebuchet MS';
+			color: black;
+		}
+        </style>
+        <grid>
+            <columns>
+                <column label="" align="right" width="80px"/>
+                <column label="" align="left" width="380px"/>
+            </columns>
+            <rows>
+                <row>	
+                    <label value="Upload File"/>
+                    <hbox>
+                    <textbox width="280px" id="txtUpload" readonly="true" />
+                    <button  id="uploadFile" upload="true,maxsize=-1,"  image="/img/file.png" tooltiptext="Upload File Excel"/>
+                    </hbox>
+                </row>
+                <row visible="false">	
+                    <hbox>
+                    <textbox width="20px" id="txtuploadId"  readonly="true" value="${arg.OutUploadId}"/>
+                    <textbox width="20px" id="txtPoId" value="${arg.poId}" readonly="true"/>
+                    <textbox width="20px" id="txtuploadDtlId" value="${arg.OutUploadDtlId}" readonly="true"/>
+                    <textbox width="0px"   id="txtoutpat"  readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="0px" id="txtCount" value="${arg.count}" readonly="true"/>
+                    <textbox width="0px"   id="txtoutfile"  readonly="false" style="background-color:#FFFACD" />
+                    <textbox width="0px" id="txtPoLine" value="${arg.poline}" readonly="true"/>
+                    <textbox width="0px" id="txtSupId" value="${arg.supId}" readonly="true"/>
+                    <textbox width="0px" id="txtSupCode" value="${arg.supCode}" readonly="true"/>
+                    <textbox width="0px" id="txtItemId" value="${arg.itemId}" readonly="true"/>
+                    
+                    <!--<textbox width="250px" id="txtrow" value="${arg.row}" readonly="true"/>-->
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label="" align="center" width="460px"/>
+            </columns>
+<!--            <rows>
+                <row>	
+                    <button id="btnClose"      tabindex="38" label="close"      width="100px"    />
+                </row>
+            </rows>-->
+        </grid>
+        <listbox id="listbox"  height="230px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="PoID"              width="20px"  visible="false"/>
+                <listheader label="SN TCash"              width="230px"  visible="true"/>
+                <listheader label="SN Inventory"          width="250px"  visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+   
+<!--    <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+    </div>-->
+    <vlayout height="20px" width="100%"  style="font-weight: bold;font-size:14px;" >
+        <hbox>
+              Uploaded :
+        <label id ="txttotal"  width="50px" style="font-weight: bold;"/>
+            From 
+         <label id ="Labeltotal"  width="50px" style="font-weight: bold;"/>
+        </hbox>
+       
+    </vlayout>  
+<!--    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>-->
+    <div align="center">
+        <!--<toolbar id="tb" sclass="vista" height="30px">-->
+        <button id="refresh" label="Refresh" height="35px" image="/img/Refresh24.png" />
+        <button id="genSn"    label="Gen SN"   visible="true"  height="35px"    width="100px"   image="/img/Action24.png"  tooltiptext="Generate SN"/>
+        <button id="clear"     visible="true"   tabindex="18" label="Clear"    height="35px"  width="90px"   image="/img/DeleteSelection24.png"     tooltiptext="Clear "/>
+        <button id="View"    tabindex="32" label="Logs"       height="35px"            width="90px"   image="/img/Report24.png"  tooltiptext="View Logs"/>
+        <button id="close" label="Back" tooltiptext="Find" height="35px"  width="90px" image="/img/Logout24.png" />
+        <!--</toolbar>-->
+    </div>
+    
+  
+    
+        </window>
+
+</zk>

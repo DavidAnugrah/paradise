@@ -1,0 +1,50 @@
+<zk>
+<window id="win_list_package"  title="List of Pakcage" width="450px" border="normal" apply="id.my.berkah.rps.dpa.controller.DPALovPackageControllerUn" style="border:1px;background:#3366FF;">
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+    	<grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right" width="15%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">
+                    <label value="Keyword:" style="color: white"/>
+                    <textbox id="keywordBox"   width="100%" value="%"/>
+                    <button  id="searchButton" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="listbox" mold="paging" pageSize="10" style="border:1px;background:#0099FF;color:white;">
+	<listhead style="border:0px;background:#0099FF;color:white;">
+            <listheader label="Package Id" width="0px" style="color: white"/>
+            <listheader label="Package Code" width="100px" sort="auto(packageCode)" style="color: white"/>
+            <listheader label="Package Description" width="300px" sort="auto(packageDescription)" style="color: white"/>
+            <listheader label="Package Value" width="300px" visible="false"/>
+	</listhead>
+        <template name="model" style="border:1px;background:#0099FF;">
+            <listitem>
+		<listcell label="${each.packageId}"/>
+		<listcell label="${each.packageCode}"/>
+		<listcell label="${each.packageDescription}"/>
+                <listcell label="${each.packetValue}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+        <grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">	
+                    <button id="submit" label="Submit" orient="horizontal"/>
+                    <button id="close"  label="Cancel" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+ </zk>

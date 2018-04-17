@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Good_Reciept_bundling" title="List Goods Reciept Bundling" apply="id.my.berkah.tcash1.controller.ListBundlingGoodsReceipt" border="normal" width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+                <textbox id="txtreqin" visible="false" />
+                <textbox id="txtbuid" visible="false" />
+                <textbox id="txtbucode" visible="false" />
+                <textbox id="txtbudes" visible="false" />
+                <textbox id="txtid" visible="false" />
+                <textbox id="txtreqnum" visible="false" />
+                <textbox id="txtreqdte" visible="false" />
+                <textbox id="txtreqstat" visible="false" />
+                <textbox id="txtprocesste" visible="false" />
+                <textbox id="txtprocessby" visible="false" />
+                <textbox id="txtcanceleddte" visible="false" />
+                <textbox id="txtcanceledby" visible="false" />
+                <textbox id="txtapproveby" visible="false" />
+                <textbox id="txtapprovedate" visible="false" />
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="410px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="receive_id" width="130px"   visible="false"/>
+                    <listheader label="Receipt No." width="250px"  />
+                    <listheader label="Delivery No." width="250px"/>
+                    <listheader label="Work Order No." width="250px"/>
+                    <listheader label="bu_id" width="130px"   visible="false"/>
+                    <listheader label="BU Code" width="80px"/>
+                    <listheader label="BU Description" width="250px"/>
+                    <listheader label="wh_id" width="130px" visible="false"/>
+                    <listheader label="Warehouse Code" width="80px"/>
+                    <listheader label="Warehouse Description" width="250px"/>
+                    <listheader label="Warehouse loc" width="130px" visible="false"/>
+                    <listheader label="supplier_id" width="130px" visible="false"/>
+                    <listheader label="Supplier Code" width="90px"/>
+                    <listheader label="Supplier Description" width="250px"/>
+                    <listheader label="site_id" width="130px" visible="false"/>
+                    <listheader label="Site Code" width="80px"/>
+                    <listheader label="Site Description" width="250px"/>
+                    <listheader label="vendor_id" width="130px" visible="false"/>
+                    <listheader label="Vendor Site_id" width="130px" visible="false"/>
+                    <listheader label="Vendor Site" width="130px" visible="false"/>
+                    <listheader label="po_header_id" width="130px" visible="false"/>
+                    <listheader label="supp_delivery_id" width="130px" visible="false"/>
+                    <listheader label="Cancel Status" width="130px" visible="false"/>
+                    <listheader label="Created Date" width="130px"/>
+                    <listheader label="create_by" width="130px" visible="false"/>
+                    <listheader label="Created By " width="130px"/>
+                    <listheader label="Updated Date" width="130px"/>
+                    <listheader label="update_by" width="130px" visible="false"/>
+                    <listheader label="Updated By " width="130px"/>
+                    <listheader label="Confirmed Date" width="130px"/>
+                    <listheader label="confirmed By" width="130px" visible="false"/>
+                    <listheader label="Confirmed By " width="130px"/>
+                    <listheader label="Approved Date" width="130px"/>
+                    <listheader label="approved_by" width="130px" visible="false"/>
+                    <listheader label="Approved By " width="130px"/>    
+                    <listheader label="Canceled Date" width="130px"/>    
+                    <listheader label="Canceled By " width="130px"/>    
+                     <listheader label="Receive Status" width="130px" visible="false"/>
+                    <listheader label="Status" width="130px"  />          
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+   
+    
+     <window id="win_list_GR_findbundling" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListBundlingGoodsReceipt" position="center"  border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="130px" align="right" />
+                    <column label="" width="290px" />
+                </columns>
+                <rows>
+                    <row visible="false">
+                        <label   value="Supplier Delivery" width="50px" />
+                        <textbox id="txtReciept"  width="200px" mold="rounded" />
+                    </row>
+                    
+                    <row >
+                        <label   value="Goods Reciept No" width="50px" />
+                        <textbox id="txtGrNo"  width="200px" mold="rounded" />
+                    </row>
+                    <row >
+                        <label   value="Goods Delivery No" width="50px" />
+                        <textbox id="txtGdNo"  width="200px" mold="rounded"/>
+                    </row>
+                    <row>
+                        <label   value="Work Order No" width="50px" />
+                        <textbox id="txtWoNo"  width="200px" mold="rounded"/>
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" mold="rounded" format="dd/MM/yyyy"/>
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" mold="rounded" format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Status" />
+                        <combobox id="cmbStatus" width="200px" mold="rounded" readonly="true">
+                            <comboitem label="Draft"/>
+                            <comboitem label="Confirm Recieved"/>
+                            <comboitem label="Approved"/>
+                            <comboitem label="Canceled"/>
+                        </combobox>
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="415px" align="center" />
+                </columns>
+                    <rows>
+                  
+                    
+                    <row>
+                        <hbox>
+                        <button id="goFind" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" mold="trendy" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+    </window>
+        </window>
+</zk>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Mapping_Voucher_Type" title="Mapping Voucher Type URP" apply="id.my.berkah.urp.controller.ListMappingVoucher" border="normal" width="1130px"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <listbox id="listbox" height="400px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="URP Mapping Item Id"     width="130px" visible="false"  />
+                <listheader label="Item Code"          width="100px" visible="true"/>
+                <listheader label="Item Description"          width="300px" visible="true"/>
+                <listheader label="Voucher Type URP"          width="120px" visible="true"/>
+                <listheader label="Voucher Description"          width="130px" visible="true"/>
+                <listheader label="Brand Id"          width="100px" visible="false"/>
+                <listheader label="Brand Description"          width="120px" visible="true"/>
+                <listheader label="Created By"          width="100px" visible="true"/>
+                <listheader label="Created Date"          width="200px" visible="true"/>
+                <listheader label="Effective Date"          width="200px" visible="true"/>
+                <listheader label="Effective By"          width="100px" visible="true"/>
+                <listheader label="Expire Date"        width="200px" visible="true"/>
+                <listheader label="Expire By Name"      width="130px" visible="true"/>
+                <listheader label="Item Id"          width="100px" visible="false"/>
+                <listheader label="Modified Date"          width="200px" visible="true"/>
+                <listheader label="Modified By"          width="100px" visible="true"/>
+                <listheader label="Nominal"          width="100px" visible="true"/>
+                
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.urpMappingItemId}"/>
+                    <listcell label="${each.itemCode}"/>
+                    <listcell label="${each.itemDesc}"/>
+                    <listcell label="${each.voucherType}"/>
+                    <listcell label="${each.voucherDesc}"/>
+                    <listcell label="${each.brandId}"/>
+                    <listcell label="${each.brandDesc}"/>
+                    <listcell label="${each.createdBy}"/>
+                    <listcell label="${each.createdDate}"/>
+                    <listcell label="${each.effectiveDate}"/>
+                    <listcell label="${each.effectiveBy}"/>
+                    <listcell label="${each.expiredDate}"/>
+                    <listcell label="${each.expiredBy}"/>
+                    <listcell label="${each.itemId}"/>
+                    <listcell label="${each.modifiedDate}"/>
+                    <listcell label="${each.modifiedBy}"/>
+                    <listcell label="${each.nominal}"/>
+                </listitem>
+            </template>
+        </listbox>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    </window>
+</zk>

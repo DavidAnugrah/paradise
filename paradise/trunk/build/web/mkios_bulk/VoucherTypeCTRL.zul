@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_voucher_type" title="Add/Edit Voucher Type" apply="id.my.berkah.mkiossetup.controller.VoucherTypeCTRL" border="normal" width="750px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="760px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Voucher Type" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtVouchertype" maxlength="3" value="${arg.vouchertypecode}" style="background-color:#FFFACD"/>
+                    <label   value="Voucher Type Description" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtVoucherdesc" value="${arg.vouchertypedes}" style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Effective By Name" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtEffectiveByName" readonly="true" value="${arg.effectivebyname}"  />
+                    <label   value="Effective Date" />
+                    <datebox width="200px" tabindex="7" id="txtEffectiveByDate" format="dd-MM-yyyy" readonly="true"  value="${arg.effectivedate}" style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Expired By Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtExpiredByName"  readonly="true" value="${arg.expiredbyname}"  />
+                    <label   value="Expired Date" />
+                    <textbox width="200px" tabindex="12" id="txtExpiredDate" readonly="true" value="${arg.expireddate}"/>
+                </row>
+                <row>
+                    <label   value="Created By Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtCreatedByName"  readonly="true"  value="${arg.createdbyname}"/>
+                    <label   value="Created Date" />
+                    <textbox width="200px" tabindex="12" id="txtCreatedDate" readonly="true" value="${arg.createddate}"/>
+                </row>
+                <row visible="false">
+                    <label   value="Modified By Name" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtModifiedByName"  readonly="true" value="${arg.modifiedbyname}"/>
+                        <label   value="Modified Date" /> 
+                    <textbox width="200px" tabindex="7" id="txtModifiedDate"  readonly="true" value="${arg.modifieddate}" />
+                </row>
+                <row visible="false">
+                    <textbox width="0px" readonly="true" id="txtId" value="${arg.voucherid}"  />
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="740px">
+            <columns>
+               <column label="" width="260px" align="right" />
+                <column label="" width="100px" align="center"/>
+                <column label="" width="105px" align="center"/>
+                <column label="" width="260px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="newrecord"  tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="save"      tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="process"  tabindex="37" label="Expire"    width="90px"  image="/img/Action24.png"  tooltiptext="UnAllocated"/>
+                    <button id="close"      tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

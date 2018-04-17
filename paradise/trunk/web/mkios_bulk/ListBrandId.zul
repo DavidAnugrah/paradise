@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Brand_Id" title="Brand Id" border="normal" width="1130px" apply="id.my.berkah.mkiossetup.controller.ListBrandId" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" /> 
+            <textbox visible="false" id="txtid1" />
+            <textbox visible="false" id="txtbrandid" />
+            <textbox visible="false" id="txtbranddesc" />
+            <textbox visible="false" id="txtby" />
+            <textbox visible="false" id="txtdate" />
+            <textbox visible="false" id="txtexpby" />
+            <textbox visible="false" id="txtexpdate" />
+            <textbox visible="false" id="txtcreate" />
+            <textbox visible="false" id="txtcreatdate" />
+            <textbox visible="false" id="txtmoby" />
+            <textbox visible="false" id="txtmodate" />
+        </toolbar>
+        </div>
+        <div>
+        <listbox id="listbox" height="400px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Id"                  width="70px" visible="false"  />
+                <listheader label="Brand Id"            width="70px" visible="true" sort="auto" />
+                <listheader label="Brand Description"   width="130px" visible="true" sort="auto"/>
+                <listheader label="Effective By"        width="130px" visible="true" sort="auto"/>
+                <listheader label="Effective Date"      width="140px" visible="true" sort="auto"/>
+                <listheader label="Expired By"          width="120px" visible="true" sort="auto"/>
+                <listheader label="Expired Date"        width="130px" visible="true" sort="auto"/>
+                <listheader label="Created By"          width="130px" visible="true" sort="auto"/>
+                <listheader label="Created Date"        width="130px"  visible="true" sort="auto"/>
+<!--                <listheader label="Modified By"         width="120px" visible="false" sort="auto(modifiedbyname)"/>
+                <listheader label="Modified Date"       width="130px" visible="false" sort="auto(modifieddate)"/>-->
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div> 
+        <div>            
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+        
+    <window id="win_Findlist_brand" title="Find Parameter" visible="false" apply="id.my.berkah.mkios.controller.ListBrandId" position="center" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;" >
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="420px">
+                <columns>
+                  <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                   
+                </columns>
+                <rows>
+                    <row>
+                         <label   value=""  />
+                        <hbox>
+                        <label   value="Brand" width="50px" />
+                        <textbox id="txtbrandid" placeholder="Brand" tabindex="1" width="200px" style="background-color:#FFFACD" />
+                        <!--<textbox id="txtbranddesc" placeholder="Brand Description" width="150px" readonly="false" style="background-color:#FFFACD" />-->
+                        <!--<button id="btnbrand"  width="40px" height="20px"  src="/img/search.png"  tooltiptext="LOV Voucher"/>-->
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                  <column label="" width="100px" align="center" />
+                    <column label="" width="100px" align="left" />
+                </columns>
+                <rows>
+                 <row>
+                     <label/>
+                     <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Close1" tabindex="13" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>
+    </window>	     
+    </window>
+</zk>

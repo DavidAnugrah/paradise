@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="Win_Mapping_Voucher_Type" title="Add/Edit Mapping Voucher MKIOS" apply="id.my.berkah.mkiossetup.controller.ItemMkiosCTRL" border="normal" width="800px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="780px">
+            <columns>
+                <column label="" width="120px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="60px" />
+                <column label="" width="150px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item Code" width="50px" />
+                    <textbox width="200px"  id="txtItemCode" readonly="false" value="${arg.itemcode}"  style="background-color:#FFFACD"/>
+                    <button  id="btnItemResource" tabindex="11" width="40px" height="20px"  src="/img/search.png"  tooltiptext="LOV Item"/>
+                    <label   value="Item Description" width="50px" />
+                    <textbox width="200px" id="txtItemDescription" readonly="true" value="${arg.itemdescription}" />
+                </row>
+                <row>
+                    <label value="Brand"/>
+                    <hbox>
+                    <textbox visible="false" width="30px"  id="txtBrandid" value="${arg.brandid}" readonly="false"  style="background-color:#FFFACD"/>
+                    <label   value="" width="50px" />
+                    <textbox width="205px" readonly="true" id="txtbrandesc"  value="${arg.branddesc}"   />
+                    </hbox>
+                    <button  id="btnbrand"  width="40px" height="20px"  src="/img/search.png"  tooltiptext="LOV Brand"/>
+                    <label   value="Nominal" width="50px" />
+                    <textbox width="205px"  id="txtNominal" readonly="true" value="${arg.nominal}"/>
+                </row>
+                <row>
+                    <label   value="Voucher Type  Mkios" width="50px" />
+                    <textbox width="200px"  id="txtVoucherCode" value="${arg.vouchertypeurp}" readonly="false" style="background-color:#FFFACD"/>
+                    <button  id="btnVoucherResource" tabindex="11" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Channel"/>
+                    <label   value="Voucher Type Description" width="50px"  />
+                    <textbox width="205px"  id="txtVoucherDescription" value="${arg.vouchertypedesc}" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Effective Date" width="50px" />
+                    <datebox width="200px" id="txtEffectiveDate" format="dd-MM-yyyy" value="${arg.effectivedate}" readonly="true"/>
+                    <label   value=""/>
+                    <label   value="Effective By " />
+                    <textbox width="205px"  id="txtEffectiveByName" value="${arg.effectiveby}" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="200px"  id="txtCreatedDate" value="${arg.createddate}" readonly="true"  />
+                    <label   value=""/>
+                    
+                    <label   value="Created By " />
+                    <textbox width="205px" id="txtCreatedBy" value="${arg.createdbyname}" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Expired Date" width="50px" />
+                    <textbox width="200px"  id="txtExpiredDate" value="${arg.expireddate}" readonly="true"  />
+                    <label   value=""/>
+                    
+                    <label   value="Expired By Name" /> 
+                    <textbox width="205px"  id="txtExpiredByName" value="${arg.expiredbyname}" readonly="true" />
+                </row>
+                <row visible="false">
+                    <label   value="Modified Date" width="50px" />
+                    <textbox width="200px"  id="txtModifiedDate" value="${arg.modifiedbyname}" readonly="true"  />
+                    <label   value=""/>
+                    <label   value="Modified By Name" /> 
+                    <textbox width="205px"  id="txtModifiedByName" value="${arg.modifieddate}" readonly="true"  />
+                </row>
+                <row visible="false">
+                     <textbox width="30px" readonly="true" id="txtItemId"   value="${arg.itemid}"   />
+                     <textbox width="30px" readonly="true" id="txtmappingItemId"   value="${arg.urpmappingitemid}"   />
+                     <textbox width="30px" readonly="true" id="txtvoucherId"     />
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="7800px">
+            <columns>
+                <column label="" width="280px" align="right" />
+                <column label="" width="100px" align="center"/>
+                <column label="" width="105px" align="center"/>
+                <column label="" width="280px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="newrecord" tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="save"      tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="process"   tabindex="37" label="Expire"    width="90px"  image="/img/Action24.png"  tooltiptext="UnAllocated"/>
+                    <button id="close"     tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

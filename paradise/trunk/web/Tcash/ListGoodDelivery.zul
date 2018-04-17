@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Good_Delivery" title="List Goods Delivery" apply="id.my.berkah.tcash1.controller.ListDeliveryGood" border="normal" width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+                <textbox id="txtreqin" visible="false" />
+                <textbox id="txtbuid" visible="false" />
+                <textbox id="txtbucode" visible="false" />
+                <textbox id="txtbudes" visible="false" />
+                <textbox id="txtid" visible="false" />
+                <textbox id="txtreqnum" visible="false" />
+                <textbox id="txtreqdte" visible="false" />
+                <textbox id="txtreqstat" visible="false" />
+                <textbox id="txtprocesste" visible="false" />
+                <textbox id="txtprocessby" visible="false" />
+                <textbox id="txtcanceleddte" visible="false" />
+                <textbox id="txtcanceledby" visible="false" />
+                <textbox id="txtapproveby" visible="false" />
+                <textbox id="txtapprovedate" visible="false" />
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="410px" mold="paging" sizedByContent="true" pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="suppdeliveryid " width="50px"  visible="false" />
+                    <listheader label="Delivery No."        hflex="min"    width="200px" visible="true" sort="auto"/>
+                    <listheader label="Work Order No."           width="200px" visible="true" sort="auto"/>      
+                    <listheader label="poid"    width="100px"  visible="false" />
+                    <listheader label="supplierid"   width="100px"  visible="false" />
+                    <listheader label="Supplier Code"                    width="90px"  visible="true" />
+                    <listheader label="Supplier Desc"                    width="150px"  visible="true" />
+                    <listheader label="Delivery Date"       width="100px" visible="false" sort="auto" />
+                    <listheader label="Supplier Site id"    width="100px" visible="false" sort="auto" />
+                    <listheader label="Supplier Site"             width="100px" visible="true" sort="auto" />
+                    <listheader label="Supplier Site Name"          width="300px" visible="true" sort="auto"/>               
+                    <listheader label="buid"        width="150px" visible="false" sort="auto"/> 
+                    <listheader label="BU Code"           width="110px" visible="true" sort="auto"/>               
+                    <listheader label="BU Description"         width="200px" visible="true" sort="auto"/>                  
+                    <listheader label="Warehouse Code"           width="110px" visible="true" sort="auto"/>               
+                    <listheader label="Warehouse Description"           width="250px" visible="true" sort="auto"/>               
+                    <listheader label="Warehouse Id"           width="50px" visible="false" sort="auto"/>
+                    <listheader label="Estimate Arrive From"           width="170px" visible="true" sort="auto"/>               
+                    <listheader label="Estimate Arrive To"           width="170px" visible="true" sort="auto" />                   
+                    <listheader label="Status id"           width="50px" visible="false" sort="auto"/>            
+                    <listheader label="Remark"           width="100px" visible="true" sort="auto"/>               
+                    <listheader label="Created Date"           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Created By"           width="100px" visible="false" sort="auto"/>               
+                    <listheader label="Created By "           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Modified Date"           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Modified By"           width="100px" visible="false" sort="auto"/>               
+                    <listheader label="Modified By "           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Submitted Date "           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Submitted By "           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Approved Date"           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Approved By"           width="100px" visible="false" sort="auto"/>               
+                    <listheader label="Approved By "           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Canceled Date"           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="Canceled By"           width="100px" visible="false" sort="auto"/>               
+                    <listheader label="Canceled By "           width="150px" visible="true" sort="auto"/>               
+                    <listheader label="LineRemark"           width="200px" visible="false" sort="auto"/>               
+                    <listheader label="Forwarding Agent"           width="150px" visible="false" sort="auto"/>               
+                    <listheader label="Agent Name"           width="150px" visible="false" sort="auto"/>               
+                    <listheader label="Status"           width="100px" visible="true" sort="auto"/>            
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+        <window id="win_list_GD_find" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListDeliveryGood" position="center"  border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="130px" align="right" />
+                    <column label="" width="290px" />
+                </columns>
+                <rows>
+                  
+                    <row visible="false">
+                        <label   value="Good Delivery No" width="50px" />
+                        <textbox id="txtsuppdelivery"  width="200px" mold="rounded"/>
+                    </row>
+                    <row >
+                        <label   value="Good Delivery No" width="50px" />
+                        <textbox id="txtGdNo"  width="200px" mold="rounded" />
+                    </row>
+                    <row>
+                        <label   value="Work Order No" width="50px" />
+                        <textbox id="txtWoNo"  width="200px" mold="rounded"/>
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" mold="rounded" format="dd/MM/yyyy"/>
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" mold="rounded" format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Status" />
+                        <combobox id="cmbStatus" width="200px" mold="rounded" readonly="true">
+                            <comboitem label="Draft"/>
+                            <comboitem label="Submit"/>
+                            <comboitem label="Approved"/>
+                            <comboitem label="Cancel"/>
+                        </combobox>
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="415px" align="center" />
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                        <button id="goFind" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" mold="trendy" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+    </window>
+</zk>

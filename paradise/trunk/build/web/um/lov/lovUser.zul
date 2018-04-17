@@ -1,0 +1,17 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<zk >
+ <window id="winlovUser" title="Stock TRC" border="normal" width="300px" closable="true" >
+        <listbox id="listUser" height="250px"  width="100%">
+            <listhead  >    
+                <listheader label="TRC Type" width="100px" />
+                <listheader label="TRC Description" width="100%"/>   
+            </listhead>
+            <template name="model" style="border:1px;background:#FF0000;">
+                <listitem> 
+                    <listcell label="${each.trcType}" />
+                    <listcell label="${each.trcDesc}" />
+                </listitem>
+            </template>
+        </listbox>
+    </window>
+</zk>

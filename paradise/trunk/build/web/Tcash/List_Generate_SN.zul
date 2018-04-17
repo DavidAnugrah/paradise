@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<!--<zk xmlns:n="native">-->
+    <window id="win_Gen_SN" title="Generate SN" width="500px" apply="${arg.controller}" closable="false" height="330px" border="normal"  ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <div>    
+    <listbox id="listbox"  height="230px" mold="paging" vflex="false" pageSize="5">
+            <listhead sizable="true">
+                <listheader label="PoID"              width="20px"  visible="false"/>
+                <listheader label="SN TCash"              width="230px"  visible="true"/>
+                <listheader label="SN Inventory"          width="230px"  visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+   
+  <vlayout height="20px" width="100%" style="border-bottom:1px dotted;background:#eee; margin-bottom:0px;">
+        <hbox>
+        <label value="Generated: " style="font-weight: bold;font-size:12px;" />
+        <label id ="txttotal1"  width="50px" style="font-weight: bold;font-size:12px;"/>
+        <label value="(SN Inventory)" style="font-weight: bold;font-size:12px;" />
+        <label value="From " style="font-weight: bold;font-size:12px;" />
+         <label id ="txttotal2"  width="50px" style="font-weight: bold;font-size:12px;"/>
+         <label value="(SN TCASH)" style="font-weight: bold;font-size:12px;" />
+        </hbox>
+       
+    </vlayout>  
+<!--    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>-->
+    <div align="center">
+        <!--<toolbar id="tb" sclass="vista" height="30px">-->
+        <button id="refresh" label="Refresh" height="35px" width="100px" image="/img/Refresh24.png" />
+        <button id="close" label="Back" tooltiptext="Find" height="35px" width="100px" image="/img/Logout24.png" />
+        <!--</toolbar>-->
+    </div>
+    
+</window>
+
+
+</zk>

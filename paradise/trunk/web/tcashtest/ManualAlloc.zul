@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_Manual_Alloc"  title="Manual Allocation" width="800px" border="normal" closable="true"
+            apply="${arg.controller}"
+            style="border:1px;background:#3366FF;">
+        <div>
+            <grid id="grid" oddRowSclass="non-odd" width="790px">
+                <columns>
+                    <column label="" width="100px" align="right" />
+                    <column label="" width="300px" />
+                    <column label="" width="60px" />
+                    <column label="" width="80px" align="right"/>
+                    <column label="" width="250px" />
+                </columns>
+                <rows>
+                    <row  id="row1">
+                        <label   value="Item"  />
+                        <hbox>
+                            <textbox width="50px" id="txtItemLocId"    visible="false"    style="background-color:#FFFACD" />
+                            <textbox width="50px" id="txtItemCode"       style="background-color:#FFFACD" />
+                            <textbox width="200px" id="txtItemDesc" readonly="true"   style="background-color:#FFFACD" />
+                        </hbox>
+                        <label/>
+                        <label   value="LOT"  />
+                        <textbox width="200px" id="txtLot" readonly="true"   style="background-color:#FFFACD" />
+                    </row>
+                    <row>
+                        <label   value="HLR"  />
+                        <hbox>
+                            <textbox width="50px" id="txtHlrMapId" visible="false"      style="background-color:#FFFACD" />
+                            <textbox width="200px" id="txtMapDesc" readonly="true"   style="background-color:#FFFACD" />
+                        </hbox>
+                        <button id="btnLovHlr" width="40px" height="20px"  src="/img/search.png"  tooltiptext="Lov Bu" />
+                        <label  visible="false" value="Qty"  />
+                        <textbox visible="false" width="200px" id="txtQty" readonly="true"   style="background-color:#FFFACD" />
+                    </row>
+                    <row >
+                        <label   value="Block From"  />
+                        <textbox width="200px" id="txtBlockFrom" readonly="true"   style="background-color:#FFFACD" />
+                        <label   value=""  />
+                        <label   value="Block To"  />
+                        <textbox width="200px" id="txtBlockTo" readonly="true"   style="background-color:#FFFACD" />
+                    </row>
+                </rows>
+            </grid>
+        </div>
+        
+        <vlayout height="5px" width="100%" style="border:0px;">
+        </vlayout> 
+        
+        <div visible="false">  
+            <listbox id="lboxHlr" height="330px" multiple="true" checkmark="true">
+                <listhead sizable="true" style="background:#eee; color:black;" >
+                    <listheader label="Hlr Desc" width="90px" sort="" />
+                    <listheader label="Item Code" width="70px" sort="" />
+                    <listheader label="Item Description" width="220px" sort="" />
+                    <listheader label="Lot"  width="100px" sort="" />
+                    <listheader label="Qty"  width="50px" sort="" />
+                    <listheader label="Block From"  width="140px" sort="" />
+                    <listheader label="Block To"   width="140px" sort="" />
+                    <listheader label="Hlr Map Id" visible="false" width="100px" />
+                    <listheader label="Item Loc Id" visible="false" width="100px" />
+                    <listheader label="Is Old" visible="false" width="100px" />
+                </listhead>
+                <template name="model" >
+                    <listitem>
+                       
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        
+<!--        <vlayout height="5px" width="100%" style="border:0px;">
+        </vlayout> -->
+        
+        <div>
+            <grid oddRowSclass="non-odd" width="790px">
+                <columns>
+                    <column label="" width="170px" align="right" />
+                    <column label="" width="300px" />
+                </columns>
+                <rows>
+                    <row>
+                    <button label="Save" id="btnSave"  width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button label="Delete" id="btnDelete"  width="85px"   image="/img/Cancel24.png"  tooltiptext="Delete"/>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+        
+        <vlayout height="5px" width="100%" style="border:0px;">
+        </vlayout> 
+        <!--for false-->
+        
+        <div >  
+            <listbox id="lboxHdr" height="330px" >
+                <listhead sizable="true" style="background:#eee; color:black;">
+                    <listheader label="Po Line" width="60px" sort="" />
+                    <listheader label="Po Line Id" width="280px" sort="" visible="false"/>
+                    <listheader label="Qty" width="85px" sort="" />
+                    <listheader label="Hlr Description"  width="180px" sort="" />
+                    <listheader label="Regional Description"  width="355px" sort="" />
+                    <listheader label="Regional Code"  width="100px" sort="" />
+                    <listheader label="Hlr Map Id"  visible="false" width="280px" sort="" />
+                    <listheader label="Item Loc Id" visible="false" width="100px" />
+                    <listheader label="Position Num" visible="false" width="100px" />
+                    <listheader label="Po Id" visible="false" width="100px" />
+                    <listheader label="Dtl Po Id" visible="false" width="100px" />
+                    <listheader label="Dtl Hlr Po Id" visible="false" width="100px" />
+                </listhead>
+                <template name="model" >
+                    <listitem>
+                       
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div width="100%" height="30px" style="border:1px;margin-bottom:0px;background:#d3d3d3;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="220" y="4" width="160px" height="30px">
+                    <button id="btnDetail" tabindex="38" label="Detail" width="150px"     />
+                </absolutechildren>
+                <absolutechildren x="410" y="4" width="160px" height="30px">
+                    <button id="btnClose" tabindex="38" label="Close" width="150px"     />
+                </absolutechildren>
+                <absolutechildren x="610" y="7" width="160px" height="30px">
+                    <label value="Total" style="color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="665" y="7" width="125px;" height="30px">
+                    <label id="txtTotalQty" width="100px" value="0" style="color:black;"/>
+                </absolutechildren>
+            </absolutelayout>
+        </div>
+       
+    </window>
+</zk>

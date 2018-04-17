@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_upload_logs"  title="View Logs" width="500px"  border="normal" closable="false" 
+             apply="id.my.berkah.tcash1.controller.ViewLogs"
+            style="border:1px;background:#3366FF;" onClose="self.detach();">
+        <style>
+            .labelstyle {
+			font-weight: bold;
+			font-family: 'Trebuchet MS';
+			color: black;
+		}
+        </style>
+        <grid>
+            <columns>
+                <column label="" align="right" width="80px"/>
+                <column label="" align="left" width="380px"/>
+            </columns>
+            <rows>
+                <row>	
+
+                    <textbox width="50px" visible="false" id="txtUpload" value="${arg.OutUploadId}" readonly="true"/>
+                    <textbox width="50px" visible="false" id="txtfile" value="${arg.filename}" readonly="true"/>
+                    <textbox width="50px" visible="false" id="txtpoLine" value="${arg.poLine}" readonly="true"/>
+                  
+                </row>
+<!--                <row visible="false">	
+                    <hbox>
+                     <textbox width="20px" id="txtuploadId"  readonly="true" value="${arg.OutUploadId}"/>
+                      <textbox width="20px" id="txtuploadDtlId"  readonly="true"/>
+                     <textbox width="0px"   id="txtoutpat"  readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="0px" id="txtCount" value="${arg.count}" readonly="true"/>
+                     <textbox width="0px"   id="txtoutfile"  readonly="false" style="background-color:#FFFACD" />
+                    <textbox width="0px" id="txtPoId" value="${arg.poId}" readonly="true"/>
+                    <textbox width="0px" id="txtPoLine" value="${arg.poline}" readonly="true"/>
+                    <textbox width="0px" id="txtSupId" value="${arg.supId}" readonly="true"/>
+                    <textbox width="0px" id="txtSupCode" value="${arg.supCode}" readonly="true"/>
+                    <textbox width="0px" id="txtItemId" value="${arg.itemId}" readonly="true"/>
+                 
+                    <textbox width="250px" id="txtrow" value="${arg.row}" readonly="true"/>
+                    </hbox>
+                </row>-->
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label="" align="center" width="460px"/>
+            </columns>
+<!--            <rows>
+                <row>	
+                    <button id="btnClose"      tabindex="38" label="close"      width="100px"    />
+                </row>
+            </rows>-->
+        </grid>
+        <listbox id="listboxlogs" sizedByContent="true" span="true" height="230px" mold="paging" pageSize="5">
+            <listhead sizable="true">
+                <listheader label="Description"         visible="true"/>
+                 <listheader label="Sn Tcash"          width="0px"  visible="false"/>
+                <listheader label="Sn Inventory"          width="0px"  visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+   
+<!--    <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+    </div>-->
+    <vlayout height="30px" width="100%" style="font-weight: bold;font-size:14px;" >
+        <hbox>
+             Total :
+        <label id ="txttotal1"  width="50px" style="font-weight: bold;"/>
+        </hbox>
+       
+    </vlayout>  
+<!--    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>-->
+    <div align="center">
+        <!--<toolbar id="tb" sclass="vista" height="30px">-->
+        <!--<button id="refresh" label="Refresh" height="35px" image="/img/Refresh24.png" />-->
+        <!--<button id="genSn"    tabindex="32" label="Gen SN"       height="35px"            width="100px"   image="/img/Action24.png"  tooltiptext="Generate SN"/>-->
+        <button id="ExportXlsx"    tabindex="32" label="Export"       height="35px"            width="100px"   image="/img/Report24.png"  tooltiptext="Export to txt"/>
+        <button id="closelogs" label="Back" tooltiptext="Find" height="35px"  width="100px" image="/img/Logout24.png" />
+        <!--</toolbar>-->
+    </div>
+    </window>
+</zk>

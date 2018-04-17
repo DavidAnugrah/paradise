@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_GR_detail" title="Add/Edit Goods Reciept Detail" apply="${arg.controller}" border="normal"  width="1000px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+
+        <listbox id="listbox" mold="paging" pageSize="100" height="330px" multiple="true" checkmark="true">
+            <frozen columns="4"/>
+            <listhead  style="background:#eee; color:black;">
+                <listheader label="Line No" width="80px"/>
+                <listheader label="Item Code" width="80px"/>
+                <listheader label="Item Description" width="250px"/>
+                <listheader label="po_id" width="130px" visible="false"/>
+                <listheader label="PO Line Ref" width="90px" visible="false"/>
+                <listheader label="Quantity GD" width="130px"  />
+                <listheader label="Qty Delivered" width="130px"  visible="false"/>
+                <listheader label="Quantity Total GR" width="130px"/>
+                <listheader label="Quantity Outstanding" width="150px"/>
+                <listheader label="Line Remark" width="130px" visible="false"/> 
+                <listheader label="Line Status" width="130px" visible="false"/>
+                <listheader label="Created Date" width="130px" visible="false"/>
+                <listheader label="Created By" width="130px" visible="false"/>
+                <listheader label="Modified Date" width="130px" visible="false"/>
+                <listheader label="Modified By" width="130px" visible="false"/>
+                <listheader label="hlr_map_id" width="130px" visible="false"/>
+                <listheader label="id" width="130px" visible="false"/>
+                <listheader label="city_id" width="130px" visible="false"/>
+                <listheader label="city_name" width="130px" visible="false"/>
+                <listheader label="wh_id" width="130px" visible="false"/>
+                <listheader label="Order Date" width="130px"/>
+                <listheader label="UOM" width="130px"/>
+                <listheader label="Back Order" width="130px" visible="false"/>
+                <listheader label="status_input_file" width="130px" visible="false"/>
+                <listheader label="HLR" width="130px" visible="false"/>
+                <listheader label="regional_id" width="130px" visible="false"/>
+                <listheader label="regional_description" width="130px" visible="false"/>
+                <listheader label="Range From" width="130px"/>
+                <listheader label="Range To" width="130px"/>
+                <listheader label="Received Qty " width="130px" visible="false"/>
+                <listheader label="supp_delivery_id" width="130px" visible="false"/>
+                <listheader label="item_id" width="130px" visible="false"/>
+                <listheader label="po line id" width="130px" visible="false"/>
+            </listhead>
+            <template name="model" >
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+        <grid id="grid_find" oddRowSclass="non-odd" width="980px">
+            <columns>
+                <column label="" width="980px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                        <button id="save"        tabindex="38" label="Save"      width="90px" height="35px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                        <button id="close"        tabindex="38" label="Close"      width="90px" height="35px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_Purchase_Contract" title="List Purchase Contract" apply="id.my.berkah.hrnbox.controller.ListPurchaseContract" border="normal"  width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" mold="default" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" mold="default" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" mold="default" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" mold="default" image="/img/Find24.png" tooltiptext="Find" />
+            <textbox visible="false" id="txcontractId"/>
+            <textbox visible="false" id="txcontract"/>
+            <textbox visible="false" id="txdesc"/>
+            <textbox visible="false" id="txcontractdate"/>
+            <textbox visible="false" id="txsuppid"/>
+            <textbox visible="false" id="txsupp"/>
+            <textbox visible="false" id="txsupName"/>
+            <textbox visible="false" id="txtTop"/>
+            <textbox visible="false" id="txtTopname"/>
+            <textbox visible="false" id="txtcurrency"/>
+            <textbox visible="false" id="txtagent"/>
+            <textbox visible="false" id="txtagentname"/>
+            <textbox visible="false" id="txtcontractstat"/>
+            <textbox visible="false" id="txtsupsite"/>
+            <textbox visible="false" id="txtsupsiteid"/>
+            <textbox visible="false" id="txtsupsitename"/>
+            <textbox visible="false" id="txtcontractmap"/>
+            <textbox visible="false" id="txtquantity"/>
+            <textbox visible="false" id="txttermidate"/>
+            <textbox visible="false" id="txttermiby"/>
+            <textbox visible="false" id="txtamunt"/>
+            <textbox visible="false" id="txtcreateper"/>
+            <textbox visible="false" id="txtcreatedate"/>
+            <textbox visible="false" id="txtcreateby"/>
+            <textbox visible="false" id="txtupdateby"/>
+            <textbox visible="false" id="txtupdatedate"/>
+            <textbox visible="false" id="txtefecdate"/>
+            <textbox visible="false" id="txtexpidate"/>
+            <textbox visible="false" id="txtcontracstatus"/>
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="420px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="Contract id"          width="50px"  visible="false" />
+                <listheader label="Contract"             width="200px" visible="true" />
+                <listheader label="Description"          width="100px" visible="true" />
+                <listheader label="Contract Date"        width="140px" visible="true" />
+                <listheader label="Supplier id"          width="50px"  visible="false" />
+                <listheader label="Supplier"             width="100px" visible="true" sort="auto" />
+                <listheader label="Supplier Name"        width="100px" visible="true" sort="auto" />
+                <listheader label="Terms of Payment"     width="110px" visible="false" sort="auto" />
+                <listheader label="Terms of Payment name" width="150px" visible="false" sort="auto" />
+                <listheader label="Currency"             width="100px" visible="true" sort="auto" />
+                <listheader label="Forwarding Agent"      width="110px" visible="true" sort="auto" />
+                <listheader label="Forwarding Agent Name" width="150px" visible="true" sort="auto" />
+                <listheader label="Contract Status"      width="100px" visible="false" sort="auto" />
+                <listheader label="Supplier Site"        width="150px"  visible="true" sort="auto" />
+                <listheader label="Site Id"              width="100px" visible="false" sort="auto" />
+                <listheader label="Site Name"            width="150px" visible="true" sort="auto" />
+                <listheader label="Contract Map No"      width="150px" visible="true" sort="auto" />
+                <listheader label="Agreed Quantity"      width="150px" visible="true" sort="auto" />
+                <listheader label="Terminate Date"       width="150px" visible="true" sort="auto" />
+                <listheader label="Terminate By"         width="150px" visible="true" sort="auto" />
+                <listheader label="Agreed Amount"        width="150px" visible="true" sort="auto" />
+                <listheader label="Created Period"       width="150px" visible="false" sort="auto" />     
+                <listheader label="Creation Date"        width="170px" visible="true" sort="auto" />
+                <listheader label="Created By"           width="200px" visible="true" sort="auto" />
+                <listheader label="Last Update Date"     width="200px" visible="true" sort="auto" />
+                <listheader label="Last Updated By"      width="150px"  visible="true" sort="auto" />      
+                <listheader label="Effective Date"       width="150px"  visible="true" sort="auto" />      
+                <listheader label="Expire Date"          width="150px"  visible="false" sort="auto" />      
+                <listheader label="Status"               width="150px"  visible="true" sort="auto" />      
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+     <window id="win_list_PC_find" title="Find Parameter" apply="id.my.berkah.hrnbox.controller.ListPurchaseContract" position="center" visible="false" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Supplier" width="50px" />
+                        <!--<hbox>-->
+                        <!--<textbox id="txtid" visible="false" width="40px" />-->
+                        
+                        <textbox id="txtsuppliercode" placeholder="Supplier Code" width="200px" />
+                        <!--<textbox id="txtitemdesc" placeholder="Item Description" width="140px" style="background-color:#FFFACD"/>-->
+                        <!--<button id="btnitemcode" src="/img/search.png"/>-->
+                        <!--</hbox>-->
+                    </row>
+                    <row>
+                       <label   value="Contract" width="50px" />
+                       <textbox id="txtContract" placeholder="Contract Number" width="200px" />
+                         <!--<hbox>-->
+                        <!--<textbox id="txtsupid" visible="false" width="40px" />-->
+                        <!--<textbox id="txtdesc" placeholder="Supplier Description" width="140px" style="background-color:#FFFACD"/>-->
+                        <!--<button id="btnbucode" src="/img/search.png"/>-->
+                        <!--</hbox>-->
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="140px" align="center" />
+                    <column label="" width="140px" align="center" />
+                    <column label="" width="140px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                    <button id="goFind" height="30px" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Clear" mold="trendy" tabindex="13" label="Clear"  image="/img/DeleteSelection24.png" />
+                     <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+    
+</zk>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_setup_sup" title="List Setup Supplier" apply="id.my.berkah.ifm.controller.ListSetupSupplier" border="normal" width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" visible="true"/>
+            <textbox id="txtseqdesc" visible="false" /> 
+            <textbox id="txtsupid" visible="false" /> 
+            <textbox id="txtsupnum" visible="false" /> 
+            <textbox id="txtsupname" visible="false" /> 
+            <textbox id="txtcreatdate" visible="false" /> 
+            <textbox id="txtcreatbydesc" visible="false" /> 
+            <textbox id="txtmodifdate" visible="false" /> 
+            <textbox id="txtmodifby" visible="false" /> 
+            <textbox id="txtmodifbydesc" visible="false" /> 
+            <textbox id="txtexpire" visible="false" /> 
+            <textbox id="txtorgid" visible="false" /> 
+            <textbox id="txtfsid" visible="false" /> 
+            <textbox id="txteffctive" visible="false" /> 
+            <textbox id="txtexpieby" visible="false" /> 
+            <textbox id="txtefectiveby" visible="false" /> 
+            <textbox id="txtmappingcode" visible="false" /> 
+            <textbox id="txtSGID" visible="false" /> 
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="430px" sizedByContent="true" emptyMessage="No items match your search"  tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="SG Description"         visible="false" sort="auto"/>
+                <listheader label="supId"                  visible="false" sort="auto"/>
+                <listheader label="Supplier Number"        visible="true" sort="auto"/>
+                <listheader label="Supplier Name"          visible="true" sort="auto" />
+                <listheader label="Create Date"            visible="true" sort="auto" />
+                <listheader label="Create By"              visible="false" sort="auto" />
+                <listheader label="Create By "             visible="true" sort="auto" />
+                <listheader label="Modified Date"          visible="true" sort="auto"/>
+                <listheader label="Modified By"            visible="false" sort="auto"/>               
+                <listheader label="Modified By desc"       visible="true" sort="auto"/>               
+                <listheader label="Expire Date"            visible="true" sort="auto"/>               
+                <listheader label="org id"                 visible="false" sort="auto"/>             
+                <listheader label="fsid"                   visible="false" sort="auto"/>             
+                <listheader label="Effective Date"         visible="true" sort="auto"/>             
+                <listheader label="Expire By"              visible="false" sort="auto"/>             
+                <listheader label="Effective By"           visible="false" sort="auto"/>             
+                <listheader label="Mapping Code"           visible="false" sort="auto"/>             
+                <listheader label="Sg ID"                  visible="false" sort="auto"/>             
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+     <window id="win_list_setup_find" title="Find Parameter" closable="true" apply="id.my.berkah.ifm.controller.ListSetupSupplier" position="center" visible="false" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="100px" align="right" />
+                    <column label="" width="230px" />
+                </columns>
+                <rows>
+                  
+                    <row>
+                       <label   value="Supplier unit" width="50px" />
+                       <hbox>
+                        <textbox id="txtsupidfnd"  visible="false"  width="60px" style="background-color:#FFFACD"/>
+                        <textbox id="txtsupcodefnd" placeholder="Supplier Code" readonly="true" width="80px" style="background-color:#FFFACD"/>
+                        <textbox id="txtsupdescfnd" placeholder="Supplier  Desc" readonly="true" width="130px" />
+                       </hbox>
+                        <button  id="btnsup" src="/img/search.png" mold="trendy"/>
+                    </row>
+<!--                    <row visible="false">
+                       <label   value="Date From" width="50px" />
+                       <hbox>
+                        <datebox id="dateboxfrom" format="dd-MM-yyyy" mold="rounded" readonly="true" width="100px" style="background-color:#FFFACD"/>
+                        <label value="to"/>   
+                        <datebox id="dateboxto" format="dd-MM-yyyy"  mold="rounded" readonly="true" width="100px"  style="background-color:#FFFACD"/>
+                       </hbox>
+                        
+                    </row>-->
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="210px" align="center" />
+                    <column label="" width="210px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                     <button id="goFind" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Close1"  mold="trendy" tabindex="13" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+</zk>

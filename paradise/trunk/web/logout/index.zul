@@ -1,0 +1,27 @@
+<?page title="Terima kasih" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" href="/img/Refresh24.png"?>
+<zk>
+<window title="Anda telah berhasil logout" border="normal" apply="id.my.berkah.util.controller.LogoutController">
+    <script type="text/javascript">
+         window.location.hash="no-back-button";
+         window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+         window.onhashchange=function()
+         {
+             window.location.hash="no-back-button";
+         }
+    </script>
+    <grid id="grid">
+        <columns>
+            <column label="" width="100%" align="center"/>
+        </columns>
+        <rows>
+            <row>
+                <label  value="Terimakasih Anda telah menggunakan aplikasi Perso" width="100%"/>
+            </row>
+            <row>
+                <button id="relogin" label="Kembali ke Aplikasi" image="/img/Telkomsel24.png"  tooltiptext="Home"/>
+            </row>
+        </rows>
+   </grid>						                   	   
+</window>
+</zk>

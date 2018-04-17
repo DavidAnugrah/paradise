@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_dtl_Request_production" title="Add/Edit Detail Request Production" apply="id.my.berkah.hrnbox.controller.DetailRequestProductionCTRL" border="normal" width="1010px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="999px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="280px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item" width="50px" />
+                    <hbox>
+                    <textbox width="50px"   id="txtitemid" visible="false"    value="${arg.itemid}" style="background-color:#FFFACD" />
+                    <textbox width="70px"   id="txtitemcode" readonly="true" value="${arg.itemcode}" style="background-color:#FFFACD" />
+                    <textbox width="160px"  id="txtitemdesc" readonly="true"  value="${arg.itemname}"  />
+                    </hbox>
+                     <button id="btnitem" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov item" />
+                <label   value="Receiving Business Unit "  />
+                    <hbox>
+                    <textbox width="50px" id="txtbuId" visible="false"    value="${arg.buid}" style="background-color:#FFFACD" />
+                    <textbox width="70px" id="txtbucode" readonly="true"   value="${arg.bucode}"  style="background-color:#FFFACD" />
+                    <textbox width="160px" id="txtbuDesc" readonly="true"   value="${arg.budescription}"  />
+                    </hbox>
+                    <button  id="btnbu" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov Bu" />
+                </row>
+                <row >
+<!--                    <label   value="Receiving Regional HLR" visible="false" />
+                    <hbox visible="false">
+                    <textbox width="70px" visible="false"  id="txtregid" value="${arg.regionalid}" readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="70px"  id="txtregcode" visible="true" value="${arg.regionalcode}" readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="240px"  id="txtregdesc" value="${arg.regionaldescription}" readonly="false" style="background-color:#FFFACD" />
+                    </hbox>
+                    <button id="btnreg" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov Receiving HLR" visible="false" />-->
+                    <label   value="Need Date"  />
+                    <datebox width="240px" mold="rounded" id="dtneeddate" format="dd-MM-yyyy"     style="background-color:#FFFACD" readonly="true" value="${arg.requireddate}"  />                   
+                     <label value=""/>
+                    <label   value="Warehouse"/>
+                    <hbox>
+                    <textbox width="70px"  id="txtwhid" visible="false" value="${arg.warehouseid}"  readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="70px"  id="txtwhcode" value="${arg.warehousecode}"  readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="160px"  id="txtwhdesc" value="${arg.whdescription}"  readonly="true" />
+                    </hbox>
+                  <button  id="btnwh" width="40px" height="25px" mold="trendy"  src="/img/search.png"  tooltiptext="Lov WH" />
+                </row>
+                <row>
+                    <label   value="Order Quantity" />
+                    <intbox width="240px"  id="txtquntity" format="#,##0" value="${arg.orderquantity}" style="text-align:right;background-color:#FFFACD"  readonly="false"   constraint="no empty,no negative"/>
+                <label value=""/>
+                 <label   value="Unit"  />
+                    <textbox width="240px"  id="txtorderunit" readonly="true" value="${arg.orderunit}"  />
+                </row>
+                <row visible="false" >
+                   
+                    <label value=""/>
+                    <label   value="Position" />
+                    <textbox width="160px"  id="txtposition" value="${arg.position}" style="background-color:#FFFACD" readonly="true"/>
+                </row>
+                <row visible="false">
+                    <textbox id="txtstatus" width="100px" value="${arg.InReqStatus}"/>
+                    <textbox id="statusreq" width="100px" value="${arg.state}"/>
+                    <textbox id="flag" width="100px" />
+                    <textbox id="txtreqid" width="100px" value="${arg.requisitionid}" />
+                    <textbox id="txtrequisitionline" value="${arg.requisitionline}" />
+                    <textbox id="txtrequisitionid" width="10px" value="${arg.requisitionid}" />
+                    <textbox id="txtpurchase" width="10px" value="${arg.purchaseorderqty}" />
+                    <textbox id="txtrequisitiondtlid" width="10px" value="${arg.requisitiondtlid}" />
+                    <textbox id="txtout" width="0px" />
+                    <textbox id="txtregno" width="100px" value="${arg.InReqNo}"/>
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="990px">
+            <columns>
+               <column label=""  width="990px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord" mold="trendy" tabindex="30" label="New" width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <label value="" width="100px"/>
+                    <button id="save"   mold="trendy"   tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                     <label value="" width="100px"/>
+                    <button id="close"  mold="trendy"   tabindex="37" label="Close"     width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

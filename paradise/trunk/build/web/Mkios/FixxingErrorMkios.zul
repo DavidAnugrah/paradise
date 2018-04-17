@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_fixxing_Error" title="Fixxing Error Alert Mkios Integration" apply="id.my.berkah.mkios.controller.ListFixxingErrorAlertMkiosIntCTRL" width="1130px" border="normal"  ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+        </toolbar>
+        </div>
+        <div>    
+            <textbox id="txtDoNo" visible="false"/>
+            <listbox id="listbox"  height="400px">
+                <listhead sizable="true">
+                    <listheader label="DO. NO."     width="200px"  visible="true"/>
+                    <listheader label="Dealer Code"          width="200px"  visible="true"/>
+                    <listheader label="Dealer Name"     width="200px"  visible="true"/>
+                    <listheader label="MSISDN AD"     width="450px"  visible="true"/>
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+        <window id="find_List_Of_Fixxing_Error" title="Find Parameter" apply="id.my.berkah.mkios.controller.ListFixxingErrorAlertMkiosIntCTRL" position="center" mode="overlapped" width="430px" border="normal"  ctrlKeys="#down#up" visible="false" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <style>
+                .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+                }
+                .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+                }
+                .gray_bkg {
+                background-color: #ccc;	
+                }
+
+                .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+                }
+            </style>
+            <div>
+                <grid  >
+                    <columns>
+                        <column label="" width="85px"  />
+                        <column label="" width="320px" />
+                    </columns>
+                    <rows>
+                        <!--                <row>
+                            <radiogroup id="rg1"    >
+                                <radio label="All" />
+                                <radio label="Error Only" />
+                            </radiogroup>
+                            <label value="" />
+                        </row>-->
+                        <row>
+                            <label value="TRC DATE" />
+                            <hbox>
+                                <datebox width="95px" id="findFromDate" readonly="true" format="dd/MM/yyyy"/>
+                                <label value="To" />
+                                <datebox width="95px" id="findToDate" readonly="true" format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label value="Do.No" />
+                            <textbox id="txtdono" width="280px"  />
+                        </row>
+                    </rows>
+                </grid>
+                <grid>
+                    <columns>
+                        <column label="" width="203px" align="right" />
+                        <column label="" width="203px" />
+                    </columns>
+                    <rows>
+                        <row>
+                            <button id="findTransaction" label="Find" image="/img/Find24.png"/>
+                            <button id="close" label="Close" image="/img/End24.png"/>
+                        </row>
+                    </rows>
+                </grid>
+            </div>
+        
+        </window>
+    </window>
+</zk>

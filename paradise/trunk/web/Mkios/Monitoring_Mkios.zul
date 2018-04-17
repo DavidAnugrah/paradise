@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<!--<zk xmlns:n="native">-->
+    <window id="win_Mkios_monitoring" title="Monitoring Mkios" width="100%"  height="100%" apply="id.my.berkah.mkios.controller.MonitoringMkios" border="normal"  ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <div>
+            <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+                <!--<toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="View  Record"/>-->
+                <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+                <toolbarbutton id="Find"    width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+            </toolbar>
+        </div>    
+        <div>    
+    <listbox id="listbox"  height="430px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Trc Id"              width="75px"   visible="false" sort="auto"/>
+                <listheader label="DO. ID"           width="200px"  visible="false"/>
+                <listheader label="DO. NO."           width="200px"  visible="true"/>
+                <listheader label="DO DATE"             width="150px"  visible="true"/>
+                <listheader label="LINE"            width="35px"  visible="true"/>
+                <listheader label="DEALER ID"          width="200px"  visible="false"/>
+                <listheader label="DEALER CODE"          width="150px"  visible="true"/>
+                <listheader label="DEALER NAME"          width="200px"  visible="true"/>
+                <listheader label="ITEM ID"        width="200px"  visible="false"/>
+                <listheader label="ITEM CODE"        width="100px"  visible="true"/>
+                <listheader label="BRAND"        width="100px"  visible="true"/>
+                <listheader label="BRAND ID"        width="150px"  visible="false"/>
+                <listheader label="DENOMINASI"        width="100px"  visible="true"/>
+                <listheader label="QTY"        width="33px"  visible="true"/>
+                <listheader label="TRC SIGN"        width="150px"  visible="false"/>
+                <listheader label="TRC BY"        width="150px"  visible="false"/>
+                <listheader label="TRC DATE"        width="120px"  visible="true"/>
+                <listheader label="STATUS"        width="150px"  visible="false"/>
+                <listheader label="FILE NO KEEP"        width="150px"  visible="false"/>
+                <listheader label="MSISDN AD"        width="100px"  visible="true"/>
+                <listheader label="RTRY"        width="150px"  visible="true"/>
+                <listheader label="VALUE"        width="150px"  visible="true"/>
+                <listheader label="ERROR CODE"        width="150px"  visible="false"/>
+                <listheader label="ERROR DESC"        width="150px"  visible="true"/>
+                <listheader label="ERROR FLAG"        width="150px"  visible="true"/>
+                <listheader label="FLAG"      width="50px"  visible="false"/>
+                <listheader label="CREATED DATE"        width="150px"  visible="false"/>
+                <listheader label="UPDATE DATE"        width="150px"  visible="false"/>
+                <listheader label="UPDATE BY"        width="150px"  visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <paging id="userPaging" width="100%" height="100%" style="color: black"/>
+    
+     <window id="win_Mkios_find" title="Find Parameter" border="normal" visible="false" apply="id.my.berkah.mkios.controller.MonitoringMkios" width="407px" >
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="385px">
+                <columns>
+                    <column label="" width="90px" align="right" />
+                    <column label="" width="230px" />
+                    <column label="" width="60px" />
+                </columns>
+                <rows>
+
+                    <row>
+                        <label   value="OTA Date From" width="50px" />
+                        <hbox>  
+                            <datebox id="findFromDate" tabindex="2"  format="dd/MM/yyyy"  readonly="true"/>
+                            <datebox id="findToDate"   tabindex="3" format="dd/MM/yyyy" onCreate="self.value = new Date()" readonly="true" />
+                        </hbox>
+                    </row>
+                     <row>
+                        <label   value="Flag" width="50px" />
+                        <combobox id="cmbtastat" value="All" autodrop="true" tabindex="1" width="200px" readonly="true" >
+                            <comboitem label="All"/>
+                            <comboitem label="Created"/>
+                            <comboitem label="Proccess"/>
+                            <comboitem label="Success"/>
+                            <comboitem label="Error New"/>
+                            <comboitem label="Fixed"/>
+                            <comboitem label="Cancel"/>
+                        </combobox>
+                       
+                    </row>
+                    <row>
+                        <label value="Error"/>
+                        <textbox id="txtErr" width="210px"/>
+                        <button id="btnerr" image="/img/search.png" />
+                    </row>
+                    <row>
+                        <label value="Dealer"/>
+                        <textbox id="txtdealer" width="210px"/>
+                        <button id="btndealer" image="/img/search.png" />
+                    </row>
+                    <row>
+                        <label value="Item"/>
+                        <textbox id="txtitem" width="210px"/>
+                        <button id="btnitem" image="/img/search.png" />
+                    </row>
+                    <row>
+                        <label value="Do No"/>
+                        <textbox id="txtdono" width="210px"/>
+                    </row>
+                    
+                    </rows>
+                    
+            </grid>	 
+            <div align="center">
+             
+                             <hbox>
+                                 
+                            <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                            <button id="Clear"  tabindex="12" label="Clear"  image="/img/Delete16.png" />
+                            <button id="Close" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                   
+            </div>    
+        </window>
+</window>
+
+
+</zk>

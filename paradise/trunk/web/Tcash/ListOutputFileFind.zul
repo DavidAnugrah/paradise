@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+  <window id="win_list_find" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListOutputFilefind" position="center"  border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="130px" align="right" />
+                    <column label="" width="290px" />
+                </columns>
+                <rows>
+                  
+                    <row >
+                        <label   value="Output File No" width="50px" />
+                        <textbox id="txtofNo"  width="200px" mold="rounded" />
+                    </row>
+                    <row>
+                        <label   value="Work Order No" width="50px" />
+                        <hbox>
+                        <textbox id="txtWoid"  width="20px" visible="false"/>
+                        <textbox id="txtWoNo"  width="200px" mold="rounded"/>
+                        <button id="btnWo" width="40px" visible="false" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Wo"/>
+                        </hbox>
+                       
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" format="dd-MM-yyyy" mold="rounded"/>
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" format="dd-MM-yyyy" mold="rounded" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Status" />
+                        <combobox id="cmbStatus" width="200px" mold="rounded" readonly="true">
+                          
+                        </combobox>
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="415px" align="center" />
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                        <button id="goFind" mold="trendy" height="35px" width="90px" tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="Close1" mold="trendy" height="35px" width="90px" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+</zk>

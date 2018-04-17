@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_select_range"  title="Select Range" width="800px" border="normal" closable="false"
+           apply="${arg.controller}"
+           style="border:1px;background:#3366FF;" onClose="self.detach();">
+        <vlayout></vlayout>
+        <!--for false-->
+        
+        <div style="border:1px;background:#fffacd;">  
+            <listbox id="lboxHdr" mold="paging" pageSize="100" height="250px" >
+                <listhead sizable="true" style="background:#eee; color:black;">
+                    <listheader label="Item Detail Id" visible="false" width="100px" />
+                    <listheader label="Storage Id" visible="false" width="100px" />
+                    <listheader label="Store Status" visible="false" width="100px" />
+                    <listheader label="HLR" width="100px" />
+                    <listheader label="Block From" width="280px" sort="" />
+                    <listheader label="Block To" width="280px" sort="" />
+                    <listheader label="QTY" width="100%" sort="" />
+                    <listheader label="Item Id" visible="false" width="100%" sort="" />
+                    <listheader label="Item Loc Id" visible="false" width="100%" sort="" />
+                    <listheader label="Session Id" visible="false" width="100%" sort="" />
+                    <listheader label="Messages" visible="false" width="100%" sort="" />
+                </listhead>
+                <template name="model" >
+                    <listitem>
+                        
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+        <div width="100%" height="30px" style="border-bottom:1px dotted;background:#eee; margin-bottom:0px;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="250" y="4" width="160px" height="30px">
+                    <button id="selectRange"      tabindex="38" label="Select"      width="150px"     />
+                </absolutechildren>
+                <absolutechildren x="410" y="4" width="160px" height="30px">
+                    <button id="unselectRange"      tabindex="38" label="Unselect"      width="150px"    />
+                </absolutechildren>
+                <absolutechildren x="520" y="6" width="160px" height="30px">
+                    <label value="Total" style="margin-left:100px; color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="735" y="6" width="160px" height="30px">
+                    <label id="txtTotal" width="110px" value="0" style="color:black;"/>
+                </absolutechildren>
+            </absolutelayout>
+        </div>
+        <listbox id="listbox" mold="paging" pageSize="100" height="250px" >
+            <listhead  style="background:#eee; color:black;">
+                <listheader label="po_id" width="100px" visible="false" />
+                <listheader label="position_number" visible="false" width="100px" />
+                <listheader label="seq_id" visible="false" width="100px" />
+                <listheader label="HLR" width="100px" />
+                <listheader label="Block From" width="280px" />
+                <listheader label="Block To" width="280px" />
+                <listheader label="QTY" visible="true" width="100px"  />
+                <listheader label="match_seq" visible="false" width="100px"  />
+                <listheader label="store_status" visible="false" width="100px"  />
+                <listheader label="created_period" visible="false" width="100px"  />
+                <listheader label="created_period" visible="false" width="100px"  />
+                <listheader label="created_period" visible="false" width="100px"  />
+            </listhead>
+            <template name="model" >
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        <div>
+            <paging id="userPagingDtl" width="100%" style="color: black"/>
+        </div>
+        
+        <div width="100%" height="30px" style="border:1px;margin-bottom:0px;background:#d3d3d3;">
+            <absolutelayout width="100%" height="100%">			    
+                <absolutechildren x="320" y="4" width="160px" height="30px">
+                    <button id="btnSubmit" tabindex="38" label="OK" width="150px"     />
+                </absolutechildren>
+                <absolutechildren x="620" y="6" width="160px" height="30px">
+                    <label value="Total" style="color:black;"/>
+                </absolutechildren>
+                <absolutechildren x="745" y="6" width="125px;" height="30px">
+                    <label id="txtTotalQty" width="100px" value="0" style="color:black;"/>
+                </absolutechildren>
+            </absolutelayout>
+        </div>
+       
+    </window>
+</zk>

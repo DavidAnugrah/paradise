@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_mapping_wh_mkios" title="Add/Edit WareHouse"  border="normal" apply="id.my.berkah.mkiossetup.controller.MappingWhCTRL" width="750px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="760px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="WareHouse Code" width="50px" />
+                    <hbox>
+                    <textbox width="150px" tabindex="4" id="txtwhcode" value="${arg.whcode}" style="background-color:#FFFACD"/>
+                     <button  id="btnwh"  width="40px" height="20px"  src="/img/search.png"  tooltiptext="LOV WareHouse"/>
+                     </hbox>
+                     <label   value="WareHouse Description" width="50px" />
+                    <textbox width="205px" value="${arg.whdescription}" id="txtwhdesc"  style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Effective By Name" width="50px" />
+                    <textbox width="205px" value="${arg.effectiveby}" id="txtEffectiveByName" readonly="true"   />
+                    <label   value="Effective Date" />
+                    <datebox width="200px" value="${arg.effectivedate}" id="txtEffectiveByDate" format="dd-MM-yyyy" readonly="true"   style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Expired By Name" width="50px" />
+                    <textbox width="200px" value="${arg.expiredbyname}" id="txtExpiredByName"  readonly="true"  />
+                    <label   value="Expired Date" />
+                    <textbox width="200px" value="${arg.expireddate}" id="txtExpiredDate" readonly="true" />
+                </row>
+                <row>
+                    <label   value="Created By Name" width="50px" />
+                    <textbox width="200px" value="${arg.createdby}" id="txtCreatedByName"  readonly="true"  />
+                    <label   value="Created Date" />
+                    <textbox width="200px" value="${arg.createddate}" id="txtCreatedDate" readonly="true" />
+                </row>
+                <row visible="false">
+                    <textbox width="0px" readonly="true" id="txtId" value="${arg.id}"  />
+                    <textbox width="0px" readonly="true" id="txtwhId" value="${arg.whid}"  />
+                </row>
+            </rows>
+        </grid>
+         <div>
+            <listbox id="listbox" height="200px" hflex="true" mold="paging"  pageSize="3">
+            <listhead sizable="true">
+                 <listheader label="Wh id"            width="50px" visible="false"  />
+                <listheader label="Item id"            width="50px" visible="false" sort="auto" />
+                <listheader label="Item Code"          width="100px" visible="true" sort="auto" />
+                <listheader label="Item Description"   width="130px" visible="true" sort="auto"/>
+                <listheader label="Effective By"       width="140px" visible="true" sort="auto"/>
+                <listheader label="Effective Date"     width="140px" visible="true" sort="auto"/>
+                <listheader label="Expired By"         width="140px" visible="true" sort="auto"/>
+                <listheader label="Expired Date"         width="100px" visible="true" sort="auto"/>
+                <listheader label="id"               width="140px" visible="false" sort="auto" />
+                <listheader label="parent id"          width="140px" visible="false" sort="auto" />
+                <listheader label="Wh loc id"          width="140px" visible="false"  sort="auto"/>
+                <listheader label="Location Code"          width="100px" visible="true" sort="auto"/>
+                <listheader label="Location Description"   width="140px" visible="true" sort="auto" />
+                <listheader label="Created By"        width="130px" visible="true" sort="auto"/>
+                <listheader label="Created Date"      width="130px" visible="true" sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+
+        </listbox>
+        </div>
+        
+                 <div>
+                    <paging id="userPaging" visible="false" width="100%" style="color: black"/>
+        </div>
+       
+        <grid id="grid_find" oddRowSclass="non-odd" width="740px">
+            <columns>
+               <column label="" width="720px" align="center" />
+<!--                <column label="" width="100px" align="center"/>
+                <column label="" width="105px" align="center"/>
+                <column label="" width="260px" align="left"/>-->
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                        <button id="newrecord"  tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="add"      tabindex="38" label="Add Item"      width="100px"   image="/img/Plus24.png"  tooltiptext="Add Item"/>
+                    <button id="save"      tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="process"  tabindex="37" label="Expire"    width="90px"  image="/img/Action24.png"  tooltiptext="UnAllocated"/>
+                    <button id="close"      tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                    
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

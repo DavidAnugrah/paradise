@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportGD_subreport0_subreport2" pageWidth="535" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0">
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<import value="java.util.*"/>
+	<parameter name="p_gd_id" class="java.lang.String"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA[".\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="line_no" class="java.lang.String" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[select  line_no, 
+                            get_item_code(a.item_id) item_code,
+                            get_item_desc(a.item_id) item_description,
+                            range_from,
+                            range_to,
+                            to_number(range_to) - to_number(range_from)+1 qty,
+                            to_char(expired_date,'dd-mm-rrrr') expired_date
+                    from    ponrcv021t a, tcnpur046t b, tcnhrn040dt c
+                    where   a.supp_delivery_id      = $P{p_gd_id}
+                    and     a.line_no               = $P{line_no}
+                    and     a.supp_delivery_id      = b.supp_delivery_id
+                    and     a.line_no               = b.supp_delivery_line
+                    and     b.po_id                 = c.po_id
+                    and     b.position_number       = c.po_line
+                    order   by line_no asc]]>
+	</queryString>
+	<field name="LINE_NO" class="java.math.BigDecimal"/>
+	<field name="ITEM_CODE" class="java.lang.String"/>
+	<field name="ITEM_DESCRIPTION" class="java.lang.String"/>
+	<field name="RANGE_FROM" class="java.lang.String"/>
+	<field name="RANGE_TO" class="java.lang.String"/>
+	<field name="QTY" class="java.math.BigDecimal"/>
+	<field name="EXPIRED_DATE" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-1" x="72" y="0" width="143" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RANGE_FROM}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-2" x="215" y="0" width="143" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center">
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{RANGE_TO}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField-3" x="358" y="0" width="95" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement>
+					<font size="10"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{EXPIRED_DATE}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="0" width="72" height="15"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{QTY}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

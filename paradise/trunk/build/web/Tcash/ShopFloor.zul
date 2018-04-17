@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_shopfloor"  title="Add/Edit ShopFloor" apply="id.my.berkah.tcash1.controller.ShoFloorCTRL"  border="normal" width="1000px" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="20%" align="right" />
+                <column label="" width="30%" />
+                <column label="" width="15%" align="right" />
+                <column label="" width="30%" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value=" ShopFloor Control Number" width="50px" />
+                    <hbox>
+                        <textbox width="200px" tabindex="1"  id="txtshopFloor" value="${arg.header.sfc_no}" readonly="true"  />
+                    </hbox>
+                    <label   value="Created By" width="50px" />
+                    <textbox width="210px"  id="txtcreationby" value="${arg.header.created_by_name}" readonly="true" /> 
+                </row>
+                <row>
+                    <label   value="ShopFloor Control Date" width="50px" />
+                    <textbox width="200px"  id="txtshopdate"  value="${arg.header.sfc_date}" readonly="true" /> 
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="210px"  id="txtcreationdate" value="${arg.header.create_date}" readonly="true" /> 
+                </row>
+                <row>
+                    <label   value="WorkOrder Number" width="50px" />
+                    <hbox>
+                        <textbox width="50px" tabindex="2"  visible="false" id="txtwordcode" value="${arg.header.wo_id}" readonly="true"  />
+                        <textbox width="210px" tabindex="2"  id="txtworddes" value="${arg.header.wo_no}" readonly="true"  />
+                        <button id="btnprod" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Production Issue Number"/>
+                    </hbox>
+                    <label   value="Approve Date" width="50px" />
+                    <textbox width="210px"  id="txtapprovedate" readonly="true" value="${arg.header.approve_date}" /> 
+                   
+                </row>
+             
+                <row>
+               <label   value="Work Order Type" width="50px" />
+                    <hbox>
+                       <textbox id="txtwotypefnd" visible="false" width="20px" value="${arg.header.wo_type}"/>
+                        <combobox id="cmbwo" width="120px" mold="rounded" value="All" readonly="true">
+                            <comboitem label="All" />
+                            <comboitem label="T-Cash" />
+                            <comboitem label="Bundling" />
+                        </combobox>
+                    </hbox>
+                    <label   value="Approved by" width="50px" />
+                    <textbox width="210px"  id="txtapprovby" readonly="true" value="${arg.header.approvd_by_name}" />                 
+                       
+                </row>
+                <row >
+                    
+                    <label   value="Item Finish Goods" width="50px" />
+                    <hbox>
+                        <textbox width="50px" visible="false" id="txtitemid" value="${arg.header.item_id}" readonly="true" />
+                        <textbox width="50px"  id="txtitemcode"  value="${arg.header.item_code}" readonly="true" />
+                        <textbox width="150px" id="txtitemdesc"   value="${arg.header.item_description}" readonly="true"  />
+                        <button id="btnitem" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Item Code"/>
+                    </hbox>
+                  
+                    <label   value="Submit Date" width="50px" />
+                    <textbox width="210px"  id="txtSubmitdate" readonly="true" value="${arg.header.submit_date}" /> 
+                </row>
+                <row>
+                      <label   value="WIP Warehouse" width="50px" />
+                    <hbox>
+                        <textbox width="50px" visible="false" id="txtwipid" value="${arg.header.wip_wh_id}" readonly="true" />
+                        <textbox width="50px"  id="txtwipcode"  value="${arg.header.wh_code}" readonly="true" />
+                        <textbox width="150px" id="txtwipdesc"   value="${arg.header.wh_description}" readonly="true"  />
+                        <button id="btnwip" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Item Code"/>
+                    </hbox>
+                    <label   value="Submited by" width="50px" />
+                    <textbox width="210px"  id="txtsbmtby" readonly="true" value="${arg.header.submited_by_name}" /> 
+                </row>
+                <row>
+                     <label   value="Quantity Order" width="50px" />
+                    <textbox width="100px" id="txtqty" value="${arg.header.quantity_order}" readonly="true" constraint="no negative: it shall not be negative" style="text-align:right"   />
+                    <label value="Cancel Date" width="50px" />
+                    <textbox width="210px"  id="txtcanceldate" readonly="true" value="${arg.header.cancel_date}" /> 
+                </row>
+                <row>
+                      <label   value="Quantity Complete" width="50px" />
+                    <intbox width="150px" format="#,##0" tabindex="4"  value="${arg.header.quantity_complete}" id="txtquantityc" constraint="no negative: it shall not be negative" readonly="false" style="text-align:right" />                 
+                    <label value="Cancel By" width="50px" />
+                    <textbox width="210px"  id="txtcancelby" readonly="true"   value="${arg.header.canceled_by_name}" /> 
+                </row>
+                <row>
+                      <label   value="Quantity Total Complete" width="50px" />
+                    <intbox width="150px" format="#,##0" tabindex="4"  value="${arg.header.total_complete}" id="txtquantotc"  readonly="true" style="text-align:right" />
+                    <label value="Status"/>
+                    <textbox width="210px"  id="txtstat" readonly="true" value="${arg.header.status_name}" /> 
+                </row>
+                <row>
+                 <label   value="Quantity outstanding" width="50px" />
+                    <intbox width="150px" tabindex="4"  format="#,##0" id="txtquanout" value="${arg.header.quantity_outstanding}"  readonly="true"  style="text-align:right"/>
+                   <label value=""/>
+                   <label value=""/>
+                   </row>
+                <row>
+                    <!--<hbox>-->
+                    <textbox width="100px" tabindex="1" id="txtstatid"  value="${arg.header.status}" readonly="false" visible="false" />
+                    <textbox width="10px" readonly="true" id="txtsfcid" visible="false" value="${arg.header.sfc_id}"  />
+                    <textbox width="100px" readonly="true" id="txtflag" visible="false"  />
+                    <textbox width="0px" tabindex="1" id="txtunitwip" visible="false"   value="${arg.unit}" readonly="true"  />
+                    <!--</hbox>-->                
+                </row>
+            </rows>
+        </grid>
+        
+        <div width="100%">
+            <listbox id="listbox" height="300px"  sizedByContent="true" emptyMessage="No items match your search"  tooltiptext="Double Click to View Detail" >
+                <frozen columns= "5"/>
+                <listhead sizable="true">
+                    <listheader label="sfc Id"                 width="100px" visible="false" sort="auto" />
+                    <listheader label="Item Id"                 width="100px" visible="false" sort="auto" />
+                    <listheader label="Item Code"               width="100px" visible="true"  sort="auto" />
+                    <listheader label="Item Name"               width="200px" visible="true"  sort="auto" />
+                     <listheader label="From S/N"                width="200px" visible="true"  sort="auto" />
+                    <listheader label="To S/N"                  width="200px" visible="true"  sort="auto" />
+                    <listheader label="Status"                width="100px" visible="false"  sort="auto" />
+                    <listheader label="Status"                width="100px" visible="true"  sort="auto" />
+                    <listheader label="File Name"                width="300px" visible="true"  sort="auto" />
+                   <listheader label="upload date"             width="300px" visible="true"  sort="auto" />
+                   <listheader label="Description"             width="300px" visible="true"  sort="auto" />
+                </listhead>
+            
+                <template name="model">
+                    <listitem>
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+      
+        <grid id="grid_find" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="100%" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                        <button id="newrecord"      mold="trendy"  width="100px" label="New"        image="/img/New24.png"   tooltiptext="New Record"/>
+                        <button id="btnsave"        mold="trendy"  tabindex="18" label="Save"       width="100px"   image="/img/Save24.png"     tooltiptext="Save"/>
+                        <button id="btnsn"          mold="trendy"  tabindex="18" label="Select S/N" width="100px"   image="/img/Edit24.png"     tooltiptext="Save"/>
+                        <button id="btncancel"      mold="trendy"  tabindex="19" label="Cancel"     visible="true"  width="100px"   image="/img/End24.png"     tooltiptext="Submit"/>
+                        <button id="btnsubmit"      mold="trendy"  tabindex="19" label="Submit"     width="100px"   image="/img/Ok24.png"     tooltiptext="Submit"/>
+                        <button id="btnapproved"    mold="trendy"  tabindex="20" label="Approved"   width="100px"   image="/img/1449847706_OK.png"       tooltiptext="Approve"/>
+                        <button id="btnshow"        mold="trendy"  tabindex="20" label="Show Detail S/N"            image="/img/Grids-24x24.png"       tooltiptext="Show"/>
+                        <button id="close"          mold="trendy"  tabindex="21" label="Close"      width="100px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

@@ -1,0 +1,50 @@
+<zk>
+    <window  id="win_serial" title="List Serial" border="normal" width="850px" mode="modal" apply="id.my.berkah.pos.controller.WindowSerial" ctrlKeys="#f4#f5">
+        <listbox id="listbox" mold="paging" pageSize="10" height="200px" checkmark="true">
+            <listhead sizable="true">
+                <listheader label="Line No"     width="100px"  />
+                <listheader label="Block From"  width="150px"  />
+                <listheader label="Block To"    width="150px"  />
+                <listheader label="Qty"         width="100px"   align="right"/>
+                <listheader label="WH Code"     width="100px"  />
+                <listheader label="WH Desc."    width="200px"  />
+                <listheader label="LOC Code"    width="100px"  />
+                <listheader label="LOC Desc."   width="200px"  />
+                <listheader label="LOT"         width="100px"  />
+                <listheader label="Ref."        width="100px"  />
+                <listheader label="Pos Id"      width="100px"  visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem >
+                    <listcell label="${each.lineNo}"/>
+                    <listcell label="${each.blockFrom}"/>
+                    <listcell label="${each.blockTo}"/>
+                    <listcell label="${each.qty}"/>
+                    <listcell label="${each.whCode}"/>
+                    <listcell label="${each.whDescription}"/>
+                    <listcell label="${each.locCode}"/>
+                    <listcell label="${each.locDescription}"/>                    
+                    <listcell label="${each.lot}"/>
+                    <listcell label="${each.lineNoRef}"/>
+                    <listcell label="${each.salesId}"/>
+                </listitem>
+            </template>
+        </listbox>
+        <grid fixedLayout="true" oddRowSclass="non-odd">
+            <columns>
+               <column label="" width="205px" align="center"/>
+               <column label="" width="155px" align="center"/>
+           </columns>
+           <rows>
+               <row>
+                   <button id="cancel"  tabindex="1" label="Delete Serial [F4]"  image="/img/Cancel24.png"  tooltiptext="Cancel Record" width="180px"/>
+                   <button id="close"   tabindex="2" label="Close [F5]"   image="/img/Logout24.png"  tooltiptext="Close" width="140px"/>
+               </row>
+           </rows>
+        </grid>  
+        <div visible="false">
+            <textbox id="posId"  value="${arg.posId}"/>
+            <textbox id="lineNo" value="${arg.lineNo}"/>
+        </div>  
+    </window>
+</zk>

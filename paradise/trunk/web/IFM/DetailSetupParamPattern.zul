@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_dtl_setup_pattern" title="Add/Edit Setup Item Parameter Pattern" apply="id.my.berkah.ifm.controller.DetailSetupParameterPattern" border="normal" width="1010px" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="999px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="280px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Block Definition" width="50px" />
+                    <hbox>
+                    <textbox width="70px"   id="txtblockcode" readonly="false" visible="false" value="${arg.blockid}" style="background-color:#FFFACD" />
+                    <textbox width="240px"  id="txtBlockdesc" readonly="true" value="${arg.blockdesc}"  style="background-color:#FFFACD" />
+                    </hbox>
+                     <button id="btnBlock" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov Block" />
+                    <label   value="Block read "  />
+                    <hbox>
+                        <combobox mold="rounded" id="cmbblok" value="${arg.blockfield}" readonly="true" width="200px">
+                         <comboitem label="Full Block"/>
+                        <comboitem label="Defined Block"/>
+                        </combobox>
+                    <textbox width="50px" id="txtcmbblok" visible="false"  value="${arg.blockfield}"   style="background-color:#FFFACD" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Lenght Digit "  />
+                    <hbox>
+                    <intbox width="100px"  id="txtlenght" visible="true" value="${arg.lengthdigit}"  readonly="false" style="background-color:#FFFACD" />
+                    <label value="Position" />
+                    <textbox width="80px"  id="txtposition"  readonly="false" value="${arg.positon}" style="background-color:#FFFACD" />
+                    </hbox>
+                    <label   value=""/>
+                    <label   value="Position Read"/>
+                    <hbox>
+                    <textbox width="100px"  id="txtpostRead" value="${arg.positionread}" style="background-color:#FFFACD" readonly="false"/>    
+                    <label   value="Inc Seq Prefix"/>
+                    <checkbox width="30px"  id="checkprefix"  />     
+                    <textbox width="30px"  id="txtprefix" value="${arg.prefixseqinc}" visible="false"  />     
+                    </hbox>
+                </row>
+                <row>
+                    <label value="Fixed Pattern" />
+                    <textbox width="240px"  id="txtfixedPattern" value="${arg.fixedpattern}" style="background-color:#FFFACD" readonly="false"/>    
+                     <label value="" />
+                     <label value="Sample" />
+                     <hbox>
+                    <textbox width="70px"  id="txtsample"  value="${arg.samplenumber}" readonly="true"/>    
+                    <label  value="DateFormat"  />
+                    <textbox width="70px"  id="txtdateformat" value="${arg.dateformat}"  readonly="false"/>      
+                        </hbox>
+                </row>
+                <row>
+                   
+                </row>
+                <row visible="false">
+                    <textbox id="flag"   />
+                    <textbox id="txtid" value="${arg.patternid}" />
+                    <textbox id="txttotaldigit"  value="${arg.totaldigit}"/>
+                    <textbox id="txtcontrolby" value="${arg.controlby}" />
+                    <textbox id="txtitemid" value="${arg.itemid}" />
+                    <textbox id="txtseqid" value="${arg.seqid}" />
+                    <textbox id="txtdtlid" value="${arg.dtlid}" />
+                    <textbox id="txtsampleCode" value="${arg.samplecode}" />
+                    
+                </row>
+            </rows>
+        </grid>
+        <separator spacing="10px"/>
+        <grid id="grid1" oddRowSclass="non-odd" width="990px" visible="false">
+              <columns>
+               <column label="" width="120px" align="right" />
+                <column label="" width="190px" align="center"/>
+                <column label="" width="120px" align="right"/>
+                <column label="" width="190px" align="left"/>
+                <column label="" width="170px" align="right"/>
+                <column label="" width="190px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Creation Date" width="50px" />
+                    <textbox width="150px"  id="txtcreationdate" value="${arg.createdate}" readonly="true" /> 
+                    <label value="Modified Date" width="50px" />
+                    <textbox width="150px"  id="txtmodifieddate" value="${arg.modifydate}" readonly="true" /> 
+                    <label value="Expired Date" width="50px" />
+                    <textbox width="150px"  id="txtexpireded" value="${arg.expireddate}" readonly="true" />     
+                </row>
+                <row>
+                    <label   value="Creation By" width="50px" />
+                    <textbox width="150px"  id="txtcreationby" readonly="true" value="${arg.createby}"/> 
+                    <label value="Modified By " width="60px" />
+                    <textbox width="150px"  id="txtmodifiedby" readonly="true" value="${arg.modifyby}" /> 
+                    <label value="Expired By " width="60px" />
+                    <textbox width="150px"  id="txtexpreby" value="${arg.expiredby}" readonly="true"  />     
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="990px">
+            <columns>
+               <column label=""  width="990px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord" mold="trendy" tabindex="30" label="New" width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <label value="" width="100px"/>
+                    <button id="save"      mold="trendy"   tabindex="32" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <!--<button id="expired"   mold="trendy"   tabindex="33" label="Expired"      width="85px"   image="/img/Action24.png"  tooltiptext="Expire"/>-->
+                    <button id="close"     mold="trendy"   tabindex="34" label="Close"     width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

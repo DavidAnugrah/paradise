@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_Monitoring_contract" apply="id.my.berkah.reports.controller.ListContractOutstanding" title="List Monitoring Contract"  border="normal"  width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="refresh" mold="default" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" mold="default" image="/img/Find24.png" tooltiptext="Find" />
+            <toolbarbutton id="print" mold="default" image="/img/Print24.png" tooltiptext="Print" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="420px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="Contract Date"           sort="auto(contractdate)" />
+                <listheader label="Contract No"            sort="auto(contract)"/>
+                <listheader label="Doc Reff"             sort="auto(docreff)"/>
+                <listheader label="Qty Contract"             sort="auto(qtycontract)"/>
+                <listheader label="Qty Wo"                 sort="auto(qtywo)" />
+                <listheader label="Purchase Order"         sort="auto(purchaseorder)"/>
+                <listheader label="Qty receive contract"   sort="auto(qtyreceivecontract)" />
+                <listheader label="Qty outstanding contract"      sort="auto(qtyoutstandingcontract)" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                        <listcell label="${each.contractdate}"/>
+                        <listcell label="${each.contract}"/>
+                        <listcell label="${each.docreff}"/>
+                        <listcell label="${each.qtycontract}"/>
+                        <listcell label="${each.qtywo}"/>
+                        <listcell label="${each.purchaseorder}"/>
+                        <listcell label="${each.qtyreceivecontract}"/>
+                        <listcell label="${each.qtyoutstandingcontract}"/>
+                        <!--<listcell label="${each.puk2}"/>-->
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+     <window id="win_list_contract_find" title="Find Parameter"  apply="id.my.berkah.reports.controller.ListContractOutstanding" position="center" visible="false" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Contract" width="50px" />
+                        <textbox id="txtcontract" placeholder="Contract No"  value="${arg.InContractNo}" width="200px" />
+                    
+                    </row>
+                    <row>
+                       <label   value="Contract Date" width="50px" />
+                       <hbox>
+                       <datebox id="txtdatefrom" width="100px" value="${arg.InDateFrom}" format="dd-MM-yyyy" readonly="true"/>
+                        <label   value="to" />
+                        <datebox id="txtdateto" width="100px" value="${arg.InDateTo}" format="dd-MM-yyyy" readonly="true" />
+                        </hbox>
+                    </row>
+                    
+                     <row>
+                        <label   value="WO No" width="50px" />
+                        <textbox id="txtwo" placeholder="Work Order No" value="${arg.InWoNo}" width="200px" />
+                    
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="420px" align="center" />
+<!--                    <column label="" width="105px" align="center" />
+                    <column label="" width="105px" align="center" />
+                    <column label="" width="105px" align="center" />-->
+                </columns>
+                <rows>
+                 <row>
+                     <hbox>
+                    <button id="goFind" height="30px" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                    <!--<button id="Printer" mold="trendy"  tabindex="13" height="30px" label="Print" image="/img/Print24.png" tooltiptext="Print" />-->
+                    <button id="Clear" mold="trendy" tabindex="13" label="Clear"  image="/img/DeleteSelection24.png" />
+                     <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                    </hbox>
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+</zk>

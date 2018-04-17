@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_setup_wip" title="Setup WIP Warehouse" apply="id.my.berkah.tcash1.controller.SetupWipCTRL" border="normal" width="500px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid oddRowSclass="non-odd" width="480px" >
+            <columns>
+                <column label="" width="100px" align="right" />
+                <column label="" width="330px" hflex="1"/>
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="WIP Warehouse"  />
+                    <hbox>
+                    <textbox width="50px" id="txtiwipId" visible="false" value="${arg.header.wh_id}"   />
+                    <textbox width="80px" id="txtwipcode" readonly="true" value="${arg.header.wh_code}" style="background-color:#FFFACD" />
+                    <textbox width="200px" id="txtwipdesc" readonly="true" value="${arg.header.wh_desc }" style="background-color:#FFFACD"  />
+                    <button  id="btnwip" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov WIP" />
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+        
+         <grid  oddRowSclass="non-odd" width="480px" >
+            <columns>
+                <column label="" width="100px" align="right" />
+                <column label="" width="330px" hflex="1"/>
+            </columns>
+  <rows>
+                <row>
+                      <label   value="Created Date"  />
+                    <textbox width="290px" id="txtcreate" readonly="true" value="${arg.header.created_date}"  />
+                </row>
+                 <row>
+                      <label   value="Created By"  />
+                    <textbox width="290px" id="txtcreateby" readonly="true" value="${arg.header.created_by}"  />
+                 </row>
+                <row>
+                      <label   value="Expired Date"  />
+                    <textbox width="290px" id="txtexpd" readonly="true" value="${arg.header.expired_date}"  />
+                </row>
+                 <row>
+                      <label   value="Expired By"  />
+                    <textbox width="290px" id="txtexpby" readonly="true" value="${arg.header.expired_by}"  />
+                 </row>
+                 <row visible="false">
+                    <textbox width="290px" id="txtout" readonly="true" value="${arg.header.id}"   />
+                 </row>
+            </rows>
+        </grid>
+   
+             <grid>
+           <columns>
+               <column label=""  width="480px" align="center" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord"  height="35px" mold="trendy" label="New"        image="/img/New24.png"   tooltiptext="New Record"/>
+                    <button id="save"       height="35px" mold="trendy" label="Save"     image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="btndelete" label="Delete" visible="false" mold="trendy"  height="35px"   image="/img/DeleteSelection24.png" tooltiptext="Delete Line" />
+                    <button id="btnexp" label="Expired"  mold="trendy"  height="35px"   image="/img/End24.png" tooltiptext="Delete Line" />
+                    <button id="close"      height="35px" mold="trendy" label="Close"      image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>   
+                </row>  
+            </rows>
+            </grid>
+              
+         </window>
+</zk>

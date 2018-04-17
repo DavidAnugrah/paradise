@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="find_Monitoring_rps_migrasi" title="Find Parameter" apply="id.my.berkah.rpsbaru.controller.Find" width="410px" border="normal"  ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <grid>
+            <columns>
+                <column label="" width="150px" align="right"  />
+                <column label="" width="240px" />
+            </columns>
+            <rows>
+                <row>
+                    <label value="BU Code" />
+                   
+                    <hlayout>
+                    <textbox width="170px" id="txtBuCode"/>
+                    <button id="blov"  width="35px" image="/img/search.png"/>
+                    </hlayout>
+                </row>
+                <row>
+                    <label value="Perso Type" />
+                   <combobox id="cmbPersoType" width="200px" value="${arg.valueType}">
+                        <comboitem label="Replacement Card"/>
+                        <comboitem label="Request Name Card"/>
+                        <comboitem label="Migration Card"/>
+                        <comboitem label="Reactivation Card"/>
+                    </combobox>
+                </row>
+                <row>
+                    <label value="Perso Date From" />
+                    <hbox>
+                    <datebox width="95px" id="txtDateFrom" readonly="true"/>
+                    <label value="To" />
+                    <datebox width="95px" id="txtDateTo" readonly="true"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label value="Perso Status" />
+                    <combobox id="cmbPersoStatus" width="200px" value="${arg.valueStatus}">
+                        <comboitem label="Draft"/>
+                        <comboitem label="Success"/>
+                        <comboitem label="Failed"/>
+                        <comboitem label="Cancel"/>
+                    </combobox>
+                </row>
+                <row>
+                        <hbox>
+                            <label value="Due Date"/>
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbDueDateY" value="Y"/>
+                            <checkbox id="cbDueDateN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>
+                    <row>
+                        <hbox>
+                            <label value="Active Status"/>
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbActiveStatusY" value="Y"/>
+                            <checkbox id="cbActiveStatusN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>
+<!--                <row>
+                    <label value="Nominal From" />
+                    <hbox>
+                    <intbox width="95px" id="txtNominalFrom"/>
+                    <label value="To" />
+                    <intbox width="95px" id="txtNominalTo"/>
+                    </hbox>
+                    
+                </row>
+                <row>
+                    <label value="Account Id" />
+                    <textbox id="txtAccount" width="200px" />
+                </row>
+                <row>
+                    <label value="Flag Transaction" />
+                    <combobox id="cmbProccesType" width="200px">
+                        <comboitem label="Approved In Progress"/>
+                        <comboitem label="Processed"/>
+                        <comboitem label="Completed"/>
+                        <comboitem label="Failured In Process"/>
+                    </combobox>
+                </row>
+                <row>
+                    <label value="Transaction Type" />
+                    <combobox id="cmbTrxType" width="200px">
+                        <comboitem label="Konsinyasi"/>
+                        <comboitem label="Jual Putus"/>
+                    </combobox>
+                </row>-->
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label="" width="195px" align="right" />
+                <column label="" width="195px" />
+            </columns>
+            <rows>
+                <row>
+                    <button id="findTransaction" label="Find" image="/img/Find24.png"/>
+                    <button id="close" label="Close" image="/img/End24.png"/>
+                </row>
+            </rows>
+        </grid>
+        </div>
+        
+    </window>
+</zk>

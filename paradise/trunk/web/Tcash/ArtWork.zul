@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="winArtWork"  apply="id.my.berkah.tcash1.controller.ArtWorkCtrl"  height="170px" border="normal" title="Art Work" closable="true" width="500px" >   
+            <grid>
+                <columns>
+                    <column label="" width="150px" align="right"/>
+                    <column label="" align="left"/>
+                </columns>
+                <rows>
+                    <row visible="false">
+                        <textbox id = "txtId" value="${arg.id}" width="75px" visible="false" style="background-color:#FFFACD;"/>
+                    </row>
+                    <row>
+                        <label value="Art Code" />
+                        <textbox id = "txtArtCode" value="" width="100px" style="background-color:#FFFACD;"/>
+                    </row>
+                    <row>
+                       <label value="Art Desc" />
+                        <textbox id = "txtArtDesc" value="" width="200px" style="background-color:#FFFACD;"/>
+                    </row>
+                </rows>
+            </grid>
+            <hbox height="2px"/>
+            <grid>
+                <columns>
+                    <column label="" align="right" width="5%"/>
+                    <column label="" align="center" width="90%"/>	
+                    <column label="" align="left" width="5%"/>			
+                </columns>
+                <rows>
+                    <row>   
+                        <label value=""/>
+                        <hbox>
+                            <button id="btnNew" label="New" onClick="" image="/img/New24.png" height="32px"/>
+                            <button id="btnSave" label="Save" onClick="" image="/img/Save24.png" height="32px"/>
+                            <button id="btnExpired" label="Expired" onClick="" image="/img/LockX24.png" height="32px"/>
+                            <button id="btnClose" label="Close" onClick="" image="/img/Logout24.png" height="32px"/>
+                        </hbox>
+                        <label value=""/>
+                    </row>                     
+                </rows>
+            </grid>        
+        </window>  
+</zk>

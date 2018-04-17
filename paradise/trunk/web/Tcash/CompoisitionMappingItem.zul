@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_add_mapping" title="Add Item"   apply="id.my.berkah.tcash1.controller.CompoistionMappingItem" position="center"  border="normal" width="600px" ctrlKeys="#down#up" closable="false" mode="modal" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="580px">
+                <columns>
+                   <column label="" width="180px" align="right" />
+                    <column label="" width="400px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Item" width="50px" />
+                        <hbox>
+                        <textbox id="txtitembdlid" visible="false" value="${arg.bdlId}" width="20px" />
+                        <textbox id="txtitemid" visible="false" value="${arg.detail.item_id}" width="40px" />
+                        <textbox id="txtitemcode" placeholder="Item Code" readonly="true" value="${arg.detail.item_code}" width="60px"  />
+                        <textbox id="txtitemdesc" placeholder="Item Description" readonly="true" value="${arg.detail.item_description}" width="150px"  />
+                        <button id="btnitem" src="/img/search.png" width="50px"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="UOM" width="50px" />
+                        <textbox id="txtUOM"  width="210px"  value="${arg.detail.uom}" readonly="true" />
+                    </row>
+                    <row visible="false">
+                        <label   value="Composition" width="50px" />
+                        <intbox id="txtcomp"  width="210px"  value="${arg.detail.composition}" style="background-color:#FFFACD" readonly="false" constraint="no negative,no empty"/>
+                    </row>
+                    <row visible="false">
+                        <textbox id="txtflag"  width="210px" />
+                        <textbox id="txtid" value="${arg.detail.id}" width="210px" />
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="580px">
+                 <columns>
+                    <column label="" width="580px" align="center" />
+                   
+                </columns>
+                <rows>
+                 <row>
+                     <hbox>
+                    <button id="new" height="35px" mold="trendy"  label="New" image="/img/New24.png" />
+                    <button id="add" height="35px" mold="trendy" tabindex="12" label="Save"   image="/img/Save24.png"  />
+                    <button id="btnexp"  label="Terminate" mold="trendy" height="35px"    image="/img/stop24.png" tooltiptext="Terminate Item" />
+                    <button id="defaultbtn"  label="Default" mold="trendy"   height="35px"  image="/img/About24.png" tooltiptext="Set Default" />
+                    <button id="Close1"   height="35px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                     </hbox>
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+</zk>

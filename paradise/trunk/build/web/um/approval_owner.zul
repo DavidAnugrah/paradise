@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">                                                     
+        <window id="winApprOwn"  title="List Approval Owner" border="normal" height="460px" visible="true" apply="id.my.berkah.um.controller.ApprOwnerMainCTRL">            
+            <!--TOOLBAR-->            
+                <toolbar id="tbApproval" height="27px" align="start" orient="horizontal" left="2">                    
+                    <toolbarbutton id="tbEdit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Approval"/>                          
+                    <toolbarbutton id="tbRefresh"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+                    <toolbarbutton id="tbFind"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>                        
+                    <!--<toolbarbutton id="tbExit"      width="25px" height="25px" src="/img/Logout24.png"   tooltiptext="Close Form"/>-->
+                 </toolbar>                             
+            <!-- LISTBOX -->      
+               
+                <listbox id="lstApprOwn" height="380px" mold="paging" pageSize="10" >
+                    <listhead sizable="true">           
+                        <listheader label="Request No" width="170px"    visible="true"/>         
+                        <listheader label="Request Date" width="130px"     visible="true"/> 
+                        <listheader label="Status" width="150px"    visible="true"/> 
+                        <listheader label="User Name" width="170px" sort="auto(userName)"    visible="true"/> 
+                        <listheader label="Responsibility" width="150px" visible="true"/>       
+                        <listheader label="Approval Atasan" width="150px" visible="true"/> 
+                        <listheader label="Approval Date" width="150px" visible="true"/> 
+                        <listheader label="Approval Owner" width="150px" visible="true"/> 
+                        <listheader label="Approval Date" width="150px" visible="true"/>                                                                                      
+                        <listheader label="level Id" visible="false"/> 
+                        <listheader label="Request Hdr Id" visible="false"/>       
+                        <listheader label="status Id" visible="false"/>
+                        <listheader label="Request Type" width="150px" visible="true"/>
+                        <listheader label="User Id" width="150px" visible="false"/>                                 
+                    </listhead>                    
+                    <template name="model">
+                        <listitem>                                                                                                     
+                            <listcell label="${each.requestNo}" visible="true"/>  
+                            <listcell label="${each.requestDate}" visible="true"/>  
+                            <listcell label="${each.statusDesc}" visible="true"/>  
+                            <listcell label="${each.userName}" visible="true"/>  
+                            <listcell label="${each.responsibilityName}" visible="true"/>  
+                            <listcell label="${each.apprMgr}" visible="true"/> 
+                            <listcell label="${each.apprMgrDate}" visible="true"/> 
+                            <listcell label="${each.apprOwn}" visible="true"/> 
+                            <listcell label="${each.apprOwnDate}" visible="true"/>                                                                               
+                            <listcell label="${each.requestHdrId}" visible="false"/>                            
+                            <listcell label="${each.statusId}" visible="false"/>
+                            <listcell label="${each.levelId}" visible="false"/>
+                            <listcell label="${each.buId}" visible="false"/>
+                            <listcell label="${each.buCode}" visible="false"/>
+                            <listcell label="${each.buDesc}" visible="false"/>
+                            <listcell label="${each.gbuId}" visible="false"/>
+                            <listcell label="${each.gbuCode}" visible="false"/>
+                            <listcell label="${each.gbuDesc}" visible="false"/>
+                            <listcell label="${each.reqMode}" visible="true"/>
+                            <listcell label="${each.userId}" visible="true"/>
+                        </listitem>
+                    </template>
+                </listbox>
+                  <div>
+                      <paging id="ownerPaging" width="100%" style="color: black"/>
+                  </div>
+                <window id="winAddApprOwn" title="Approval Owner" visible="false" width="900px" height="550px" apply="id.my.berkah.um.controller.ApprOwnerDetailCTRL">  
+                        <grid>
+                           <columns>
+                                   <column label="" width="100px"/>
+                                   <column label="" width="380px"/>     
+                                   <column label="" width="120px"/>
+                                   <column label="" />                            
+                           </columns>
+                           <rows>
+                                   <row>
+                                       <label>User</label>
+                                       <hbox>
+                                       <textbox id="txtUserNameAdd" width="230px" readonly="true" ></textbox>
+                                       <textbox id="txtUserId" width ="70px" visible="false" readonly="true"></textbox>
+                                       <button id="btnUserAppr" label="Detail User" image="/img/UserProfileMale-16x16.png" width="120px"/>
+                                       </hbox>
+                                       <label>Request Number </label>
+                                       <textbox id="txtRequestNoAdd" width="260px" readonly="true" ></textbox>
+                                   </row>
+
+                                   <row>
+                                       <label>Responsibility</label>
+                                       <hbox align="center">
+                                            <textbox id="txtRequestHdrIdAdd" visible="false"></textbox>
+                                            <textbox id="txtResponsibilityIdAdd" visible="false"></textbox>
+                                            <textbox id="txtResponsibilityNameAdd" width="270px" readonly="true"></textbox>    
+<!--                                            <button id="btnLovRspAdd" image="img/search.png"> </button>                 -->
+                                       </hbox> 
+                                       <label>Request Date </label>
+                                       <textbox id="txtRequestDateAdd" width="260px" readonly="true" ></textbox>
+                                   </row>
+                                    <row>
+                                       <label>Status</label>
+                                       <textbox id="txtStatus" width ="150px" readonly="true"></textbox>   
+                                       <label> Type</label>
+                                       <textbox id="txtTypeDesc" width ="150px" visible="true" readonly="true"></textbox>
+                                       <textbox id="txtStatusId" width ="150px" visible="false" readonly="true"></textbox>
+                                     
+                                    </row>
+<!--
+                                   <row>
+                                       <label>Group BU</label>
+                                       <hbox align="center">
+                                           <textbox id="txtGBUIdAdd" visible="false"></textbox>
+                                           <textbox id="txtGBUCodeAdd" width="60px" readonly="true"></textbox>
+                                            <textbox id="txtGBUDescAdd" width="200px" readonly="true"></textbox>
+                                            <button id="btnLovGBUAdd" image="img/search.png"> </button>
+                                       </hbox>
+                                       <label></label>
+                                       <label></label>
+                                   </row>
+                                   <row>
+                                       <label>Bisnis Unit</label>
+                                       <hbox align="center">
+                                           <textbox id="txtBUIdAdd" visible="false"> </textbox> 
+                                           <textbox id="txtBUCodeAdd" width="60px" readonly="true"> </textbox> 
+                                            <textbox id="txtBUDescAdd" width="200px" readonly="true"> </textbox>                                      
+                                            <button id="btnLovBUAdd" image="img/search.png"> </button>     
+                                            <button id="btnLovBUAddx" image="img/End16.png"> </button>                  
+                                       </hbox>
+                                        <button id="btnExecBU" image="/img/Detail24.png"> Execute </button>                                                  
+                                        <label></label>
+                                   </row>                                                                                                   -->
+
+                           </rows>
+                       </grid>
+                                   <listbox id="lstAddApprOwn" height="367px" mold="paging" pageSize="18" checkmark="true" multiple="true">
+                                         <listhead sizable="true">           
+                                          
+                                             <listheader label="BU Code" width="125px"  sort="auto(buCode)"    visible="true"/>         
+                                             <listheader label="Bu Description" width="300px"  sort="auto(buDesc)"    visible="true"/>                                               
+                                             <listheader label="WH Code" width="125px"  sort="auto(whCode)"    visible="true"/> 
+                                             <listheader label="WH Description" sort="auto(whDesc)"    visible="true"/>     
+                                              <listheader label="WH Id" width="125px"  visible="false"/> 
+                                             <listheader label="BU Id" width="125px"  visible="false"/> 
+                                              <listheader label="WH Id" width="125px" visible="false"/> 
+                                               <listheader label="WH Id" width="125px" visible="false"/> 
+                                               <listheader label="WH Id" width="125px" visible="false"/>                                                           
+                                         </listhead>                    
+                                         <template name="model">
+                                             <listitem>                                 
+                                                 <listcell label="${each.buCode}" visible="true"/>
+                                                 <listcell label="${each.buDesc}" visible="true"/>                                              
+                                                 <listcell label="${each.whCode}" visible="true"/> 
+                                                 <listcell label="${each.whDesc}" visible="true"/>
+                                                  <listcell label="${each.whId}" visible="false"/>                                                 
+                                                 <listcell label="${each.buId}" visible="false"/>                                              
+                                                 <listcell label="${each.gbuId}" visible="false"/>
+                                                 <listcell label="${each.subGbuId}" visible="false"/>
+                                                 <listcell label="${each.requestDtlId}" visible="false"/>
+                                             </listitem>
+                                         </template>
+                                    </listbox>
+                                   
+                                        <grid>
+                                           <columns>
+                                                   <column align="right" />           
+                                                   <column align="center" width="120px"/>   
+                                                   <column align="center" width="110px"/>                          
+                                                   <column align="center" width="100px"/>     
+                                                   <column align="left"/>                                   
+                                           </columns>
+                                           <rows>
+                                                   <row>
+                                                       <button id="btnSubmitAdd" image="/img/Ok24.png" label="Submit" disabled="false"></button>
+                                                       <button id="btnSTRCAdd" image="/img/Multi24.png" label="Stock Trc" disabled="false"></button>
+                                                       <button id="btnApproveAdd" image="/img/Save24.png" label="Approve" disabled="false"></button>
+                                                       <button id="btnRejectAdd" image="/img/Cancel24.png" label="Reject" disabled="false"></button>                             
+                                                       <button id="btnCloseAdd" image="/img/Logout24.png" label="Close"></button>                                                                                           
+                                                   </row>
+                                           </rows>
+                                        </grid>
+                                   
+                                         <window id="winAddApprOwnTRC"  apply="id.my.berkah.um.controller.ApprOwnerDetailCTRL" title="Transaction Type" visible="false" width="450px" height="400px" >  
+                                            
+                                                <grid>
+                                                   <columns>
+                                                           <column width="100px"/>                                      
+                                                           <column />                                   
+                                                   </columns>
+                                                   <rows>
+                                                           <row>  
+                                                               <label>Bisnis Unit</label>
+                                                               <hbox >
+                                                                    <textbox id="txtRequestDtlIdAOTRC" visible="false"></textbox>  
+                                                                    <textbox id="txtBUIdAOTRC" visible="false"></textbox>  
+                                                                    <textbox id="txtBUCodeAOTRC" width="50px" readonly="true"></textbox>                                           
+                                                                    <textbox id="txtBUDescAOTRC" width="250px" readonly="true"></textbox>
+                                                               </hbox>     
+                                                           </row>
+                                                           <row>  
+                                                               <label>Warehouse</label>
+                                                               <hbox>
+                                                                    <textbox id="txtWHIdAOTRC" visible="false"></textbox>
+                                                                    <textbox id="txtWHCodeAOTRC" width="50px" readonly="true"></textbox>
+                                                                    <textbox id="txtWHDescAOTRC" width="250px" readonly="true"></textbox>
+                                                               </hbox>
+                                                           </row>
+                                                   </rows>
+                                                </grid>
+                                            
+                                                <listbox id="lstAddApprOwnTRC" height="250px" mold="paging" pageSize="18" checkmark="true" multiple="true">
+                                                    <listhead sizable="true">                                            
+                                                        <listheader label="Trc type"  width="100px"  visible="true"/>              
+                                                        <listheader label="Description"   visible="true"/>        
+                                                         <listheader label="Status"   visible="true"/>                                                       
+                                                        <listheader label="Request SubdtlId"    visible="false"/>
+                                                        <listheader label="Request SubdtlId"    visible="false"/>                                  
+                                                    </listhead>                    
+                                                    <template name="model">
+                                                        <listitem>                           
+                                                            <listcell label="${each.stockTrcType}" visible="true"/>    
+                                                            <listcell label="${each.stockTrcDesc}" visible="true"/>  
+                                                            <listcell >
+                                                            <checkbox checked="${each.flag}" disabled="true"></checkbox>
+                                                            </listcell>  
+                                                            <listcell label="${each.requestDtlId}" visible="false"/>                                              
+                                                            <listcell label="${each.requestSubDtlId}" visible="false"/>                                              
+                                                        </listitem>
+                                                    </template>
+                                                </listbox>
+                                           
+                                            
+                                                <grid>
+                                                    <columns>
+                                                            <column align="right" />                                      
+                                                            <column align="left"/>                                   
+                                                    </columns>
+                                                    <rows>
+                                                            <row>  
+                                                                <button id="btnSubmitAOTRC" image="/img/Ok24.png" label="Submit"></button>
+                                                                <button id="btnCloseAOTRC"  image="/img/Logout24.png" label="Close"></button>                                     
+                                                                
+                                                            </row>
+                                                    </rows>
+                                                </grid>
+                                           
+                                        </window>
+                                   
+                    </window>  
+                                         
+<!--            </window>                          -->
+                             
+             <!-- E Window New Request BU -->    
+                
+                    
+                    <window id="winFind" apply="id.my.berkah.um.controller.ApprOwnerDetailCTRL" title="Find Request" visible="false" width="500px" height="200px" >  
+                    
+                        <grid height="125px">
+                            <columns>
+                                    <column width="150px"/>                                      
+                                    <column />                                   
+                            </columns>
+                            <rows>
+                                     <row>  
+                                        <label>Request No</label>
+                                        <hbox>
+                                            <textbox id="txtFindRequestNo" width="250px"></textbox>   
+                                                                         
+                                        </hbox>    
+                                     </row>
+                                     <row>  
+                                        <label>Request Date from </label>
+                                        <hbox>
+                                            <datebox id="dtFindFrom" onCreate="self.value = new Date()"></datebox> to <datebox id="dtFindTo" onCreate="self.value = new Date()"></datebox>                                   
+                                        </hbox>    
+                                     </row>
+                                     <row>  
+                                        <label>Request Status</label>
+                                        <combobox id="cbxStatusFind" >
+                                            
+<!--                                            <comboitem label="Draft" value="3"  />-->
+                                            <comboitem label="Cancel" value="0"/>     
+                                            <comboitem label="Waiting Final Approval" value="3"/>
+                                            <comboitem label="Approved" value="4"/>
+                                             <comboitem label="Rejected by Owner" value="6"/>                                          
+                                        </combobox>    
+                                     </row>
+                            </rows>
+                        </grid>
+                        
+                        <grid>
+                            <columns>
+                                    <column align="right"/>                                      
+                                    <column align="left"/>                                   
+                            </columns>
+                            <rows>
+                                <row>
+                                    <button id="btnFindI" label="Find" image="/img/Find24.png"></button>   
+                                    <button id="btnCloseI" label="Close" image="/img/Logout24.png"></button>   
+                                </row>
+                            </rows>
+                        </grid>
+                        
+                    </window>
+                                                                                           
+        </window>
+    
+</zk>

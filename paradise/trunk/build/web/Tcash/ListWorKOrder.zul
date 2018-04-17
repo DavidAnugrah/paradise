@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_WO" title="List WO external(Subcontract)" apply="id.my.berkah.tcash1.controller.ListWorKOrder" border="normal"  width="1130px" height="100%" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+           
+            </toolbar>
+            <textbox visible="false" id="txtwhId"/>
+            <textbox visible="false" id="txtwhcode"/>
+            <textbox visible="false" id="txtwhdesc"/>
+            <textbox visible="false" id="txtEffectiveBy"/>
+            <textbox visible="false" id="txtEffectiveByDate"/>
+            <textbox visible="false" id="txtExpiredBy"/>
+            <textbox visible="false" id="txtExpiredDate"/>
+            <textbox visible="false" id="txtCreatedBy"/>
+            <textbox visible="false" id="txtCreatedDate"/>
+            <textbox visible="false" id="txtmodifby"/>
+            <textbox visible="false" id="txtmodifdate"/>
+            <textbox visible="false" id="txtid"/>
+        </div>
+        <div>
+            <listbox id="listbox" height="410px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="Id"                     width="50px"  visible="false" />
+                    <listheader label="WO External No"         width="200px"  visible="true" />
+                    <listheader label="BU Id"                width="100px"  visible="false" />
+                    <listheader label="Business Unit"                width="100px"  visible="true" />
+                    <listheader label="Business Description"         width="250px"  visible="true" />
+                    <listheader label="Supplier Id"            width="100px"  visible="false" />
+                    <listheader label="Supplier Code"          width="100px"  visible="true" />
+                    <listheader label="Supplier Name"          width="150px"  visible="true" />
+                    <listheader label="Site Id"               width="100px"  visible="false" />
+                    <listheader label="Site Code"              width="100px"  visible="true" />
+                    <listheader label="Site Name"              width="200px"  visible="true" />
+                    <listheader label="Order Date"             width="150px" visible="true" sort="auto" />
+                    <listheader label="Currency"               width="150px" visible="true" sort="auto" />
+                    <listheader label="Contract Id"            width="150px" visible="false" sort="auto" />
+                    <listheader label="Contract"               width="200px" visible="true" sort="auto" />
+                    <listheader label="Order Type"             width="150px" visible="false" sort="auto" />
+                    <listheader label="Order Type Desc"        width="150px" visible="true" sort="auto" />
+                    <listheader label="Term Of Payment Id"     width="150px" visible="false" sort="auto" />
+                    <listheader label="Term Of Payment"        width="150px" visible="true" sort="auto" />
+                    <listheader label="Remark"                 width="100px" visible="true" sort="auto" />
+                    <listheader label="Created Date"           width="150px" visible="true" sort="auto" />
+                    <listheader label="Created By"             width="150px" visible="true" sort="auto" />
+                    <listheader label="Released Date"          width="150px" visible="true" sort="auto" />
+                    <listheader label="Released By"            width="150px" visible="true" sort="auto" />
+                    <listheader label="Approved Date"          width="150px" visible="true" sort="auto" />
+                    <listheader label="Approved By"            width="150px" visible="true" sort="auto" />
+                    <listheader label="Canceled Date"          width="150px" visible="true" sort="auto" />
+                    <listheader label="Canceled By"            width="150px" visible="true" sort="auto" />
+                    <listheader label="Status"            width="150px" visible="true" sort="auto" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+        <window id="win_list_WO_find" title="Find Parameter" apply="id.my.berkah.tcash1.controller.ListWorKOrder"  position="center" visible="false" border="normal" width="450px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="430px">
+                <columns>
+                    <column label="" width="80px" align="right" />
+                    <column label="" width="350px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label value="WO. No" />
+                        <textbox width="200px" id="txtPoNo" mold="rounded"/>
+                    
+                    </row>
+                    <row>
+                        <label   value="BU Unit"  />
+                        <hbox>
+                            <textbox width="50px" id="txtbuId" visible="false"    />
+                            <textbox width="80px" id="txtbucode" readonly="true" mold="rounded"/>
+                            <button id="btnLovBu" mold="trendy"  src="/img/search.png"  tooltiptext="Lov Bu" />
+                            <textbox width="210px" id="txtbuDesc" readonly="true"  mold="rounded"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Date From" />
+                        <hbox>
+                            <datebox width="120px" id="txtDateFrom" readonly="true" format="dd-MM-yyyy" mold="rounded"/>
+                            <label value="To" />
+                            <datebox width="120px" id="txtDateTo" readonly="true" format="dd-MM-yyyy" mold="rounded" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label value="Status" />
+                        <combobox id="cmbStatus" width="200px" readonly="true" mold="rounded">
+                            <comboitem label="Draft"/>
+                            <comboitem label="Upload In Progress"/>
+                            <comboitem label="Upload Complete"/>
+                            <comboitem label="Released"/>
+                            <comboitem label="Approved"/>
+                            <comboitem label="Input File Completed"/>
+                            <comboitem label="Completed"/>
+                            <comboitem label="Canceled"/>
+                            <comboitem label="Generating SN"/>
+                        </combobox>
+                    </row>
+                    <row visible="false">
+                        <label value="Order" />
+                        <combobox width="205px"  id="cmbOrder" readonly="true" mold="rounded">
+                            <comboitem label="Packaging" />
+                            <comboitem label="Personalization"/>
+                            <comboitem label="One Stop Production"/>
+                        </combobox>
+                    </row>
+                    
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="430px">
+                <columns>
+                    <column label="" width="430px" align="center" />
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                        <button id="goFind" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                        <button id="clear" mold="trendy" visible="false" tabindex="13" label="Clear" image="/img/End16.png" />
+                        <button id="Close1" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+    </window>
+</zk>

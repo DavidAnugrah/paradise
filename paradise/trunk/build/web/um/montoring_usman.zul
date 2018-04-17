@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">                                                     
+    <window id="winMonitoring"  title="List Monitoring" height="500px" visible="true" border="normal" apply="id.my.berkah.um.controller.MonitoringCTRL">            
+        <!--TOOLBAR-->            
+        <toolbar id="tbApproval" height="27px" align="start" orient="horizontal" left="2">                    
+            <toolbarbutton id="tbResend"      width="25px" height="25px" src="/img/1429173781_email-24.png"    tooltiptext="Resend Email"/>                          
+            <toolbarbutton id="tbRefresh"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+            <toolbarbutton id="tbFind"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>                        
+            <!--<toolbarbutton id="tbExit"      width="25px" height="25px" src="/img/Logout24.png"   tooltiptext="Close Form"/>-->
+        </toolbar>                             
+            
+        <!-- LISTBOX -->      
+               
+        <listbox id="lstMonitoring" height="400px" width="100%" mold="paging" pageSize="10" sizedByContent="true">
+            <listhead sizable="true">
+                <listheader label="Request Header Id " width="170px"  visible="false"/>            
+                <listheader label="Request No" width="170px"    visible="true"/>  
+                <listheader label="Request Date" width="170px"    visible="true"/>     
+                <listheader label="User Name" width="150px" visible="true"/> 
+                <listheader label="Responsibility" width="170px" sort="auto(userName)"    visible="true"/> 
+                <listheader label="Status" width="170px" visible="true"/>       
+                <listheader label="GBU Code" visible="true"/> 
+                <listheader label="GBU Description" width="150px" visible="true"/> 
+                <listheader label="Approval Atasan" visible="true"/> 
+                <listheader label="Approval Date" width="150px" visible="true"/> 
+                <listheader label="Approval Owner" visible="true"/> 
+                <listheader label="Approval Date" width="150px" visible="true"/>
+                <listheader label="Email Mgr" width="150px" visible="false"/>
+                <listheader label="Request Type" width="150px" visible="true"/>                                                                                                                       
+            </listhead>                    
+            <template name="model">
+                <listitem>                                                                                                 
+                    <listcell label="${each.reqHdrId}" visible="false"/>  
+                    <listcell label="${each.reqNo}" visible="true"/>  
+                    <listcell label="${each.reqDate}" visible="true"/>  
+                    <listcell label="${each.userName}" visible="true"/>  
+                    <listcell label="${each.responsibility}" visible="true"/>  
+                    <listcell label="${each.status}" visible="true"/>
+                    <listcell label="${each.gbuCode}" visible="true"/>
+                    <listcell label="${each.gbuDesc}" visible="true"/>
+                    <listcell label="${each.apprMgr}" visible="true"/> 
+                    <listcell label="${each.apprMgrDate}" visible="true"/> 
+                    <listcell label="${each.apprOwn}" visible="true"/> 
+                    <listcell label="${each.apprOwnDate}" visible="true"/>
+                    <listcell label="${each.emailMgr}" visible="false"/>
+                    <listcell label="${each.requestType}" visible="true"/>        
+                    <!--<listcell label="${each.reqMode}" visible="true"/>-->
+                </listitem>
+            </template>
+        </listbox>
+        <div height="70px" >
+            <paging id="userPaging" height="70px" width="100%" style="color: black" visible="false"/>
+        </div>
+                                                       
+        <!--            </window>                          -->
+                             
+        <!-- E Window New Request BU -->    
+        <window id="winFind" title="Find Request" visible="false" apply="id.my.berkah.um.controller.MonitoringCTRL" onClose="self.visible = false; event.stopPropagation();" closable="true" width="600px" height="350px" >  
+            <grid height="250px" >
+                <columns>
+                    <column width="150px"/>                                      
+                    <column />                                   
+                </columns>
+                <rows>
+                    <row>  
+                        <label>Request No</label>
+                        <hbox>
+                            <textbox id="txtFindRequestNo" width="250px"></textbox>                                 
+                            <button id="btnFRequest" onClick="" image="/img/search.png" />
+     
+                        </hbox>    
+                    </row>
+                    <row>  
+                        <label>Request Date from </label>
+                        <hbox>
+                            <datebox id="dtFindFrom" onCreate="self.value = new Date()" format="dd-MM-yyyy" width="150px"> </datebox> to <datebox id="dtFindTo" onCreate="self.value = new Date()" format="dd-MM-yyyy" width="150px" ></datebox>                                   
+                        </hbox>    
+                    </row>
+                    <row>  
+                        <label>User Name</label>
+                        <hbox>
+                            <textbox id="txtFindUser" width="250px"></textbox>
+                            <label id="lblUserId" visible="false" />
+                            <button id="btnFUser" label="" onClick="" image="/img/search.png" />      
+                                        
+                        </hbox> 
+                    </row>
+                    <row>  
+                        <label>GBU Description</label>
+                        <hbox>
+                            <textbox id="txtGBU" width="250px"></textbox>
+                            <label id="lblGbuId" visible="false" />
+                            <button id="btnFGBU" label="" onClick="" image="/img/search.png" />      
+                        </hbox>    
+                    </row>
+                    <row>  
+                        <label>Request Status</label>
+                        <combobox id="cbxStatusFind" >
+                            <comboitem label="Draft" value="1"  />
+                            <comboitem label="Cancel" value="0"/> 
+                            <comboitem label="Waiting Head Approval" value="2"/>
+                            <comboitem label="Waiting Final Approval" value="3"/>   
+                            <comboitem label="Approved" value="4"/> 
+                            <comboitem label="Rejected by Atasan" value="5"/> 
+                            <comboitem label="Rejected by Owner" value="6"/>                                        
+                        </combobox>    
+                    </row>
+                </rows>
+            </grid>
+                        
+            <grid>
+                <columns>
+                    <column align="right"/>                                      
+                    <column align="left"/>                                   
+                </columns>
+                <rows>
+                    <row>
+                        <button id="btnFind" label="Find" image="/img/Find24.png"></button>   
+                        <button id="btnClose" label="Close" image="/img/Logout24.png"></button>   
+                    </row>
+                </rows>
+            </grid>   
+        </window>
+                    
+        <window id="winResendMail" title="Resend Email" visible="false" apply="id.my.berkah.um.controller.MonitoringCTRL" onClose="self.visible = false; event.stopPropagation();" closable="true" width="700px" height="250px" >  
+            
+            <grid height="170px" >
+                <columns>
+                    <column width="100px"/>                                      
+                    <column />
+                    <column width="100px"/>                                      
+                    <column />                                    
+                </columns>
+                <rows>
+                    <row>  
+                        <label>Request No</label>
+                        <textbox id="txtRequestNo" width="200px" readonly="true"></textbox>
+                        <label>Type</label>
+                        <textbox id="txtReqType" width="200px" readonly="true" ></textbox>
+                    </row>
+                    <row>  
+                        <label>Request Date </label>
+                        <textbox id="reqDate" readonly="true"></textbox>                                   
+                        <label>Responsibility</label>
+                        <textbox id="txtRespon" width="200px" readonly="true" ></textbox>   
+                    </row>
+                    <row>  
+                        <label>User</label>
+                        <textbox id="txtUser"   width="200px" readonly="true" ></textbox>
+                        <label>GBU</label>
+                        <textbox id="txtGBU" width="200px" readonly="true" ></textbox>
+                    </row>
+                    <row>  
+                        <label>Status</label>
+                        <textbox id="txtStatus" width="200px" readonly="true" ></textbox> 
+                        <label>Email</label>
+                        <textbox id="txtEmail" width="200px" readonly="true" ></textbox> 
+                    </row>
+                    <row>  
+                                        
+                                            
+                    </row>
+                </rows>
+            </grid>
+             <label id="reqHdrId" visible="false" />        
+            <grid>
+                <columns>
+                    <column align="right"/>                                      
+                    <column align="left"/>                                   
+                </columns>
+                <rows>
+                    <row>
+                        <button id="btnResend" label="Resend" image="/img/Email.png"></button>   
+                        <button id="btnCloseResend" label="Close" image="/img/Logout24.png"></button>   
+                    </row>
+                </rows>
+            </grid>   
+        </window>                                                                                                                                                                
+    </window>   
+</zk>

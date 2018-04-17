@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_item_parameter" title="Maintenance Item Parameter" apply="id.my.berkah.ifm.controller.ItemParameterCTRL" border="normal" width="970px" height="540px" ctrlKeys="#down#up"  closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="250px" align="right" />
+                <column label="" width="400px" />
+                <column label="" width="235px" align="left"  />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item Code"  />
+                    <hbox>
+                    <textbox width="50px" id="txtitemId" mold="rounded" visible="false"    value="${arg.buid}"  style="background-color:#FFFACD" />
+                    <textbox width="100px" id="txtitemcode"  readonly="false"   value="${arg.bucode}"  style="background-color:#FFFACD" />
+                    <textbox width="250px" id="txtitemDesc"  readonly="false"   value="${arg.budescription}"   />
+                    </hbox>
+                    <button  id="btnitem" visible="true" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Item" />
+                    <label value="" />
+                </row>
+                <row visible="false">
+                    <textbox id="txtpatternid"></textbox>
+                    <textbox id="txtseqid"></textbox>
+                    <textbox id="txtprompt"></textbox>
+                    <textbox id="txtpatterndesc"></textbox>
+                    <textbox id="txtid"></textbox>
+                    
+                </row>
+            </rows>
+        </grid>
+   
+        <div width="100%">
+        <listbox id="listbox" height="369px" sizedByContent="true" emptyMessage="No items match your search" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                
+                <listheader label="pattern id"    width="120px" visible="false" />
+                <listheader label="Position"      width="100px"   visible="true" sort="auto" />
+                <listheader label="item Id"       width="80px"   visible="false" sort="auto" />
+                <listheader label="Seq Id"        width="80px" visible="true" sort="auto" />
+                <listheader label="Field Name"    width="150px" visible="true" sort="auto"/>
+                <listheader label="Random Number" width="150px" visible="true"  sort="auto" />
+                <listheader label="ID"            width="50px" visible="false"  sort="auto" />
+                <listheader label="Type"          width="70px" visible="true" sort="auto" />
+                <listheader label="TypeDesc"      width="120px" visible="false" sort="auto" />
+                <listheader label="Create Date"   width="120px" visible="false" sort="auto" />
+                <listheader label="Create by"     width="120px" visible="false" sort="auto" />
+                <listheader label="Modified Date" width="120px" visible="false" sort="auto" />
+                <listheader label="Modified By"   width="120px" visible="false" sort="auto" />
+                <listheader label="Expired "    width="120px" visible="false" sort="auto" />
+                <listheader label="Expired Date"    width="120px" visible="false" sort="auto" />
+                <listheader label="Expired By"    width="120px" visible="false" sort="auto" />
+                <listheader label="Pattern Name"  width="150px" visible="true"  sort="auto" />
+                <listheader label="Pattern"       width="100px" visible="true" />
+            </listhead>
+            
+            <!--<template name="model">-->
+                <listitem>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                    <listcell></listcell>
+                <listcell>
+                    <checkbox value="${arg.pattern}"></checkbox>
+                </listcell>
+                </listitem>
+            <!--</template>-->
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+           <grid id="grid1" oddRowSclass="non-odd" width="100%" visible="false">
+              <columns>
+               <column label="" width="110px"  align="right" />
+                <column label="" width="200px" align="center"/>
+                <column label="" width="100px" align="right"/>
+                <column label="" width="200px" align="left"/>
+                <column label="" width="100px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                   <label   value="Created Date" width="50px" />
+                   <textbox width="150px" mold="rounded" id="txtcreatedate" value="${arg.createdate}" readonly="true"  />
+                   <label   value="Modified Date"  />
+                   <textbox width="150px" mold="rounded" id="txtmodifieddate" value="${arg.modifieddate}" readonly="true"  />
+                   <label   value="Expired Date" width="50px" />
+                   <textbox width="150px" mold="rounded" id="txtexpiredate" value="${arg.expireddate}" readonly="true"  />
+                </row>
+                <row>
+                   <label   value="Created By" />
+                   <textbox width="150px" mold="rounded" id="txtcreatedby" value="${arg.createby}"  readonly="true"  />
+                   <label   value="Modified By" />
+                   <textbox width="150px" mold="rounded" id="txtmodifiedby" value="${arg.modifiedby}"  readonly="true"  />
+                   <label   value="Expired By" />
+                   <textbox width="150px" mold="rounded" id="txtexpiredby" value="${arg.expiredby}"  readonly="true"  />
+                </row>
+            </rows>
+        </grid>
+         
+             <grid width="100%"  oddRowSclass="non-odd">
+           <columns>
+               <column label=""  width="50%" align="right" />
+               <!--<column label=""  width="50%" align="center" />-->
+               <column label=""  width="50%" align="center" />
+               <column label=""  width="50%" align="left" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                     <button id="btnadd"     label="Add /Edit Detail"  mold="trendy" image="/img/Plus24.png" tooltiptext="Add"/>  
+                     <hbox>
+                       <button id="btnsetup"  label="Setup Item"     mold="trendy"    image="/img/Action24.png"     tooltiptext="Browse"/>
+<!--                       <button id="expired"  mold="trendy"   label="Expired"     width="90px"   image="/img/Action24.png"  tooltiptext="Expired"/>-->
+                       <button id="refresh"   label="Refresh"     mold="trendy"    image="/img/Refresh24.png"     tooltiptext="Refesh"/>  
+                     </hbox>
+                    <button id="close"      mold="trendy" label="Close"     width="110px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>  
+            </rows>
+            </grid>
+        </window>
+</zk>

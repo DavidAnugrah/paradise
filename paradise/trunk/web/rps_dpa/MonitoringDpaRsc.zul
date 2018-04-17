@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_Montitoring_dpa_Rsc" title="View Data DPA Resource" apply="id.my.berkah.rps.dpa.controller.MonitoringDpaRscCtrl" border="normal" closable="false" width="840px"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="820px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="680px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item Code" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtItemCode" readonly="true" value="${arg.itemCode}"/>
+                </row>
+                <row>
+                    <label   value="Packet Code" width="50px" />
+                        <textbox width="200px" tabindex="7" id="txtPacketCode"  readonly="true" value="${arg.packetCode}" />
+                </row>
+                <row>
+                    <label   value="Location Code" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtLocationCode"  readonly="true" value="${arg.locationCode}" />
+                </row>
+                <row>
+                    <label   value="Status" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtStatus"  readonly="true" value="${arg.status}" />
+                </row>
+                <row>
+                    <label   value="Qty" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtQty"  readonly="true" value="${arg.qty}" />
+                </row>
+                <row visible="false">
+                    <textbox width="150px" readonly="true" id="txtItemId"       visible="true" value="${arg.itemId}"/>
+                    <textbox width="0px" readonly="true" id="txtBuId"         visible="false" value="${arg.buId}"/>
+                    <textbox width="0px" readonly="true" id="txtUserId"      visible="false" value="${arg.userId}"/>
+                    <textbox width="0px" readonly="true" id="txtTypeId"           visible="false" value="${arg.flag}"/>
+                    <textbox width="0px" readonly="true" id="txtLocationId"         visible="false" value="${arg.locId}"/>
+                    <textbox width="0px" readonly="true" id="txtPacketId"      visible="false" value="${arg.packetId}"/>
+                    <textbox width="0px" readonly="true" id="txtError"       visible="false" value="${arg.erros}"/>
+                    <textbox width="0px" readonly="true" id="txtMessages"     visible="false" value="${arg.messages}"/>
+                </row>
+            </rows>
+        </grid>
+        <div>    
+            <listbox id="listbox" height="200px" mold="paging" pageSize="10">
+                <listhead sizable="true">
+                    <listheader label="Assign Number"              width="200px" visible="true"/>
+                    <listheader label="MSISDN"      width="200px"       visible="true"/>
+                    <listheader label="IMSI"        width="200px"       visible="true"/>
+                    <listheader label="ICCID"                  width="200px"  visible="true"/>
+                    <listheader label="PIN1"            width="200px"    visible="true"/>
+                    <listheader label="PUK1"        width="200px"    visible="true"/>
+                    <listheader label="PIN2"            width="200px"    visible="true"/>
+                    <listheader label="PUK2"        width="200px"    visible="true"/>
+                </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="${each.assignNumber}"/>
+                        <listcell label="${each.msisdn}"/>
+                        <listcell label="${each.imsi}"/>
+                        <listcell label="${each.iccid}"/>
+                        <listcell label="${each.pin1}"/>
+                        <listcell label="${each.puk1}"/>
+                        <listcell label="${each.pin2}"/>
+                        <listcell label="${each.puk2}"/>
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+
+        <grid id="grid_find" oddRowSclass="non-odd" width="820px">
+            <columns>
+                <column label="" width="410px" align="right" />
+                <column label="" width="410px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="print"    tabindex="33" label="Print To Excel"   width="130px"  image="/img/Print24.png" tooltiptext="Print"/>
+                    <button id="close"      tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	                      	
+    </window>
+</zk>

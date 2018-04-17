@@ -1,0 +1,271 @@
+<zk>
+<window id="win_list_perso_new" title="List Data Personalize" width="99%" height="480px" border="normal" apply="id.my.berkah.rps.controller.ListPersoNewController" ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+     <script type="text/javascript">
+         function RunExe(param1, param2, param3)
+         {
+          try
+          {
+           var ua = navigator.userAgent.toLowerCase();
+           if (ua.indexOf("msie") != -1 || ua.indexOf(".net") != -1)
+           {
+               MyObject = new ActiveXObject("WScript.Shell");
+               var par = "C:\\Perso\\MyPerso.exe " + param1 + ' ' + param2 + ' ' + param3;
+               MyObject.Run(par);
+           }
+           else
+           {
+               alert("Browser not supported, please use Internet Explorer.");
+           }
+          }
+          catch (ex)
+          {
+             alert(ex.toString());
+          }
+         }        
+    </script> 
+    <attribute name="onLater">
+        Clients.clearBusy(); //remove the busy message
+    </attribute>
+    <div>
+        <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+           <toolbarbutton id="newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+           <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+           <toolbarbutton id="cancel"    width="25px" height="25px" src="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+           <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+           <toolbarbutton id="find"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+           <toolbarbutton id="perso"     width="25px" height="25px" src="/img/Perso24x24.png" tooltiptext="Perso"/>
+           <toolbarbutton id="provisi"   width="25px" height="25px" src="/img/Ok24.png"       tooltiptext="Check Provision"/>
+           <toolbarbutton id="print"     width="25px" height="25px" src="/img/Print24.png"   tooltiptext="Print History Perso"/>
+        </toolbar>
+    </div>    
+    <div>    
+        <listbox id="listbox" height="368px">
+            <listhead sizable="true">
+                <listheader label="BU ID"           width="200px"  sort="auto(buId)"    visible="false"/>
+                <listheader label="BU CODE"         width="150px"  sort="auto(buCode)"  visible="false"/>
+                <listheader label="BU DESCRIPTION"  width="400px"  sort="auto(buDescription)"  visible="false"/>
+                <listheader label="Perso Id"        width="60px"   sort="auto(persoId)"/>
+                <listheader label="Perso Number"    width="250px"  sort="auto(persoNumber)" />
+                <listheader label="Perso Date"      width="150px"  sort="auto(persoDate)" />
+                <listheader label="Created By Name" width="150px" visible="true"/>
+                <listheader label="Perso Type"      width="150px"  sort="auto(persoTypeName)" />
+                <listheader label="Perso Status"    width="100px"  sort="auto(statusName)" />
+                <listheader label="Prov. Status"    width="100px"  sort="auto(provisioningStatusName)" />
+                <listheader label="Prov. Date"      width="150px"  sort="auto(provisioningDate)" />
+                <listheader label="SIM S/N"         width="200px"  sort="auto(serialNo)" />
+                <listheader label="HLR"             width="50px"   sort="auto(hlrMapDesc)" />
+                <listheader label="MSISDN"          width="150px"  sort="auto(msisdn)" />
+                <listheader label="IMSI"            width="150px"  sort="auto(imsi)" />
+                <listheader label="ICCID"           width="150px"  sort="auto(iccid)" />
+                <listheader label="PIN 1"           width="150px" />
+                <listheader label="PIN 2"           width="150px" />
+                <listheader label="PUK 1"           width="150px" />
+                <listheader label="PUK 2"           width="150px" />
+                <listheader label="AKI"             width="300px"  visible="false"/>
+                <listheader label="IMSI OLD"        width="150px"/>
+                <listheader label="ICCID OLD"       width="150px"/>
+                <listheader label="SERIAL NO OLD"   width="150px"/>
+                <listheader label="Application"     width="150px"/>
+                <listheader label="Reason Name"     width="200px"/>
+                <listheader label="SIM Type"        width="100px"  visible="false"/>
+                <listheader label="SIM Type Name"   width="100px"/>
+                <listheader label="Reason Code"     width="100px"  visible="false"/>
+                <listheader label="Product Type"    width="100px"  visible="false"/>
+                <listheader label="Subscriber Type" width="100px"  visible="false"/>
+                <listheader label="Subscriber Type" width="100px"/>
+                <listheader label="NDC_DTL_ID"      width="100px" visible="false"/>
+                <listheader label="Status"          width="100px" visible="false"/>
+                <listheader label="Prov. Status"    width="100px" visible="false"/>
+                <listheader label="HLR"             width="100px" visible="false"/>
+                
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.buId}"/>
+                    <listcell label="${each.buCode}"/>
+                    <listcell label="${each.buDescription}"/>
+                    <listcell label="${each.persoId}"/>
+                    <listcell label="${each.persoNumber}"/>
+                    <listcell label="${each.persoDateStr}"/>
+                    <listcell label="${each.createdByName}"/>
+                    <listcell label="${each.persoTypeName}"/>
+                    <listcell label="${each.statusName}"/>
+                    <listcell label="${each.provisioningStatusName}"/>
+                    <listcell label="${each.provisioningDate}"/>
+                    <listcell label="${each.serialNo}"/>
+                    <listcell label="${each.hlrMapDesc}"/>
+                    <listcell label="${each.msisdn}"/>
+                    <listcell label="${each.imsi}"/>
+                    <listcell label="${each.iccid}"/>
+                    <listcell label="${each.pin1}"/>
+                    <listcell label="${each.pin2}"/>
+                    <listcell label="${each.puk1}"/>
+                    <listcell label="${each.puk2}"/>
+                    <listcell label="${each.aki}"/>
+                    <listcell label="${each.oldImsi}"/>
+                    <listcell label="${each.oldIccid}"/>
+                    <listcell label="${each.oldSerialNo}"/>
+                    <listcell label="${each.applicationName}"/>
+                    <listcell label="${each.reasonName}"/>
+                    <listcell label="${each.simType}"/>
+                    <listcell label="${each.simTypeName}"/>
+                    <listcell label="${each.reasonCode}"/>
+                    <listcell label="${each.productType}"/>
+                    <listcell label="${each.subscriberType}"/>
+                    <listcell label="${each.subscriberTypeName}"/>											
+                    <listcell label="${each.ndcDtlId}"/>											
+                    <listcell label="${each.status}"/>											
+                    <listcell label="${each.provisioningStatus}"/>											
+                    <listcell label="${each.hlrMapDesc}"/>
+                    											
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>
+		
+    <window id="win_list_perso_find" title="Find Parameter" border="normal" mode="modal" apply="id.my.berkah.rps.controller.ListPersoNewController" width="437px">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="436px">
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="280px" />
+                    <column label="" width="35px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="BU Code" width="50px" />
+                        <hbox>
+                            <textbox id="findBuCode"   tabindex="1" width="100px" />
+                            <button  id="btnLovbucodeFind" tabindex="2" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Business Units"/>
+                        </hbox> 	
+                    </row>
+                    <row>
+                        <label   value="Perso Number" width="50px" />
+                        <textbox id="findPersoNumber" tabindex="3" width="200px" />
+                    </row>
+                    <row>
+                        <label  value="Perso DATE" width="50px" />
+                        <hbox>  
+                            <datebox id="findFromDate" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                            <datebox id="findToDate"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="Perso Type" width="50px" />
+                        <hbox>
+                            <textbox id="findPersoTypeName" tabindex="6" width="200px"/>
+                            <button  id="btnLovPersoTypeFind" tabindex="7" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Type"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="Status" width="50px" />
+                        <hbox>
+                            <textbox id="findStatusName"  tabindex="8" width="100px" />
+                            <button  id="btnLovStatus" tabindex="9" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="SIM S/N" width="50px" />
+                        <textbox id="findSerialNo"  tabindex="10" width="250px" maxlength="16"/>
+                    </row>
+                    <row>
+                        <label   value="MSISDN" width="50px" />
+                        <textbox id="findMsisdn" tabindex="11" width="200px"/>
+                    </row>
+                    <row>
+                        <label   value="IMSI" width="50px" />
+                        <textbox id="findImsi" tabindex="12" width="200px" />
+                    </row>
+                    <row>
+                        <label   value="ICCID" width="50px" />
+                        <textbox id="findIccid" tabindex="13" width="250px"/>
+                    </row>
+                    <row>
+                        <label   value="Prov. Status" width="50px" />
+                        <hbox>
+                            <textbox id="findProvisioningStatusName"  tabindex="14" width="100px" />
+                            <button  id="btnLovProvisioningStatus"  tabindex="15" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label  value="Provisioning Date" width="50px" />
+                        <hbox>  
+                            <datebox id="findProvisioningFromDate" tabindex="16" cols="12" format="dd/MM/yyyy" />
+                            <datebox id="findProvisioningToDate"   tabindex="17" cols="12" format="dd/MM/yyyy" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label/>
+                        <hbox>
+                            <button id="goFind"  tabindex="18" label="Find"  image="/img/search.png" />
+                            <button id="doClose" tabindex="19" label="Close" image="/img/End16.png" />
+                    	</hbox>
+                    </row>
+                </rows>
+            </grid>	     
+    </window>
+    <window id="win_list_perso_print" title="Print Parameter" border="normal" mode="modal" apply="id.my.berkah.rps.controller.ListPersoNewController" width="440px">
+        <grid id="grid_print" oddRowSclass="non-odd">
+            <columns>
+                <column label="" width="100px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="35px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="BU Code" width="50px" />
+                    <hbox>
+                        <textbox id="printBuCode"      tabindex="1" width="100px" />
+                        <button  id="btnLovbucodePrint" tabindex="2" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Business Units"/>
+                    </hbox> 	
+                </row>
+                <row>
+                    <label  value="Perso DATE" width="50px" />
+                    <hbox>  
+                        <datebox id="printFromDate" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                        <datebox id="printToDate"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Perso Type" width="50px" />
+                    <hbox>
+                        <textbox id="printPersoTypeName" tabindex="6" width="200px"/>
+                        <button  id="btnLovPersoTypePrint" tabindex="7" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Type"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Status" width="50px" />
+                    <hbox>
+                        <textbox id="printStatusName"  tabindex="8" width="100px" />
+                        <button  id="btnLovStatusPrint" tabindex="9" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Print Type" width="50px" />
+                    <combobox id="printDesType" value="PDF">
+                           <comboitem id="pdf"  value="pdf"  label="PDF"/>
+                           <comboitem id="xls"  value="xls"  label="Excel (Microsoft)"/>
+                           <comboitem id="jxl"  value="jxl"  label="Excel (JLX)"/>
+                           <comboitem id="html" value="html" label="HTML"/>
+                           <comboitem id="rtf"  value="rtf"  label="Word (RTF)"/>
+                           <comboitem id="csv"  value="csv"  label="CSV"/>
+                           <comboitem id="odt"  value="odt"  label="OpenOffice (ODT)"/>
+                    </combobox> 
+                </row>
+                <row>
+                    <label/>
+                    <hbox>
+                        <button id="goPrint"    tabindex="11" label="Print" image="/img/Print24.png" width="100px" height="30px"/>
+                        <button id="ClosePrint" tabindex="12" label="Close" image="/img/End24.png"   width="100px" height="30px"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	     
+    </window>		
+    </window>
+</zk>

@@ -1,0 +1,331 @@
+<?page id="pg_index" cacheable="false" language="xul/html" zscriptLanguage="Java" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" href="/img/Refresh24.png"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+<zscript><![CDATA[//@IMPORT
+    import org.zkoss.zul.Messagebox;
+    import org.zkoss.zul.Tab;
+    import org.zkoss.zul.Tabpanel;
+    import org.zkoss.zul.Tabpanels;
+    import org.zkoss.zul.Tabs;    
+    import org.zkoss.zul.Include;
+
+    import org.zkoss.zk.ui.select.SelectorComposer;
+    import org.zkoss.zk.ui.select.annotation.Listen;
+    import org.zkoss.zk.ui.select.annotation.Wire;
+
+    import org.zkoss.zk.ui.Component;
+    import org.zkoss.zk.ui.Desktop;
+    import org.zkoss.zk.ui.Executions;
+    import org.zkoss.zk.ui.Page;
+
+    import java.util.ArrayList;
+    import java.util.Iterator;
+    import java.util.List;
+    import java.util.Set;
+    import java.util.Hashtable;
+    import java.util.StringTokenizer;
+    import java.math.BigInteger;
+
+
+]]></zscript>
+        
+<zscript><![CDATA[        
+        Tabbox    centertab;
+	Tabs      tbs;
+	Tabpanels tps;
+	Hashtable tabPanelLibrary;
+	Tab       mainTab;
+	Tabpanel  mainTabPanel;
+	String    destFile;
+	String localRootPath;
+]]></zscript>
+
+<zscript><![CDATA[//@DECLARATION
+    
+    void init()
+    {
+        centertab   = (Tabbox)win_main.getFellow("centertab");
+        tbs         = (Tabs)win_main.getFellow("tbs");
+        tps         = (Tabpanels)win_main.getFellow("tps");
+        tabPanelLibrary = new Hashtable();
+    
+        //mainTab      = (Tab)win_main.getFellow("tabHOME");
+        //mainTabPanel = (Tabpanel)win_main.getFellow("mainTabPanel");
+        destFile     = "webdesktop.zul";
+    }    
+    
+    void treeItemonDoubleClick(Component com)
+    {
+       String tabName = com.getAttribute("menu_prompt");
+       String includedFile = com.getAttribute("file_name");
+       String formid = Integer.toString(com.getAttribute("form_id"));
+       String sub_menu_id = Integer.toString(com.getAttribute("sub_menu_id"));
+       
+       if (sub_menu_id.equals("0"))
+       {
+            if (formid != null && !formid.isEmpty() && !formid.equals(0))
+            {
+                 if (includedFile != null && !includedFile.isEmpty() && !includedFile.equals(""))
+                 {
+                     openTab(tabName, includedFile);
+                 }
+                 else
+                 {
+                     //Messagebox.show("File belum diseting untuk submenu ini");
+                     Messagebox.show("File belum diseting untuk submenu ini", "PARADISE : Message", Messagebox.OK, Messagebox.EXCLAMATION);
+                 }
+            }
+            else
+            {
+                 //Messagebox.show("Submenu ini belum di tentukan nama Form-nya yang harus di jalankan.");
+                 Messagebox.show("Submenu ini belum di tentukan nama Form-nya yang harus di jalankan.", "PARADISE : Message", Messagebox.OK, Messagebox.EXCLAMATION);
+            }
+       }
+    }
+
+    void tabonClose(Component com)
+    {
+        Tab tab = (Tab)com;
+        //detachMe(tab.getId(), String tabPanelId);
+    }
+    	
+    void openTab(String tabName, String includedFile)
+    {
+        parseIncludedFile(includedFile);
+        String newTabName = tabName.trim().toLowerCase().replace(" ", "-")+"_";
+        Tab newTab = createTab(tabName, newTabName);
+        final String pgid = "pg_" + newTab.getUuid();
+    
+        //newTab.addEventListener("onClose", new EventListener() 
+        //{
+            //public void onEvent(Event event) throws Exception 
+            //{   
+                    //Desktop desktop = Executions.getCurrent().getDesktop();
+                    //Page pg = desktop.getPage(pgid);	
+    	            //Messagebox.show(pg.toString());
+    
+                    //Window wf = (Window) pg.getFellow("header");
+                    //Textbox  Tchanged   = (Textbox)wf.getFellow("formChanged");
+                    //if (Tchanged.getValue().equals("CHANGED"))
+                    //{
+                    //        Messagebox.show("Please save changes before closing", "Warning", Messagebox.OK, Messagebox.EXCLAMATION);
+                    //        event.stopPropagation();
+                    //}
+            //}
+        //});
+        
+    
+        Tabpanel newTabPanel = createTabPanel(tabName, newTabName);
+        Include incd = new Include(destFile+"?pageId=pg_" + newTab.getUuid());
+        incd.setId(newTabName+incd.getUuid());
+        
+        incd.setDynamicProperty("tabUuid", newTab.getUuid());
+        incd.setDynamicProperty("mainUuid", self.getUuid());
+        incd.setDynamicProperty("tabPanelUuid", newTabPanel.getUuid());
+
+        newTabPanel.appendChild(incd);	
+        	
+    }
+	
+    public Tab createTab(String tabName, String newTabName)
+    {
+        Tab newtb= new Tab(tabName);
+        newtb.setId(newTabName + newtb.getUuid());
+        newtb.setParent(tbs); 
+        newtb.setClosable(true);
+        newtb.setSelected(true);
+        newtb.setHeight("100%");
+        return newtb;
+    }
+	
+    Tabpanel createTabPanel(String tabName,String newTabName)
+    {
+        Tabpanel newtpl = new Tabpanel(); 
+        newtpl.setId(newTabName + newtpl.getUuid());
+        newtpl.setParent(tps);
+        newtpl.setHeight("100%");
+        return newtpl;
+    }
+		
+    void detachMe(String tabId, String tabPanelId)
+    {
+        Tab detachTab = (Tab)this.getDesktop().getComponentByUuid(tabId);
+        Tabpanel detachTabPanel = (Tabpanel)self.getDesktop().getComponentByUuid(tabPanelId);
+        Include detachInclude = (Include)detachTabPanel.getChildren().remove(0);
+        detachInclude.setSrc("");
+        detachInclude.detach();
+        detachTabPanel.detach();
+        detachTab.detach();
+    }
+	
+    void reDrawTabContent(String windowId)
+    {
+        //Drawable obj = (Drawable)self.getDesktop().getComponentByUuid(windowId);
+        //try 
+        //{
+        //        obj.reDraw();
+        //} 
+        //catch (Exception e) 
+        //{
+                // TODO Auto-generated catch block
+        //        e.printStackTrace();
+        //}
+    }
+
+    void clearTab()
+    {
+        tbs.detach();
+        tps.detach();
+    }
+    
+    void parseIncludedFile(String includedFile)
+    {
+        String prop = null;
+        StringTokenizer firstToken = new StringTokenizer(includedFile,"#");
+        destFile = firstToken.nextToken();
+
+        if(firstToken.hasMoreTokens()){
+            prop = firstToken.nextToken();
+        }
+
+        if(prop != null)
+        {
+            destFileProp.clear();
+            StringTokenizer secondToken = new StringTokenizer(prop,"~");
+            while(secondToken.hasMoreElements()){
+                    String strTemp = secondToken.nextToken();
+                    StringTokenizer token = new StringTokenizer(strTemp,"=");
+                    destFileProp.put(token.nextToken(), token.nextToken());
+            }
+        }
+    }
+            
+]]></zscript>
+
+<style src="/css/default.css"/>
+<window id="win_main" border="1" height="100%" width="100%" apply="id.my.berkah.util.controller.IndexControl" style="border:1px;background:#3366FF;" xmlns:n="http://www.zkoss.org/2005/zk/native">
+    <script type="text/javascript">
+         window.location.hash="no-back-button";
+         window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+         window.onhashchange=function()
+         {
+             window.location.hash="no-back-button";
+         }
+    </script>
+    
+    <style>
+        #slideshow 
+        { 
+            width: 200px; 
+            height: 50px; 
+        }
+
+        #slideshow > div 
+        { 
+            position: absolute; 
+        }
+    </style>
+    
+    <attribute name="onCreate">
+      init();
+    </attribute>
+
+    <borderlayout height="100%" width="100%" style="border:1px;background:#3366FF;">
+            <!-- HEADER -->
+            <north size="51px" style="border:1px;background:#3366FF;color:white">
+                <div>
+                    <absolutelayout width="100%" height="50px">			    
+                        <absolutechildren x="1" y="1">
+                            <image src="img/Logo.gif" height="50px" width="200px"/>
+                        </absolutechildren>
+                        <absolutechildren x="205" y="3">
+                            <hbox>
+                                <label  value="Business Unit : " style="color:white;font-weight:bold"/>
+                                <label  id="bu"  style="text-transform:uppercase;color:white;font-weight:bold"/>
+                            </hbox>
+                        </absolutechildren>
+                        <absolutechildren x="205" y="18">
+                            <hbox>
+                                <label  value="Currency : " style="color:white;font-weight:bold"/>
+                                <label  id="curr"  style="text-transform:uppercase;color:white;font-weight:bold"/>
+                            </hbox>
+                        </absolutechildren>
+                        <absolutechildren x="205" y="35">
+                                <label value="Paradise for Telkomsel from Azec Indonesia Management Services (2014)" style="color:white;font-weight:bold"/>
+                        </absolutechildren>
+                    </absolutelayout>
+                </div>
+            </north>
+
+            <!-- CONFIG MENU -->
+            <west id="west" width="200px" title="MENU" flex="true" collapsible="true" splittable="true" style="border:1px;background:#990000;color:white">
+                <tree id="tree" width="100%" height="100%" checkmark="false" sizedByContent="false">
+                    <template name="model" width="100%">
+                        <treeitem width="100%">
+                            <treerow onDoubleClick="treeItemonDoubleClick(self)" width="100%"> 
+
+                                <treecell label="${each.menuPrompt}" width="200px"/>
+                                <custom-attributes id="${each.id}" />
+                                <custom-attributes menu_id="${each.menuId}" />
+                                <custom-attributes menu_dtl_id="${each.menuDtlId}" />
+                                <custom-attributes menu_prompt="${each.menuPrompt}" />
+                                <custom-attributes sub_menu_id="${each.subMenuId}" />
+                                <custom-attributes form_id="${each.formId}" />
+                                <custom-attributes menu_description="${each.menuDescription}" />
+                                <custom-attributes file_name="${each.fileName}" />
+
+                            </treerow>
+                        </treeitem>
+                    </template>
+                </tree>
+            </west>
+            <center flex="true" autoscroll="true">
+                <!-- Content -->
+                <div width="100%" height="100%">
+                    <tabbox id="centertab" width="100%" height="100%">                
+                        <tabs id="tbs" style="border:0px;background:#0099FF;color:white">
+                        </tabs>
+                        <tabpanels id="tps" width="100%" height="100%" style="border:0px;background:#A8A8A8;color:white">
+                        </tabpanels>
+                    </tabbox>
+                </div>
+            </center>
+    
+
+            <!-- FOOTER -->
+            <south size="30px" style="border:1px;background:#000099;">
+                <toolbar mold="panel" align="center" width="100%">
+                    <toolbarbutton id="login"          label="Login" sclass="bawah"/>
+                    <toolbarbutton id="responsibility" label="Change Responsibility" sclass="bawah" />
+                    <toolbarbutton id="businessunit"   label="Change Business Unit" sclass="bawah" />
+                    <toolbarbutton id="password"       label="Change Password" sclass="bawah" />
+                    <toolbarbutton id="logout"         label="Logout" sclass="bawah" />
+                    <separator orient="vertical" bar="true" sclass="bawah" />
+                    <label  value="User : " style="color:white"/>
+                    <label  id="g1" style="text-transform: uppercase;color:white;font-weight:bold;cursor:hand;cursor:pointer" sclass="bawah" tooltiptext="Click Here for User Information and Request BU."/>
+                    <toolbarbutton id="SuperiorApp"         label="Superior App." sclass="bawah" />
+					<label  id="g3" style="color:white;font-weight:bold" visible="false"/>
+                    <separator orient="vertical" bar="true" sclass="bawah" />
+                    <label  value="Served by : " style="color:white"/>
+                    <label  id="ip" style="text-transform: uppercase;color:white;font-weight:bold"/>
+
+                    <label id="g0" visible="false"/>
+                    <label id="g2" visible="false"/>
+                    <label id="g4" visible="false"/>
+                    <label id="g5" visible="false"  width="200px"/>
+                    <label id="g6" visible="false"/>
+                    <label id="g7" visible="false"/>
+                    <label id="g8" visible="false"/>
+                    <label id="g9" visible="false"/>
+                    <label id="ud" visible="false"/>
+                    <label id="websid" visible="false"/>
+                </toolbar>
+            </south>
+        </borderlayout>
+    </window>
+</zk>

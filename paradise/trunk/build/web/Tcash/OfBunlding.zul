@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_OF_bundling" title="Output File" apply="id.my.berkah.tcash1.controller.OutputFIleBundling"  border="normal" width="760px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <grid id="grid" oddRowSclass="non-odd" width="740px">
+            <columns>
+                <column label="" width="90px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="80px" align="right" />
+                <column label="" width="280px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Input File No" width="50px" />
+                    <hbox>
+                    <textbox width="200px"   id="txtIfNo" readonly="true" />
+                    <textbox width="20px"   id="txtIfId" readonly="true" visible="false" value="${arg.header.of_id}"/>
+                    </hbox>
+                    <label   value="FileName" width="50px" />
+                    <hbox>
+                    <textbox width="200px"  id="txtFileName"  readonly="true"/>
+                    <button  id="uploadFile"   tabindex="14"  upload="true,maxsize=-1," image="/img/file.png" tooltiptext="Upload File Excel"/>
+                    </hbox>
+            </row>
+                <row>
+                    <label   value="WO No"  />
+                    <hbox>
+                    <textbox width="200px"  id="txtWoId" style="background-color:#FFFACD" visible="false"/>
+                    <textbox width="200px"  id="txtWoNo" style="background-color:#FFFACD" readonly="true"/>
+                    <button id="btnWo" mold="trendy" width="40px"   src="/img/search.png"  tooltiptext="Lov" />
+                    </hbox>
+                    <label   value="Status" width="50px" />
+                    <textbox width="200px"  id="txtStatus"  readonly="true"/>
+                </row>
+            </rows>
+        </grid>
+        
+        <div>
+            <listbox id="listbox" height="280px" mold="paging"  pageSize="100" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="of_dtl_id" width="130px" visible="false"/>
+                    <listheader label="of_id" width="130px"  visible="false"/>
+                    <listheader label="of_no" width="130px"  visible="false"/>
+                    <listheader label="SN TCash" width="210px"  />
+                    <listheader label="SN Inventory" width="210px"  />
+                    <listheader label="UID" width="210px" />
+                    <listheader label="status" width="80px"  visible="false"/>
+                    <listheader label="Message" width="210px"  />
+                </listhead>
+                <template name="model">
+                    <listitem>
+
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+        
+        <div class="bottom-inner">
+            <grid zclass="none" sizedByContent="true">
+                <columns>
+                    <column width="150px"/>
+                    <column width="140px"/>
+                    <column width="150px"/>
+                    <column width="140px"/>
+                    <column width="90px"/>
+                    <column width="140px"/>
+                    <column width="90px"/>
+                    <column width="140px"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Created By"/>
+                        <textbox id="txtCreatedBy" readonly="true"/>
+                        <label value="Submit By"/>
+                        <textbox id="txtReleaseBy" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Created Date"/>
+                        <textbox id="txtCreatedDate" readonly="true"/>
+                        <label value="Submit Date"/>
+                        <textbox id="txtReleaseDate" readonly="true"/>   
+                    </row>
+                    <row>
+                        <label value="Approve By"/>
+                        <textbox id="txtApproveBy" readonly="true"/>
+                        <label value="Cancel By"/>
+                        <textbox id="txtCancelBy" readonly="true"/>
+                    </row>
+                    <row>
+                        <label value="Approve Date"/>
+                        <textbox id="txtApproveDate" readonly="true"/>
+                        <label value="Cancel Date"/>
+                        <textbox id="txtCancelDate" readonly="true"/>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+       
+        <grid id="grid_find" oddRowSclass="non-odd" width="760px">
+            <columns>
+                <column label=""   align="center" />
+            </columns>
+            <rows>
+                
+                <row height="35px" width="970px">
+                    <hbox>
+                        <button id="btnNew"  tabindex="30" label="New"       mold="trendy"    height="35px"         width="80px"   image="/img/New24.png"     tooltiptext="New WO"/>
+                        <button id="btnSave"  tabindex="30" label="Save"      mold="trendy"     height="35px"         width="80px"   image="/img/Save24.png"     tooltiptext="Save Work Order"/>
+                        <button id="refresh"    tabindex="33" label="Refresh" mold="trendy" height="35px"   width="100px"  image="/img/Refresh24.png" tooltiptext="Refresh"/>
+                        <button id="submit"    tabindex="33" label="Submit"   mold="trendy"   height="35px"            width="100px"   image="/img/Ok24.png"  tooltiptext="Release"/>
+                        <button id="approve"    tabindex="34" label="Approve"   mold="trendy"   height="35px"            width="100px"   image="/img/1449847706_OK.png"  tooltiptext="Approve"/>
+                        <button id="cancel"    tabindex="36" label="Cancel"   mold="trendy"     height="35px"            width="90px"   image="/img/Cancel24.png"  tooltiptext="Cancel"/>
+                        <button id="close"     tabindex="39" label="Exit"     mold="trendy"     height="35px"            width="80px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

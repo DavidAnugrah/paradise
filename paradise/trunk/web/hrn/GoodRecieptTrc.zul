@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_Good_Reciept" title="Add/Edit Goods Reciept"  border="normal" apply="id.my.berkah.hrn.controller.GoodRecieptCTRL" width="1010px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="999px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="270px" />
+                <column label="" width="100px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Receiving Business Unit"  />
+                    <hbox>
+                        <textbox width="50px" id="txtbuId" visible="false"   value="${arg.buid}"   style="background-color:#FFFACD" />
+                        <textbox width="70px" id="txtbucode" readonly="true"  value="${arg.bucode}"  style="background-color:#FFFACD" />
+                        <textbox width="176px" id="txtbuDesc" readonly="true"  value="${arg.budescription}"   />
+                    </hbox>
+                    <button  id="btnbu" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Bu" />
+                    <label   value="Goods Receipt No." width="50px" />
+                    <textbox width="250px"   id="txtgooddeliverynocode" value="${arg.suppdeliveryno}" readonly="true"  />
+                    <label value="" />
+                </row>
+                <row>
+                    <label   value="WareHouse"  />
+                    <hbox>
+                        <textbox width="50px"  id="txtwhid" visible="false" value="${arg.whid}" readonly="false" style="background-color:#FFFACD" />
+                        <textbox width="70px"  id="txtwhcode" readonly="false" value="${arg.whcode}" style="background-color:#FFFACD"  />
+                        <textbox width="176px"  id="txtwhdesc" readonly="true" value="${arg.whdescription}" />
+                    </hbox>
+                    <button  id="btnwh" width="40px"  mold="trendy" height="25px" disabled="true" src="/img/search.png"  tooltiptext="Lov WareHouse" /> 
+                    <label   value="Status" />
+                    <hbox>
+                        <textbox width="50px"  id="txtstatusid" value="${arg.suppdeliverystatus}" visible="false" readonly="true"  />
+                        <textbox width="250px"  id="txtstatus" value="${arg.suppdeliverystatusdesc}" readonly="true"  />
+                    </hbox>
+                    <label value="" />
+                </row>
+                <row>
+                    <label   value="Supplier"  />
+                    <hbox>
+                        <textbox width="50px"  id="txtsupid" value="${arg.supplierid}" visible="false" style="background-color:#FFFACD" />
+                        <textbox width="70px"  id="txtsupcode" readonly="false" value="${arg.suppliernumber}" style="background-color:#FFFACD"/>
+                        <textbox width="176px"  id="txtsupdesc" readonly="true" value="${arg.suppliername}" />
+                    </hbox>
+                    <button  id="btnsup" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Suppier" /> 
+                    <label   value="WO No."  />
+                    <textbox width="252px"  id="txtWO" value="${arg.purchaseorder}" readonly="true" style="background-color:#FFFACD" />
+                    <button id="btnwo" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Select WO Item" />
+                </row>
+                <row>
+                    <label   value="Supplier Site"  />
+                    <hbox>
+                        <textbox width="50px"  id="txtsupliersiteid" value="${arg.siteid}" visible="false" style="background-color:#FFFACD"/>
+                        <textbox width="70px"  id="txtsupliersitecode"  value="${arg.sitecode}" readonly="false" style="background-color:#FFFACD" />
+                        <textbox width="176px"  id="txtsupliersitedesc" value="${arg.sitename}" readonly="true" />
+                    </hbox>
+                    <button  id="btnsite" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Supplier Site" /> 
+                    <label   value="Good Delivery No."  />
+                    <textbox width="252px"  id="txtGd" value="${arg.purchaseorder}" readonly="true" style="background-color:#FFFACD" />
+                    <button id="btngd" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Select WO Item" />
+                </row>
+                <row visible="false" >
+                    <label value="" />
+                    <hbox>
+                        <textbox id="flag" width="100px" />
+                        <textbox id="txtsuppdeliveryid" value="${arg.suppdeliveryid}"/>
+                        <textbox id="txtsuppdeliveryno" value="${arg.suppdeliveryno}"  />
+                        <textbox id="txtpoid"  value="${arg.poid}"/>   
+                        <textbox id="txtsuppdeliverydate" value="${arg.suppdeliverydate}" />
+                        <textbox id="txtpo" width="100px" value="${arg.purchaseorder}"/>
+                        <textbox id="txtreqid" width="100px" />
+                        <textbox id="txtcreated" width="100px" />
+                        <textbox id="txtGdId" width="100px" />
+                        <textbox id="txtWhLocId" width="100px" />
+                        <textbox id="txtWhLocCode" width="100px" />
+                        <textbox id="txtWhLocDesc" width="100px" />
+                    </hbox>
+                    
+                </row>
+            </rows>
+        </grid>
+<!--        <div visible="true"> 
+            <textbox id="txtQuery" width="100px" />
+            <button id="query"     label="query" mold="trendy"  />   
+            <button id="go"     label="Add Detail" mold="trendy" />   
+        </div>-->
+       
+        <div>
+            <groupbox width="999px" >
+                <caption label="Goods Receipt Detail" sclass="main z-demo-config"/>	
+                <listbox id="listbox" height="280px" mold="paging"  pageSize="5" tooltiptext="Double Click to View Detail" >
+                    <frozen columns="10"/>
+                    <listhead sizable="true">
+                        <listheader label="receive id" width="130px" sort="auto" visible="false"/>
+                        <listheader label="Line" width="40px" sort="auto"/>
+                        <listheader label="po header id" width="130px" sort="auto" visible="false"/>
+                        <listheader label="po header no" width="130px" visible="false"/>
+                        <listheader label="po line id" width="130px" visible="false"/>
+                        <listheader label="supp delivery id" width="130px" visible="false"/>
+                        <listheader label="GD Line" width="55px"/>
+                        <listheader label="item id" width="130px" visible="false"/>
+                        <listheader label="Item Code" width="75px" visible="true"/>
+                        <listheader label="Item Description" width="250px" visible="true"/>
+                        <listheader label="city id" width="130px" visible="false"/>
+                        <listheader label="city code" width="130px" visible="false"/>
+                        <listheader label="location" width="130px" visible="false"/>
+                        <listheader label="hlr map id" width="130px" visible="false"/>
+                        <listheader label="hlr" width="130px" visible="false"/>
+                        <listheader label="unit of measure" width="130px" visible="false"/>
+                        <listheader label="Qty Ordered" width="130px"/>
+                        <listheader label="Qty Delivered" width="130px" visible="false"/>
+                        <listheader label="Qty Delivered" width="130px" visible="true"/>
+                        <listheader label="Qty Received" width="130px" visible="true"/>
+                        <listheader label="Qty Accepted" width="130px" visible="false"/>
+                        <listheader label="Qty Approved" width="130px" visible="false"/>
+                        <listheader label="Qty Total Received" width="130px" visible="true"/>
+                        <listheader label="Qty Outstanding" width="130px" visible="true"/>
+                        <listheader label="Qty Cancel" width="130px" visible="false"/>
+                        <listheader label="lot id" width="130px" visible="false"/>
+                        <listheader label="Date Lot" width="130px"/>
+                        <listheader label="Expiry Date" width="130px"/>
+                        <listheader label="po distribution id" width="130px" visible="false"/>
+                        <listheader label="Lot Size" width="130px"/>
+                        <listheader label="reason id" width="130px" visible="false"/>
+                        <listheader label="receive line status" width="130px" visible="false"/>
+                        <listheader label="receive dtl id" width="130px" visible="false"/>
+                        <listheader label="Create By" width="130px"/>
+                        <listheader label="Create Date" width="130px"/>
+                        <listheader label="Update By" width="130px"/>
+                        <listheader label="Update Date" width="130px"/>
+                        <listheader label="wh loc id" width="130px" visible="false"/>
+                        <listheader label="Wh Loc Code" width="130px"/>
+                        <listheader label="regional id" width="130px" visible="false"/>
+                        <listheader label="regional description" width="130px" visible="false"/>
+                        <listheader label="Line Ref" width="130px" visible="false"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                    
+                        </listitem>
+                    </template>
+                </listbox>
+            </groupbox>
+        </div>
+        <!--         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>-->
+        <grid id="grid1" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column width="90px"/>
+                <column width="140px"/>
+                <column width="90px"/>
+                <column width="140px"/>
+                <column width="140px"/>
+                <column width="140px"/>
+                <column width="100px"/>
+                <column width="140px"/>
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Created Date" width="50px" />
+                    <textbox   id="txtcreationdate" readonly="true" value="${arg.createddate}" /> 
+                    <label value="Modified Date" width="50px" />
+                    <textbox   id="txtmodifieddate" value="${arg.modifieddate}" readonly="true" /> 
+                    <label value="Confirmed Date" width="50px" />
+                    <textbox id="txtConfirmedDate" readonly="true"  value="${arg.canceleddate}"/>  
+                    <label value="Approved Date"/>
+                    <textbox id="txtApproveDate" readonly="true"/>   
+                </row>
+                <row>
+                    <label   value="Created By" width="50px" />
+                    <textbox   id="txtcreationby" readonly="true" value="${arg.createdby}"/> 
+                    <label value="Modified By " width="60px" />
+                    <textbox   id="txtmodifiedby" readonly="true" value="${arg.modifiedby}" /> 
+                    <label value="Confirmed By " width="60px" />
+                    <textbox   id="txtConfirmedby" readonly="true" value="${arg.canceledby}" />  
+                    <label value="Approved By"/>
+                    <textbox id="txtApproveBy" readonly="true"/>   
+                </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label=""  width="990px" align="center" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                    <hbox>
+                        <button id="save"       mold="trendy" label="Save"      image="/img/Save24.png"  tooltiptext="Save"/>
+                        <button id="btnadd"     label="Add Detail" mold="trendy"   image="/img/Plus24.png" tooltiptext="Add"/>   
+                        <button id="delete"     label="Delete Detail" mold="trendy"   image="/img/DeleteSelection24.png" tooltiptext="Add"/>   
+                        <button id="Edit"       label="Edit SN"    mold="trendy"   image="/img/Edit24.png" tooltiptext="Edit Serial Number"/>   
+                        <button id="addWHloc"     label="Add WH LOC" mold="trendy"   image="/img/Plus24.png" tooltiptext="Add"/>   
+                        <button id="submit"     mold="trendy" label="Confirm"      image="/img/Action24.png"  tooltiptext="Submit"/>
+                        <button id="approve"    mold="trendy" label="Approve"    image="/img/1449847706_OK.png"  tooltiptext="Approve"/>
+                        <button id="cancel"     mold="trendy" label="Cancel"      image="/img/Cancel24.png"  tooltiptext="Cancel"/>
+                        <button id="preview"    mold="trendy" label="Preview"      image="/img/Print24.png"  tooltiptext="Preview"/>
+                        <button id="close"      mold="trendy" label="Close"        image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>   
+                </row>  
+            </rows>
+        </grid>
+    </window>
+</zk>

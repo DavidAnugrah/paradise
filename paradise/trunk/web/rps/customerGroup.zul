@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window  id="win_rps_customergroup" title="Mapping Item RPS to Customer Group" apply="id.my.berkah.rps.setup.controller.CustomerGroupController" border="normal" width="600px">
+        <!--<borderlayout>-->
+        <vlayout>
+            <grid >
+                <columns width="100%">
+                    <column align="right"  width="150px" height="35px"/>                  
+                    <column />
+                </columns>
+                <rows>
+                    <row style="background:white;">
+                        <label value="Item :"/>
+                        <hbox>
+                            <textbox id="itemid"  value="${arg.itemid}"  width="30px" visible="false" />
+                            <textbox id="itemcode" value="${arg.itemcode}" width="70px" style="background-color:#FFFACD"  />
+                            <textbox id="itemdescription" value="${arg.itemdescription}" style="background-color:#FFFACD" width="150px" />
+                            <button id="btnItemFind"  image="/img/search.png" style="margin-top:-2px;"/>
+                       
+                        </hbox>
+                    </row>
+                    <row >
+                        <label value="Customer Group :"/>
+                        <hbox>
+                            <textbox id="custgroupid"  width="30px" value="${arg.custgroupid}" visible="false" />
+                            <textbox id="customerCode" style="background-color:#FFFACD" width="70px" value="${arg.customerCode}"/>
+                            <textbox id="customerGroup" style="background-color:#FFFACD" value="${arg.customerGroup} " width="150px" />
+                            <button id="btnCustomerFind"  image="/img/search.png" style="margin-top:-2px;" />                            
+                        </hbox>
+                    </row>
+                    <row>
+                       <label value="Payment Value :"/>
+                        <hbox>
+                            <checkbox id="paymentequals" value="${arg.paymentequals}" /> 
+                            <label id="nol" value="= Rp. 0"/>
+                            <checkbox id="paymentnonequals" value="${arg.paymentnonequals}" /> 
+                            <label id="lebih0" value=" >= Rp. 0" />
+                        </hbox>
+                    </row>
+                    <row> 
+                         <label value="Status Payment"/>
+                        <hbox>
+                            <radiogroup id="choiceAlloc" />
+                            <radio  label="Paid"  id="rpaid"  value="1" radiogroup ="choiceAlloc" style="color:black;font-weight:bold;" checked="true" />
+                            <radio  label="Payment In Progress"  id="rpayment" value="2" radiogroup ="choiceAlloc" style="color:black;font-weight:bold; margin-left:2px;"/>
+                        </hbox>
+                       
+                    </row>
+                    <row visible="false"> 
+                    <textbox id="flag" width="100px" value="${arg.flag}"/>
+                    <textbox id="id" width="100px" value="${arg.id}" />
+                    <!--<textbox id="itemid" width="100px" value="${arg.itemid}"  />-->
+                    <!--<textbox id="custgroupid" width="100px" value="${arg.custgroupid}"/>-->
+                    <textbox id="createdby" width="100px" value="${arg.createdby}"/>
+                    <textbox id="createddate" width="100px" value="${arg.createddate}"/>
+                    <textbox id="updatedby" width="100px" value="${arg.updatedby}"/>
+                    <textbox id="updateddate" width="100px" value="${arg.updateddate}"/>
+                    <textbox id="expireddate" width="100px" value="${arg.expireddate}"/>
+                    <textbox id="expiredby" width="100px" value="${arg.expiredby}"/>
+                    <textbox id="paymentvalue1" width="100px" value="${arg.paymentvalue1}"/>
+                    <textbox id="paymentvalue2" width="100px" value="${arg.paymentvalue2}"/>
+                    <textbox id="choiceAlloc1" width="100px" value="${arg.choiceAlloc1}"/>
+                    </row>
+                </rows>
+                
+            </grid>
+        </vlayout>
+        <vlayout>
+            <hbox align ="center" pack ="center" hflex = "1" vflex = "1" style="border:1px solid #eee;border-radius:2px; padding-top:5px; padding-bottom:5px;">
+                <button id="btnNew" label="New" image="/img/New24.png" height="32px"/>
+                <button id="btnSave" label="Save" image="/img/Save24.png" height="32px"/>                    
+                <button id="btnExpire" label="Expire" onClick="" image="/img/LockX24.png" height="32px"/>
+                <button id="btnClose" label="Close" image="/img/Logout24.png" height="32px"/>
+            </hbox>
+        </vlayout>
+        <!--</borderlayout>-->
+    </window>
+  
+</zk>

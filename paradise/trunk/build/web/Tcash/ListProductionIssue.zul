@@ -1,0 +1,47 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<zk xmlns = "http://www.zkoss.org/2005/zul">
+    <window id = "List_ProductionIssue" apply = "id.my.berkah.tcash1.controller.ListProductionIssue" title = "List Production issue" border = "normal" width = "100%" height = "100%">
+        <div>
+            <toolbar id = "tb" sclass = "vista" height = "30px">
+                <toolbarbutton id = "new" image = "/img/New24.png"  tooltiptext = "New"/>
+                <toolbarbutton id = "edit" image = "/img/Edit24.png" tooltiptext = "Edit" />
+                <toolbarbutton id = "cancel" image="/img/Cancel24.png" tooltiptext = "Cancel" />
+                <toolbarbutton id = "refresh" image = "/img/Refresh24.png" tooltiptext = "Refresh" />
+                <toolbarbutton id = "find" image = "/img/Find24.png" tooltiptext = "Find" />
+            </toolbar>
+            <textbox visible = "false" id = "txtwhId"/>
+        </div>
+        <borderlayout vflex="1">
+            <center style="padding:5px; background:#e6e6ff;">
+                <listbox id = "listboxPi" mold = "paging"  pageSize = "10" tooltiptext = "Double Click to View Detail" hflex="1" vflex="1">
+                    <listhead sizable = "true">
+                        <listheader label = "No." width = "50px" visible = "true" />
+                        <listheader label = "prod_issue_id" hflex = "min" visible = "false" />
+                        <listheader label = "Production issue no" hflex = "min" visible = "true" />
+                        <listheader label = "Production issue date" hflex = "min" visible = "true" />
+                        <listheader label = "bu_id" hflex = "min" visible = "false" />
+                        <listheader label = "BU code" hflex = "min" visible = "true" />
+                        <listheader label = "wo_id" hflex = "min" visible = "false" />
+                        <listheader label = "Work order no" hflex = "min" visible = "true" />
+                        <listheader label = "item_id" hflex = "min" visible = "false" />
+                        <listheader label = "Item code" hflex = "min" visible = "false" />
+                        <listheader label = "Item description" hflex = "min" visible = "false" />
+                        <listheader label = "wh_id" hflex = "min" visible = "false" />
+                        <listheader label = "Warehouse description" hflex = "min" visible = "true" />
+                        <listheader label = "wip_wh_id" hflex = "min" visible = "false" />
+                        <listheader label = "Work in process warehouse description" hflex = "min" visible = "true" />
+                        <listheader label = "status" hflex = "min" visible = "false" />
+                        <listheader label = "Status description" hflex = "min" visible = "true" />
+                        <listheader label = "create_period" hflex = "min" visible = "false" />
+                        <listheader label = "Create date" hflex = "min" visible = "true" />
+                        <listheader label = "Created by" hflex = "min" visible = "true" />
+                        <listheader label = "Approve date" hflex = "min"  visible = "true" />
+                        <listheader label = "Approved by" hflex = "min"  visible = "true" />
+                        <listheader label = "Submit date" hflex = "min"  visible = "true" />
+                        <listheader label = "Submited by" hflex = "min"  visible = "true" />
+                    </listhead>
+                </listbox>
+            </center>
+        </borderlayout>
+    </window>
+</zk>

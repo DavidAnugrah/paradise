@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_input_file" title="Add/Edit Input File"  border="normal" width="800px" ctrlKeys="#down#up"  closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="780px">
+            <columns>
+                <column label="" width="110px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="10px" align="right" />
+                <column label="" width="100px"  />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Input file No"  />
+                    <textbox width="240px" id="txtbuDesc" readonly="true"  style="background-color:#FFFACD"/>
+                    <label value=""/>
+                    <label   value="Created By" width="50px" />
+                    <hbox>
+                    <textbox width="50px"   id="txtrpid" readonly="true" visible="false" value="${arg.requisitionid}" />
+                    <textbox width="240px"   id="txtrpcode" readonly="true" value="${arg.requisition_number}"  />
+                </hbox>
+                </row>
+                <row>
+                    <label   value="Input File Date"  />
+                    <textbox width="240px"  id="txtdate" readonly="true" value="${arg.requisition_date}"  />
+                    <label value=""/>
+                    <label   value="Created Date" />
+                    <textbox width="240px"  id="txtstatus"   readonly="true"/>
+                </row>
+                <row>
+                    <label   value="Wo No"  />
+                    <textbox width="240px"  id="txtprocessdate" readonly="true"  />
+                    <label value=""/>
+                    <label   value="Modified By" />
+                    <textbox width="240px"  id="txtprocessedby"   readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Status"  />
+                    <textbox width="240px"  id="txtcanceleddate"  readonly="true"  />
+                    <label value=""/>
+                    <label   value="Modified Date" />
+                    <textbox width="240px"  id="txtCanceledby" readonly="true"  />
+                </row>
+                <row visible="false" >
+                    <label value="" />
+                    <hbox>
+                    <textbox id="txtreqin" visible="false" />
+                    <textbox id="txtid" visible="false" value="${arg.id}"/>
+                    <textbox id="flag" width="100px" />
+                    <textbox id="txtout" width="100px" value="${arg.OutReqId}" />
+                    <textbox id="txtrpn" width="100px" />
+                    <textbox id="txtreqid" width="100px" />
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
+
+  <grid>
+           <columns>
+               <column label=""  width="775px" align="center" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <listbox id="listbox" width="550px" height="200px" mold="paging" pageSize="10" sizedByContent="true"  emptyMessage="No items match your search" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="Item id"                 width="10px"  visible="false" />
+                <listheader label="Item Code"               width="100px" visible="true" />
+                <listheader label="Item Description"        width="250px" visible="true" />
+                <listheader label="Qty"                     width="100px" visible="true" />
+                <listheader label="UOM"                     width="90px"  visible="true" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+                    </listbox>
+                    </hbox>   
+                </row>  
+            </rows>
+            </grid>
+          
+        <!--</div>-->
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+         <grid>
+           <columns>
+               <column label=""  width="775px" align="center" />
+            </columns> 
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="SelectLine"     label="Select Line" mold="trendy" image="/img/Plus24.png" tooltiptext="SelectLine"/>   
+                    <button id="GenerateInputFile" label="Generate" mold="trendy" image="/img/Refresh24.png" tooltiptext="Generate Input File" />
+                    <button id="FinD"  mold="trendy" label="Find"        image="/img/New24.png"     tooltiptext="FinD"/>
+                    <button id="DetailFile"       mold="trendy" label="Detail File"       image="/img/Save24.png"  tooltiptext="Detail File"/>
+                    <button id="MonitoringDuplicate"     mold="trendy" label="Monitoring"     image="/img/Action24.png"  tooltiptext="Monitoring Duplicate"/>
+                    <button id="close"      mold="trendy" label="Close"     image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>   
+                </row>  
+            </rows>
+            </grid>
+            </window>
+</zk>

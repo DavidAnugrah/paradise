@@ -1,0 +1,54 @@
+<zk>
+<window id="win_list_bu"  title="List of Business Units" width="700px" border="normal" apply="id.my.berkah.util.controller.LovBUController" closable="true" style="border:1px;background:#3366FF;">
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+    	<grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right" width="10%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">
+                    <label value="Keyword:" style="color: white"/>
+                    <textbox id="keywordBox"   width="100%" value="%"/>
+                    <button  id="searchButton" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="listbox" mold="paging" pageSize="10" style="border:1px;background:#0099FF;color:white;">
+        <listhead style="border:0px;background:#0099FF;color:white;" sizable="true">
+            <listheader label="Id" width="100px" visible="true" style="color: white"/>
+            <listheader label="Bu Code" width="100px" sort="auto(buCode)" style="color: white"/>
+            <listheader label="Bu Description" width="300px" sort="auto(buDescription)" style="color: white"/>
+            <listheader label="Currency" width="100px" style="color: white"/>
+            <listheader label="Currency Desc" width="150px" style="color: white"/>
+            <listheader label="Warehaouse" width="100px" visible="false" style="color: white"/>
+        </listhead>
+        <template name="model" style="border:1px;background:#0099FF;">
+            <listitem>
+                <listcell label="${each.buId}"/>
+                <listcell label="${each.buCode}"/>
+                <listcell label="${each.buDescription}"/>
+                <listcell label="${each.currCode}"/>
+                <listcell label="${each.currDescription}"/>
+                <listcell label="${each.primaryWhId}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+        <grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">	
+                    <button id="submit" label="Submit" orient="horizontal"/>
+                    <button id="close" label="Cancel" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+ </zk>

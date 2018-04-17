@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_brand_id" title="Add/Edit Brand Id" apply="id.my.berkah.urp.controller.BrandIdController" border="normal" width="750px" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="760px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Brand Id" width="50px" />
+                    <intbox width="200px" tabindex="4" id="txtBrandId" readonly="false" value="${arg.brandId}" maxlength="2" style="${arg.styleBrandId}"/>
+                    <label   value="Brand Description" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtBrandDesc" readonly="false" value="${arg.brandDesc}" style="${arg.styleBrandDesc}"/>
+                </row>
+                <row>
+                    <label   value="Effective By Name" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtEffectiveByName" readonly="true" value="${arg.effectiveByName}" />
+                    <label   value="Effective Date" />
+                    <textbox width="200px" tabindex="7" id="txtEffectiveByDate"  readonly="true" value="${arg.effectiveByDate}" />
+                </row>
+                <row>
+                    <label   value="Expired By Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtExpiredByName"  readonly="true" value="${arg.expiredByName}" />
+                    <label   value="Expired Date" />
+                    <textbox width="200px" tabindex="12" id="txtExpiredDate" readonly="true" value="${arg.expiredDate}"/>
+                </row>
+                <row>
+                    <label   value="Created By Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtCreatedByName"  readonly="true" value="${arg.createdByName}" />
+                    <label   value="Created Date" />
+                    <textbox width="200px" tabindex="12" id="txtCreatedDate" readonly="true" value="${arg.createdDate}"/>
+                </row>
+                <row>
+                    <label   value="Modified By Name" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtModifiedByName"  readonly="true" value="${arg.modifiedByName}" />
+                        <label   value="Modified Date" /> 
+                    <textbox width="200px" tabindex="7" id="txtModifiedDate"  readonly="true" value="${arg.modifiedDate}" />
+                </row>
+                <row visible="false">
+                    <textbox width="0px" readonly="true" id="txtId"      visible="false" value="${arg.id}"/>
+                    <textbox width="0px" readonly="true" id="txtError"       visible="false" value="${arg.error}"/>
+                    <textbox width="0px" readonly="true" id="txtMessages"     visible="false" value="${arg.messages}"/>
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="740px">
+            <columns>
+               <column label="" width="260px" align="right" />
+                <column label="" width="100px" align="center"/>
+                <column label="" width="105px" align="center"/>
+                <column label="" width="260px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="newrecord"  tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="save"      tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="process"  tabindex="37" label="Expire"    width="90px"  image="/img/Action24.png"  tooltiptext="UnAllocated"/>
+                    <button id="close"      tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

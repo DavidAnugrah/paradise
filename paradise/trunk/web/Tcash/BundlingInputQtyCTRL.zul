@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_select_qty_bundling"  title="Input Quantity Bundling" width="583px"  border="normal" closable="false"
+             apply="${arg.controller}"
+            style="border:1px;background:#3366FF;" onClose="self.detach();">
+        <grid>
+            <columns>
+                <column label="" align="right" width="80px"/>
+                <column label="" align="left" width="220px"/>
+                <column label="" align="right" width="40px"/>
+                <column label="" align="left" width="220px"/>
+            </columns>
+            <rows>
+                <row>	
+                    <label value="Block From"/>
+                    <textbox width="200px" id="txtBlokFrom" value="${arg.blockTempFrom}" readonly="false"/>
+                   <label/>
+                    <label/>
+                </row>
+                <row visible="false">
+                     <textbox width="100px" id="txtBlockTempFrom" value="${arg.blockTempFrom}" readonly="true" />
+                    <textbox width="100px" id="txtblockTempTo" value="${arg.blockTempTo}" readonly="true" />
+                    <textbox width="100px" id="txtTempItemDtlId" value="${arg.tempItemDtlId}" readonly="true"/>
+                </row>
+                <row>	
+                     <label value="To"/>
+                    <textbox width="200px" id="txtBlokTo" readonly="false" />
+                    <label value="QTY"/>
+                    <decimalbox width="70px" id="txtQty" style="background-color:#FFFACD;text-align:right" format="####,###,###" constraint="no negative"/>
+                    <!--intbox constraint="no empty"-->
+                </row>
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column label="" align="right" width="280px"/>
+                <column label="" align="left" width="280px"/>
+            </columns>
+            <rows>
+                <row>	
+                    <button id="btnOk"      tabindex="38" label="OK"      width="85px"     />
+                    <button id="btnClose"      tabindex="38" label="close"      width="100px"    />
+                </row>
+            </rows>
+        </grid>
+    </window>
+</zk>

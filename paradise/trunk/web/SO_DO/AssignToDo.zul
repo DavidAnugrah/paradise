@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_assign_do" title="DO List" apply="id.my.berkah.sodo.controller.AssigntoDoCTRL" border="normal" width="900px"  ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+     <listbox id="listbox" height="300px"  >
+            <listhead sizable="true">
+                
+                <listheader label="DO No." width="100px" />
+                <listheader label="Created Date"  width="100px"/>
+                <listheader label="Bussiness Unit" width="100px" />
+                <listheader label="WareHouse" width="100px" />
+                <listheader label="Costumer" width="140px" />
+                <listheader label="Costumer Site" width="140px" />
+                <listheader label="Attn" width="80px" />
+                <listheader label="Forward Agent" width="100px"/>
+                </listhead>
+            <template name="model">
+                <listitem>
+                    
+                    <listcell label="${each.donumber}" />
+                    <listcell label="${each.createby}" />
+                    <listcell label="${each.budesc}"  />
+                    <listcell label="${each.whcode}"/>
+                    <listcell label="${each.companydesc}"  />
+                    <listcell label="${each.dealerdesc}"  />
+                    <listcell label="${each.attn}"  />
+                    <listcell label="${each.forwardagentdesc}"  />
+                </listitem>
+            </template>
+        </listbox>
+          <grid>
+            <columns>
+                <column label="" width="450px" align="right" />
+               
+            </columns>
+            <rows>
+                <row>
+                    <button id="assign1" label="Assign" width="130px"    height="30px"/>
+                    <button id="exit" label="Close" width="130px"    height="30px"/>
+                </row>
+            </rows>
+        </grid>
+          </window>
+</zk>

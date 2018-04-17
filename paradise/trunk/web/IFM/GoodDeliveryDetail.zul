@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_GD_detail" title="Add/Edit GoodDelivery Detail" apply="id.my.berkah.ifm.controller.GoodDeliveryDetailCTRL" border="normal"  width="750px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="760px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item Code" width="50px" />
+                    <hbox>
+                    <textbox width="50px"  id="txtitemid" visible="false" style="background-color:#FFFACD"/>
+                    <textbox width="150px" tabindex="1" id="txtitemcode"  style="background-color:#FFFACD"/>
+                    <button  id="btnitem"  mold="trendy" width="40px" height="25px"  src="/img/search.png"  tooltiptext="LOV Item"/>
+                    </hbox>
+                     <label   value="Item Description" width="50px" />
+                    <textbox width="205px" tabindex="2" id="txtitemdesc"  />
+                </row>
+                <row>
+                    <label   value="Production Date" width="50px" />
+                    <hbox>
+                    <datebox width="200px" id="txtprodate" tabindex="3"  format="dd-MM-yyyy"  style="background-color:#FFFACD"/>
+                    </hbox>
+                     <label   value="Regional Description" /> 
+                    <textbox width="200px" tabindex="4" id="txtregdesc"  />
+                </row>
+                <row>
+                    <label   value="HLR Description" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txthlr"  style="background-color:#FFFACD"  />
+                    <label   value="Blok From" />
+                    <textbox width="200px" tabindex="6" id="txtblokfrom"    style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="UOM" width="50px" />
+                    <textbox width="205px" tabindex="7" id="txtuom"  style="background-color:#FFFACD"  />
+                    <label   value="Blok To" />
+                    <textbox width="200px" tabindex="8" id="txtblokto"    style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Qty Order" width="50px" />
+                    <textbox width="205px" tabindex="9" id="txtorderqty"  style="background-color:#FFFACD"  />
+                    <label   value="Qty Delivery" />
+                    <textbox width="200px" tabindex="10" id="txtdeliveryqty"    style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Qty Total Delivery" width="50px" />
+                    <textbox width="205px" tabindex="11" id="txtotal"  style="background-color:#FFFACD"  />
+                    <label   value="Qty OutStanding" />
+                    <textbox width="200px" tabindex="12" id="txtoutstanding"    style="background-color:#FFFACD"/>
+                </row>
+                <row>
+                    <label   value="Line Remark" width="50px" />
+                    <textbox width="200px" tabindex="13" id="txtlineremark" />
+                   <label   value="Status" width="50px" />
+                     <textbox width="200px" tabindex="14" id="txtstatus"  />
+                </row>
+            
+                <row>
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="200px" tabindex="15" id="txtcreateddate"  readonly="true"  />
+                   <label   value="Modified Date" width="50px" />
+                     <textbox width="200px" tabindex="16" id="txtmodifdate"  readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Created By" width="50px" />
+                    <textbox width="200px" tabindex="17" id="txtcreatedby"  readonly="true"  />
+                   <label   value="Modified By" width="50px" />
+                     <textbox width="200px" tabindex="18" id="txtmodifiedby"  readonly="true"  />
+                </row>
+            
+                <row visible="false">
+                    <textbox width="100px" readonly="true" id="flag" />        
+                    <textbox id="txtlineno" />
+                    <textbox id="txtsuppdeliveryid" value="${arg.InSuppDeveryId}"/>
+                    <textbox width="100px" readonly="true" id="txtid" />
+                    <textbox width="100px" readonly="true" id="txtcityid" />
+                    <textbox width="100px" readonly="true" id="txtwhid" />
+                    <textbox id="txtpoid"  value="${arg.poid}"/>   
+                    <textbox id="txtsuppdeliverydate" value="${arg.suppdeliverydate}" />
+                    <textbox id="txtpo" width="100px" value="${arg.purchaseorder}"/>
+                    <textbox id="txtorderdate" />
+                    <textbox id="txtcreatperiode"/>
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="740px">
+            <columns>
+               <column label="" width="260px" align="right" />
+                <column label="" width="100px" align="center"/>
+                <column label="" width="105px" align="center"/>
+                <column label="" width="260px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="newrecord"  mold="trendy" tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="save"       mold="trendy" tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="process"    mold="trendy" tabindex="37" label="Expire"    width="90px"  image="/img/Action24.png"  tooltiptext="UnAllocated"/>
+                    <button id="close"      mold="trendy"  tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

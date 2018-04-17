@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_GD_detail" title="Add/Edit GoodDelivery Detail" apply="${arg.controller}" border="normal"  width="1000px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <listbox id="listbox" mold="paging" pageSize="100" height="330px" multiple="true" checkmark="true">
+            <listhead  style="background:#eee; color:black;">
+                <!--<listheader label="Chk" width="40px" sort="" />-->
+                
+                <listheader label="Item Code" width="100px" sort="auto(locationDesc)" />
+                <listheader label="Item Description" width="280px" sort="auto(locationDesc)"   />
+                <listheader label="Order Date" width="100px" sort="auto(locationDesc)" />
+                <listheader label="UOM" width="100px" sort="auto(locationDesc)" />
+                <listheader label="Qty Ordered" width="85px" sort="auto(locationDesc)" />
+                <listheader label="warehouse_id" width="100px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="Qty Total Delivered" width="120px" sort="auto(locationDesc)"  visible="true" />
+                <listheader label="Qty Outstanding" width="120px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="wh_id" width="280px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="city_id" width="280px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="City Desc" width="280px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="regional_id" width="280px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="regional_description" width="280px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="bu_id" width="280px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="bu_id" width="280px" sort="auto(locationDesc)" visible="false"/>
+                <listheader label="Range From" width="280px" sort="auto(locationDesc)" />
+                <listheader label="Range To" width="280px" sort="auto(locationDesc)" />
+                <listheader label="po_id" width="130px" visible="false"/>
+                <listheader label="position_num" width="100px"  visible="false" />
+                <listheader label="item_id" width="100px" sort="auto(locationDesc)" visible="false"/>
+            </listhead>
+            <template name="model" >
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+        <grid id="grid_find" oddRowSclass="non-odd" width="980px">
+            <columns>
+               <column label="" width="980px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <!--<button id="newrecord"  mold="trendy" tabindex="30" label="New"        width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>-->
+                    <button id="save"       mold="trendy" tabindex="38" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <!--<button id="process"    mold="trendy" tabindex="37" label="Expire"    width="90px"  image="/img/Action24.png"  tooltiptext="UnAllocated"/>-->
+                    <button id="close"      mold="trendy"  tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

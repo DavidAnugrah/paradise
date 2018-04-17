@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_bundling_allocated"  title="Bundling" apply="id.my.berkah.tcash1.controller.BundlingAllocated" border="normal" width="600px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+          <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        
+        <grid id="grid" oddRowSclass="non-odd" width="580px">
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="280px"  />
+                <column label="" width="150px"  />
+            </columns>
+            <rows>
+                   <row>
+                    <label   value="Item"  />
+                    <hbox>
+                    <textbox width="50px" id="txtitemcode"  value="${arg.detail.item_code}" readonly="true" />   
+                    <textbox width="190px" id="txtitemDesc" value="${arg.detail.item_desc}" readonly="true" />   
+                    </hbox>
+                     <label  />
+                </row>
+                <row>
+                    <label   value="Regional"  />
+                    <hbox>
+                    <textbox width="250px" id="txtregDesc" readonly="true" />   
+                    </hbox>
+                    <button  id="btnreg" width="40px"  height="25px" src="/img/search.png"  tooltiptext="Lov Regional" /> 
+                </row>
+                <row>
+                    <label   value="Available Qty" />
+                    <textbox width="100px"  id="txttresh" readonly="true" style="text-align:right" />
+                     <label   />
+                </row>
+                <row>
+                    <label   value="Qty" />
+                    <intbox width="100px" format="#,##0" id="txtqty"  />
+                     <label />
+                </row>
+               
+                <row visible="false">
+                    <!--<hbox>-->
+                      <textbox id="txtoutId"/>
+                      <hbox>
+                          <textbox id="txtwip" width="30px" value="${arg.whip}" />  
+                         <textbox id="txtbundlingid" width="30px" value="${arg.detail.bundling_id}"  />
+                         <textbox id="txtbundlingno" width="30px" value="${arg.bundlingNo}"  />
+                       <textbox id="txtbdldtlid" width="30px"  value="${arg.detail.bundling_dtl_id}" /> 
+                        <textbox id="txtregId"/>
+                        <textbox id="txtstatus" value="${arg.status}"/>
+                      </hbox>
+                     <textbox id="itemId"    width="30px"   value="${arg.detail.item_id}"/>  
+                     <textbox id="flag"/>
+
+                </row>
+                         </rows>
+        </grid>
+        
+            <listbox id="listbox"  height="230px" mold="paging" pageSize="10">
+            <listhead sizable="true">
+                <listheader label="id"                      width="20px"  visible="false"/>
+                <listheader label="bdlid"                   width="20px"  visible="false"/>
+                <listheader label="bdldtlid"                width="20px"  visible="false"/>
+                <listheader label="Item id"                 width="100px"  visible="false"/>
+                <listheader label="regionalid"              width="100px"  visible="false"/>
+                <listheader label="Regional Code"           width="100px"  visible="true"/>
+                <listheader label="Regional Description"    width="250px"  visible="true"/>
+                <listheader label="Qty"                     width="120px"  visible="true"/>
+                <listheader label="Available Qty"           width="110px"  visible="true"/>
+                <listheader label="create date"             width="50px"  visible="false"/>
+                <listheader label="create by"               width="50px"  visible="false"/>
+                <listheader label="approved date"           width="50px"  visible="false"/>
+                <listheader label="approved by"             width="50px"  visible="false"/>
+            </listhead>
+        </listbox>
+   
+    <grid id="grid1" oddRowSclass="non-odd" width="580px">
+            <columns>
+                <column label="" width="100px" align="right" />
+                <column label="" width="300px" align="right"  />
+                <column label="" width="180px"  />
+            </columns>
+            
+            
+            <rows>
+                <row>
+                    <label/>
+                    <label value="Total :"/>
+                    <label id="labeltotal"/>
+                </row>
+                <row>
+                </row>
+                <row>
+                </row>
+            </rows>
+    </grid>
+
+    <div align="center">
+        <hbox>
+        <button id="newrecord" tabindex="6"  label="New"      height="35px"    image="/img/New24.png"   tooltiptext="New Record"/>   
+        <button id="add" label="Add Detail" height="35px" width="105px"  image="/img/Plus24.png" tooltiptext="Add"/> 
+        <button id="btndelete" tabindex="5"  label="Delete Line"   height="35px"   image="/img/DeleteSelection24.png" tooltiptext="Delete List" />
+        <button id="Edit"       label="Edit SN"  height="35px"      image="/img/Edit24.png" tooltiptext="Edit Serial Number"/>   
+        <button id="save"      tabindex="18" label="Save"  visible="false"        height="35px"   width="80px"     image="/img/Save24.png"     tooltiptext="Save"/>
+        <button id="close" label="Close" tooltiptext="Close" height="35px" width="85px"   image="/img/Logout24.png" />
+        </hbox>
+    </div>
+    </window>
+</zk>

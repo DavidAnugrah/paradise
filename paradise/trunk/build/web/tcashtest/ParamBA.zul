@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_BA" title="Berita Acara HRN" apply="${arg.controller}"  border="normal" width="980px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <hbox>
+        <groupbox width="480px" >
+            <caption label="PIHAK PERTAMA" sclass="main z-demo-config"/>	
+        
+        <grid id="grid" oddRowSclass="non-odd" width="460px">
+            <columns>
+                <column label="" width="170px" align="right" />
+                <column label="" width="280px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="NAMA" width="50px" />
+                    <hbox>
+                    <textbox width="200px"   id="txtNamaPertama"  />
+                    <button id="btnPihak1" width="40px" height="20px"  src="/img/search.png"  tooltiptext="Lov" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="JABATAN"  />
+                        <textbox width="200px"  id="txtJabatanPertama"  />
+                </row>
+                <row>
+                    <label   value="NIK" width="50px" />
+                    <textbox width="200px"  id="txtNikPertama"  />
+                </row>
+            </rows>
+        </grid>
+        </groupbox>
+        <groupbox width="480px" >
+            <caption label="PIHAK KEDUA" sclass="main z-demo-config"/>	
+        
+        <grid oddRowSclass="non-odd" width="460px">
+            <columns>
+                <column label="" width="170px" align="right" />
+                <column label="" width="280px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="NAMA" width="50px" />
+                    <hbox>
+                    <textbox width="200px"   id="txtNamaKedua"  />
+                    <button id="btnPihak2" width="40px" height="20px"  src="/img/search.png"  tooltiptext="Lov" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="JABATAN"  />
+                        <textbox width="200px"  id="txtJabatanKedua"  />
+                </row>
+                <row visible="false">
+                    <label   value="NIK" width="50px" />
+                    <textbox width="200px"  id="txtNikKedua"  />
+                </row>
+            </rows>
+        </grid>
+        </groupbox>
+        </hbox>
+        <grid id="grid_find" oddRowSclass="non-odd" width="960px">
+            <columns>
+                <column label=""   align="center" />
+            </columns>
+            <rows>
+                
+                <row height="35px" width="970px">
+                    <hbox>
+                        <button id="printBA"  tabindex="38" label="Print"          height="35px"            width="80px"   image="/img/Report24.png"  tooltiptext="Print"/>
+                        <button id="close"     tabindex="39" label="Exit"          height="35px"            width="80px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

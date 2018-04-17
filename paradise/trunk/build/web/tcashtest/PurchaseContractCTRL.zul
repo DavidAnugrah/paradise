@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_purchase_contract" title="Add/Edit Purchase Contract" apply="id.my.berkah.tcash.controller.PurchaseContract" border="normal" width="900px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="880px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="318px" />
+            </columns>
+            <rows id="rowh">
+                   <row>
+                    <label   value="Contract" width="50px" />
+                    <hbox>
+                    <textbox width="10px" visible="false" id="txtcontractid" value="${arg.contractid}" readonly="true" />
+                    <textbox width="210px" tabindex="1" id="txtcontract" value="${arg.contract}" readonly="true"  />
+                    <!--<button id="btncontract" width="40px" height="20px"  src="/img/search.png"  tooltiptext="Lov Contract"/>-->
+                    </hbox>
+                    <label   value="Term Of Payment" width="100px" />
+                    <hbox>
+                    <textbox width="50px" id="txtTOPid" visible="false"  value="${arg.termsofpayment}" style="background-color:#FFFACD"/>    
+                    <combobox width="150px"  mold="rounded" id="txtTOPcode"  value="${arg.termsofpaymentname}" readonly="true" >
+                    <comboitem label="PRE PAYMENT" />
+                    <comboitem label="COD" />
+                    </combobox>    
+                    <!--<textbox width="130px"  id="txtTOPdesc" value="${arg.termsofpaymentname}" readonly="true" visible="true" />-->    
+                    <!--<button id="btntop" width="40px" height="20px"  src="/img/search.png"  tooltiptext="Lov Term Of Payment"/>-->
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Supplier" width="50px" />
+                    <hbox>
+                    <textbox width="50px" visible="false" id="txtsupplierid" value="${arg.supplierid}" readonly="false" style="background-color:#FFFACD"/>
+                    <textbox width="50px" tabindex="4" id="txtsuppliercode" value="${arg.supplier}" readonly="false" style="background-color:#FFFACD"/>
+                    <textbox width="150px"  id="txtsupplierdesc" value="${arg.suppliername}" readonly="true" />
+                    <button id="btnsup" mold="trendy" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov Supplier"/>
+                    </hbox>
+                    <label   value="Forwarding Agent" />
+                    <hbox>
+                    <!--<textbox width="50px" visible="false" id="txtforwardid" value="${arg.contractid}" readonly="false" style="background-color:#FFFACD" />-->
+                    <textbox width="50px" tabindex="5" id="txtforwardcode" value="${arg.forwardingagent}" readonly="false"  />
+                    <textbox width="150px" tabindex="6" id="txtforwarddesc" value="${arg.forwardingagentname}" readonly="true"  />
+                    <button id="btnfwd" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Forwarding Agent"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Supplier Site" width="50px" />
+                    <hbox>
+                    <textbox width="50px" visible="false" id="txtsupsiteid" value="${arg.siteid}" readonly="false" />
+                    <textbox width="50px" tabindex="7" id="txtsupsitecode" value="${arg.suppliersite}" readonly="false" />
+                    <textbox width="150px" tabindex="8" id="txtsupsitedesc" value="${arg.sitename}"  readonly="true"  />
+                    <button id="btnsupsite" width="40px" mold="trendy" height="25px"  src="/img/search.png"  tooltiptext="Lov Supplier Site"/>
+                    </hbox>
+                    <label   value="Contract Date" />
+                    <textbox width="210px" tabindex="9" value="${arg.creationdate}" id="txtContractDate" readonly="true" />
+                </row>
+             
+                <row>
+                    <label   value="Description" width="50px" />
+                    <textbox width="210px" tabindex="10" id="txtdesc" value="${arg.description}" readonly="false" />
+                    <label   value="effective Date" />
+                    <datebox width="210px" tabindex="11" id="txteffectiveDate" value="${arg.effectivedate}" constraint="no past,no empty" readonly="true" format="dd-MM-yyyy" style="background-color:#FFFACD"  />
+                </row>
+                <row >
+                    <label   value="Currency" width="50px" />
+                        <textbox width="210px" tabindex="12" id="txtcurrency" value="${arg.currency}"  readonly="true" />
+                        <label   value="Expire Date" /> 
+                    <textbox width="210px"  id="txtexpiredate" value="${arg.expirydate}"   readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Agreed Quantity" width="50px" />
+                        <intbox width="210px" tabindex="14" id="txtquantity" value="${arg.agreedquantity}" readonly="false" style="background-color:#FFFACD"   />
+                        <label   value="Document Reff" /> 
+                    <textbox width="210px" tabindex="15" id="txtdoc" value="${arg.contractmapno}" readonly="false"  />
+                </row>
+                <row >
+                    <label   value="Agreed Amount" width="50px" />
+                        <intbox width="210px"  tabindex="16" id="txtamount" value="${arg.agreedamount}" readonly="false" style="background-color:#FFFACD"   />
+                        <label   value="Status" /> 
+                        <hbox>
+                     <textbox width="20px"  visible="false" id="txtstat" value="${arg.contractstatus}" readonly="true"  />
+                     <textbox width="210px" tabindex="17"  id="txtstatdesc" value="${arg.contractstatusname}" readonly="true"  />
+                        </hbox>
+                   
+                </row>
+                <row visible="false">
+                    <textbox width="100px" readonly="true" id="txtout"  value="${arg.outContractId}" />
+                    <textbox width="100px" readonly="true" id="txtflag"   />
+                    <textbox width="100px" readonly="true" id="txttotal"   />
+                    <textbox width="100px" readonly="true" id="txtcontractdtlId"   />
+                </row>
+            </rows>
+        </grid>
+      
+        <div>
+          <listbox id="listbox" height="180px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="Contract id"          width="50px"  visible="false"  />
+                <listheader label="Position Numebr"      width="150px" visible="false"  />
+                <listheader label="Item Id"              width="100px" visible="false" />
+                <listheader label="Item"                 width="100px" visible="true" sort="auto"  />
+                <listheader label="Item Desciption"      width="200px" visible="true"  sort="auto" />
+                <listheader label="Minimum Quantity"     width="150px" visible="true"  sort="auto"  />
+                <listheader label="Maximum Quantity"     width="150px" visible="true"  sort="auto"  />
+                <listheader label="Purchase Unit"        width="120px" visible="true"  sort="auto"  />
+                <listheader label="Price"                width="100px" visible="true"  sort="auto"  />
+                <listheader label="Disc Percentage"      width="120px" visible="true"  sort="auto"  />
+                <listheader label="Disc Amount"          width="120px" visible="true"  sort="auto"  />
+                <listheader label="Purchase Price Unit"  width="200px" visible="false" sort="auto" />
+                <listheader label="Amount"               width="100px" visible="false"  sort="auto"  />
+                <listheader label="Purchase Price Group" width="200px"  visible="false" />
+                <listheader label="Contract Detail"      width="100px" visible="false" sort="auto" />
+            </listhead>
+            <template name="model">
+                <listitem>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+         <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+      <grid id="grid1" oddRowSclass="non-odd" width="880px">
+              <columns>
+               <column label="" width="120px" align="right" />
+                <column label="" width="170px" align="center"/>
+                <column label="" width="100px" align="right"/>
+                <column label="" width="170px" align="left"/>
+                <column label="" width="120px" align="right"/>
+                <column label="" width="190px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Creation Date" width="50px" />
+                    <textbox width="150px"  id="txtcreationdate" value="${arg.creationdate}" readonly="true" /> 
+                    <label value="Modified Date" width="50px" />
+                    <textbox width="150px"  id="txtmodifieddate" value="${arg.lastupdatedate}" readonly="true" /> 
+                    <label value="Terminated Date" width="50px" />
+                    <textbox width="150px"  id="txttermiated" readonly="true"  value="${arg.terminatedate}"/>     
+                </row>
+                <row>
+                    <label   value="Creation By" width="50px" />
+                    <textbox width="150px"  id="txtcreationby" readonly="true" value="${arg.createdby}"/> 
+                    <label value="Modified By " width="60px" />
+                    <textbox width="150px"  id="txtmodifiedby" readonly="true" value="${arg.lastupdatedby}" /> 
+                    <label value="Terminated By " width="60px" />
+                    <textbox width="150px"  id="txttermiatedby" readonly="true" value="${arg.terminateby}" />     
+                </row>
+            </rows>
+        </grid>
+         
+
+        <grid id="grid_find" oddRowSclass="non-odd" width="880px">
+            <columns>
+               <column label="" width="880px" align="center" />
+
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="btnadd"     label="Add Detail" mold="trendy" width="120px"   image="/img/Plus24.png" tooltiptext="Add"/>   
+                    <button id="btnrefresh" label="refresh"    mold="trendy" width="120px"   image="/img/Refresh24.png" tooltiptext="Refresh" />
+                    <button id="newrecord"  mold="trendy" label="New"      width="120px"     image="/img/New24.png"     tooltiptext="New Record"/>
+                    <button id="btnsave"   mold="trendy"      tabindex="18" label="Save"      width="120px"    image="/img/Save24.png"     tooltiptext="Save"/>
+                    <button id="btndelete"   mold="trendy"   visible="false"   tabindex="18" label="del"      width="120px"    image="/img/Save24.png"     tooltiptext="Save"/>
+                    <button id="btnactive"   mold="trendy"    tabindex="18" label="Active"      width="120px"   image="/img/Ok24.png"     tooltiptext="Active"/>
+                    <button id="btnterminated" mold="trendy"  tabindex="19" label="Terminated"  width="120px"   image="/img/Action24.png"  tooltiptext="Terminated"/>
+                    <button id="close"  mold="trendy"         tabindex="38" label="Close"       width="120px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                  </row>
+            </rows>
+        </grid>	 
+        </window>
+</zk>

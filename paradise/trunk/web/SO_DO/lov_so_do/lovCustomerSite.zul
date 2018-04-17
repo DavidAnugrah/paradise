@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_list_CustomerSite"  title="List of Customer Site" width="450px" border="normal" apply="${arg.controller}" style="border:1px;background:#3366FF;">
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%">
+    	<grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right" width="15%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">
+                    <label value="Keyword:" style="color: white"/>
+                    <textbox id="keywordBox"   width="100%" value="%"/>
+                    <button id="searchButton" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+                <row visible="false">
+                    <textbox id="flag" width="100px" value="${arg.flag}" visible="false"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="listbox" mold="paging" pageSize="10" style="border:1px;background:#0099FF;color:white;">
+	<listhead style="border:0px;background:#0099FF;color:white;">
+            <listheader label="Company Code" width="80px" style="color: white"/>
+            <listheader label="Description" width="300px" sort="auto(locationDesc)" style="color: white"/>
+	</listhead>
+        <template name="model" style="border:1px;background:#0099FF;">
+            <listitem>
+		<listcell label="${each.companyCode}"/>
+		<listcell label="${each.desc}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;background:#3366FF;" width="100%" >
+        <grid>
+            <columns style="border:1px;background:#3366FF;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;background:#3366FF;">	
+                    <button id="submit" label="Submit" orient="horizontal"/>
+                    <button id="close"  label="Cancel" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+</zk>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="find_Monitoring_DPA_Rsc" title="Json" apply="id.my.berkah.rps.dpa.controller.JsonController" width="800px" height="500px" border="normal"  ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <vlayout>
+        <button id="json" label="Get Json" width="100px" height="30px"/>
+        <hlayout>
+        <label value="Id :"/>
+        <textbox id="txtJason" width="150px"/>
+        </hlayout>
+        </vlayout>
+        <grid>
+            <columns>
+                <column label="Id"                  width="70px" visible="true" sort="auto" />
+                <column label="Brand Id"            width="70px" visible="true" />
+                <column label="Brand Description"   width="130px" visible="true"/>
+                <column label="Created Date"        width="130px"  visible="true"/>
+                <column label="Created By"          width="130px" visible="true"/>
+<!--                <column label="Modified Date"       width="130px" visible="true" sort="auto(modifiedDate)"/>
+                <column label="Modified By"         width="100px" visible="true" sort="auto(modifiedBy)"/>
+                <column label="Effective Date"      width="140px" visible="true" sort="auto(effectiveDate)"/>
+                <column label="Effective By"        width="130px" visible="true" sort="auto(effectiveBy)"/>
+                <column label="Expired Date"        width="130px" visible="true" sort="auto(expiredDate)"/>
+                <column label="Expired By"          width="100px" visible="true" sort="auto(expiredBy)"/>-->
+                <!--<column width="150px" />-->
+            </columns>
+            <rows id="detailJson">
+<!--                <row>
+                    <textbox id="txtId" width="120"/>
+                </row>-->
+            </rows>
+            
+        </grid>
+    </window>
+</zk>

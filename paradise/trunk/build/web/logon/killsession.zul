@@ -1,0 +1,28 @@
+<zk>
+   <window id="wkillsession" mode="modal" title="Ambil alih !" apply="id.my.berkah.util.controller.KillSessionController" style="border:0px;background:#FF9900;" width="321px" height="123px" closable="false" maximizable="false" maximized="false" position="center" sizable="false">
+       
+       <grid height="100%" width="100%" style="border:0px;background:#FF0000;" oddRowSclass="non-odd">
+	        <columns>
+	           <column align="left" width="100%" style="border:0px;"/>
+	        </columns>
+	        
+	        <rows style="border:0px;background:#FF0000;">
+	            <row style="border:0px;background:#FF0000;" width="100%">
+	              <label style="color: white" value="User sudah login, apakah akan di ambil alih ?"/>	
+	            </row>
+                    <row style="border:0px;background:#FF0000;" width="100%">
+                        <hbox height="15px" style="border:0px;background:#FF0000;"/>
+                    </row>
+                    <row style="border:0px;background:#FF0000;">
+                        <hbox>
+                            <button id="btnKill"  label="Ambil" height="25px" width="50px"/> 
+                            <button id="btnBatal" label="Batal" height="25px" width="50px"/>
+                        </hbox>
+                    </row>
+                    <row visible="false">
+                        <textbox id="sessionId" value="${arg.sessionId}"/>
+                    </row>
+	        </rows>
+       </grid>
+    </window>
+</zk>

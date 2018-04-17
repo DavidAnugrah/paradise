@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_view_delivery_order" apply="id.my.berkah.sodo.controller.ViewDeliveryOrderCtrl" title="View Delivery Order" border="normal" width="850px" ctrlKeys="#down#up"  closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div width="830px">
+            <groupbox width="830px" sclass="main z-demo-config">
+                <caption label="Delivery Order" />			
+                <separator height="8px"></separator>
+                <!--                <vlayout spacing="15px"/>-->
+                <grid  id="grid" oddRowSclass="non-odd" width="825px">
+                       
+                    <columns>
+                        <column label="" width="100px" align="right" />
+                        <column label="" width="268px" />
+                        <column label="" width="140px" align="right" />
+                        <column label="" width="310px" />
+                    </columns>
+                    <rows id="rowh">
+                        <row>
+                            <label   value="DO No." width="50px" />
+                            <hbox>
+                                <textbox width="200px" tabindex="4" id="txtDoNo" readonly="false" value="${arg.unAllocatedNumber}"/>
+                                <textbox width="250px" tabindex="4" id="txtDoId" readonly="true" visible="false" value="${arg.doId}"/>
+                    
+                            </hbox>
+                            <label   value="DO Date" width="50px" />
+                    
+                            <hbox>
+                                <textbox width="120px" tabindex="5" id="txtDoDate" readonly="false" value="${arg.unAllocatedDate} "/>
+                                <label   value="Status" width="10px" />
+                                <textbox width="120px" tabindex="5" id="txtStatussdesc" readonly="false"  />
+                                <textbox width="50px" tabindex="5" id="txtstatussid" readonly="true" visible="false"/>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label   value="WareHouse" width="50px" />
+                            <hbox>
+                                <textbox id="txtWarehouseid" width="40px" readonly="false" />
+                                <textbox id="txtwarehousedesc" width="200px" readonly="false" />
+                            </hbox>
+                    
+                            <label value="Attention" width="50px" />
+                            <cell colspan="2">
+                                <textbox width="288px" tabindex="4" id="txtAttention"  readonly="false"/>
+                            </cell>
+                        </row>
+                        <row>
+                            <label   value="Customer" width="50px" />
+                            <textbox id="txtCust" width="250px"  readonly="false"/>                  
+                            <label value="Delivery Date" width="50px" />
+                            <hbox>
+                                <textbox width="110px" tabindex="4" id="txtDeliveryDate"  readonly="false"/>
+                                <label value="Freight Cost" width="80px" />
+                                <textbox width="100px" tabindex="4" id="txtFreightCost"  readonly="false"/>
+                            </hbox>
+                        </row>
+                        <row>
+                            <label   value="Customer Site" width="50px" />
+                            <textbox id="txtCustsite" width="250px" value="${arg.type}" readonly="false"/>                  
+                            <label value="Forwarding Agent" width="100px" />
+                            <hbox>
+                                <textbox width="50px" tabindex="4" id="txtForwardingAgentcode"  readonly="false"/>
+                                <textbox width="200px" tabindex="4" id="txtForwardingdesc" readonly="false"/>
+                                <button id="btnlovfwd" tabindex="4" width="40px" src="/img/search.png" />
+                            </hbox>
+                        </row>
+                
+                    </rows>
+                </grid>
+            </groupbox>
+            <!--        <div width="810px">-->
+            <groupbox width="830px" sclass="main z-demo-config">
+                <caption label="DO Lines" />			
+                <!--                <separator height="15px"></separator>-->
+                <!--                <vlayout spacing="15px">-->
+                <listbox id="listbox" height="200px">
+                    <listhead sizable="true">
+                        <listheader label="Line" width="35px"  sort="auto(line)"/>
+                        <listheader label="Reference No"   width="160px" visible="true"/>
+                        <listheader label="Ref Line" width="75px"  visible="true"/>
+                        <listheader label="Alloc Id" width="10px" visible="false"/>
+                        <listheader label="Item_id"  width="100px"  visible="false"/>
+                        <listheader label="Item"  width="100px"  visible="true"/>
+                        <listheader label="Unit of Measurement"  width="150px"  visible="true"/>
+                        <listheader label="Lot id"  width="5px"  visible="false"/>
+                        <listheader label="Lot"  width="100px"    visible="true"/>
+                        <listheader label="HLR"  width="75px"    visible="true"/>
+                        <listheader label="Location"  width="100px"    visible="true"/>
+                        <listheader label="Blok From"   width="150px"    visible="true"/>
+                        <listheader label="Blok To"  width="150px"    visible="true"/>
+                        <listheader label="Quantity"  width="100px"    visible="true"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>
+                            <listcell label="${each.lineno}"/>
+                            <listcell label="${each.sono}"/>
+                            <listcell label="${each.linenoref}"/>
+                            <listcell label="${each.allocid}"/>
+                            <listcell label="${each.itemid}"/>
+                            <listcell label="${each.itemdesc}"/>
+                            <listcell label="${each.uom}"/>
+                            <listcell label="${each.lotid}"/>
+                            <listcell label="${each.lot}"/>
+                            <listcell label="${each.hlrdesc}"/>
+                            <listcell label="${each.location}"/>
+                            <listcell label="${each.blockfrom}"/>
+                            <listcell label="${each.blockto}"/>
+                            <listcell label="${each.quantity}"/>
+                        </listitem>
+                    </template>
+                </listbox>
+            </groupbox>
+            <!--        </div>-->
+            <!--        <div>
+             <paging id="userPaging" width="100%" style="color: black"/>
+         </div>
+            -->
+            <grid id="grid_find"  width="830px" >
+                <columns>
+                    <column label="" width="150px" align="right" />
+                    <column label="" width="150px" align="center"/>
+                    <column label="" width="150px" align="left"/>
+                </columns>
+      
+                <rows>
+                    <row height="30px">
+                        <button id="save"   label="Save"  width="130px"  height="30px" />
+                        <button id="assign"  tabindex="10" label="Assign Do"  width="130px"  height="30px" />
+                        <button id="viewItemDetail"  tabindex="10" label="View Item Detail"  width="130px"  height="30px" />
+                        <button id="action"      tabindex="10" label="Action"      width="130px"  height="30px" />
+                        <button id="close"      tabindex="10" label="Close"      width="130px"    height="30px" />
+                    </row>
+                
+                </rows>
+            </grid>
+        </div>
+        
+         <window id="Lov_Action_List" apply="id.my.berkah.sodo.controller.LovActionList" title="Action" border="normal" width="170px" ctrlKeys="#down#up"  visible="false" style="border:1px;background:#3366FF;">
+  <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+          <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+          </style>
+          
+         <radiogroup id="radioGrup">
+              <grid oddRowSclass="non-odd" width="170px" >
+    
+             <columns>
+                <column label="" width="160px" align="left" />
+               
+           
+            </columns>
+                         
+                              
+                                  <rows >
+                                      <row> 
+                                          <radio id="approve" label="Approve"  />
+                                      </row>
+                                      <row>
+                                          <radio id="print" label="Print DO"/>
+                                      </row>
+                                      <row> 
+                                          <radio id="hold" label="Hold"/>
+                                      </row>
+                                      <row> 
+                                          <radio id="release" label="Release Hold"/>
+                                      </row>
+                                      <row>
+                                          <radio id="cancel" label="Cancel Do"/>
+                                      </row>
+                                      <row>
+                                          <textbox id="txtaction" visible="false"/>
+                                      </row>
+                              </rows>
+                                                </grid>
+
+                          </radiogroup>
+              <grid>
+           
+            <rows>
+                <row>
+                    <button id="ok" label="OK"  width="60px"  />
+                    <button id="tutup" label="Cancel" width="60px"  />
+                </row>
+            </rows>
+        </grid>
+        
+    
+         </window>
+    </window>
+</zk>

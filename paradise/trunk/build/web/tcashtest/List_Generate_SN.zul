@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<!--<zk xmlns:n="native">-->
+    <window id="win_Gen_SN" title="Generate SN" width="1000px" apply="${arg.controller}" closable="false" height="550px" border="normal"  ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <div>    
+    <listbox id="listbox"  height="430px" mold="paging" pageSize="100">
+            <listhead sizable="true">
+                <listheader label="SN TCash"          width="200px"  visible="true"/>
+                <listheader label="SN Inventory"          width="200px"  visible="true"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    <vlayout height="5px" width="100%" style="border:0px;">
+        </vlayout>  
+<!--    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>-->
+    <div align="center">
+        <!--<toolbar id="tb" sclass="vista" height="30px">-->
+        <button id="refresh" label="Refresh" height="35px" image="/img/Refresh24.png" />
+        <button id="close" label="Back" tooltiptext="Find" height="35px" image="/img/Logout24.png" />
+        <!--</toolbar>-->
+    </div>
+    
+</window>
+
+
+</zk>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_if" title="Input File Work Order" apply="id.my.berkah.tcash1.controller.InputFileCTRL"  border="normal" width="1000px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <grid id="grid" oddRowSclass="non-odd" width="980px">
+          <columns>
+                <column label="" width="190px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="180px" align="right" />
+                <column label="" width="290px"  hflex="true"/>
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Input File No" width="50px" />
+                    <hbox>
+                    <textbox width="200px"   id="txtIfNo" readonly="true" />
+                    <textbox width="20px"   id="txtIfId" readonly="true" visible="false" value="${arg.header.ifid}"/>
+                    </hbox>
+                    <label   value="Status" width="50px" />
+                    <textbox width="200px"  id="txtStatus"  readonly="true"/>
+                </row>
+                <row>
+                    <label   value="WO No"  />
+                    <hbox>
+                    <textbox width="200px"  id="txtWoId" visible="false"/>
+                    <textbox width="200px"  id="txtWoNo"  readonly="true"/>
+                    <button id="btnWo"  width="40px"  src="/img/search.png"  tooltiptext="Lov" />
+                    </hbox>
+                     <label/>
+                     <label/>
+                </row>
+                <row visible="false">
+                    <textbox id ="poLine"/>
+                    <textbox width="220px"  id="txtFileName"  readonly="true"/>
+                </row>
+            </rows>
+        </grid>
+        
+         <div>
+            <listbox id="listbox" height="200px" mold="paging" pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="line" width="100px"  visible="false"/>
+                    <listheader label="id" width="100px" visible="false"/>
+                    <listheader label="Item Code" width="200px"  visible="true"/>
+                    <listheader label="Item Description" width="510px"  />
+                    <listheader label="Quantity" width="100px" hflex="1" />
+                    <listheader label="FileName" width="100px" visible="false" hflex="1" />
+                </listhead>       
+            </listbox>
+       
+        </div>
+        
+        <div class="bottom-inner">
+            <grid zclass="none" sizedByContent="true">
+                <columns>
+                    <column width="100px" align="right"/>
+                    <column width="140px"/>
+                    <column width="100px" align="right"/>
+                    <column width="140px"/>
+                    <column width="100px" align="right"/>
+                    <column width="140px"/>
+                    <column width="100px" align="right"/>
+                    <column width="150px"/>
+                </columns>
+                <rows>
+                     <row>
+                        <label value="Created Date"/>
+                        <textbox id="txtCreatedDate" readonly="true"/>
+                        <label value="Submitted Date"/>
+                        <textbox id="txtReleaseDate" readonly="true"/> 
+                        <label value="Approved Date"/>
+                        <textbox id="txtApproveDate" readonly="true"/> 
+                         <label value="Canceled Date"/>
+                        <textbox id="txtCancelDate" readonly="true"/> 
+                    </row>
+                    <row>
+                        <label value="Created By"/>
+                        <textbox id="txtCreatedBy" readonly="true"/>
+                        <label value="Submitted By"/>
+                        <textbox id="txtReleaseBy" readonly="true"/>
+                         <label value="Approved By"/>
+                        <textbox id="txtApproveBy" readonly="true"/>
+                         <label value="Canceled By"/>
+                        <textbox id="txtCancelBy" readonly="true"/>
+                    </row>
+                </rows>
+            </grid>
+        </div>
+       
+        <grid id="grid_find" oddRowSclass="non-odd" width="980px">
+            <columns>
+                <column label=""   align="center" />
+            </columns>
+            <rows>
+                
+                <row height="35px">
+                    <hbox>
+                        <button id="btnNew"  tabindex="30" label="New"           height="35px"         width="80px"   image="/img/New24.png"     tooltiptext="New WO"/>
+                        <button id="btnSave"  tabindex="30" label="Save"           height="35px"         width="80px"   image="/img/Save24.png"     tooltiptext="Save Work Order"/>
+                        <button id="submit"    tabindex="33" label="Submit"      height="35px"            width="100px"   image="/img/Ok24.png"  tooltiptext="Release"/>
+                       <button id="approve"    tabindex="34" label="Approve"      height="35px"            width="100px"   image="/img/1449847706_OK.png"  tooltiptext="Approve"/>
+                        <button id="download"  tabindex="38" label="Generate IF"          height="35px"            width="120px"   image="/img/Last24.png"  tooltiptext="Print"/>
+                        <button id="cancel"    tabindex="36" label="Cancel"        height="35px"            width="90px"   image="/img/Cancel24.png"  tooltiptext="Cancel"/>
+                        <button id="close"     tabindex="39" label="Close"          height="35px"            width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>   
+                    </hbox>
+                      
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

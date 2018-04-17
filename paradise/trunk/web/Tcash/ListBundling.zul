@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_bundling" title="List Bundling" apply="id.my.berkah.tcash1.controller.ListBundling" border="normal"  width="1130px" height="100%" closable="false"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+                <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+                <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+                <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+                
+                <textbox id="txtid" visible="false" />
+                <textbox id="txtno" visible="false" />
+              
+            </toolbar>
+        </div>
+        <div>
+            <listbox id="listbox" height="410px" mold="paging" sizedByContent="true"  pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="id " width="50px"  visible="false" />
+                    <listheader label="Bundling No."         width="200px" visible="true"/>
+                    <listheader label="Bundling Date"       width="200px" visible="true"/>      
+                    <listheader label="Item Id"   width="100px"  visible="false" />
+                    <listheader label="Item Code"   width="200px"  visible="true" />
+                    <listheader label="Item Desc"                 visible="true" />
+                    <listheader label="supID"                 width="200px"  visible="false" />
+                    <listheader label="Supplier Code"                 width="200px"  visible="true" />
+                    <listheader label="Supplier Desc"                 width="200px"  visible="true" />
+                    <listheader label="Qty"                  width="100px"  visible="true" />
+                    <listheader label="Created Date"                  width="200px"  visible="true" />
+                    <listheader label="Created By"                  width="200px"  visible="true" />
+                    <listheader label="Process Date"                  width="200px"  visible="true" />
+                    <listheader label="Process By"                  width="200px"  visible="true" />
+                    <listheader label="Approved Date"                  width="200px"  visible="true" />
+                    <listheader label="Approved By"                  width="200px"  visible="true" />
+                    <listheader label="Updated Date"                  width="200px"  visible="true" />
+                    <listheader label="Update By"                  width="200px"  visible="true" />
+                    <listheader label="Canceled Date"                  width="200px"  visible="true" />
+                    <listheader label="Canceled By"                  width="200px"  visible="true" />
+                    <listheader label="Create Periode"                  width="200px"  visible="false" />
+                     <listheader label="Status"                  width="150px"  visible="true" />
+
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <!--<div>-->
+            <!--<paging id="userPaging" width="100%" style="color: black"/>-->
+        <!--</div>-->
+    </window>
+</zk>

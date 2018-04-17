@@ -1,0 +1,121 @@
+<zk>
+<window id="win_list_cust_group" title="List Data Customer Group" width="100%" height="100%" apply="id.my.berkah.rps.setup.controller.ListCustGroup" border="normal"  ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+    <attribute name="onLater">
+        Clients.clearBusy(); //remove the busy message
+    </attribute>
+    <div>
+        <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+           <toolbarbutton id="newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+           <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+           <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+           <toolbarbutton id="expiry"    width="25px" height="25px" src="/img/LockX24.png" tooltiptext="Expiry"/>
+           <toolbarbutton id="Find"    width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+        </toolbar>
+    </div>    
+    <div>    
+        <listbox id="listbox" height="470px" sizedByContent="true" emptyMessage="No items match your search" mold="paging" pageSize="10">
+            <listhead sizable="true">
+             
+                <listheader label="ITEM ID"    width="100px"    visible="false"/>
+                <listheader label="Item Code"  width="100px"  sort="auto(itemcode)"/>
+                <listheader label="Item Name"  width="180px"  sort="auto(itemdesc)"/>
+                <listheader label="Customer Group ID"  width="10px"   visible="false" />
+                <listheader label="Customer Group Code"  width="140px" sort="auto(custgroupcode)" visible="true"/>
+                <listheader label="Customer Group Desc"    width="140px"  visible="true"/>
+                <listheader label="Created By"  width="150px"  visible="true"/>
+                <listheader label="Created Date" width="150px"  visible="true"/>
+                <listheader label="Modified By" width="120px"  visible="true"/>
+                <listheader label="Modified Date"  width="150px"  visible="true"/>
+                <listheader label="Expired Date" width="140px"  visible="true"/>
+                <listheader label="Expired By" width="140px"  visible="true"/>
+                <listheader label="Payment Flag Free" width="130px"  visible="true"/>
+                <listheader label="Payment Flag Paid" width="130px"  visible="true"/>
+                <listheader label="Payment Status" width="100px"  visible="true"/>
+                <listheader label="ID"    width="100px"    visible="false"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                    <listcell label="${each.itemid}"/>
+                    <listcell label="${each.itemcode}"/>
+                    <listcell label="${each.itemdesc}"/>
+                    <listcell label="${each.custgroupid}"/>
+                    <listcell label="${each.custgroupcode}"/>
+                    <listcell label="${each.custgroupdesc}"/>
+                    <listcell label="${each.createdby}"/>
+                    <listcell label="${each.createddate}"/>
+                    <listcell label="${each.updatedby}"/>
+                    <listcell label="${each.updateddate}"/>
+                    <listcell label="${each.expireddate}"/>
+                    <listcell label="${each.expiredby}"/>
+                    <listcell label="${each.paymentequal}"/>
+                    <listcell label="${each.paymentnotequal}"/>
+                    <listcell label="${each.paymentstatus}"/>
+                    <listcell label="${each.iD}"/>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+        <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+    
+    <window id="win_list_CustGroup_find" title="Find Parameter" border="normal"  apply="id.my.berkah.rps.setup.controller.ListCustGroup" width="437px">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="436px">
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="280px" />
+                    <column label="" width="35px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Item Code" width="50px" />
+                        <textbox id="txtitemCode" tabindex="1" width="200px" style="background-color:#FFFACD"/>
+                    </row>
+                  
+                    <row>
+                        <label   value="Customer Code" width="50px" />
+                        <textbox id="txtcustCode" tabindex="1" width="200px" style="background-color:#FFFACD" />
+                    </row>
+                   
+                   <row>
+                       <label value="Payment Value :"/>
+                        <hbox>
+                            <checkbox id="paymentequals"  /> 
+                            <label value="= Rp. 0"/>
+                            <checkbox id="paymentnonequals" /> 
+                            <label value=" >= Rp. 0" />
+                        </hbox>
+                    </row>
+                    <row> 
+                         <label value="Status Payment"/>
+                        <hbox>
+                            <radiogroup id="choiceAlloc" />
+                            <radio  label="Paid"  id="rpaid"  value="1" radiogroup ="choiceAlloc" style="color:black;font-weight:bold;" checked="true" />
+                            <radio  label="Payment In Progress"  id="rpayment" value="2" radiogroup ="choiceAlloc" style="color:black;font-weight:bold; margin-left:2px;"/>
+                        </hbox>
+                       
+                    </row>
+                     <row visible="false"> 
+                    <textbox id="itemcode" width="100px" />
+                    <textbox id="custcode" width="100px" />
+                    <textbox id="paymentvalue1" width="100px" />
+                    <textbox id="paymentvalue2" width="100px" />
+                    <textbox id="choiceAlloc1" width="100px" />
+                    </row>
+                    <row>
+                        <label/>
+                        <hbox>
+                            <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                            <button id="doClose" tabindex="13" label="Close" image="/img/End16.png" />
+                    	</hbox>
+                    </row>
+                </rows>
+            </grid>	     
+    </window>
+    </window>
+</zk>

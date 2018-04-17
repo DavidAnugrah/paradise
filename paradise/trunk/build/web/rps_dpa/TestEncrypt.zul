@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_brand_id" title="Encrypt Decrypt" apply="id.my.berkah.rps.dpa.controller.TestEncryptDescrypt" border="normal" width="1100px" ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="1100px">
+            <columns>
+                <column label="" width="130px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="130px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="130px" align="right" />
+                <column label="" width="220px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <!--<label   value="Text Awal Encrypt" width="50px" />-->
+                    Test
+                    <textbox width="200px" tabindex="4" id="txtAwalEn" height="200px"  multiline="true" readonly="false" value="${arg.unAllocatedNumber}"/>
+                    <label   value="Text Awal Descrypt" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtAwalDes" height="200px"  multiline="true" readonly="false" value="${arg.unAllocatedNumber}"/>
+                    <label   value="Text Source" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtSource" height="200px" multiline="true" readonly="false" value="${arg.unAllocatedDate}" />    
+                </row>
+                <row>
+                    <label   value="Text Hasil Encrypt" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtHasilEn" height="200px" multiline="true" readonly="true" value="${arg.unAllocatedDate}" style="background-color:#FFFACD"/>
+                    <label   value="Text Hasil Descrypt" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtHasilDes" height="200px" multiline="true" readonly="true" value="${arg.unAllocatedDate}" style="background-color:#FFFACD"/>
+                    <label   value="Text Hasil Source" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtHasilSource" height="200px" multiline="true" readonly="true" value="${arg.unAllocatedDate}" style="background-color:#FFFACD"/>
+                </row>
+                <row visible="false">
+                    <textbox width="150px" readonly="true" id="txtItemId"       visible="true" value="${arg.itemId}"/>
+                    <textbox width="0px" readonly="true" id="txtBuId"         visible="false" value="${arg.buId}"/>
+                    <textbox width="0px" readonly="true" id="txtUserId"      visible="false" value="${arg.userId}"/>
+                    <textbox width="0px" readonly="true" id="flag"           visible="false" value="${arg.flag}"/>
+                    <textbox width="0px" readonly="true" id="txtLocationId1"         visible="false" value="${arg.locId}"/>
+                    <textbox width="0px" readonly="true" id="txtLocationId2"       visible="false" value="${arg.locDstId}"/>
+                    <textbox width="0px" readonly="true" id="txtUnAllocatedId"      visible="false" value="${arg.unAllocatedId}"/>
+                    <textbox width="0px" readonly="true" id="txtError"       visible="false" value="${arg.erros}"/>
+                    <textbox width="0px" readonly="true" id="txtProccesType"     visible="false" value="${arg.proccesType}"/>
+                    <textbox width="0px" readonly="true" id="txtMessages"     visible="false" value="${arg.messages}"/>
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="830px">
+            <columns>
+                <column label="" width="310px" align="right" />
+                <column label="" width="100px" align="center"/>
+                <column label="" width="100px" align="center"/>
+                <column label="" width="100px" align="center"/>
+                <column label="" width="100px" align="center"/>
+                <column label="" width="100px" align="center"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="encrypt"  tabindex="30" label="Encrypt"        width="90px"        tooltiptext="New Record"/>
+                    <button id="descrypt"      tabindex="38" label="Descrypt"      width="85px"     tooltiptext="Save"/>
+                    <button id="sourceEncode"   tabindex="38" label="source Encode"      width="85px"     tooltiptext="Save"/>
+                    <button id="sourceDecode"   tabindex="38" label="source Decode"      width="85px"     tooltiptext="Save"/>
+                    <button id="clear"   tabindex="38" label="Clear"      width="85px"     tooltiptext="Save"/>
+                    <button id="json"   tabindex="38" label="json"      width="85px"     tooltiptext="Save"/>
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

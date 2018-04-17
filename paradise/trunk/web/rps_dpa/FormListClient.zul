@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="formListClient" title="List Client" width="100%" height="100%" border="normal" apply="id.my.berkah.rps.dpa.controller.FormListClientController" position="top,center" closable="false">                 
+        <style>
+            .z-row-background-color-on-select,
+            .z-row-background-color-on-select > .z-row-inner,
+            .z-row-background-color-on-select > .z-cell {
+            background-color: #CCC !important;
+            }
+        </style>        
+        <toolbar id="toolbar" height="27px" align="start" orient="horizontal">
+            <toolbarbutton id="btnNew" width="25px" height="25px" src="/img/New24.png" tooltiptext="New"/>
+            <toolbarbutton id="btnEdit" width="25px" height="25px" src="/img/Edit24.png" tooltiptext="Edit"/>
+            <toolbarbutton id="btnRefresh" width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="Refresh"/>
+            <toolbarbutton id="btnFind" width="25px" height="25px" src="/img/Find24.png" tooltiptext="Find"/>
+        </toolbar>                                  
+        <hbox height="2px"/>
+        <hbox>
+            <textbox id="ExpiredBy" visible="false"/>
+            <textbox id="ClientId" visible="false"/>
+            <textbox id="ClientCode" visible="false"/>
+            <textbox id="ClientName" visible="false"/>
+            <textbox id="LocationId" visible="false"/>
+            <textbox id="PaymentMethode" visible="false"/>
+            <textbox id="BookingTime" visible="false"/>
+            <textbox id="Registration" visible="false"/>
+            <textbox id="ForceActive" visible="false"/>
+            <textbox id="LocationCode" visible="false"/>
+            <textbox id="LocationDescription" visible="false"/>
+        </hbox>                
+        <listbox id="listClientMaster" height="420px" mold="paging" width="100%" pageSize="10">
+            <listhead sizable="true">           
+                <listheader label="Client Detail Id" width="60px" visible="false" align="left"/>
+                <listheader label="Client Id" width="60px" visible="false" align="left"/>
+                <listheader label="Client Code" width="95px" sort="auto(clientCode)" visible="true" align="left"/>
+                <listheader label="Client Name" width="125px" sort="auto(clientName)" visible="true" align="left"/>
+                <listheader label="Location Id" width="125px" visible="false" align="left" sort="auto(locationId)"/>
+                <listheader label="Location Code" width="100px" visible="true" align="left" sort="auto(locationCode)"/>
+                <listheader label="Location Description" width="150px" visible="true" align="left" sort="auto(locationDescription)"/>
+                <listheader label="Payment Method" width="125px" visible="true" align="left" sort="auto(paymentMethode)"/>
+                <listheader label="Booking Time" width="90px" visible="true" align="left" sort="auto(bookingTime)"/>
+                <listheader label="Registration" width="80px" visible="true" align="left" sort="auto(registration)"/>
+                <listheader label="Force Active" width="80px" visible="true" align="left" sort="auto(forceActive)"/>
+                <listheader label="Create Date" width="100px" visible="true" align="left" sort="auto(createDate)"/>
+                <listheader label="Create By" width="200px" visible="true" align="left" sort="auto(createBy)"/>
+                <listheader label="Update Date" width="100px" visible="true" align="left" sort="auto(updateDate)"/>
+                <listheader label="Update By" width="200px" visible="true" align="left" sort="auto(updateBy)"/>
+                <listheader label="Expired Date" width="100px" visible="true" align="left" sort="auto(expiredDate)"/>
+                <listheader label="Expired By" width="200px" visible="true" align="left" sort="auto(expiredBy)"/>
+                <listheader label="Flag Perso" width="100px" visible="false" align="left" sort="auto(autoPerso)"/>
+            </listhead>
+            <template name="model">
+                <listitem>                    
+                    <listcell label="${each.clientDetailId}" visible="true"/>       
+                    <listcell label="${each.clientId}" visible="true"/>
+                    <listcell label="${each.clientCode}"/>
+                    <listcell label="${each.clientName}"/>               
+                    <listcell label="${each.locationId}"/>
+                    <listcell label="${each.locationCode}"/>
+                    <listcell label="${each.locationDescription}"/>
+                    <listcell label="${each.paymentMethode}"/>
+                    <listcell label="${each.bookingTime}"/>
+                    <listcell label="${each.registration}"/>   
+                    <listcell label="${each.forceActive}"/>                    
+                    <listcell label="${each.createDate}"/>
+                    <listcell label="${each.createBy}"/>
+                    <listcell label="${each.updateDate}"/>
+                    <listcell label="${each.updateBy}"/>
+                    <listcell label="${each.expiredDate}"/>   
+                    <listcell label="${each.expiredBy}"/>
+                    <listcell label="${each.autoPerso}"/>
+                </listitem>
+            </template>
+        </listbox>
+        
+        <paging id="userPagingMasterClient" width="100%" style="color: black" />
+        <window id="formClientNew" title="Mapping Client" width="478px" height="325px" border="normal" position="top,center" apply="id.my.berkah.rps.dpa.controller.FormClientNewController" closable="false" visible="false" >
+            <grid>
+                <columns>
+                    <column label="" align="right" width="150px"/>
+                    <column label="" align="left"/>                
+                </columns>
+                <rows>
+                    <row>                    
+                        <hbox>
+                            <label value="Client"/> 
+                        </hbox>
+                        <hbox>
+                            <textbox id="txtClientId" width="50px" visible="false"/>
+                            <textbox id="txtClientCode" width="50px" style="background-color:#FFFACD" readonly="true"/>
+                            <textbox id="txtClientName" width="150px" style="background-color:#FFFACD" readonly="true"/>
+                            <button id="btnClient" image="/img/search.png" tooltiptext="Find"/>      
+                        </hbox>                                 
+                    </row>   
+                    <row>
+                        <hbox>
+                            <label value="Location"/>
+                        </hbox>
+                        <hbox>
+                            <textbox id="txtLocationId" width="50px" visible="false"/>
+                            <textbox id="txtLocationCode" width="50px" style="background-color:#FFFACD" readonly="true"/>
+                            <textbox id="txtLocationDescription" width="150px" style="background-color:#FFFACD" readonly="true"/>
+                            <button id="btnLocation" image="/img/search.png" tooltiptext="Find"/>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Payment Method"/>
+                        </hbox>
+                        <hbox>
+                            <combobox id="cbPaymentMethode" readonly="true" style="background-color:#FFFACD">
+                                <comboitem label="PRE"/>
+                                <comboitem label="VAL"/>
+                                <comboitem label="COD"/>
+                            </combobox>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Booking Time"/> 
+                        </hbox>
+                        <hbox>
+                            <intbox constraint="no negative,no empty" id="dcbBookingTime"  style="background-color:#FFFACD"/>
+                            <label>Menit</label>
+                        </hbox>  
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Registration"/> 
+                        </hbox>
+                        <hbox>
+                        <radiogroup Id="rgRegistration">
+                            <radio label="Internal" id="internal" value="I"/>
+                            <radio label="External" id="external" value="E"/>
+                        </radiogroup>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Force Active"/>
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbForceActiveY" value="Y"/>
+                            <checkbox id="cbForceActiveN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>         
+                    <row>
+                        <hbox>
+                            <label value="Auto Perso"/>
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbAutoPersoY" value="Y"/>
+                            <checkbox id="cbAutoPersoN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>         
+                </rows>
+            </grid>   
+            <hbox height="2px"/>    
+            <grid>
+                <columns>
+                    <column label="" align="right" width="5%"/>
+                    <column label="" align="center" width="90%"/>
+                    <column label="" align="left" width="5%"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label id=""/>
+                        <hbox>
+                            <button id="btnNew" label="New" image="/img/New24.png" height="32px"/>
+                            <button id="btnSave" label="Save" image="/img/Save24.png" height="32px"/>                    
+                            <button id="btnClose" label="Close" image="/img/Logout24.png" height="32px"/> 
+                        </hbox>  
+                        <label id=""/>
+                    </row>
+                </rows>
+            </grid> 
+            
+            <window id="formLovLocation" title="Lov Location" width="380px" height="442px" border="normal" apply="id.my.berkah.rps.dpa.controller.FormLovLocationController" position="top,center" closable="false" visible="false">
+                <grid>
+                    <columns>
+                        <column label=""/>
+                    </columns> 
+                    <rows>        
+                        <row>
+                            <hbox>
+                                <hbox width="50px">
+                                    <label value="Keyword"/>
+                                </hbox>
+                                <textbox id="demo" visible="false"/>
+                                <textbox id="txtKeyword" width="200px"/>
+                                <button id="btnKeyword" label="Search" image="/img/search.png" tooltiptext="Find"/>
+                            </hbox>>
+                        </row>   
+                    </rows>
+                </grid>
+                <hbox height="2px"/>                 
+                <listbox id="listLocationMaster" height="300px" mold="paging" width="100%" pageSize="20">
+                    <listhead sizable="true">           
+                        <listheader label="Location Id" width="100px" visible="false" align="center"/>
+                        <listheader label="Location Code" width="100px" sort="auto(locationCode)" visible="true" align="left"/>
+                        <listheader label="Location Description" width="100%" sort="auto(locationDescription)" visible="true" align="left"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>                           
+                            <listcell label="${each.locationId}" visible="false"/>
+                            <listcell label="${each.locationCode}"/>
+                            <listcell label="${each.locationDescription}"/>                                       
+                        </listitem>
+                    </template>
+                </listbox>                
+                <hbox height="2px"/>
+                <grid>
+                    <columns>
+                        <column label="" align="right"/>
+                        <column label="" align="left"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <button id="btnSave" label="Choose" image="/img/dialog-ok-apply-2_1.png"/>
+                            <button id="btnClose" label="Close" image="/img/dialog-cancel-4.png"/>
+                        </row>
+                    </rows>        
+                </grid>               
+            </window> 
+        
+            <window id="formLovClient" title="Lov Client" width="380px" height="439px" border="normal" apply="id.my.berkah.rps.dpa.controller.FormLovClientController" position="top,center" closable="false" visible="false">
+                <grid>
+                    <columns>
+                        <column label=""/>
+                    </columns> 
+                    <rows>        
+                        <row>
+                            <hbox>
+                                <hbox width="50px">
+                                    <label value="Keyword"/>
+                                </hbox>
+                                <textbox id="demo" visible="false"/>
+                                <textbox id="txtKeyword" width="200px"/>
+                                <button id="btnKeyword" label="Search" image="/img/search_1.png" tooltiptext="Find"/>
+                            </hbox>>
+                        </row>   
+                    </rows>
+                </grid>
+                <hbox height="2px"/>                 
+                <listbox id="listClientMaster" height="300px" mold="paging" width="100%" pageSize="20">
+                    <listhead sizable="true">           
+                        <listheader label="Client Id" width="100px" visible="false" align="left"/>
+                        <listheader label="Client Code" width="100px" sort="auto(clientCode)" visible="true" align="left"/>
+                        <listheader label="Client Name" width="100%" sort="auto(clientName)" visible="true" align="left"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>                           
+                            <listcell label="${each.clientId}" visible="false"/>
+                            <listcell label="${each.clientCode}"/>
+                            <listcell label="${each.clientName}"/>                                       
+                        </listitem>
+                    </template>
+                </listbox>                
+                <hbox height="2px"/>
+                <grid>
+                    <columns>
+                        <column label="" align="right"/>
+                        <column label="" align="left"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <button id="btnSave" label="Choose" image="/img/dialog-ok-apply-2_1.png"/>
+                            <button id="btnClose" label="Close" image="/img/dialog-cancel-4.png"/>
+                        </row>
+                    </rows>        
+                </grid>
+            </window>                                            
+        </window>        
+         
+        <window id="formClientEdit" title="Mapping Client" width="478px" height="325px" border="normal" position="top,center" apply="id.my.berkah.rps.dpa.controller.FormClientEditController" closable="false" visible="false" >
+            <grid>
+                <columns>
+                    <column label="" align="right" width="150px"/>
+                    <column label="" align="left"/>                
+                </columns>
+                <rows>
+                    <row>                    
+                        <hbox>
+                            <label value="Client"/> 
+                        </hbox>
+                        <hbox>
+                            <textbox id="txtExpiredBy" visible="false"/>
+                            <textbox id="txtClientDetailId" width="50px" visible="false"/>
+                            <textbox id="txtClientId" width="50px" visible="false" />
+                            <textbox id="txtClientCode" width="50px" readonly="true" style="background-color:#FFFACD"/>
+                            <textbox id="txtClientName" width="150px" readonly="true" style="background-color:#FFFACD"/>
+                            <button id="btnClient" image="/img/search.png" tooltiptext="Find"/>      
+                        </hbox>                                 
+                    </row>   
+                    <row>
+                        <hbox>
+                            <label value="Location"/>
+                        </hbox>
+                        <hbox>
+                            <textbox id="txtLocationId" width="50px" visible="false"/>
+                            <textbox id="txtLocationCode" width="50px" readonly="true" style="background-color:#FFFACD"/>
+                            <textbox id="txtLocationDescription" width="150px" readonly="true" style="background-color:#FFFACD"/>
+                            <button id="btnLocation" image="/img/search.png" tooltiptext="Find"/>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Payment Method"/>
+                        </hbox>
+                        <hbox>
+                            <combobox id="cbPaymentMethod" readonly="true" style="background-color:#FFFACD">
+                                <comboitem label="PRE"/>
+                                <comboitem label="VAL"/>
+                                <comboitem label="COD"/>
+                            </combobox>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Booking Time"/>
+                        </hbox>
+                        <hbox>
+                            <intbox constraint="no negative,no empty" id="dcbBookingTime"  style="background-color:#FFFACD"/>
+                        <label>Menit</label> 
+                        </hbox>  
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Registration"/> 
+                        </hbox>
+                        <hbox>
+                            <radiogroup Id="rgRegistration">
+                                <radio label="Internal" id="internal" value="I"/>
+                                <radio label="External" id="external" value="E"/>
+                            </radiogroup>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Force Active"/>  
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbForceActiveY" value="Y"/>
+                            <checkbox id="cbForceActiveN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>
+                    <row>
+                        <hbox>
+                            <label value="Auto Perso"/>
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbAutoPersoY" value="Y"/>
+                            <checkbox id="cbAutoPersoN" value="N" disabled="true" visible="false"/>
+                        </hbox>  
+                    </row>         
+                </rows>
+            </grid>   
+            <hbox height="2px"/>    
+            <grid>
+                <columns>
+                    <column label="" align="right" width="5%"/>
+                    <column label="" align="center" width="90%"/>
+                    <column label="" align="left" width="5%"/>
+                </columns>
+                <rows>
+                    <row>
+                        <label id=""/>
+                        <hbox>                            
+                            <button id="btnUpdate" label="Update" image="/img/Save24.png" height="32px"/>    
+                            <button id="btnExpired" label="Expired" image="/img/LockX24.png"/>                
+                            <button id="btnClose" label="Close" image="/img/Logout24.png"/> 
+                        </hbox>  
+                        <label id=""/>
+                    </row>
+                </rows>
+            </grid>
+            
+            <window id="formLovLocationEdit" title="Lov Location" width="380px" height="439px" border="normal" apply="id.my.berkah.rps.dpa.controller.FormLovLocationEditController" position="top,center" closable="false" visible="false">
+                <grid>
+                    <columns>
+                        <column label=""/>
+                    </columns> 
+                    <rows>        
+                        <row>
+                            <hbox>
+                                <hbox width="50px">
+                                    <label value="Keyword"/>
+                                </hbox>
+                                <textbox id="demo" visible="false"/>
+                                <textbox id="txtKeyword" width="200px"/>
+                                <button id="btnKeyword" label="Search" image="/img/search_1.png" tooltiptext="Find"/>
+                            </hbox>>
+                        </row>   
+                    </rows>
+                </grid>
+                <hbox height="2px"/>                 
+                <listbox id="listLocationMaster" height="300px" mold="paging" width="100%" pageSize="20">
+                    <listhead sizable="true">           
+                        <listheader label="Location Id" width="100px" visible="false" align="center"/>
+                        <listheader label="Location Code" width="100px" sort="auto(locationCode)" visible="true" align="left"/>
+                        <listheader label="Location Description" width="100%" sort="auto(locationDescription)" visible="true" align="left"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>                           
+                            <listcell label="${each.locationId}" visible="false"/>
+                            <listcell label="${each.locationCode}"/>
+                            <listcell label="${each.locationDescription}"/>                                       
+                        </listitem>
+                    </template>
+                </listbox>                
+                <hbox height="2px"/>
+                <grid>
+                    <columns>
+                        <column label="" align="right"/>
+                        <column label="" align="left"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <button id="btnSave" label="Choose" image="/img/dialog-ok-apply-2_1.png"/>
+                            <button id="btnClose" label="Close" image="/img/dialog-cancel-4.png"/>
+                        </row>
+                    </rows>        
+                </grid>               
+            </window> 
+        
+            <window id="formLovClientEdit" title="Lov Client" width="380px" height="439px" border="normal" apply="id.my.berkah.rps.dpa.controller.FormLovClientEditController" position="top,center" closable="false" visible="false">
+                <grid>
+                    <columns>
+                        <column label=""/>
+                    </columns> 
+                    <rows>        
+                        <row>
+                            <hbox>
+                                <hbox width="50px">
+                                    <label value="Keyword"/>
+                                </hbox>
+                                <textbox id="demo" visible="false"/>
+                                <textbox id="txtKeyword" width="200px"/>
+                                <button id="btnKeyword" label="Search" image="/img/search_1.png" tooltiptext="Find"/>
+                            </hbox>>
+                        </row>   
+                    </rows>
+                </grid>
+                <hbox height="2px"/>                 
+                <listbox id="listClientMaster" height="300px" mold="paging" width="100%" pageSize="20">
+                    <listhead sizable="true">           
+                        <listheader label="Client Id" width="100px" visible="false" align="left"/>
+                        <listheader label="Client Code" width="100px" sort="auto(clientCode)" visible="true" align="left"/>
+                        <listheader label="Client Name" width="100%" sort="auto(clientName)" visible="true" align="left"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>                           
+                            <listcell label="${each.clientId}" visible="false"/>
+                            <listcell label="${each.clientCode}"/>
+                            <listcell label="${each.clientName}"/>                                       
+                        </listitem>
+                    </template>
+                </listbox>                
+                <hbox height="2px"/>
+                <grid>
+                    <columns>
+                        <column label="" align="right"/>
+                        <column label="" align="left"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <button id="btnSave" label="Choose" image="/img/dialog-ok-apply-2_1.png"/>
+                            <button id="btnClose" label="Close" image="/img/dialog-cancel-4.png"/>
+                        </row>
+                    </rows>        
+                </grid>
+            </window>                  
+        </window>
+        
+        <window id="formClientFind" title="Mapping Client" width="478px" height="330px" border="normal" position="top,center" apply="id.my.berkah.rps.dpa.controller.FormClientFindController" closable="false" visible="false" >
+            <grid>
+                <columns>
+                    <column label="" align="right" width="150px"/>
+                    <column label="" align="left"/>                
+                </columns>
+                <rows>
+                    <row>                    
+                        <hbox>
+                            <label value="Client"/> 
+                        </hbox>
+                        <hbox>
+                            <textbox id="txtClientId" width="50px" visible="false"/>
+                            <textbox id="txtClientCode" width="50px" readonly="true"/>
+                            <textbox id="txtClientName" width="150px" readonly="true"/>
+                            <button id="btnClient" image="/img/search.png" tooltiptext="Find"/>      
+                        </hbox>                                 
+                    </row>   
+                    <row>
+                        <hbox>
+                            <label value="Location"/>
+                        </hbox>
+                        <hbox>
+                            <textbox id="txtLocationId" width="50px" visible="false"/>
+                            <textbox id="txtLocationCode" width="50px" readonly="true"/>
+                            <textbox id="txtLocationDescription" width="150px" readonly="true"/>
+                            <button id="btnLocation" image="/img/search.png" tooltiptext="Find"/>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Payment Methode"/>
+                        </hbox>
+                        <hbox>
+                            <combobox id="cbPaymentMethode" readonly="true">
+                                <comboitem label="PRE"/>
+                                <comboitem label="VAL"/>
+                                <comboitem label="COD"/>
+                            </combobox>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Booking Time"/> 
+                        </hbox>
+                        <hbox>
+                            <intbox constraint="no negative,no empty" id="dcbBookingTime"/>
+                        </hbox>  
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Registration"/> 
+                        </hbox>
+                        <hbox>
+                            <combobox id="cbRegistration" readonly="true">
+                                <comboitem label="Internal" value="I"/>
+                                <comboitem label="External" value="E"/>
+                            </combobox>
+                        </hbox>
+                    </row> 
+                    <row>
+                        <hbox>
+                            <label value="Force Active"/>  
+                        </hbox>
+                        <hbox>
+                            <combobox id="cbForceActive" readonly="true">
+                                <comboitem label="Y" value="Y"/>
+                                <comboitem label="N" value="N"/>
+                            </combobox>
+                        </hbox>                              
+                    </row>         
+                    <row>
+                        <hbox>
+                            <label value="Auto Perso"/>  
+                        </hbox>
+                        <hbox>
+                            <combobox id="cbAutoPerso" readonly="true">
+                                <comboitem label="Y" value="Y"/>
+                                <comboitem label="N" value="N"/>
+                            </combobox>
+                        </hbox>                              
+                    </row>         
+                </rows>
+            </grid>   
+            <hbox height="2px"/>    
+            <grid>
+                <columns>
+                    <column label="" align="right"/>
+                    <column label="" align="left"/>
+                </columns>
+                <rows>
+                    <row>
+                        <button id="btnFind" label="Find" image="/img/Find24.png" height="32px"/>                    
+                        <button id="btnClose" label="Close" image="/img/Logout24.png" height="32px"/> 
+                    </row>
+                </rows>
+            </grid> 
+            
+            <window id="formLovLocationFind" title="Lov Location" width="380px" height="439px" border="normal" apply="id.my.berkah.rps.dpa.controller.FormLovLocationFindController" position="top,center" closable="false" visible="false">
+                <grid>
+                    <columns>
+                        <column label=""/>
+                    </columns> 
+                    <rows>        
+                        <row>
+                            <hbox>
+                                <hbox width="50px">
+                                    <label value="Keyword"/>
+                                </hbox>
+                                <textbox id="demo" visible="false"/>
+                                <textbox id="txtKeyword" width="200px"/>
+                                <button id="btnKeyword" label="Search" image="/img/search_1.png" tooltiptext="Find"/>
+                            </hbox>>
+                        </row>   
+                    </rows>
+                </grid>
+                <hbox height="2px"/>                 
+                <listbox id="listLocationMaster" height="300px" mold="paging" width="100%" pageSize="20">
+                    <listhead sizable="true">           
+                        <listheader label="Location Id" width="100px" visible="false" align="center"/>
+                        <listheader label="Location Code" width="100px" sort="auto(locationCode)" visible="true" align="left"/>
+                        <listheader label="Location Description" width="100%" sort="auto(locationDescription)" visible="true" align="left"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>                           
+                            <listcell label="${each.locationId}" visible="false"/>
+                            <listcell label="${each.locationCode}"/>
+                            <listcell label="${each.locationDescription}"/>                                       
+                        </listitem>
+                    </template>
+                </listbox>                
+                <hbox height="2px"/>
+                <grid>
+                    <columns>
+                        <column label="" align="right"/>
+                        <column label="" align="left"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <button id="btnSave" label="Choose" image="/img/dialog-ok-apply-2_1.png"/>
+                            <button id="btnClose" label="Close" image="/img/dialog-cancel-4.png"/>
+                        </row>
+                    </rows>        
+                </grid>               
+            </window> 
+        
+            <window id="formLovClientFind" title="Lov Client" width="380px" height="439px" border="normal" apply="id.my.berkah.rps.dpa.controller.FormLovClientFindController" position="top,center" closable="false" visible="false">
+                <grid>
+                    <columns>
+                        <column label=""/>
+                    </columns> 
+                    <rows>        
+                        <row>
+                            <hbox>
+                                <hbox width="50px">
+                                    <label value="Keyword"/>
+                                </hbox>
+                                <textbox id="demo" visible="false"/>
+                                <textbox id="txtKeyword" width="200px"/>
+                                <button id="btnKeyword" label="Search" image="/img/search_1.png" tooltiptext="Find"/>
+                            </hbox>>
+                        </row>   
+                    </rows>
+                </grid>
+                <hbox height="2px"/>                 
+                <listbox id="listClientMaster" height="300px" mold="paging" width="100%" pageSize="20">
+                    <listhead sizable="true">           
+                        <listheader label="Client Id" width="100px" visible="false" align="left"/>
+                        <listheader label="Client Code" width="100px" sort="auto(clientCode)" visible="true" align="left"/>
+                        <listheader label="Client Name" width="100%" sort="auto(clientName)" visible="true" align="left"/>
+                    </listhead>
+                    <template name="model">
+                        <listitem>                           
+                            <listcell label="${each.clientId}" visible="false"/>
+                            <listcell label="${each.clientCode}"/>
+                            <listcell label="${each.clientName}"/>                                       
+                        </listitem>
+                    </template>
+                </listbox>                
+                <hbox height="2px"/>
+                <grid>
+                    <columns>
+                        <column label="" align="right"/>
+                        <column label="" align="left"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <button id="btnSave" label="Choose" image="/img/dialog-ok-apply-2_1.png"/>
+                            <button id="btnClose" label="Close" image="/img/dialog-cancel-4.png"/>
+                        </row>
+                    </rows>        
+                </grid>
+            </window>                                            
+        </window>  
+        
+    </window>
+</zk>

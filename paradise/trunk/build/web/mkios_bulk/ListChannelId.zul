@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_channel_mkios" title="Channel MKIOS " apply="id.my.berkah.mkiossetup.controller.ListChannelMkios" border="normal" width="1130px" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+            <textbox id="txtChannelId"  visible="false" />
+            <textbox id="txtChanelCode"  visible="false" />
+            <textbox id="txtChanelDescription"  visible="false" />
+            <textbox id="txtNpwp"  visible="false" />
+            <textbox id="txtAddress"  visible="false" />
+            <textbox id="txtEffectiveby"  visible="false" />
+            <textbox id="txtEffectiveDate"  visible="false" />
+            <textbox id="txtExpiredby"  visible="false" />
+            <textbox id="txtExpireddate" visible="false" />
+            <textbox id="txtcreatedby"  visible="false" />
+            <textbox id="txtCreatedDate"  visible="false" />
+            <textbox id="txtModifiedDate"  visible="false" />
+            <textbox id="txtModifiedByName"  visible="false" />
+        </toolbar>
+        </div>
+        <div>
+        <listbox id="listbox" height="400px" mold="paging"  pageSize="10">
+            <listhead sizable="true">
+                <listheader label="Channel Id"           width="130px" visible="false" sort="auto(InChannel)" />
+                <listheader label="Channel Code"         width="130px" visible="true" sort="auto" />
+                <listheader label="Channel Description"  width="210px" visible="true" sort="auto" />
+                <listheader label="NPWP"                 width="200px" visible="true" sort="auto"/>
+                <listheader label="Address"               width="400px"  visible="true" sort="auto"/>
+                <listheader label="Created By"           width="200px"  visible="true" sort="auto"/>
+                <listheader label="Created Date"         width="210px"  visible="true" sort="auto" />
+                <listheader label="Modified By"          width="150px" visible="false" sort="auto"/>
+                <listheader label="Modified Date"        width="150px" visible="false" sort="auto"/>
+                <listheader label="Effective By"         width="160px" visible="true" sort="auto"/>
+                <listheader label="Effective Date"       width="160px" visible="true" sort="auto"/>
+                <listheader label="Expired Name"         width="160px" visible="true" sort="auto"/>
+                <listheader label="Expired Date"         width="160px" visible="true" sort="auto"/>
+                
+            </listhead>
+            <template name="model">
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+         
+
+    <window id="find_mkios" title="Find Parameter" visible="false" apply="id.my.berkah.mkios.controller.ListChannelMkios"  position="center" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <grid>
+            <columns>
+                <column label="" width="110px" align="right" />
+                <column label="" width="300px" />
+            </columns>
+            <rows>
+<!--                <row>
+                    <label value="Procces Type" />
+                    <textbox width="0px" tabindex="4" id="txtTypeId" visible="false"/>
+                    <combobox id="cmbType" width="130px" readonly="true" >
+                        <comboitem label="Konsinyasi" />
+                        <comboitem label="Jual Putus"/>
+                    </combobox>
+                </row>-->
+                <row>
+                    <label value="Channel"/>
+                    <hbox>
+                    <textbox width="50px" visible="false" tabindex="4" id="txtChannelId" readonly="false" style="background-color:#FFFACD" />
+                    <textbox width="200px" tabindex="4" id="txtChannelcode" placeholder="Channel " readonly="false" style="background-color:#FFFACD" />
+                    <!--<textbox width="150px" tabindex="4" id="txtChannelDesc" readonly="false" style="background-color:#FFFACD" />-->
+                     <!--<button id="btnchannel"  src="/img/search.png" />-->
+                    </hbox>
+                </row>
+<!--                <row>
+                    <label value="Channel Description"/>
+                    <label />
+                    <textbox width="130px" tabindex="4" id="txtChannelDesc" readonly="false" style="background-color:#FFFACD" />
+                </row>-->
+            </rows>
+        </grid>
+        <grid>
+            <columns>
+                <column align="right"/>
+                <column align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <button id="findTransaction" label="Find" image="/img/Find24.png"/>
+                    <button id="close" label="Close" image="/img/End24.png"/>
+                </row>
+            </rows>
+        </grid>
+        </div>
+    </window>
+        </window>
+</zk>

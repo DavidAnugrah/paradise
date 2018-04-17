@@ -1,0 +1,165 @@
+<window id="win_cute_pos_return" width="1000px" border="normal" title="POS Return" ctrlKeys="#f2#f3#f4#f5#f6#f7#f8#f9#f10#f11#f12" mode="modal" apply="id.my.berkah.pos.controller.WindowSinglePOSReturn">
+    <toolbar id="tb" sclass="vista" height="35px" align="start" orient="horizontal" left="0">
+        <toolbarbutton id="e_add"      tabindex="5"  label="New [F7]"      image="/img/New24.png"      width="80px" height="30px"/>
+        <toolbarbutton id="e_submit"   tabindex="10" label="Approve [F9]"  image="/img/LiveData24.png" width="100px" height="30px"/>
+        <toolbarbutton id="e_print"    tabindex="8"  label="Print  [F11]"  image="/img/Print24.png"    width="100px" height="30px"/>
+        <toolbarbutton id="e_refresh"  tabindex="9"  label="Refresh [F12]" image="/img/Refresh24.png"  width="100px" height="30px"/>
+        <toolbarbutton id="e_cancel"   tabindex="11" label="Cancel"        image="/img/Cancel24.png"   width="70px" height="30px"/>
+        <toolbarbutton id="e_close"    tabindex="12" label="Close"         image="/img/Logout24.png"   width="70px" height="30px"/>
+    </toolbar>
+    <vlayout height="5px" style="border:1px;background:#d3d3d3;">
+    </vlayout>
+    <div style="border:1px;background:#d3d3d3;">
+    <grid fixedLayout="true" oddRowSclass="non-odd" style="border:1px;background:#d3d3d3;">
+        <columns style="border:1px;background:#d3d3d3;">
+            <column width="150px" align="right"/>
+            <column width="420px" />
+            <column width="120px" align="right"/>
+            <column width="226px" />
+        </columns>
+        <rows style="border:1px;background:#d3d3d3;">
+            <row style="border:1px;background:#d3d3d3;">
+                <label   value="Business Unit" style="color:black"/>
+                <hbox>
+                    <textbox id="buCode"        width="100px" readonly="true" value="${arg.buCode}"/>
+                    <textbox id="buDescription" width="300px" readonly="true" value="${arg.buDescription}"/>
+                </hbox>
+                <label   value="Sales Person" style="color:black"/>
+                <textbox id="salesPerson" width="200px" readonly="true" value="${arg.salesPersonName}"/>
+            </row>
+            <row style="border:1px;background:#d3d3d3;">
+                <label   value="Sales Return No." style="color:black"/>
+                <textbox id="salesReturnNo"   width="250px" readonly="true" value="${arg.salesReturnNo}"/>
+                <label   value="Return Date" style="color:black"/>
+                <datebox id="createDate" width="206px" readonly="true" value="${arg.createDate}" cols="12" format="dd/MM/yyyy hh:mm:ss" disabled="true"/>
+            </row>
+            <row style="border:1px;background:#d3d3d3;">
+                <label   value="Sales No" style="color:black"/>
+                <textbox id="salesRefNo"   width="250px" readonly="false" value="${arg.salesRefNo}"/>
+                <label   value="Sales Return Status" style="color:black"/>
+                <textbox id="salesReturnStatusName" width="200px" readonly="true" value="${arg.salesReturnStatusName}"/>
+            </row>
+            <row style="border:1px;background:#d3d3d3;">
+                <label   value="Returned Person" style="color:black"/>
+                <textbox id="returner"   width="250px" readonly="false" value="${arg.returner}"/>
+                <label/>
+                <label/>
+            </row>
+            <row visible="false">
+                <textbox id="salesReturnId" value="${arg.salesReturnId}"/>
+                <textbox id="buId" value="${arg.buId}"/>
+                <textbox id="salesReturnStatus" value="${arg.salesReturnStatus}"/>		                
+            </row>
+        </rows>
+    </grid>
+    <div width="100%" height="30px">
+        <absolutelayout width="100%" height="100%">			    
+            <absolutechildren x="100" y="7" width="100px" height="30px">
+                <label value="Remark" style="color:black"/> 
+            </absolutechildren>
+            <absolutechildren x="156" y="5" width="1000px" height="30px">
+                <textbox id="remark" width="520px" readonly="false" value="${arg.remark}"/>
+            </absolutechildren>
+        </absolutelayout>
+    </div>
+
+    <vlayout height="10px" style="border:1px;background:#d3d3d3;">
+    </vlayout>
+    </div>    
+    <div style="border:1px;background:#fffacd;">    
+	<listbox id="listbox" height="200px" multiple="true" checkmark="true">
+            <listhead sizable="true"> 
+                <listheader label="No"                width="50px"  sort="auto(lineNo)"/>
+                <listheader label="Ref. No"           width="50px"  sort="auto(lineNoRef)"/>
+                <listheader label="Item Code"         width="100px" sort="auto(itemCode)"/>
+                <listheader label="Item Descriptiom"  width="250px" sort="auto(itemDescription)"/>
+                <listheader label="HLR"               width="100px" />
+                <listheader label="Sales Qty"         width="70px" align="right"/>
+                <listheader label="Return Qty"        width="70px" align="right"/>
+                <listheader label="Price Return"      width="80px" align="right"/>			            
+                <listheader label="Tax"               width="70px" align="right"/>
+                <listheader label="Net Amount Return" width="120px" align="right"/>
+                <listheader label="Remark"            width="500px"/>
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.lineNo}"/>
+                    <listcell label="${each.lineNoRef}"/>
+                    <listcell label="${each.itemCode}"/>
+                    <listcell label="${each.itemDescription}"/>
+                    <listcell label="${each.hlrDescription}"/>
+                    <listcell label="${each.strQtyReturn}"/>
+                    <listcell label="${each.strQtyReturn}"/>
+                    <listcell label="${each.strPriceReturn}"/>
+                    <listcell label="${each.strTaxAmount}"/>
+                    <listcell label="${each.strNetAmount}"/>
+                    <listcell label="${each.remark}"/>
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <vlayout height="10px" style="border:1px;background:#d3d3d3;">
+    </vlayout>
+    
+<div style="border:1px;background:#d3d3d3;">    
+    <div width="100%" height="160px">			    
+        <absolutelayout width="100%" height="100%">			    
+
+            <absolutechildren x="740" width="240px" height="230px">
+                <grid fixedLayout="true" oddRowSclass="non-odd" style="border:1px;background:#d3d3d3;">
+                    <columns style="border:1px;background:#d3d3d3;">
+                        <column width="100px" align="right"/>
+                        <column width="140px" />
+                    </columns>
+                    <rows style="border:1px;background:#bebebe;">
+                        <row style="border:1px;background:#d3d3d3;">
+                            <label    value="Net Amount" style="color:black"/> 
+                            <decimalbox id="e_total_amount" width="120px" readonly="true" format="####,###,##0.00" style="text-align:right" locale="EN"/>
+                        </row>
+                    </rows>            
+                </grid>
+            </absolutechildren>
+
+            <absolutechildren x="10" y="35" width="100%" height="70px">
+                <grid fixedLayout="true" oddRowSclass="non-odd" style="border:1px;background:#bebebe;">
+                    <columns style="border:1px;background:#bebebe;">
+                        <column width="50px"/>
+                        <column width="170px" />
+                        <column width="50px" />
+                        <column width="100px" align="right"/>
+                        <column width="257px" />
+                        <column width="50px" align="right"/>
+                        <column width="150px" />
+                    </columns>
+                    <rows style="border:1px;background:#bebebe;">
+                        <row style="border:1px;background:#bebebe;">
+                            <label    value="Item" style="color:black"/> 
+                            <textbox  id="e_item_code" width="150px"/>
+                            <button   id="F6" label="[F6]" width="35px" height="23px"/>
+                            <label    value="Item Description" style="color:black" /> 
+                            <textbox  id="e_item_description" width="250px" readonly="true"/>
+                            <label    value="Qty" style="color:black" /> 
+                            <textbox  id="e_qty" width="100px" />
+                        </row>
+                        <row style="border:1px;background:#bebebe;" spans="5">
+                            <hbox>
+                                <label    value="Serial       : " style="color:black"/> 
+                                <textbox  id="e_serial" width="250px"/>
+                            </hbox>
+                        </row>
+                    </rows>            
+                </grid>
+            </absolutechildren>
+            
+            <absolutechildren x="10" y ="120" width="650px" height="35px">
+                <hlayout height="35px" style="border:1px;background:#d3d3d3;">
+                    <button id="e_add_line"        tabindex="13"  label="Add Line [F8]" image="/img/Plus24.png"        width="150px" height="30px"/>
+                    <button id="e_add_line_serial" tabindex="14"  label="Serial"        image="/img/Plus24.png"        width="150px" height="30px"/>
+                    <button id="e_del_line"        tabindex="15"  label="Delete Line"   image="/img/Cancel24.png"      width="150px" height="30px"/>
+                    <button id="e_detail_line"     tabindex="16"  label="Detail Line"   image="/img/Detail-24x24.png"  width="150px" height="30px"/>
+                </hlayout>
+            </absolutechildren>
+        </absolutelayout>
+    </div>			
+</div>    
+</window>

@@ -1,0 +1,167 @@
+<zk>
+    <window id="win_perso_dpa" title="Add/Edit Data Perso DPA" border="normal" height="500px" width="920px" apply="id.my.berkah.rps.dpa.controller.DPAPersoController" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+		
+     <script type="text/javascript">
+         function RunExe(param1, param2, param3)
+         {
+          try
+          {
+           var ua = navigator.userAgent.toLowerCase();
+           if (ua.indexOf("msie") != -1 || ua.indexOf(".net") != -1)
+           {
+               MyObject = new ActiveXObject("WScript.Shell");
+               var par = "C:\\Perso\\MyPerso.exe " + param1 + ' ' + param2 + ' ' + param3;
+               MyObject.Run(par);
+           }
+           else
+           {
+               alert("Browser not supported, please use Internet Explorer.");
+           }
+          }
+          catch (ex)
+          {
+             alert(ex.toString());
+          }
+         }        
+    </script>
+    <div>
+        <grid id="grid" oddRowSclass="non-odd" width="940px" height="400px">
+            <columns>
+                <column label="" width="150px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="60px" />
+                <column label="" width="180px" align="right"/>
+                <column label="" width="300px" />
+            </columns>
+            <rows>
+                <row>
+                    <label   value="BU Code" width="50px" />
+                    <textbox width="200px" tabindex="1" id="buCode" readonly="true"  focus="true" value="${arg.buCode}" style="background-color:#FFFACD"/>
+                    <button  id="btnbucode" tabindex="2" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Business Units"/>
+                    <label   value="BU Description" width="50px"/>
+                    <textbox width="200px" tabindex="3" id="buDescription" readonly="true" value="${arg.buDescription}"/>
+                </row>
+                <row>
+                    <label   value="Perso Number" width="50px" />
+                    <textbox width="200px" tabindex="4" id="persoNumber" readonly="true" value="${arg.persoNumber}"/>
+                    <label   value=""/>
+                    <label   value="Perso Date" width="50px" />
+                    <datebox width="206px" tabindex="5" id="persoDate" readonly="true" value="${arg.persoDate}" cols="12" format="dd-MM-yyyy hh:mm:ss" disabled="true"/>
+                </row>
+                <row>
+                        <label   value="Reservation Number" width="50px" />
+                        <textbox width="200px" tabindex="6" id="reservationNumber" readonly="false" value="${arg.reservationNumber}" style="background-color:#FFFACD"/>
+                        <button  id="btnReservationNumber" tabindex="7" width="40px" height="20px" src="/img/search.png"  tooltiptext="List of Reservation Number"/>
+                        <label   value="Perso Status" width="50px" />
+                        <textbox width="200px" tabindex="8" id="statusName" readonly="true" value="${arg.statusName}"/>
+                </row>
+                <row>
+                    <label   value="Package Name" width="50px" />
+                      <hbox>
+                    <textbox width="50px"  tabindex="9" id="packageCode"  value="${arg.packageCode}" readonly="true" />
+                    <textbox width="140px" tabindex="10" id="packageName"  value="${arg.packageName}" readonly="true" />
+                     </hbox>
+                    <label  value=""  width="50px" />
+                    <label  value="Package Value"  width="50px" />
+                    <intbox width="100px" tabindex="11" id="packageValue"  value="${arg.packageValue}" readonly="true" />
+                </row>
+                <row>
+                    <label   value="MSISDN" width="50px" />
+                    <textbox width="200px" tabindex="12" id="msisdn"  value="${arg.msisdn}" readonly="true"/>
+                    <label/>
+                    <label   value="SIM Type" />
+                    <textbox width="200px" tabindex="13" id="simTypeName" readonly="true" value="${arg.simTypeName}"/>
+                </row>
+
+                <row>
+                    <label   value="Item Code" width="50px" />
+                    <textbox width="200px" tabindex="14" id="itemCode"  readonly="true" maxlength="16" value="${arg.itemCode}"/>
+                    <label   value=""/>
+                    <label   value="Item Description" width="50px"/>
+                    <textbox width="200px" tabindex="15"  readonly="true" id="itemDescription" value="${arg.itemDescription}"/>
+                </row>
+                <row>
+                    <label   value="Customer Group" width="50px" />
+                    <textbox width="200px" tabindex="14" id="customerCode"  readonly="true" maxlength="16" value="${arg.customerCode}"/>
+                    <label   value=""/>
+                    <label   value="Customer Group Description" width="50px"/>
+                    <textbox width="200px" tabindex="15"  readonly="true" id="customerDescription" value="${arg.customerDesc}"/>
+                </row>
+                <row>
+                    <label   value="SIM S/N" width="50px" />
+                    <textbox width="200px" tabindex="16" id="serialNo"  maxlength="16" value="${arg.serialNo}" style="background-color:#FFFACD"/>
+                    <label   value=""/>
+                    <label   value="Application" width="50px"/>
+                    <textbox width="200px" tabindex="17"  readonly="true" id="applicationName" value="${arg.applicationName}"/>
+                </row>
+
+                <row>
+                    <label   value="IMSI" width="50px" />
+                    <textbox width="200px" tabindex="18" readonly="true" id="imsi" value="${arg.imsi}"/>
+                    <label   value=""/>
+                    <label   value="ICCID" width="50px" />
+                    <textbox width="200px" tabindex="19"  readonly="true" id="iccid" value="${arg.iccid}"/>
+                </row>
+                <row>
+                    <label   value="PIN 1" width="50px" />
+                    <textbox width="200px" tabindex="20" readonly="true" id="pin1" value="${arg.pin1}"/>
+                    <label   value=""/>
+                    <label   value="PUK 1" width="50px" />
+                    <textbox width="200px" tabindex="21"  readonly="true" id="puk1" value="${arg.puk1}"/>
+                </row>
+                <row>
+                    <label   value="PIN 2" width="50px" />
+                    <textbox width="200px" tabindex="22" readonly="true" id="pin2" value="${arg.pin2}"/>
+                    <label   value=""/>
+                    <label   value="PUK 2" width="50px" />
+                    <textbox width="200px" tabindex="23" readonly="true" id="puk2" value="${arg.puk2}"/>
+                </row>
+                <row visible="false">
+                    <textbox width="0px" readonly="true" id="buId"         visible="false" value="${arg.buId}"/>
+                    <textbox width="0px" readonly="true" id="status"       visible="false" value="${arg.status}"/>
+                    <textbox width="0px" readonly="true" id="persoId"      visible="false" value="${arg.persoId}"/>
+                    <textbox width="0px" readonly="true" id="productCode"  visible="false" value="${arg.productCode}"/>
+                    <textbox width="0px" readonly="true" id="dllName"      visible="false" value="${arg.dllName}"/>
+                    <textbox width="0px" readonly="true" id="version"        visible="false" value="${arg.version}"/>
+                    <textbox width="0px" readonly="true" id="profile"        visible="false" value="${arg.profile}"/>
+                    <textbox width="0px" readonly="true" id="aki"            visible="false" value="${arg.aki}"/>
+                    <textbox width="0px" readonly="true" id="createdBy"      visible="false" value="${arg.createdBy}"/>
+                    <textbox width="0px" readonly="true" id="flag"           visible="false" value="${arg.flag}"/>
+                    <textbox width="0px" readonly="true" id="simType"        visible="false" value="${arg.simType}"/>
+                    <textbox width="0px" readonly="true" id="itemId"         visible="false" value="${arg.itemId}"/>
+                    <textbox width="0px" readonly="true" id="packageId"      visible="false" value="${arg.packageId}"/>
+                    <textbox width="0px" readonly="true" id="resourceId"     visible="false" value="${arg.resourceId}"/>
+                    <textbox width="0px" readonly="true" id="reservationId"  visible="false" value="${arg.reservationId}"/>
+                    
+                </row>
+            </rows>
+        </grid>
+    </div>
+    <div>
+        <grid id="grid_button" oddRowSclass="non-odd" width="880px">
+            <columns>
+               <column label="" width="95px"  align="center" />
+               <column label="" width="95px"  align="center"/>
+               <column label="" width="100px" align="center"/>
+               <column label="" width="115px" align="center"/>
+               <column label="" width="100px" align="center"/>
+               <column label="" width="100px" align="center"/>
+               <column label="" width="130px" align="center"/>
+               <column label="" width="100px" align="center"/>
+           </columns>
+           <rows>
+               <row>
+                   <button id="newrecord"  tabindex="30" label="New"     width="80px" image="/img/New24.png"     tooltiptext="New Record"/>
+                   <button id="save"       tabindex="31" label="Save"    width="80px" image="/img/Save24.png"    tooltiptext="Save Record"/>
+                   <button id="perso"      tabindex="32" label="Perso"   width="85px" image="/img/Perso24x24.png" tooltiptext="Perso"/>
+                   <button id="refresh"    tabindex="33" label="Refresh" width="100px" image="/img/Refresh24.png" tooltiptext="Refresh"/>
+                   <button id="print"      tabindex="34" label="Print"   width="80px" image="/img/Print24.png"   tooltiptext="Print Record"/>
+                   <button id="pos"        tabindex="35" label="P.O.S"   width="80px" image="/img/dollar24.png"   tooltiptext="Create P.O.S"/>
+                   <button id="cancel"     tabindex="36" label="Cancel"  width="100px" image="/img/Cancel24.png"  tooltiptext="Cancel Record"/>
+                   <button id="close"      tabindex="37" label="Close"   width="85px" image="/img/Logout24.png"  tooltiptext="Close"/>
+               </row>
+           </rows>
+       </grid>	
+    </div>                             	
+    </window>
+</zk>

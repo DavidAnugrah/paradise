@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="winselectfromto" title="Select S/N" position="center" apply="id.my.berkah.tcash1.controller.SelectEditSNBundling" visible="true" border="normal" width="440px" closable="false" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <grid id="grid_find" oddRowSclass="non-odd"  width="99.9%">
+            <columns>
+                <column label="" width="80px" align="right" />
+                <column label="" width="200px" />
+                <column label="" width="135px" />
+            </columns>
+            <rows>
+                  
+                <row>
+                    <label   value="From S/N" width="50px" />
+                    <textbox id="txtsn" placeholder="From Serial Number" mold="rounded" value="${arg.header.range_from}" width="180px"  style="background-color:#FFFACD"/>
+                    <label/>
+                </row>
+                <row>
+                    <label   value="To S/N" width="50px" />
+                        <textbox id="txtto" placeholder="To Serial Number" mold="rounded" value="${arg.header.range_to}" width="180px"  style="background-color:#FFFACD"/>
+                        <hbox>
+                        <label   value="Qty" width="50px" />
+                        <intbox id="txtqty" placeholder="Quantity" format="#,##0"  constraint="no negative: it shall not be negative" value="${arg.header.qty}" mold="rounded" width="100px" style="background-color:#FFFACD"/>
+                    </hbox>
+                </row>
+                <row visible="false">
+                      <textbox id="txtflag" width="10px" tabindex="1" value="${arg.flag}" />
+                       <textbox id="txtreg" width="50px" tabindex="5" value="${arg.reg}" />
+                    <hbox>
+                     <textbox id="flag" width="50px" tabindex="5" value="${arg.Operation}" />
+                     <textbox id="txtitem" width="50px" tabindex="2" value="${arg.header.item_id}" />
+                     <textbox id="txtitemlocid" width="50px" tabindex="3" value="${arg.header.item_loc_id}" />
+                     <textbox id="txtbundlingid" width="50px" tabindex="4" value="${arg.header.bundling_id}" />
+                     <textbox id="txtbundlingDtlId" width="50px" tabindex="5" value="${arg.header.bundling_dtl_id}" />
+                    </hbox>
+                </row>              
+            </rows>
+        </grid>
+         <grid oddRowSclass="non-odd" width="99.9%">
+                    <columns>
+                        <column label="" width="100%" align="center" />
+                    </columns>
+                    <rows>
+                        <row>
+                            <hbox>
+                            <button id="Submit" mold="trendy"  label="Submit"  image="/img/Ok24.png" />
+                            <button id="Close1"  height="33px"  width="90px" mold="trendy"  label="Close" image="/img/End16.png" />
+                            </hbox>
+                        </row>
+                    </rows>
+                </grid>	
+  </window>
+</zk>

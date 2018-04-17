@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_dtl_Request_production" title="Add/Edit Detail Request Production" apply="id.my.berkah.ifmnew.controller.RP.DetailRequestProduction" border="normal" width="1010px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="999px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="280px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Item" width="50px" />
+                    <hbox>
+                    <textbox width="50px"   id="txtitemid" visible="false"   />
+                    <textbox width="70px"   id="txtitemcode" readonly="true"  />
+                    <textbox width="160px"  id="txtitemdesc" readonly="true"  />
+                    </hbox>
+                     <button id="btnitem" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov item" />
+                <label   value="Receiving Bussines Unit "  />
+                    <hbox>
+                    <textbox width="50px" id="txtbuId" visible="false"    />
+                    <textbox width="70px" id="txtbucode" readonly="true"    />
+                    <textbox width="160px" id="txtbuDesc" readonly="true"   />
+                    </hbox>
+                    <button  id="btnbu" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov Bu" />
+                </row>
+                <row>
+                    <label   value="Receiving Regional HLR"  />
+                    <hbox>
+                    <textbox width="70px" visible="false"  id="txtregid"  readonly="true" />
+                    <textbox width="70px"  id="txtregcode" visible="true" readonly="true"  />
+                    <textbox width="160px"  id="txtregdesc" readonly="true"  />
+                    </hbox>
+                    <button id="btnreg" width="40px" height="25px"  src="/img/search.png"  tooltiptext="Lov Receiving HLR" />
+                    <label   value="WareHouse"/>
+                    <hbox>
+                    <textbox width="70px"  id="txtwhid" visible="false"  readonly="true"  />
+                    <textbox width="70px"  id="txtwhcode"   readonly="true"  />
+                    <textbox width="160px"  id="txtwhdesc"  readonly="true"  />
+                    </hbox>
+                  <button  id="btnwh" width="40px" height="25px"   src="/img/search.png"  tooltiptext="Lov WH" />
+                </row>
+              
+                <row>
+                     <label   value="Need Date"  />
+                    <datebox width="160px"  id="dtneeddate" format="dd-MM-yyyy"    readonly="true"  />
+                    <label value=""/>
+                    <label   value="Order Quantity" />
+                    <hbox>
+                    <intbox width="160px" format="#,##0" id="txtquntity" />
+                    <label   value=""  />
+                    </hbox>
+                </row>
+                <row visible="false">
+                    <textbox id="flag" width="100px" />
+                    <textbox id="txtreqid" width="100px" value="${arg.rpId}" />
+                    <textbox id="txtreqDtlid" width="100px" value="${arg.header.requisition_dtl_id}" />
+                    <textbox id="txtstatus" width="100px" value="${arg.status}"/>
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="990px">
+            <columns>
+               <column label=""  width="990px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord"  tabindex="30" label="New"   height="30px"   width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <label value="" width="100px"/>
+                    <button id="save"      tabindex="38" label="Save"   height="30px"   width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                     <label value="" width="100px"/>
+                    <button id="close"     tabindex="37" label="Close"  height="30px"   width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

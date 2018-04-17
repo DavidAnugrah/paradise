@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Mapping_WH" title="List WareHouse Mkios " apply="id.my.berkah.mkiossetup.controller.ListMappingWh" border="normal"  width="1100px" height="100%"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+        </div>
+        <div>
+             <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="L2C" image="/img/Detail-24x24.png" tooltiptext="Mapping Location To Channel" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+            <textbox visible="false" id="txtwhId"/>
+            <textbox visible="false" id="txtwhcode"/>
+            <textbox visible="false" id="txtwhdesc"/>
+            <textbox visible="false" id="txtEffectiveBy"/>
+            <textbox visible="false" id="txtEffectiveByDate"/>
+            <textbox visible="false" id="txtExpiredBy"/>
+            <textbox visible="false" id="txtExpiredDate"/>
+            <textbox visible="false" id="txtCreatedBy"/>
+            <textbox visible="false" id="txtCreatedDate"/>
+            <textbox visible="false" id="txtmodifby"/>
+            <textbox visible="false" id="txtmodifdate"/>
+            <textbox visible="false" id="txtid"/>
+             </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="420px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Item" >
+            <listhead sizable="true">
+                <listheader label="Id"             width="50px"  visible="false" sort="auto" />
+                <listheader label="WH Id"          width="100px" visible="false" sort="auto" />
+                <listheader label="WH Code"        width="100px" visible="true" sort="auto" />
+                <listheader label="WH Description" width="180px" visible="true" sort="auto" />
+                <listheader label="Effective By"   width="140px" visible="true" sort="auto"/>
+                <listheader label="Effective Date" width="140px" visible="true" sort="auto"/>
+                <listheader label="Expired By"     width="140px" visible="true" sort="auto" />
+                <listheader label="Expired Date"   width="140px" visible="true" sort="auto" />
+                <listheader label="Created By"     width="140px" visible="true" sort="auto"/>
+                <listheader label="Created Date"   width="140px" visible="true" sort="auto"/>
+                
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+  
+    
+     <window id="win_list_wh_find" title="Find Parameter" visible="false" apply="id.my.berkah.mkios.controller.ListMappingWh" position="center" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="120px" align="right" />
+                    <column label="" width="300px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="WareHouse Code" width="50px" />
+                        <hbox>
+                        <!--<textbox id="txtwhid" visible="false" width="400px" />-->
+                        <textbox id="txtwhcode" placeholder="WareHouse" width="200px" style="background-color:#FFFACD"/>
+                        <!--<textbox id="txtwhcdesc" width="150px" style="background-color:#FFFACD"/>-->
+                        <!--<button id="btnwhcode" src="/img/search.png"/>-->
+                        </hbox>
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="210px" align="center" />
+                    <column label="" width="210px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                     <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Close1" tabindex="13" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+</zk>

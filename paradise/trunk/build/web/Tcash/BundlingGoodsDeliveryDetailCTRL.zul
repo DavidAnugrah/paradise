@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_GD_detail_bundling" title="Add/Edit GoodDelivery Detail Bundling" apply="id.my.berkah.tcash1.controller.BundlingGoodsDeliveryDetail" border="normal"  width="920px" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <listbox id="listbox" mold="paging" pageSize="10" height="330px" multiple="true" checkmark="true" >
+            <listhead  style="background:#eee; color:black;">
+                <listheader label="Item Code" sort="auto" />
+                <listheader label="Item Description"  sort="auto"   />
+                <listheader label="Bundling Date" sort="auto" />
+                <listheader label="Bundling No"  width="180px" visible="true" />
+                <listheader label="Qty Bundling"  width="115px" sort="auto" />
+                <listheader label="Qty Total GD"  width="115px" sort="auto" />
+                <listheader label="Qty Outstanding"  width="130px" sort="auto" />
+                <listheader label="WarehouseId" visible="false" width="85px" sort="auto" />
+                <listheader label="warehouse_id" width="100px" sort="auto" visible="false"/>
+                <listheader label="bu_id" width="280px" sort="auto" visible="false"/>
+                <listheader label="Range From" sort="auto"  visible="false" />
+                <listheader label="Range To"  sort="auto" visible="false"/>
+                 <listheader label="BundlingId" width="100px" visible="false" sort="auto" />
+                <listheader label="PoId" visible="false" width="100px" sort="auto" />
+                <listheader label="PositionNumber" visible="false" width="100px" sort="auto" />
+                <listheader label="Item id" visible="false" sort="auto" />
+            </listhead>
+            <template name="model" >
+                <listitem>
+                   
+                </listitem>
+            </template>
+        </listbox>
+        <grid id="grid_find" oddRowSclass="non-odd" width="900px">
+            <columns>
+               <column label="" width="900px" align="center" />
+               
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="save"        tabindex="38" label="Save"     height="30px"    image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="close"        tabindex="38" label="Close"   height="30px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                       <textbox  id="bndlingId" value="${arg.bundlingId}" visible="false"/>
+                       <textbox  id="gdID" value="${arg.gdID}" visible="false"/>
+                       <textbox  id="whId" value="${arg.whID}" visible="false"/>
+                       <textbox  id="buId" value="${arg.buid}" visible="false"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

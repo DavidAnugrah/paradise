@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_Request_PO" title="List Request Production "  border="normal" apply="id.my.berkah.hrnbox.controller.ListRequestProduction"  width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="new" image="/img/New24.png"  tooltiptext="New"/>
+            <toolbarbutton id="edit" image="/img/Edit24.png" tooltiptext="Edit" />            
+            <toolbarbutton id="refresh" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" image="/img/Find24.png" tooltiptext="Find" />
+            <textbox id="txtbuid" visible="false" />
+            <textbox id="txtreqin" visible="false" />
+            <textbox id="txtbucode" visible="false" />
+            <textbox id="txtbudes" visible="false" />
+            <textbox id="txtid" visible="false" />
+            <textbox id="txtreqnum" visible="false" />
+            <textbox id="txtreqdte" visible="false" />
+            <textbox id="txtreqstat" visible="false" />
+            <textbox id="txtprocesste" visible="false" />
+            <textbox id="txtprocessby" visible="false" />
+            <textbox id="txtcreatedate" visible="false" />
+            <textbox id="txtcreateby" visible="false" />
+            <textbox id="txtcanceleddte" visible="false" />
+            <textbox id="txtcanceledby" visible="false" />
+            <textbox id="txtapproveby" visible="false" />
+            <textbox id="txtapprovedate" visible="false" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" mold="paging" height="400px" pageSize="10"  tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="BU Id"                 width="50px"  visible="false" sort="auto"/>
+                <listheader label="Business Unit Code"    width="150px"  visible="true" sort="auto"/>
+                <listheader label="Business Unit Description"   width="250px"  visible="true" sort="auto" />
+                <listheader label="Id"                    width="50px"  visible="false" sort="auto" />
+                <listheader label="Request Production ID"       width="100px" visible="false" sort="auto" />
+                <listheader label="Request Production Number"   width="200px" visible="true" sort="auto" />
+                <listheader label="Request Production Date"   width="200px" visible="false" sort="auto" />
+                <listheader label="Submitted Date"        width="150px" visible="true" sort="auto"/>               
+                <listheader label="Submitted By"          width="150px" visible="true" sort="auto"/> 
+                <listheader label="Created Date"             width="200px" visible="true" sort="auto" />
+                <listheader label="Created By"           width="200px" visible="true" sort="auto" />
+                <listheader label="Canceled By"           width="150px" visible="true" sort="auto"/>               
+                <listheader label="Canceled Date"         width="150px" visible="true" sort="auto"/>                  
+                <listheader label="Approved Date"           width="150px" visible="true" sort="auto"/>               
+                <listheader label="Approved By "         width="150px" visible="true" sort="auto"/>               
+                <listheader label="Status"                width="150px" visible="true" sort="auto"/>               
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+                </div>
+
+    
+     <window id="win_list_Po_find" title="Find Parameter" apply="id.my.berkah.hrnbox.controller.ListRequestProduction" position="center" visible="false" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="130px" align="right" />
+                    <column label="" width="230px" />
+                </columns>
+                <rows>
+                  
+                    <row>
+                       <label   value="Business unit" width="50px" />
+                       <hbox>
+                        <textbox id="txtBuid"  visible="false" width="60px" style="background-color:#FFFACD"/>
+                        <textbox id="txtBucode" placeholder="BU Code" width="60px" style="background-color:#FFFACD"/>
+                        <textbox id="txtBudesc" placeholder="BU Description" width="130px" style="background-color:#FFFACD"/>
+                       </hbox>
+                        <button  id="btnbu" src="/img/search.png" mold="trendy"/>
+                    </row>
+                    <row>
+                       <label   value="Request Production Number" width="50px" />
+                       <hbox>
+                            <textbox id="txtreid"  width="20px" visible="false" style="background-color:#FFFACD"/>
+                        <textbox id="txtrpn" placeholder="Request Production Number" width="200px" style="background-color:#FFFACD"/>
+                       </hbox>
+                       
+                    </row>
+                    <row>
+                       <label   value="Date From" width="50px" />
+                       <hbox>
+                        <datebox id="dateboxfrom" format="dd-MM-yyyy" mold="rounded" readonly="true" width="100px" style="background-color:#FFFACD"/>
+                        <label value="to"/>   
+                        <datebox id="dateboxto" format="dd-MM-yyyy"  mold="rounded" readonly="true" width="100px"  style="background-color:#FFFACD"/>
+                       </hbox>
+                        
+                    </row>
+                    <row >
+                       <label   value="Status" width="50px" />
+                       <hbox>
+                           <textbox id="txtstatusfnd" visible="false"/>
+                           <combobox id="cmbstatus" width="120px" mold="rounded" value="All" readonly="true">
+                           <comboitem label="All" />
+                           <comboitem label="Draft" />
+                           <comboitem label="Submit" />
+                           <comboitem label="Approved" />
+                       </combobox>
+                       </hbox>
+                       
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="140px" align="center" />
+                    <column label="" width="140px" align="center" />
+                    <column label="" width="140px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                     <button id="goFind" height="30px" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Clear" mold="trendy" tabindex="13" label="Clear"  image="/img/DeleteSelection24.png" />
+                     <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+</zk>

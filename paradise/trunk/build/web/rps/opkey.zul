@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+
+   <window id="win_op_key" title="OP-Key" border="normal" width="555px" apply="id.my.berkah.rps.controller.MyOPKeyController">
+       <div>
+            <grid id="grid" oddRowSclass="non-odd" width="530px">
+                <columns>
+                    <column label="" width="200px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="OP Key" width="100px" />
+                        <textbox id="opkey" type="password" width="300px" maxlength="32" focus="true"/>
+                    </row>
+                    <row>
+                        <label   value="Verify OP Key" width="100px" />
+                        <textbox id="opkey2" type="password" width="300px" maxlength="32"/>
+                    </row>
+                </rows>
+            </grid>
+        </div>        
+        <div height="10px">
+            
+        </div>
+        <div>
+            <button id="save" label="Submit" width="80px" image="/img/Save24.png"  tooltiptext="Save Data"/>
+        </div>
+   </window>       
+
+</zk>

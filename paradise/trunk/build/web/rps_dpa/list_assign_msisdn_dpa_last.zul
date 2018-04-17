@@ -1,0 +1,190 @@
+<zk>
+<window id="win_list_assign_dpa" title="List Data Assign MSISDN for DPA" width="99%" height="480px" border="normal" apply="id.my.berkah.rps.dpa.controller.DPAListAssignController" ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+    <attribute name="onLater">
+        Clients.clearBusy(); //remove the busy message
+    </attribute>
+    <div>
+        <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+           <toolbarbutton id="newrecord" width="25px" height="25px" src="/img/New24.png"     tooltiptext="New Record"/>
+           <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="Edit Record"/>
+           <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+           <toolbarbutton id="find"      width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+        </toolbar>
+    </div>    
+    <div>    
+        <listbox id="listbox" height="368px">
+            <listhead sizable="true">
+                <listheader label="ASSIGN ID"            width="0px"    visible="false"/>
+                <listheader label="Assign Number"        width="200px"  sort="auto(assignNumber)"/>
+                <listheader label="Assign Date"          width="250px"  sort="auto(assignDateStr)"/>
+                
+                <listheader label="Package Id"           width="0px"    visible="false"/>
+                <listheader label="Package Code"         width="100px"  sort="auto(packageCode)"/>
+                <listheader label="Package Name"         width="250px"  sort="auto(packageName)"/>
+                <listheader label="Package Value"        width="150px"  sort="auto(packageValueStr)" align="right"/>
+                
+                <listheader label="Item Id"              width="0px"    visible="false"/>
+                <listheader label="Item Code"            width="100px"  sort="auto(itemCode)"/>
+                <listheader label="Item Description"     width="250px"  sort="auto(itemDescription)"/>
+                
+                <listheader label="Item Id Kg"           width="0px"    visible="false"/>
+                <listheader label="Item Kg Code"         width="100px"  sort="auto(itemCodeKg)"/>
+                <listheader label="Item Kg Description"  width="250px"  sort="auto(itemDescriptionKg)"/>
+                
+                <listheader label="Location Id"         width="250px" visible="false" />
+                <listheader label="Location Code"        width="250px"  sort="auto(locationCode)"/>
+                <listheader label="Location Description"  width="250px"  sort="auto(locationDesc)"/>
+                
+                <listheader label="Customer Id"         width="250px" visible="false" />
+                <listheader label="Customer Code"        width="250px"  sort="auto(locationCode)"/>
+                <listheader label="Customer Description"  width="250px"  sort="auto(locationDesc)"/>
+                
+                <listheader label="Status"               width="250px"  sort="auto(statusName)"/>
+                <listheader label="Created By"           width="200px"  visible="true"/>
+                <listheader label="Creation Date"        width="150px"  visible="true"/>
+                <listheader label="Modified By"          width="200px"  visible="true"/>
+                <listheader label="Modified Date"        width="150px"  visible="true"/>
+                <listheader label="Expired By"           width="200px"  visible="true"/>
+                <listheader label="File Name"            width="200px"  visible="false"/>
+                
+            </listhead>
+            <template name="model">
+                <listitem>
+                    <listcell label="${each.assignId}"/>
+                    <listcell label="${each.assignNumber}"/>
+                    <listcell label="${each.assignDateStr}"/>
+
+                    <listcell label="${each.packageId}"/>
+                    <listcell label="${each.packageCode}"/>
+                    <listcell label="${each.packageName}"/>
+                    <listcell label="${each.packageValueStr}"/>
+
+                    <listcell label="${each.itemId}"/>
+                    <listcell label="${each.itemCode}"/>
+                    <listcell label="${each.itemDescription}"/>
+
+                    <listcell label="${each.itemIdKg}"/>
+                    <listcell label="${each.itemCodeKg}"/>
+                    <listcell label="${each.itemDescriptionKg}"/>
+                    
+                    <listcell label="${each.locationId}"/>
+                    <listcell label="${each.locationCode}"/>
+                    <listcell label="${each.locationDesc}"/>
+                    
+                    <listcell label="${each.customerGroupId}"/>
+                    <listcell label="${each.customerGroupCode}"/>
+                    <listcell label="${each.customerGroupDescription}"/>
+                    <listcell label="${each.statusName}"/>
+                    <listcell label="${each.createdByName}"/>
+                    <listcell label="${each.createdDateStr}"/>
+                    <listcell label="${each.modifiedByName}"/>
+                    <listcell label="${each.modifiedDate}"/>
+                    <listcell label="${each.expiredByName}"/>
+                    <listcell label="${each.expiredBy}"/>
+                    <listcell label="${each.fileNames}"/>
+                </listitem>
+            </template>
+        </listbox>
+    </div>
+    <div>
+        <paging id="userPaging" width="100%" style="color: black"/>
+    </div>
+		
+    <window id="win_list_assign_find" title="Find Parameter" border="normal" apply="id.my.berkah.rps.dpa.controller.DPAListAssignController" width="437px">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="436px">
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="280px" />
+                    <column label="" width="35px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Assign Number" width="50px" />
+                        <textbox id="findAssignNumber" tabindex="1" width="200px" />
+                    </row>
+                    <row>
+                        <label  value="Assign Date" width="50px" />
+                        <hbox>  
+                            <datebox id="findFromDate" tabindex="2" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                            <datebox id="findToDate"   tabindex="3" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="Package Code" width="50px" />
+                        <textbox id="findPackageCode" tabindex="4" width="200px"/>
+                    </row>
+                    <row>
+                        <label   value="Package Name" width="50px" />
+                        <textbox id="findPackageName" tabindex="5" width="200px"/>
+                    </row>
+                    <row>
+                        <label   value="Item Code" width="50px" />
+                        <textbox id="findItemCode"  tabindex="6" width="250px" maxlength="16"/>
+                    </row>
+                    <row>
+                        <label   value="Item Description" width="50px" />
+                        <textbox id="findItemDescription"  tabindex="7" width="250px" maxlength="100"/>
+                    </row>
+                    <row>
+                        <label   value="Item Code Kg" width="50px" />
+                        <textbox id="findItemCodeKg"  tabindex="8" width="250px" maxlength="16"/>
+                    </row>
+                    <row>
+                        <label   value="Item Description Kg" width="50px" />
+                        <textbox id="findItemDescriptionKg"  tabindex="9" width="250px" maxlength="100"/>
+                    </row>
+                    <row>
+                        <label   value="Customer Group Code" width="50px" />
+                        <textbox id="findCustomerGroupCode"  tabindex="10" width="250px" maxlength="16"/>
+                    </row>
+                    <row>
+                        <label   value="Customer Group Desc." width="50px" />
+                        <textbox id="findCustomerGroupDescription"  tabindex="11" width="250px" maxlength="100"/>
+                    </row>
+                    <row>
+                        <label/>
+                        <hbox>
+                            <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                            <button id="doClose" tabindex="13" label="Close" image="/img/End16.png" />
+                    	</hbox>
+                    </row>
+                </rows>
+            </grid>	     
+    </window>
+    <window id="win_list_assign_print" title="Print Parameter" border="normal"  apply="id.my.berkah.rps.dpa.controller.DPAListAssignController" width="440px">
+        <grid id="grid_print" oddRowSclass="non-odd">
+            <columns>
+                <column label="" width="100px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="35px" />
+            </columns>
+            <rows>
+                <row>
+                    <label  value="Assign DATE" width="50px" />
+                    <hbox>  
+                        <datebox id="printFromDate" tabindex="4" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                        <datebox id="printToDate"   tabindex="5" cols="12" format="dd/MM/yyyy" onCreate="self.value = new Date()" />
+                    </hbox>
+                </row>
+                <row>
+                    <label   value="Status" width="50px" />
+                    <hbox>
+                        <textbox id="printStatusName"  tabindex="8" width="100px" />
+                        <button  id="btnLovStatusPrint" tabindex="9" width="20px" height="20px" src="/img/Last16.png"  tooltiptext="List of Perso Status"/>
+                    </hbox>
+                </row>
+                <row>
+                    <label/>
+                    <hbox>
+                        <button id="goPrint"    tabindex="11" label="Print" image="/img/Print24.png" width="100px" height="30px"/>
+                        <button id="ClosePrint" tabindex="12" label="Close" image="/img/End24.png"   width="100px" height="30px"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	     
+    </window>		
+    </window>
+</zk>

@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_monitoring_lar" title="Monitoring LR" apply="id.my.berkah.lar.controller.MonitoringLARCTRL" border="normal" width="900px" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="880px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="318px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="LR No" width="50px" />
+                    <hbox>
+                        <textbox width="50px" visible="false" id="txtlarid" value="${arg.larid}" readonly="true" />
+                        <textbox width="210px" tabindex="1" id="txtlarno" value="${arg.larno}" readonly="true"  />
+                        <!--<button id="btncontract" width="40px" height="20px"  src="/img/search.png"  tooltiptext="Lov Contract"/>-->
+                    </hbox>
+                    <label   value="LR Date" width="100px" />
+                        <textbox width="210px" id="txtdate"  value="${arg.lardate}" />    
+                </row>
+                <row>
+                    <label   value="Business Unit" width="50px" />
+                        <textbox width="210px" tabindex="4" id="budesc" value="${arg.budesc}" readonly="true"/>
+                    <label   value="Warehouse" />
+                        <textbox width="150px" tabindex="6" id="whdes" value="${arg.whdesc}" readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Busniness Unit Sender" width="50px" />
+                    <textbox width="210px" tabindex="7" id="txtsenderbu" value="${arg.busender}" readonly="true" style="background-color:#FFFACD"/>
+                    <label   value="Warehouse Sender"/>
+                    <textbox width="210px" tabindex="9" value="${arg.whsender}" id="txtwhsendrer" readonly="true" />
+                </row>
+             
+                <row>
+                    <label   value="Receive No" width="50px" />
+                    <textbox width="210px" tabindex="10" id="txtrev" value="${arg.receiveno}" readonly="true" />
+                    <!--<label value=""/>-->
+                    <label   value="LR No Group"  visible="false"/>
+                    <textbox width="210px" tabindex="11" id="txtgroup" visible="false"  value="${arg.larnogroup}"   readonly="true"   />
+                </row>
+                <row>
+                    <label   value="Status" width="50px" />
+                    <textbox width="210px" tabindex="12" id="txtstat" value="${arg.larstatus}"  readonly="true" />
+                  <label   value="Created Periode" width="50px" />
+                    <textbox width="210px"  tabindex="16" id="txtperiode"  value="${arg.createdperiode}" readonly="true"  />
+                    <textbox width="210px"  tabindex="16" id="txtseq" visible="false" value="${arg.seq}" readonly="true"  />
+                </row>
+                <row>
+                    <label   value="Create By" width="50px" />
+                    <textbox width="210px" tabindex="14" id="txtcreat" value="${arg.createdby}" readonly="true"   />
+                    <label   value="Created Date" /> 
+                        <textbox width="210px" tabindex="17"  id="txtcreatdate" value="${arg.creationdate}" readonly="true"  />
+                </row>
+                <row >
+                
+                </row>
+                <row visible="false">
+                   <textbox width="20px" visible="true" id="txtid" value="${arg.receiveid}" readonly="false" />
+<!--                    <textbox width="100px" readonly="true" id="txttotal"  />
+                    <textbox width="10px" readonly="true" id="txtout"  value="${arg.outContractId}" />
+                    <textbox width="100px" readonly="true" id="txtflag"   />
+                    <textbox width="100px" readonly="true" id="txtcontractdtlId"   />
+                    <textbox width="210px"  id="txtexpiredate"  tabbable="false" value="${arg.expirydate}"   readonly="true"   />-->
+                </row>
+            </rows>
+        </grid>
+      
+        <div>
+            <listbox id="listbox" height="180px" mold="paging" ctrlKeys="#del" pageSize="10" tooltiptext="Double Click to View Detail" >
+                <listhead sizable="true">
+                    <listheader label="lar id"           visible="false"  />
+                    <listheader label="Line no"       visible="false"  />
+                    <listheader label="Lot ID"            visible="false" />
+                    <listheader label="Item id"        visible="false" sort="auto"  />
+                    <listheader label="Block From"        visible="true"  sort="auto" />
+                    <listheader label="Block To"           visible="true"  sort="auto"  />
+                    <listheader label="Quantity"           visible="true"  sort="auto"  />
+                    <listheader label="Active Status"        visible="false"  sort="auto"  />
+                    <listheader label="Status"               visible="true"  sort="auto"  />
+                    <listheader label="Message"              visible="true"  sort="auto"  />
+                    <listheader label="Process Date"               visible="false"  sort="auto"  />
+                    <listheader label="Process By"          visible="false"  sort="auto"  />
+                    <listheader label="Created By"      visible="false"  sort="auto"  />
+                    <listheader label="Create Date"    visible="false" sort="auto" />
+                </listhead>
+                <template name="model">
+                    <listitem>
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+<!--        <grid visible="false" id="grid1" oddRowSclass="non-odd" width="880px">
+            <columns>
+                <column label="" width="120px" align="right" />
+                <column label="" width="170px" align="center"/>
+                <column label="" width="100px" align="right"/>
+                <column label="" width="170px" align="left"/>
+                <column label="" width="120px" align="right"/>
+                <column label="" width="190px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Created Date" width="50px" />
+                    <textbox width="150px"  id="txtcreationdate" value="${arg.creationdate}"  tabbable="false" readonly="true" /> 
+                    <label value="Modified Date" width="50px" />
+                    <textbox width="150px"  id="txtmodifieddate" value="${arg.lastupdatedate}"  tabbable="false" readonly="true" /> 
+                    <label value="Terminated Date" width="50px" />
+                    <textbox width="150px"  id="txttermiated" readonly="true"  tabbable="false" value="${arg.terminatedate}"/>     
+                </row>
+                <row>
+                    <label   value="Created By" width="50px" />
+                    <textbox width="150px"  id="txtcreationby" readonly="true"  tabbable="false" value="${arg.createdby}"/> 
+                    <label value="Modified By " width="60px" />
+                    <textbox width="150px"  id="txtmodifiedby" readonly="true"  tabbable="false" value="${arg.lastupdatedby}" /> 
+                    <label value="Terminated By " width="60px" />
+                    <textbox width="150px"  id="txttermiatedby" readonly="true"  tabbable="false" value="${arg.terminateby}" />     
+                </row>
+            </rows>
+        </grid>-->
+         
+
+        <grid id="grid_find" oddRowSclass="non-odd" width="880px">
+            <columns>
+                <column label="" width="880px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                        <button id="newrecord"  mold="trendy" label="New"    visible="false"      image="/img/New24.png"     tooltiptext="New Record"/>
+                        <button id="btnsave"    mold="trendy"      tabindex="18" label="Save"   visible="false"       image="/img/Save24.png"     tooltiptext="Save"/>
+                        <button id="btnadd"     label="Add Line" mold="trendy" width="100px" visible="false"   image="/img/Plus24.png" tooltiptext="Add"/>   
+                        <button id="btndelete"  label="Delete Line" mold="trendy" visible="false" width="100px" image="/img/DeleteSelection24.png" tooltiptext="Delete List" />
+                        <button id="btnresend"  label="Resend LR" mold="trendy" visible="true" image="/img/Undo24.png" tooltiptext="ReSend" />
+                        <button id="btnrefresh" label="refresh"  mold="trendy" visible="true"   width="100px" image="/img/Refresh24.png" tooltiptext="Refresh" />
+                        <button id="btnactive"  mold="trendy"    tabindex="18" visible="false"      label="Active"       image="/img/Ok24.png"     tooltiptext="Active"/>
+                        <button id="btnexpired" mold="trendy"    tabindex="18" visible="true"       label="Expired "        image="/img/Calculator24.png"     tooltiptext="Revised"/>
+                        <button id="btnterminated" mold="trendy"  tabindex="19" visible="false"  label="Terminated"     image="/img/Action24.png"  tooltiptext="Terminated"/>
+                        <button id="close"  mold="trendy"         tabindex="38" label="Close"    width="100px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>	 
+    
+    
+    </window>
+</zk>

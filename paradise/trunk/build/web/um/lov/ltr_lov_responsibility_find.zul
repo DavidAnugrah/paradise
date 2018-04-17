@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="winLovResponsibility"  title="LOV Responsibility" width="650px" border="normal" apply="id.my.berkah.um.controller.LovResponsibilityLtrFindCTRL" mode="modal" style="border:1px;">
+    <hbox align="center" style="border:1px;" width="100%">
+        <grid>
+            <columns style="border:1px;">
+                <column label="" align="right" width="10%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;">
+                    <label value="Keyword:" style="color: black"/>
+                    <textbox id="txtKeywordResponsibility"   width="100%" value="%"/>
+                    <button  id="btnSearchResponsibility" label="Search" image="/images/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="listResponsibility" mold="paging" pageSize="10" style="border:1px;color:white;">
+        <listhead style="border:0px;color:black;">
+            <listheader label="Responsibility Id" width="100px" visible="false" style="color: black"/>
+            <listheader label="Responsibility Name" width="300px" sort="auto(ResponsibilityName)" style="color: black"/>
+            <listheader label="Responsibility Description" width="300px" sort="auto(ResponsibilityDesc)" style="color: black"/>          
+        </listhead>
+        <template name="model" style="border:1px;">
+            <listitem>
+                <listcell label="${each.responsibilityId}"/>
+                <listcell label="${each.responsibilityName}"/>
+                <listcell label="${each.responsibilityDesc}"/>               
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;" width="100%" >
+        <grid>
+            <columns style="border:1px;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;">	
+                    <button id="btnLovSubmit" label="Submit" orient="horizontal"/>
+                    <button id="btnLovClose" label="Close" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+</zk>

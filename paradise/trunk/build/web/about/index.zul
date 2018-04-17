@@ -1,0 +1,25 @@
+<?page title="About Me" contentType="text/html;charset=UTF-8"?>
+<?link rel="shortcut icon" href="/img/Refresh24.png"?>
+<zk>
+    <window title="About Me" border="normal" mode="modal" closable="true" width="320px" height="346px">
+        <grid id="grid" fixedLayout="true">
+            <columns>
+                <column label="" width="300px" align="center" />
+            </columns>
+            <rows>
+               <row>
+                    <label   value="Hak guna pakai untuk PT Telkomsel (2014)" width="300px" />
+               </row>
+               <row>
+                    <image src="img/background.jpg" height="200px" width="300px"/>
+               </row>
+               <row>
+                    <label   value="berkah.my.id semoga berkah untuk semuanya" width="300px" />
+               </row>
+               <row>
+                    <label   value="Release Candidate 1.0" width="300px" />
+               </row>
+           </rows>
+      </grid>
+    </window>
+</zk>

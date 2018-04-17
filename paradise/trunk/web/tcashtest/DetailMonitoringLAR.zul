@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_detail_lar" title="Detail Monitoring LR" border="normal"  apply="id.my.berkah.lar.controller.DetailMonitoringLAR" closable="false" width="840px" height="350x" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+       <div>
+        <grid id="grid" oddRowSclass="non-odd" width="820px" height="150px">
+            <columns>
+                <column label="" width="110px" align="right" />
+                <column label="" width="280px" />
+                <column label="" width="60px" />
+                <column label="" width="120px" align="right" />
+                <column label="" width="250px"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="Block From"/>
+                   <textbox width="200px" tabindex="1"  readonly="true" id="txtblock" value="${arg.blockfrom}"  />  
+                    <label value=""/>
+                     <label  value="Block to" width="50px"/>
+                      <textbox width="200px" tabindex="5"  readonly="true" id="txtblocto" value="${arg.blockto}"  />  
+                </row>
+                <row>
+                    <label value="Error Message "  />
+                     <textbox  width="200px"  tabindex="4" id="txterror"  readonly="true" value="${arg.errormessage}"  />  
+                  
+                    <label value=""/>
+                   <label value="Status" visible="false"/>
+                   <textbox width="200px"  id="txtstat"  tabindex="6"  value="${arg.status}" readonly="true" visible="false" /> 
+                </row>
+                <row>
+                    <label value="Process Date" />
+                     <textbox width="200px" id="txtprcess" value="${arg.processdate}"/> 
+                    <label value="" />
+                    <label value="Process By"/>
+                   <textbox width="200px"  id="txtprocessby" tabindex="7"  value="${arg.processby}" readonly="true" /> 
+                </row>
+                <row>
+                   <label value="Expire Date"/>
+                   <textbox width="200px"  id="txtexpired"  readonly="true"   value="${arg.expiredate}" /> 
+                   <label value="" />
+                   <label value="Create" visible="true"/>
+                   <textbox width="200px"  id="txtcreatedperiod"  tabindex="9" value="${arg.createdperiod}" readonly="true"/> 
+               <label value=""/>
+               </row>
+                <row visible="false">
+                  <textbox width="50px" id="txtlarid" value="${arg.larid}" readonly="true" visible="false" style="background-color:#FFFACD"/> 
+                    <textbox width="50px" id="txtlarcode" tabindex="1" readonly="true" value="${arg.lineno}" style="background-color:#FFFACD"/> 
+                    <textbox width="180px" id="txtlot" tabindex="2" readonly="true" value="${arg.lotid}" /> 
+                    <textbox width="180px" id="txtitem" tabindex="2" readonly="true" value="${arg.itemid}" /> 
+                      <textbox visible="false" width="200px" id="txtactivestatus"  value="${arg.activestatus}"  />  
+                </row>
+            </rows>  
+        </grid>              
+       </div> 
+            <grid id="grid_find" oddRowSclass="non-odd" width="820px">
+                <columns>
+                    <column label="" width="820px" align="center" />
+                 
+                </columns>
+                <rows>
+                    <row >
+                        <hbox>
+<!--                        <button id="newrecord"  mold="trendy" label="New"    width="115px"     image="/img/New24.png"     tooltiptext="New Record"/>
+                        <button id="save" tabindex="10" label="Save" mold="trendy"  width="115px"   src="/img/Save24.png"  tooltiptext="Save"/>-->
+                        <button id="close"   tabindex="11" label="Close"   mold="trendy"  width="115px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	 
+    </window>
+</zk>

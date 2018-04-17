@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_job_alert" title="Job Set Up"  border="normal" width="400px" height="300px" apply="id.my.berkah.mkios.controller.JobAlert" ctrlKeys="#down#up" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+        <div>
+        <groupbox width="378px" sclass="main z-demo-config">
+            <caption label="Status Job"  style="color:black;" />
+            <separator height="15px"></separator>
+            <grid>
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="242px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label value="Job Id"/>
+                        <textbox width="200px" id="txtJobId" readonly="true" />
+                    </row>
+                    <row>
+                        <label value="Next Date"/>
+                        <textbox width="200px" id="txtDate" readonly="true" />
+                    </row>
+                    <row>
+                        <label value="Interval"/>
+                        <textbox width="200px" id="txtInterval" readonly="true" />
+                    </row>
+                    <row>
+                        <hbox>
+                            <label value="Active Status" />
+                        </hbox>
+                        <hbox>
+                            <checkbox id="cbForceActiveY" value="Y" disabled="true" />
+                            <!--<checkbox id="cbForceActiveN" value="N" visible="false"/>-->
+                            <button id="btnnonactive" label="Non Active"/>
+                        </hbox>  
+                    </row>
+                </rows>
+            </grid>
+        </groupbox>
+        
+        <groupbox width="378px" sclass="main z-demo-config">
+            <caption label="Setting" style="color:black;"/>
+            <separator height="10px"></separator>
+                <grid oddRowSclass="non-odd">
+                    <columns>
+                        <column align="right" width="50px"/>
+                        <column width="200px"/>
+                         <column width="20px"/>
+                        <column width="90px"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <checkbox id="cbminuteActiveY" value="Y" visible="false"/>
+                            <hbox>
+                            <intbox id="txtMinute" width="80px"/>
+                            <label value="Minute"/>
+                            </hbox>
+                            <label/>
+                            <button id="btnapply" label="Apply" width="70px"/>
+                        </row>
+                    </rows>
+                </grid>
+<!--            <radiogroup Id="rgDay">
+                <grid oddRowSclass="non-odd">
+                    <columns>
+                        <column align="right" width="50px"/>
+                        <column width="200px"/>
+                         <column width="20px"/>
+                        <column width="90px"/>
+                    </columns>
+                    <rows>
+                        <row>
+                            <checkbox/>
+                            <hbox>
+                            <intbox id="txtDay" width="80px"/>
+                            <label value="Day"/>
+                            </hbox>
+                            <label/>
+                            <button id="btncancel" label="Cancel" width="70px"/>
+                        </row>
+                    </rows>
+                </grid>
+                </radiogroup> -->
+        </groupbox>
+        </div>
+    </window>
+    
+</zk>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+ <window id="win_load" title="Load Production Issue" apply="id.my.berkah.tcash1.controller.LoadPIPairing"  position="center"  border="normal" width="440px" ctrlKeys="#down#up" closable="true" mode="modal" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Item" width="50px" />
+                        <hbox>
+                            <textbox id="txtitemid" visible="false" width="40px" />
+                            <textbox id="txtitemcode" placeholder="Item Code" width="70px" mold="rounded" />
+                            <textbox id="txtitemdesc" placeholder="Item Description" width="140px" mold="rounded" style="background-color:#FFFACD"/>
+                            <button id="btnitemcode" src="/img/search.png" mold="trendy"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="PI Number" width="50px" />
+                        <hbox>
+                            <textbox id="txtPIid"  width="10px" mold="rounded" visible="false"/>
+                            <textbox id="txtPI"  width="210px" mold="rounded" />
+                            <button id="btnpi" src="/img/search.png" mold="trendy"/>
+                        </hbox>
+                    </row>
+                    <row>
+                        <label   value="Quantity" width="50px" />
+                        <textbox id="txtqty"  width="210px" mold="rounded" readonly="true" />
+                    </row>
+                    <row>
+                        <label   value="From S/N" width="50px" />
+                        <textbox id="txtfromsn"  width="210px" mold="rounded" readonly="true" />
+                    </row>
+                    <row>
+                        <label   value="To S/N" width="50px" />
+                        <textbox id="txtsn"  width="210px" mold="rounded" readonly="true" />
+                    </row>
+                    <row visible="false">
+                        <textbox id="txtpairingId"   value="${arg.id}" mold="rounded" readonly="true" />
+                    </row>
+                </rows>
+            </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="420px" align="center" />
+                   
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                            <button id="add" height="30px" mold="trendy" tabindex="12" label="add"  image="/img/Plus24.png" />
+                            <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>	
+           
+        </window>
+</zk>

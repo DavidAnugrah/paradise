@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_list_OTA" title="List Migration USIM via OTA" width="100%"  height="580px" apply="id.my.berkah.rps.ota.controller.ListOTA" border="normal"  ctrlKeys="#down#up" sizable="false" style="border:1px;background:#3366FF;">
+        <attribute name="onLater">
+            Clients.clearBusy(); //remove the busy message
+        </attribute>
+        <div>
+            <toolbar id="tb" sclass="vista" height="27px" align="start" orient="horizontal" left="2">
+                <toolbarbutton id="edit"      width="25px" height="25px" src="/img/Edit24.png"    tooltiptext="View  Record"/>
+                <toolbarbutton id="requery"   width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="ReQuery"/>
+                <toolbarbutton id="Find"    width="25px" height="25px" src="/img/Find24.png"    tooltiptext="Find Record"/>
+            </toolbar>
+        </div>    
+        <div>    
+            <listbox id="listbox" height="500px" mold="paging" pageSize="10" multiple="true" checkmark="true" >
+                   <listhead sizable="true">
+             
+                    <listheader label="Transaction Id"    width="50px"    visible="false"/>
+                    <listheader label="Transaction Number"    width="150px"    visible="true"/>
+                    <listheader label="Transaction Date"  width="150px" />
+                    <listheader label="MSISDN Old"  width="110px"  visible="true" />
+                    <listheader label="IMSI Old"    width="110px"  visible="true" />
+                    <listheader label="ICCID Old"    width="110px" visible="true" />
+                    <listheader label="PIN 1 Old"    width="100px"  visible="false"/>
+                    <listheader label="PUK 1 Old"    width="100px"  visible="false"/>
+                    <listheader label="PIN 2 Old"    width="100px"  visible="false"/>
+                    <listheader label="PUK 2 Old"    width="100px"  visible="false"/>
+                    <listheader label="4KI Old"    width="100px"   visible="false"/>
+                    <listheader label="Perdana 4G"    width="110px" visible="true"/>
+                    <listheader label="IMSI New"    width="110px"  visible="true"/>
+                    <listheader label="ICCID New"    width="110px" visible="true"/>
+                    <listheader label="PIN 1 New"    width="50px"  visible="false"/> 
+                    <listheader label="PUK 1 New"    width="50px"  visible="false"/>
+                    <listheader label="PIN 2 New"    width="50px"  visible="false"/>
+                    <listheader label="PUK 2 New"    width="50px"  visible="false"/>
+                    <listheader label="4KI New"    width="100px"  visible="false"/>
+                    <listheader label="Transaction Status"  width="120px" visible="true" />
+                    <listheader label="Transaction Status id"  width="130px" visible="false"/>
+                    <listheader label="Modified Date"  width="120px"   visible="true" />
+                    <listheader label="Error Others"  width="90px"  align="center" visible="true" />
+                    <listheader label="Error PIN 3x"  width="80px"  align="center" visible="true"  />
+                    <listheader label="SN Old"     width="120px"    visible="false"/>
+                    <listheader label="SN New"     width="120px"    visible="false"/>
+                    <listheader label="OTA Status Inject"  width="110px"    visible="true"/>
+                
+                </listhead>
+                <template name="model">
+                    <listitem>
+                        <listcell label="${each.trcid}"/>
+                        <listcell label="${each.trcnumber}"/>
+                        <listcell label="${each.createddate}"/>
+                        <listcell label="${each.msisdnold}"/>
+                        <listcell label="${each.imsiold}"/>
+                        <listcell label="${each.iccidold}"/>
+                        <listcell label="${each.pin1old}"/>
+                        <listcell label="${each.puk1old}"/>
+                        <listcell label="${each.pin2old}"/>
+                        <listcell label="${each.puk2old}"/>
+                        <listcell label="${each.a4kiold}"/>
+                        <listcell label="${each.msisdnnew}"/>
+                        <listcell label="${each.imsinew}"/>
+                        <listcell label="${each.iccidnew}"/>
+                        <listcell label="${each.pin1new}"/>
+                        <listcell label="${each.puk1new}"/>
+                        <listcell label="${each.pin2new}"/>
+                        <listcell label="${each.puk2new}"/>
+                        <listcell label="${each.a4kinew}"/>
+                        <listcell label="${each.statusdesc}"/>
+                        <listcell label="${each.status}"/>
+                        <listcell label="${each.updateddate}"/>
+                        <listcell label="${each.errorothers}"/>
+                        <listcell>
+                            <checkbox checked="${each.errorpin}" disabled="true" ></checkbox>
+                        </listcell>
+                        <listcell label="${each.snold}"/>
+                        <listcell label="${each.snnew}"/>
+                        <listcell label="${each.statusinject}"/>
+                    </listitem>
+                </template>
+            </listbox>
+        </div>
+        <!--<paging id="userPaging" width="100%" style="color: black" />-->
+        <window id="win_list_OTA_find" title="Find Parameter" border="normal"  apply="id.my.berkah.rps.ota.controller.ListOTA" width="440px" onClose="self.detach();">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="297px" />
+                    <!--<column label="" width="40px" />-->
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="MSISDN Old" width="50px" />
+                        <textbox id="txtmsisdnold" tabindex="1" width="210px" />
+                    </row>
+                  
+                    <row>
+                        <label   value="Perdana 4G" width="50px" />
+                        <textbox id="txtmsisdnnew" tabindex="1" width="210px" />
+                    </row>
+                    <row>
+                        <label   value="Transaction Date From" width="50px" />
+                        <hbox>  
+                            <datebox id="findFromDate" tabindex="2"  format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                            <datebox id="findToDate"   tabindex="3"  format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                   
+                     <row visible="false">
+                        <label   value="Transaction Status" width="50px" />
+                        <textbox id="txttranstat" tabindex="1" width="210px" />
+                    </row>
+                     <row>
+                        <label   value="OTA Status Inject" width="100px" />
+                        <combobox id="cmbtastat" value="All" autodrop="true" tabindex="1" width="180px" readonly="true" >
+                            <comboitem label="All" id="0"/>
+                            <comboitem label="Success"/>
+                            <comboitem label="Failed"/>
+                        </combobox>
+                    </row>
+<!--                    <row>
+                        <label/>
+                        <hbox>
+                            <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                            <button id="Clear" tabindex="14" label="Clear" image="/img/Delete16.png" />
+                            <button id="Close" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>-->
+                </rows>
+            </grid>
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="20px" align="center" />
+                    <column label="" width="130px" align="center" />
+                    <column label="" width="130px" align="center" />
+                    <column label="" width="135px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                     <label/>
+                     <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Clear" tabindex="14" label="Clear" image="/img/Delete16.png" />
+                     <button id="Close" tabindex="13" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	     
+        </window>
+       
+    </window>
+</zk>

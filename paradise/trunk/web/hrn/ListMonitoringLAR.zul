@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_Monitoring_LAR" title="List Monitoring LR" apply="id.my.berkah.lar.controller.ListMonitoringLARCTRL" border="normal"  width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <!--<toolbarbutton id="new" mold="default" image="/img/New24.png"  tooltiptext="New"/>-->
+            <!--<toolbarbutton id="addedit" mold="default" image="/img/Edit24.png" tooltiptext="View" />-->            
+            <toolbarbutton id="refresh" mold="default" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" mold="default" image="/img/Find24.png" tooltiptext="Find" />
+            <textbox id="larid" mold="default"  visible="false" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="420px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="lar id"                visible="false" />
+                <listheader label="LR No"               visible="true" />
+                <listheader label="LR Date"               visible="true" />
+                <listheader label="LR Status"            visible="true" />
+                <listheader label="BU description"           visible="true" />
+                <listheader label="Warehouse description"             visible="true" sort="auto" />
+                <listheader label="BU Sender"              visible="true" sort="auto" />
+                <listheader label="Warehouse Sender"        visible="true" sort="auto" />
+                <listheader label="Receive ID" visible="false" sort="auto" />
+                <listheader label="Receive No"            visible="true" sort="auto" />
+                <listheader label="Created By"        visible="true" sort="auto" />
+                <listheader label="Creation Date"      visible="true" sort="auto" />
+                <listheader label="Seq"               visible="false" sort="auto" />      
+            </listhead>
+            <template name="model">
+                <listitem>
+                    
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+     <window id="win_list_lar_find" title="Find Parameter"  apply="id.my.berkah.lar.controller.ListMonitoringLARCTRL" position="center" visible="false" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                   <column label="" width="100px" align="right" />
+                    <column label="" width="320px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="LR" width="50px" />
+                        <textbox id="txtlar" placeholder="LAR" width="200px" />
+                    
+                    </row>
+                    <row>
+                        <label   value="Date" width="50px" />
+                        <hbox>
+                        <datebox id="datelarfrom" format="dd-MM-yyyy" mold="rounded" readonly="true" width="100px" />
+                        <label value="to"/> 
+                        <datebox id="datelarto" format="dd-MM-yyyy" mold="rounded" readonly="true" width="100px" />
+                        </hbox>
+                    </row>
+                    <row>
+                       <label   value="Receive" width="50px" />
+                       <textbox id="txtreceive" placeholder="Receive" width="200px" />
+                    </row>
+                    <row>
+                       <label   value="Status" width="50px" />
+                       <hbox>
+                           <textbox id="txtstatusfnd"  width="10px" visible="false" value="99"/>
+                           <combobox id="cmbstatus" width="200px" mold="rounded" value="All" readonly="true">
+                           <comboitem label="All" />
+                           <comboitem label="Failed Send" />
+                           <comboitem label="In Progress" />
+                           <comboitem label="Completed" />
+                           <comboitem label="Partial Completed" />
+                           <comboitem label="Failed" />
+                       </combobox>
+                       </hbox>
+                    </row>
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="140px" align="center" />
+                    <column label="" width="140px" align="center" />
+                    <column label="" width="140px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                    <button id="goFind" height="30px" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Clear" mold="trendy" tabindex="13" label="Clear"  image="/img/DeleteSelection24.png" />
+                     <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+    
+</zk>

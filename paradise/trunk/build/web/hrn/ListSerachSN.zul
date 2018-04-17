@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="List_SearcSN" title="List search SN" apply="id.my.berkah.sn.controller.ListSearchSN" border="normal"  width="1100px" height="100%" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+        <div>
+            <toolbar id="tb" sclass="vista" height="30px">
+            <toolbarbutton id="refresh" mold="default" image="/img/Refresh24.png" tooltiptext="Refresh" />
+            <toolbarbutton id="find" mold="default" image="/img/Find24.png" tooltiptext="Find" />
+            <toolbarbutton id="print" mold="default" image="/img/Print24.png" tooltiptext="Export To Excel" />
+            <textbox id="txtitemcode" mold="default"  visible="false" />
+            <textbox id="txtitemdesc" mold="default"  visible="false" />
+            <textbox id="txtfrom" mold="default"  visible="false" />
+            <textbox id="txtto" mold="default"  visible="false" />
+            <textbox id="txtqty" mold="default"  visible="false" />
+            <textbox id="txtvendor" mold="default"  visible="false" />
+            <textbox id="txtpo" mold="default"  visible="false" />
+            <textbox id="txtgrno" mold="default"  visible="false" />
+            <textbox id="txtproddate" mold="default"  visible="false" />
+            <textbox id="txtdatereceipt" mold="default"  visible="false" />
+            <textbox id="txtreceiveno" mold="default"  visible="false" />
+            <textbox id="txtexpiresdate" mold="default"  visible="false" />
+            <textbox id="txtidonumber" mold="default"  visible="false" />
+            <textbox id="txtidodate" mold="default"  visible="false" />
+            <textbox id="txtlarno" mold="default"  visible="false" />
+            <textbox id="txtlardate" mold="default"  visible="false" />
+            <textbox id="txtdonumber" mold="default"  visible="false" />
+            <textbox id="txtdodate" mold="default"  visible="false" />
+            </toolbar>
+         </div>
+         <div>
+        <listbox id="listbox" height="420px" mold="paging"  pageSize="10" tooltiptext="Double Click to View Detail" >
+            <listhead sizable="true">
+                <listheader label="Item Code"                       visible="true" sort="auto" />
+                <listheader label="Item Description"               visible="true" sort="auto" />
+                <listheader label="Order Block From"              visible="true" sort="auto"/>
+                <listheader label="Order Block To"                     visible="true" sort="auto" />
+                <listheader label="Order Qty"                       visible="true" sort="auto" />
+                <listheader label="Vendor Name"                      visible="true" sort="auto" />
+                <listheader label="WO NO"                           visible="true" sort="auto" />
+                <listheader label="PO NO"                           visible="true" sort="auto" />
+                <listheader label="Production Date"             visible="true" sort="auto" />
+                <listheader label="Receive No"                  visible="true" sort="auto" />
+                <listheader label="Complete Receipt Date"       visible="true" sort="auto" />
+                <listheader label="Expire Date"                  visible="true" sort="auto" />      
+                <listheader label="IDO NO"                       visible="true" sort="auto" />      
+                <listheader label="IDO Date"                       visible="true" sort="auto" />      
+                <listheader label="LR Create NO"                       visible="true" sort="auto" />      
+                <listheader label="LR Date"                       visible="true" sort="auto" />      
+                <listheader label="DO No"                       visible="true" sort="auto" />      
+                <listheader label="DO Date"                       visible="true" sort="auto" />      
+            </listhead>
+            <template name="model">
+                <listitem>
+                     <listcell label="${each.itemcode}"/>
+                        <listcell label="${each.itemdescription}"/>
+                        <listcell label="${each.snlastfrom}"/>
+                        <listcell label="${each.snlastto}"/>
+                        <listcell label="${each.qty}"/>
+                        <listcell label="${each.supplierdescription}"/>
+                        <listcell label="${each.purchaseorder}"/>
+                        <listcell label="${each.contract}"/>
+                        <listcell label="${each.orderdate}"/>
+                        <listcell label="${each.receiveno}"/>
+                        <listcell label="${each.approveddate}"/>
+                        <listcell label="${each.expireddate}"/>
+                        <listcell label="${each.idonumber}"/>
+                        <listcell label="${each.idodate}"/>
+                        <listcell label="${each.larno}"/>
+                        <listcell label="${each.lardate}"/>
+                        <listcell label="${each.donumber}"/>
+                        <listcell label="${each.dodate}"/>
+                </listitem>
+            </template>
+        </listbox>
+        </div>
+         <div>
+            <paging id="userPaging" width="100%" style="color: black"/>
+        </div>
+    
+     <window id="win_SearchSN_find" title="Find Parameter"  apply="id.my.berkah.sn.controller.ListSearchSN" position="center" visible="false" border="normal" width="440px" ctrlKeys="#down#up" mode="overlapped" style="border:1px;background:#3366FF;">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd"  width="420px">
+                <columns>
+                    <column label="" width="420px" />
+                </columns>
+                <rows>
+                    <row>
+                        <hbox>
+                        <label   value="Serial Number"  />
+                        <textbox id="datelarfrom"  mold="rounded"  width="120px" />
+                        <label value="to"/> 
+                        <textbox id="datelarto"  mold="rounded"  width="120px" />
+                        </hbox>
+                    </row>
+<!--                    <row>
+                       <label   value="Receive" width="50px" />
+                       <textbox id="txtreceive" placeholder="Receive" width="200px" />
+                    </row>
+                    <row>
+                       <label   value="Status" width="50px" />
+                       <hbox>
+                           <textbox id="txtstatusfnd"  width="10px" visible="false" value="99"/>
+                           <combobox id="cmbstatus" width="200px" mold="rounded" value="All" readonly="true">
+                           <comboitem label="All" />
+                           <comboitem label="Failed Send" />
+                           <comboitem label="In Progress" />
+                           <comboitem label="Completed" />
+                           <comboitem label="Partial Completed" />
+                           <comboitem label="Failed" />
+                       </combobox>
+                       </hbox>
+                    </row>-->
+                </rows>
+               </grid>
+              
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="420px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                     <hbox>
+                    <button id="goFind" height="30px" mold="trendy" tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Clear" mold="trendy" tabindex="13" label="Clear"  image="/img/DeleteSelection24.png" />
+                     <button id="Close1"  height="30px" mold="trendy" tabindex="14" label="Close" image="/img/End16.png" />
+                     </hbox>
+                 </row>
+                </rows>
+            </grid>	
+           
+    </window>
+    </window>
+    
+    
+    
+</zk>

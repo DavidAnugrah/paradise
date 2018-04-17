@@ -1,0 +1,57 @@
+<zk>
+    <window id="win_master_location" title="Master Locations" border="normal" width="555px" apply="id.my.berkah.rps.dpa.controller.DPAMasterLocationController" ctrlKeys="#down#up" mode="modal" closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+    <borderlayout id="bdr1" style="background:#5C899B;" width="595px" height="125px">
+        <center id="center1" border="0" style="background:#CAE8F0;">
+            <borderlayout id="bdr2" style="background:#5C899B;" width="582px" height="125px">
+                <center id="center2">
+                    <grid id="grid" oddRowSclass="non-odd" width="550px">
+                        <columns>
+                            <column label="" width="100px" align="right" />
+                            <column label="" width="220px" />
+                        </columns>
+                        <rows id="rowh">
+                            <row >
+                                <label   value="Location Code" width="50px"  />
+                                <textbox width="100px" tabindex="1" id="locationCode"  focus="true" value="${arg.locationCode}" style="background-color:#FFFACD;text-transform: uppercase"/>
+                            </row>
+                            <row >
+                                <label   value="Location Desc." width="50px" />
+                                <textbox width="200px" tabindex="2" id="locationDescription"  value="${arg.locationDescription}" style="background-color:#FFFACD"/>
+                            </row>
+                            <row>
+                                <textbox width="0px" readonly="true" id="locationId"     visible="false" value="${arg.locationId}"/>
+                                <textbox width="0px" readonly="true" id="locationType"   visible="false" value="${arg.locationType}"/>
+                                <textbox width="0px" readonly="true" id="createdBy"      visible="false" value="${arg.createdBy}"/>
+                                <datebox width="0px" readonly="true" id="createdDate"    visible="false" value="${arg.createdDate}"/>
+                                <textbox width="0px" readonly="true" id="expiredBy"      visible="false" value="${arg.expiredBy}"/>
+                                <textbox width="0px" readonly="true" id="flag"           visible="false" value="${arg.flag}"/>
+                                <datebox width="0px" readonly="true" id="expiredDate"    visible="false" value="${arg.expiredDate}"/>
+                                <textbox width="0px" readonly="true" id="modifiedBy"     visible="false" value="${arg.modifiedBy}"/>
+                                <datebox width="0px" readonly="true" id="modifiedDate"   visible="false" value="${arg.modifiedDate}"/>
+                            </row>
+                        </rows>
+                    </grid>
+                </center>
+            </borderlayout>
+        </center>
+        <south id="south" size="46px" border="0" style="background:#CAE8F0;">
+                <grid id="grid_find" oddRowSclass="non-odd" width="560px">
+                    <columns>
+                       <column label="" width="95px" align="center" />
+                       <column label="" width="95px" align="center"/>
+                       <column label="" width="115px" align="center"/>
+                       <column label="" width="100px" align="center"/>
+                   </columns>
+                   <rows>
+                       <row height="35px">
+                           <button id="newrecord"  tabindex="30" label="New"     width="80px" image="/img/New24.png"     tooltiptext="New Record"/>
+                           <button id="save"       tabindex="31" label="Save"    width="80px" image="/img/Save24.png"    tooltiptext="Save Record"/>
+                           <button id="expiry"     tabindex="34" label="Expiry"  width="100px" image="/img/LockX24.png" tooltiptext="Expiry"/>
+                           <button id="close"      tabindex="36" label="Close"   width="85px" image="/img/Logout24.png"  tooltiptext="Close"/>
+                       </row>
+                   </rows>
+               </grid>	                      	
+            </south>
+        </borderlayout>
+    </window>
+</zk>

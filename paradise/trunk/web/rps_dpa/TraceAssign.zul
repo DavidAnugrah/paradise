@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+
+    <window  title="View Data DPA Resource" apply="id.test.controller.tracectrl" border="normal" closable="true" width="100%"  ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <grid id="grid" oddRowSclass="non-odd" width="100%">
+            <columns>
+                <column label="" width="100%"  />
+            </columns>
+        <rows>
+            <row>
+                <hbox>
+                <textbox id="assign" width="100px"/>
+                <button id="btn" label="..."/>    
+                </hbox>
+            </row>
+        </rows>
+        </grid>
+         <toolbar id="toolbar" height="27px" align="start" orient="horizontal">
+            <toolbarbutton id="btnRefresh" width="25px" height="25px" src="/img/Refresh24.png" tooltiptext="Refresh"/>
+        </toolbar>         
+ <listbox id="listClientMaster" height="420px" mold="paging" width="100%" pageSize="10">
+            <listhead sizable="true">           
+                <listheader label="test" width="60px" visible="false" align="left"/>
+                <listheader label="test" width="60px" visible="false" align="left"/>
+                <listheader label="test" width="95px" sort="auto(clientCode)" visible="true" align="left"/>
+                <listheader label="test" width="125px" sort="auto(clientName)" visible="true" align="left"/>
+                <listheader label="test" width="125px" visible="false" align="left" sort="auto(locationId)"/>
+   
+            </listhead>
+             <template name="model">
+                <listitem>                    
+                    <listcell label="${each.clientid}" visible="true"/>       
+                    <listcell label="${each.clientcode}" visible="true"/>
+                    <listcell label="${each.clientname}"/>
+                </listitem>
+            </template>
+        </listbox>
+    </window>
+</zk>

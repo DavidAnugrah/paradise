@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_view_detail"  title="Item Selected Detail" width="600px" border="normal" apply="${arg.controller}" style="border:1px;background:#3366FF;">
+    <style>
+            .cg-title {
+                    font-weight: normal;
+                    color: #008DB7;
+                    margin-bottom: 0;
+                    padding-bottom: 0;
+            }
+            .cg-desc {
+                    margin-top: 0;
+                    font-family: arial,sans-serif;
+                    font-size: small;
+                    font-weight: normal;
+                    color: #252525;
+            }
+            .gray_bkg {
+                    background-color: #ccc;	
+            }
+
+            .statusLabel {
+                    display: block;
+                    text-align : right;
+                    font-weight : bold;
+            }
+        </style>
+    <listbox id="listbox" mold="paging" pageSize="10" >
+	<listhead>
+            <listheader label="LOT" width="100px" />
+            <listheader label="Block From" width="200px" sort="auto(locationDesc)" />
+            <listheader label="Block To" width="200px" sort="auto(locationDesc)" />
+            <listheader label="QTY" width="80px" sort="auto(locationDesc)" />
+	</listhead>
+        <template name="model" >
+            <listitem>
+		<listcell label="${each.companyId}"/>
+		<listcell label="${each.companyCode}"/>
+		<listcell label="${each.desc}"/>
+		<listcell label="${each.companyType}"/>
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" width="100%" >
+        <grid>
+            <columns>
+                <column label="" align="center"/>
+            </columns>
+            <rows>
+                <row>	
+                    <button id="close"  label="close" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+</zk>

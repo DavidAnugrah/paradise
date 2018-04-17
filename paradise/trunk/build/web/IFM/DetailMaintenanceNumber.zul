@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_dtl_mrtdetail" title="Add/Edit Mapping Number Offset Mapping" apply="id.my.berkah.ifm.controller.DetailMaintenanceNumber" border="normal" width="1010px" ctrlKeys="#down#up" mode="modal" closable="true" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="999px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="270px" />
+                <column label="" width="60px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="280px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="Number Type" width="50px" />
+                    <hbox>
+                    <textbox width="50px"   id="txtNumberid" visible="false"    style="background-color:#FFFACD" />
+                    <textbox width="70px"   id="txtNumbercode" readonly="false" value="${arg.seqid}" style="background-color:#FFFACD" />
+                    <textbox width="160px"  id="txtNumberdesc" readonly="true"  value="${arg.seqdesc}"  />
+                    </hbox>
+                     <button id="btnNumber" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov Number Type" />
+                    <label   value="Pattern "  />
+                    <hbox>
+                    <textbox width="50px" id="txtPattern" visible="false"     style="background-color:#FFFACD" />
+                    <textbox width="70px" id="txtPatterncode" readonly="false" value="${arg.patternid}"  style="background-color:#FFFACD" />
+                    <textbox width="160px" id="txtPatternDesc" readonly="true"    value="${arg.patterndesc}"  />
+                    </hbox>
+                    <button  id="btnpattern" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov Pattern" />
+                </row>
+                <row>
+                    <label   value="Mapping Reference "  />
+                    <hbox>
+                    <textbox width="70px" visible="false"  id="txtmaprefid" value="${arg.mappingrefid}" readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="70px"  id="txtmaprefcode" visible="true"  value="${arg.mappingrefcode}" readonly="true" style="background-color:#FFFACD" />
+                    <textbox width="160px"  id="txtmaprefdesc"  readonly="false" value="${arg.mappingrefdesc}"  />
+                    </hbox>
+                    <button id="btnmapref" width="40px" height="25px" mold="trendy" src="/img/search.png"  tooltiptext="Lov Mapping Reference" />
+                    <label   value="Mapping Code"/>
+                    <textbox width="100px"  id="txtmapcode" value="${arg.mappingcode}" style="background-color:#FFFACD" readonly="false"/>
+                </row>
+                <row visible="false">
+                    <textbox id="MapType" value="${arg.mappingtype}" />
+                    <textbox id="MapId" value="${arg.mappingid}"/>
+                    <textbox id="flag"  />
+                </row>
+            </rows>
+        </grid>
+        <separator spacing="10px"/>
+        <grid id="grid1" oddRowSclass="non-odd" width="990px">
+              <columns>
+               <column label="" width="120px" align="right" />
+                <column label="" width="190px" align="center"/>
+                <column label="" width="120px" align="right"/>
+                <column label="" width="190px" align="left"/>
+                <column label="" width="170px" align="right"/>
+                <column label="" width="190px" align="left"/>
+            </columns>
+            <rows>
+                <row>
+                    <label   value="Creation Date" width="50px" />
+                    <textbox width="150px"  id="txtcreationdate" value="${arg.creationdate}" readonly="true" /> 
+                    <label value="Modified Date" width="50px" />
+                    <textbox width="150px"  id="txtmodifieddate" value="${arg.lastupdatedate}" readonly="true" /> 
+                    <label value="Expired Date" width="50px" />
+                    <textbox width="150px"  id="txttermiated" readonly="true" />     
+                </row>
+                <row>
+                    <label   value="Creation By" width="50px" />
+                    <textbox width="150px"  id="txtcreationby" readonly="true" value="${arg.createdby}"/> 
+                    <label value="Modified By " width="60px" />
+                    <textbox width="150px"  id="txtmodifiedby" readonly="true" value="${arg.lastupdatedby}" /> 
+                    <label value="Expired By " width="60px" />
+                    <textbox width="150px"  id="txttermiatedby" readonly="true"  />     
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="990px">
+            <columns>
+               <column label=""  width="990px" align="center" />
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox>
+                    <button id="newrecord" mold="trendy" tabindex="30" label="New" width="80px"   image="/img/New24.png"     tooltiptext="New Record"/>
+                    <label value="" width="100px"/>
+                    <button id="save"      mold="trendy"   tabindex="32" label="Save"      width="85px"   image="/img/Save24.png"  tooltiptext="Save"/>
+                    <button id="expired"   mold="trendy"   tabindex="33" label="Expired"      width="85px"   image="/img/Action24.png"  tooltiptext="Expire"/>
+                    <button id="close"     mold="trendy"   tabindex="34" label="Close"     width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    </hbox>
+<!--                    <button id="browse"    tabindex="30" label="Browse"                 width="100px"   image="/img/FileDownload-24x24.png"     tooltiptext="New Record"/>
+                    <button id="upload"    tabindex="31" label="Upload"                 width="100px"   image="/img/FileUpload-24x24.png"  tooltiptext="Save"/>
+                    <button id="submit"    tabindex="32" label="Sumbit"                 width="90px"   image="/img/Action24.png"  tooltiptext="UnAllocated"/>
+                    <button id="aprove"    tabindex="33" label="Approve"                width="100px"   image="/img/1449847706_OK.png"  tooltiptext="UnAllocated"/>
+                    <button id="cancel"    tabindex="34" label="Cancel"                 width="90px"   image="/img/Cancel24.png"  tooltiptext="UnAllocated"/>
+                    <button id="preview"   tabindex="35" label="Preview"                width="100px"   image="/img/Report24.png"  tooltiptext="UnAllocated"/>-->
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+</zk>

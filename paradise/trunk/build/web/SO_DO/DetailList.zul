@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="win_Detail" title="Detail List" apply="id.my.berkah.sodo.controller.detailListCTRL" border="normal" width="750px" ctrlKeys="#down#up" mode="modal"  style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+                font-weight: normal;
+                color: #008DB7;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+            .cg-desc {
+                margin-top: 0;
+                font-family: arial,sans-serif;
+                font-size: small;
+                font-weight: normal;
+                color: #252525;
+            }
+            .gray_bkg {
+                background-color: #ccc;	
+            }
+
+            .statusLabel {
+                display: block;
+                text-align : right;
+                font-weight : bold;
+            }
+        </style>
+
+        <grid id="grid" oddRowSclass="non-odd" width="760px">
+            <columns>
+                <column label="" width="140px" align="right" />
+                <column label="" width="220px" />
+                <column label="" width="140px" align="right"/>
+                <column label="" width="230px" />
+            </columns>
+            <rows id="rowh">
+                <row>
+                    <label   value="SO Number" width="50px" />
+                    <textbox width="200px" tabindex="4" id="txtSoNumber" readonly="false" value="${arg.soNumber}" />
+                    <label   value="Create Date" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtCreateDate" readonly="false" value="${arg.createDate}" />
+                </row>
+                <row>
+                    <label   value="BU Code" width="50px" />
+                    <textbox width="205px" tabindex="5" id="txtBUCode" readonly="true" value="${arg.buCode}" />
+                    <label   value="Create By" />
+                    <textbox width="200px" tabindex="7" id="txtCreateBy"  readonly="true" value="${arg.createBy}" />
+                </row>
+                <row>
+                    <label   value="BU Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtBUName"  readonly="true" value="${arg.buName}" />
+                    <label   value="Approved Date" />
+                    <textbox width="200px" tabindex="12" id="txtApprovedDate" readonly="true" value="${arg.approveDate}"/>
+                </row>
+                <row>
+                    <label   value="Company Name" width="50px" />
+                    <textbox width="200px" tabindex="10" id="txtCompanyName"  readonly="true" value="${arg.companyName}" />
+                    <label   value="Approved By" />
+                    <textbox width="200px" tabindex="12" id="txtApprovedBy" readonly="true" value="${arg.approvedBy}"/>
+                </row>
+                <row>
+                    <label   value="Company Desc" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtCompanyDesc"  readonly="true" value="${arg.companyDesc}" />
+                        <label   value="Line No" /> 
+                    <textbox width="200px" tabindex="7" id="txtLineNo"  readonly="true" value="${arg.lineNo}" />
+                </row>
+                <row>
+                    <label   value="BU Id Dealer" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtBuIdDealer"  readonly="true" value="${arg.buIdDealer}" />
+                        <label   value="Item Desc" /> 
+                    <textbox width="200px" tabindex="7" id="txtItemDesc"  readonly="true" value="${arg.itemDesc}" />
+                </row>
+                <row>
+                    <label   value="Dealer Code" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtDealerCode"  readonly="true" value="${arg.dealerCode}" />
+                        <label   value="Order QTY" /> 
+                    <textbox width="200px" tabindex="7" id="txtOrderQty"  readonly="true" value="${arg.orderQty}" />
+                </row>
+                <row>
+                    <label   value="Dealer Desc" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtDealerDesc"  readonly="true" value="${arg.dealerDesc}" />
+                        <label   value="No PO Ref" /> 
+                    <textbox width="200px" tabindex="7" id="txtNoPoRef"  readonly="true" value="${arg.noPoRef}" />
+                </row>
+                <row>
+                    <label   value="Term Name" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtTermName"  readonly="true" value="${arg.termName}" />
+                        <label   value="Line PO Ref" /> 
+                    <textbox width="200px" tabindex="7" id="txtLinePoRef"  readonly="true" value="${arg.linePoRef}" />
+                </row>
+                <row>
+                    <label   value="SO Status" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtSoStatus"  readonly="true" value="${arg.soStatus}" />
+                        <label   value="Modified Datenn" /> 
+                    <textbox width="200px" tabindex="7" id="txtModifiedDate"  readonly="true" value="${arg.modifiedDate}" />
+                </row>
+                <row>
+                    <label   value="Back Order" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtBackOrder"  readonly="true" value="${arg.backOrder}" />
+                        <label   value="Needed Date" /> 
+                    <textbox width="200px" tabindex="7" id="txtNeededDate"  readonly="true" value="${arg.neededDate}" />
+                </row>
+                <row>
+                    <label   value="Book" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtBook"  readonly="true" value="${arg.book}" />
+                        <label   value="Price" /> 
+                    <textbox width="200px" tabindex="7" id="txtPrice"  readonly="true" value="${arg.price}" />
+                </row>
+                <row>
+                    <label   value="PCT Disc" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtPctDisc"  readonly="true" value="${arg.pctDisc}" />
+                        <label   value="Tax" /> 
+                    <textbox width="200px" tabindex="7" id="txtTax"  readonly="true" value="${arg.tax}" />
+                </row>
+                <row>
+                    <label   value="AMT Disc" width="50px" />
+                        <textbox width="200px" tabindex="10" id="txtAmtDisc"  readonly="true" value="${arg.amtDisc}" />
+                        <label   value="Remark" /> 
+                    <textbox width="200px" tabindex="7" id="txtRemark"  readonly="true" value="${arg.remark}" />
+                </row>
+                
+                <row visible="false">
+                    <textbox width="0px" readonly="true" id="txtId"      visible="false" value="${arg.id}"/>
+                    <textbox width="0px" readonly="true" id="txtError"       visible="false" value="${arg.error}"/>
+                    <textbox width="0px" readonly="true" id="txtMessages"     visible="false" value="${arg.messages}"/>
+                </row>
+            </rows>
+        </grid>
+        <grid id="grid_find" oddRowSclass="non-odd" width="740px">
+            <columns>
+                <column label="" width="740px" align="center"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <button id="close"      tabindex="38" label="Close"      width="90px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                </row>
+            </rows>
+        </grid>	 
+
+    </window>
+</zk>

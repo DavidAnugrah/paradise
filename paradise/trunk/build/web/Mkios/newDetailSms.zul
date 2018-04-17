@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="win_Detail_sms"  title="Setup Receiver Mkios Integration" apply="${arg.controller}" border="normal" width="505px" ctrlKeys="#down#up"  closable="false" onClose="self.detach();" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+    <grid width="485px" >
+        <columns>
+            <column label="" width="140px"  />
+            <column label="" width="345px" />
+        </columns>
+        <rows>
+            <row visible="false">
+                <label value="Sms Id"/>
+                <textbox  id="txtIDsms" width="300px" value="${arg.id}"/>
+            </row>
+            <row>
+                <label value="MSISDN "/>
+                <textbox  id="txtmsisdn" width="300px" />
+            </row>
+            <row>
+                <label value="MSISDN OWNER" />
+                    <textbox  id="txtmsisdnOwner" width="300px"  />
+            </row>
+            <row>
+                <label value="is Active"/>
+                <hlayout>
+                    <checkbox id="cmbactv"/>
+                    <label value="Yes"/>
+                </hlayout>
+<!--                <textbox id="txtformatsub" width="200px" />-->
+            </row>
+            
+        </rows>
+    </grid>
+    <grid width="485px" >
+        <columns>
+            <column label="" width="240px" align="right" />
+            <column label="" width="240px" />
+        </columns>
+        <rows>
+            <row>
+                <button id="btnSavesms" label="Save" image="/img/Save24.png" />
+                <button id="btnClosesms" label="Close" image="/img/End24.png" />
+            </row>
+        </rows>
+    </grid>
+    </window>
+</zk>

@@ -1,0 +1,34 @@
+<zk>
+   <window id="wlogin" title="Login" apply="id.my.berkah.util.controller.LoginController" style="border:0px;background:#FF9900;" width="341px" height="340px" closable="false" maximizable="false" maximized="false" position="center" sizable="false">      
+       <grid height="100%" width="100%" style="border:0px;background:#FF0000;" oddRowSclass="non-odd">
+            <columns>
+               <column align="right" width="120px" style="border:0px;"/>
+               <column align="left"  width="216px" style="border:0px;"/>
+            </columns>
+
+            <rows style="border:0px;background:#FF0000;">
+                <row spans="2">
+                   <image src="img/TELKOMSEL.png" height="180px" width="330px"/>
+                </row> 
+                <row style="border:0px;background:#FF0000;">
+                  <label style="color: white" value="User :"/>	
+                  <textbox id="txtUser" width="200px" style="text-transform: uppercase" height="18px"/>
+                </row>
+                <row style="border:0px;background:#FF0000;">
+                  <label style="color: white" value="Password :"/>
+                  <textbox id="txtPassword" type="password" width="200px" height="18px"/>
+                </row>
+                <row visible="false">
+                    <textbox id="status" value="N"/>
+                    <textbox id="sessionId"/>
+                </row>
+                <row style="border:0px;background:#FF0000;" spans="2">
+                    <hbox>
+                        <button id="btnlogin"  label="Login" image="/img/Lock24.png" height="35px" width="100px"/> 
+                        <button id="btncancel" label="Cancel" image="/img/Logout24.png" height="35px" width="100px"/>
+                    </hbox>
+                </row>
+            </rows>
+       </grid>
+    </window>
+</zk>

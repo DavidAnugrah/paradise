@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>            
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window id="List_Location" title="Mapping Location To Channel [ For POS Generation ]" apply="id.my.berkah.urp.controller.ListLocationWh" border="normal" width="1000px" height="328px" closable="false" ctrlKeys="#down#up" style="border:1px;background:#3366FF;">
+        <style>
+            .cg-title {
+            font-weight: normal;
+            color: #008DB7;
+            margin-bottom: 0;
+            padding-bottom: 0;
+            }
+            .cg-desc {
+            margin-top: 0;
+            font-family: arial,sans-serif;
+            font-size: small;
+            font-weight: normal;
+            color: #252525;
+            }
+            .gray_bkg {
+            background-color: #ccc;	
+            }
+
+            .statusLabel {
+            display: block;
+            text-align : right;
+            font-weight : bold;
+            }
+        </style>
+        <div>
+            <listbox id="listbox" height="200px" mold="paging"  pageSize="10">
+                <listhead sizable="true">
+                    <listheader label="ID" width="50px" visible="false" sort="auto"/>
+                    <listheader label="WH LOC ID" width="50px" visible="false" sort="auto"/>
+                    <listheader label="DEALER ID" width="50px" visible="false" sort="auto"/>
+                    <listheader label="WH ID" width="50px" visible="false" sort="auto"/>
+                    <listheader label="LOC CODE" width="100px" visible="true" sort="auto"/>
+                    <listheader label="LOC DESC" width="100px" visible="true" sort="auto"/>
+                    <listheader label="DEALER CODE" width="100px" visible="true" sort="auto"/>
+                    <listheader label="DEALER DESC" width="100px" visible="true" sort="auto"/>
+                    <listheader label="COMPANY ID" width="100px" visible="true" sort="auto"/>
+                    <listheader label="BU ID" width="60px" visible="true" sort="auto"/>
+                    <listheader label="URP BRAND CODE" width="110px" visible="true" sort="auto"/>
+                    <listheader label="URP BRAND NAME" width="110px" visible="true" sort="auto"/>
+                    <listheader label="PARENT ID" width="50px" visible="false" sort="auto"/>
+                    <listheader label="EXPIRED BY"          width="150px" visible="true" />
+                    <listheader label="EXPIRED DATE"      width="140px" visible="true" />
+                    <listheader label="EFFECTIVE BY"          width="150px" visible="true" sort="auto"/>
+                    <listheader label="EFFECTIVE DATE"          width="140px" visible="true" />
+                    <listheader label="CREATED BY" width="150px" visible="true" sort="auto"/>
+                    <listheader label="CREATED DATE" width="150px" visible="true" sort="auto"/>
+                </listhead>
+                <template name="model">
+                    <listitem>
+                  
+                    </listitem>
+                </template>
+            </listbox>
+        
+        </div>
+        <paging id="userPaging" width="100%" style="color: black" pageSize="10" detailed="true" pageIncrement="1"/>
+        <grid id="grid_find" oddRowSclass="non-odd" width="980px">
+            <columns>
+                <column label="" width="300px" align="right" />
+                <column label="" width="200px" align="center"/>
+                <column label="" width="200px" align="center"/>
+                <column label="" width="280px" align="left"/>
+            </columns>
+            <rows>
+                <row height="35px">
+                    <hbox visible="true">
+                    <textbox id="txtwhid"  value="${arg.InWhId}"/>
+                    <textbox id="txtexpire"  value="${arg.expireddate}"/>
+                    <textbox id="txtparentid"  value="${arg.parentid}"/>
+                    <textbox id="txtwhlocid"  value="${arg.whid}"/>
+                    <textbox id="txtid"  value="${arg.id}"/>
+                    <textbox id="txtdealerid"  value="${arg.dealerid}"/>
+                    <textbox id="txtdealercode"  value="${arg.dealerid}"/>
+                    <textbox id="txtdealerdesc"  value="${arg.dealerid}"/>
+                    <textbox id="txtcompanyid"  value="${arg.companyid}"/>
+                    <textbox id="txtbuid"  value="${arg.buid}"/>
+                    <textbox id="txtloccode"  />
+                    <textbox id="txtlocdesc"  />
+                    <textbox id="txturpcode"  />
+                    <textbox id="txturpdesc" />
+                    <textbox id="txtexpiredbyname"  />
+                    <textbox id="txtexpireddate" />
+                    <textbox id="txteffectivebyname"  />
+                    <textbox id="txteffectivedate"  />
+                    <textbox id="txtcreatedby"  />
+                    <textbox id="txtcreateddate"  />
+                    </hbox>
+                    <button id="add"  tabindex="30" label="Add" width="115px"   image="/img/New24.png"     tooltiptext="Add"/>
+                    <button id="close"      tabindex="38" label="Close"      width="115px"   image="/img/Logout24.png"  tooltiptext="Close"/>
+                    <label value=""/>
+                </row>
+            </rows>
+        </grid>	 
+    </window>
+    
+<!--     <window id="win_list_loc" title="Find Parameter" border="normal"  apply="id.my.berkah.urp.controller.ListLocationWh" width="440px" onClose="self.detach();">
+            <attribute name="onLater">
+                Clients.clearBusy(); //remove the busy message
+            </attribute>
+            <grid id="grid_find" oddRowSclass="non-odd" width="420px">
+                <columns>
+                    <column label="" width="120px" align="right" />
+                    <column label="" width="297px" />
+                    <column label="" width="40px" />
+                </columns>
+                <rows>
+                    <row>
+                        <label   value="Location Code" width="50px" />
+                        <textbox id="txtloc" tabindex="1" width="210px" />
+                    </row>
+                  
+                    <row>
+                        <label   value="Location Desc" width="50px" />
+                        <textbox id="txtlocdesc" tabindex="1" width="210px" />
+                    </row>
+                    <row>
+                        <label   value="Transaction Date From" width="50px" />
+                        <hbox>  
+                            <datebox id="findFromDate" tabindex="2"  format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                            <datebox id="findToDate"   tabindex="3"  format="dd/MM/yyyy" onCreate="self.value = new Date()"/>
+                        </hbox>
+                    </row>
+                   
+                     <row visible="false">
+                        <label   value="Transaction Status" width="50px" />
+                        <textbox id="txttranstat" tabindex="1" width="210px" />
+                    </row>
+                     <row>
+                        <label   value="OTA Status Inject" width="100px" />
+                        <combobox id="cmbtastat" value="All" autodrop="true" tabindex="1" width="180px" readonly="true" >
+                            <comboitem label="All" id="0"/>
+                            <comboitem label="Success"/>
+                            <comboitem label="Failed"/>
+                        </combobox>
+                    </row>
+                    <row>
+                        <label/>
+                        <hbox>
+                            <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                            <button id="Clear" tabindex="14" label="Clear" image="/img/Delete16.png" />
+                            <button id="Close" tabindex="13" label="Close" image="/img/End16.png" />
+                        </hbox>
+                    </row>
+                </rows>
+            </grid>
+            <grid oddRowSclass="non-odd" width="420px">
+                 <columns>
+                    <column label="" width="20px" align="center" />
+                    <column label="" width="130px" align="center" />
+                    <column label="" width="130px" align="center" />
+                    <column label="" width="135px" align="center" />
+                </columns>
+                <rows>
+                 <row>
+                     <label/>
+                     <button id="goFind"  tabindex="12" label="Find"  image="/img/search.png" />
+                     <button id="Clear" tabindex="14" label="Clear" image="/img/Delete16.png" />
+                     <button id="Close" tabindex="13" label="Close" image="/img/End16.png" />
+                 </row>
+                </rows>
+            </grid>	     
+        </window>-->
+</zk>

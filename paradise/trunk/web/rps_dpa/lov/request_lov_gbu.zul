@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+<window id="winLovGBU"  title="LOV Group BU" width="500px" border="normal" apply="id.my.berkah.um.controller.LovGBUCTRL" mode="modal" style="border:1px;">
+    <hbox align="center" style="border:1px;" width="100%">
+        <grid>
+            <columns style="border:1px;">
+                <column label="" align="right" width="10%"/>
+                <column label="" align="left"  width="70%"/>
+                <column label="" align="right" width="20%"/>
+            </columns>
+            <rows>
+                <row style="border:0px;">
+                    <label value="Keyword:" style="color: black"/>
+                    <textbox id="txtKeywordGBU"   width="100%" value="%"/>
+                    <button  id="btnSearchGBU" label="Search" image="/img/search.png" width="100%"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>
+    <listbox id="lstLovGBU" mold="paging" pageSize="10" style="border:1px;color:white;">
+        <listhead style="border:0px;color:black;">
+            <listheader label="GBU Id" width="100px" visible="false" style="color: black"/>
+            <listheader label="Group BU Code" width="150px" sort="auto(gbuCode)" style="color: black"/>
+            <listheader label="Group BU Description" width="350px" sort="auto(gbuDesc)" style="color: black"/>          
+        </listhead>
+        <template name="model" style="border:1px;">
+            <listitem>
+                <listcell label="${each.gbuId}"/>
+                <listcell label="${each.gbuCode}"/>
+                <listcell label="${each.gbuDesc}"/>               
+            </listitem>
+        </template>
+    </listbox>
+    <hbox align="center" style="border:1px;" width="100%" >
+        <grid>
+            <columns style="border:1px;">
+                <column label="" align="right"/>
+                <column label="" align="left"/>
+            </columns>
+            <rows>
+                <row style="border:0px;">	
+                    <button id="btnLovSubmitGBU" image="/img/Ok24.png" label="Submit" orient="horizontal"/>
+                    <button id="btnLovCloseGBU" image="/img/Logout24.png" label="Close" orient="horizontal"/>
+                </row>
+            </rows>
+        </grid>
+    </hbox>	    
+ </window>
+</zk>
